@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Affiliates",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "complement": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    },
+    "cpf": {
+      "type": "string"
+    },
+    "cnpj": {
+      "type": "string"
+    },
+    "isApproved": {
+      "type": "boolean"
+    },
+    "social": {
+      "type": "object",
+      "properties": {
+        "instagram": {
+          "type": "string"
+        },
+        "whatsapp": {
+          "type": "string"
+        },
+        "facebook": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["email", "name", "isApproved"],
+  "v-indexed": ["email", "name", "isApproved"],
+  "v-cache": false
+}
