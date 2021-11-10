@@ -2,8 +2,8 @@
   "name": "affiliates",
   "vendor": "vtex",
   "version": "0.1.0",
-  "title": "Service Example",
-  "description": "Reference app for VTEX IO Services",
+  "title": "Affiliates",
+  "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {},
@@ -18,6 +18,16 @@
   },
   "credentialType": "absolute",
   "policies": [
+    {
+      "name": "ADMIN_DS"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/dataentities/*"
+      }
+    },
     {
       "name": "outbound-access",
       "attrs": {
