@@ -1,6 +1,7 @@
 import { json } from 'co-body'
 
 import type { AffiliateInput } from '../typings/affiliates'
+import { isSlugValid } from '../utils/shared'
 
 export async function validateCreate(
   ctx: Context,
@@ -12,18 +13,15 @@ export async function validateCreate(
   } = ctx
 
   const newAffiliate: AffiliateInput = await json(req)
+  const { slug, email } = newAffiliate
 
   // First we check if the slug is valid
-  const regexExp = /^[A-Za-z0-9-_]+/
-
-  const slugTest = newAffiliate.slug.match(regexExp)
-
-  if (!slugTest || slugTest[0] !== newAffiliate.slug) {
+  if (!isSlugValid(slug)) {
     throw new Error('Slug is not valid, must be alphanumeric')
   }
 
   // Then we check to see if the slug already exists
-  const affiliateInDbById = await affiliates.get(newAffiliate.slug, ['_all'])
+  const affiliateInDbById = await affiliates.get(slug, ['_all'])
 
   if (affiliateInDbById) {
     throw new Error('Affiliate already exists(slug is already in use)')
@@ -34,7 +32,7 @@ export async function validateCreate(
     { page: 1, pageSize: 10 },
     ['_all'],
     undefined,
-    `email=${newAffiliate.email}`
+    `email=${email}`
   )
 
   if (affiliateInDbByEmail.length > 0) {
