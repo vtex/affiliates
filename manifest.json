@@ -6,12 +6,16 @@
   "description": "Reference app for VTEX IO Services",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
-  "dependencies": {},
+  "dependencies": {
+    "vtex.store": "2.x",
+    "vtex.search-result": "3.x"
+  },
   "builders": {
     "node": "6.x",
     "docs": "0.x",
-    "react": "3.x",
-    "masterdata": "1.x"
+    "masterdata": "1.x",
+    "store": "0.x",
+    "react": "3.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
