@@ -6189,6 +6189,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+"vtex.affiliates@https://affiliates--gabrielhosinoio.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.1.0+build1637070121/public/@types/vtex.affiliates":
+  version "0.1.0"
+  resolved "https://affiliates--gabrielhosinoio.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.1.0+build1637070121/public/@types/vtex.affiliates#8803191946260a7de39b337928f1af3f0cfc0f25"
+
 w3c-hr-time@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz#0a89cdf5cc15822df9c360543676963e0cc308cd"
