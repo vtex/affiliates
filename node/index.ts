@@ -6,6 +6,7 @@ import { createAffiliate } from './middlewares/createAffiliate'
 import { updateAffiliate } from './middlewares/updateAffiliate'
 import { validateCreate } from './middlewares/validateCreate'
 import { validateUpdate } from './middlewares/validateUpdate'
+import { isAffiliateValid } from './resolvers/isAffiliateValid'
 import type { AffiliateInput } from './typings/affiliates'
 
 const TIMEOUT_MS = 1000
@@ -41,5 +42,12 @@ export default new Service({
       POST: [validateCreate, createAffiliate],
       PATCH: [validateUpdate, updateAffiliate],
     }),
+  },
+  graphql: {
+    resolvers: {
+      Query: {
+        isAffiliateValid,
+      },
+    },
   },
 })
