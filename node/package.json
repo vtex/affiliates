@@ -13,11 +13,11 @@
     "@vtex/test-tools": "^3.4.1",
     "@vtex/tsconfig": "^0.5.6",
     "typescript": "3.9.7",
-    "vtex.affiliates": "https://affiliates--gabrielhosinoio.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.2.0+build1637074896/public/@types/vtex.affiliates"
+    "vtex.affiliates": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.3.0/public/@types/vtex.affiliates"
   },
   "scripts": {
     "lint": "tsc --noEmit --pretty",
     "test": "vtex-test-tools test --collectCoverage"
   },
-  "version": "0.1.0"
+  "version": "0.3.0"
 }
