@@ -3,7 +3,9 @@ import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
+import { updateAffiliate } from './middlewares/updateAffiliate'
 import { validateCreate } from './middlewares/validateCreate'
+import { validateUpdate } from './middlewares/validateUpdate'
 import type { AffiliateInput } from './typings/affiliates'
 
 const TIMEOUT_MS = 1000
@@ -37,6 +39,7 @@ export default new Service({
   routes: {
     affiliate: method({
       POST: [validateCreate, createAffiliate],
+      PATCH: [validateUpdate, updateAffiliate],
     }),
   },
 })
