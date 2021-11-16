@@ -2,8 +2,8 @@
   "name": "affiliates",
   "vendor": "vtex",
   "version": "0.1.0",
-  "title": "Service Example",
-  "description": "Reference app for VTEX IO Services",
+  "title": "Affiliates",
+  "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {
@@ -13,15 +13,25 @@
   "builders": {
     "node": "6.x",
     "docs": "0.x",
+    "react": "3.x",
     "masterdata": "1.x",
-    "store": "0.x",
-    "react": "3.x"
+    "graphql": "1.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"
   },
   "credentialType": "absolute",
   "policies": [
+    {
+      "name": "ADMIN_DS"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/dataentities/*"
+      }
+    },
     {
       "name": "outbound-access",
       "attrs": {

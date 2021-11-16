@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add isAffiliateValid query
+
+### Changed
+
+- Update middlewares to consider if affiliate param is undefined
+
+### Added
+
+- Update affiliate route
+
+### Added
+
+- Create affiliate route
+
 ## [0.1.0] - 2021-11-09
 
 ### Added
