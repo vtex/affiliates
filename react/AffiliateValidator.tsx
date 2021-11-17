@@ -9,11 +9,11 @@ export type IsAffiliateValidQueryResult = {
 }
 
 type Props = {
-  Invalid?: React.ComponentType
-  Valid?: React.ComponentType
+  Invalid: React.ComponentType
+  Valid: React.ComponentType
 }
 
-const AffiliateValidator: FC<Props> = ({ Invalid, Valid, children }) => {
+const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
   const splitPathname = window.location?.pathname.split('/')
 
   const slug = splitPathname && splitPathname[splitPathname.length - 1]
@@ -28,19 +28,9 @@ const AffiliateValidator: FC<Props> = ({ Invalid, Valid, children }) => {
 
   const isAffiliateValid = data?.isAffiliateValid
 
-  if (isAffiliateValid === true) {
-    if (Valid) {
-      return <Valid />
-    }
+  if (isAffiliateValid === true) return <Valid />
 
-    return <>{children}</>
-  }
-
-  if (isAffiliateValid === false || error) {
-    if (Invalid) {
-      return <Invalid />
-    }
-  }
+  if (isAffiliateValid === false || error) return <Invalid />
 
   return null
 }
