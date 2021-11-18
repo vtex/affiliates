@@ -12,7 +12,8 @@
     "@vtex/api": "6.45.6",
     "@vtex/test-tools": "^3.4.1",
     "@vtex/tsconfig": "^0.5.6",
-    "typescript": "3.9.7"
+    "typescript": "3.9.7",
+    "vtex.affiliates": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.3.0/public/@types/vtex.affiliates"
   },
   "scripts": {
     "lint": "tsc --noEmit --pretty",

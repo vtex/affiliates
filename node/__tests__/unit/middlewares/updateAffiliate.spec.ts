@@ -27,6 +27,22 @@ describe('updateAffiliate', () => {
     })
   })
 
+  it('Should throw error message if affiliate is not on state', () => {
+    const mockCtx = {
+      clients: {
+        affiliates: {
+          update: jest.fn(),
+        },
+      },
+      state: {},
+      vtex: { logger: { error: jest.fn() } },
+    } as unknown as Context
+
+    return expect(updateAffiliate(mockCtx, next)).rejects.toThrow(
+      'Error updating the affiliate'
+    )
+  })
+
   it('Should throw error message on error saving to md', () => {
     const mockCtx = {
       clients: {

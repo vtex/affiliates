@@ -10,6 +10,14 @@ export async function createAffiliate(
     vtex: { logger },
   } = ctx
 
+  if (!state.affiliate) {
+    logger.error({
+      metric: 'create-affiliate',
+      message: 'Affiliate was not on state',
+    })
+    throw new Error('Error saving the new affiliate')
+  }
+
   try {
     const mdDocument = {
       id: state.affiliate.slug,

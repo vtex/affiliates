@@ -10,6 +10,14 @@ export async function updateAffiliate(
     vtex: { logger },
   } = ctx
 
+  if (!state.affiliate) {
+    logger.error({
+      metric: 'update-affiliate',
+      message: 'Affiliate was not on state',
+    })
+    throw new Error('Error updating the affiliate')
+  }
+
   try {
     const mdDocument = {
       id: state.affiliate.slug,
