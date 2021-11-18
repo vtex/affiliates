@@ -1,0 +1,3 @@
+query isAffiliateValid($slug: String) {
+  isAffiliateValid(affiliateId: $slug)
+}

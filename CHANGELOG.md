@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - setAffiliateOnOrderForm mutation
 
+## [0.6.0] - 2021-11-18
+
+### Added
+
+- AffiliateValidator storefront block
+- affiliate_layout store template
+- affiliate_invalid store template
+
 ## [0.5.0] - 2021-11-18
 
 ### Added
