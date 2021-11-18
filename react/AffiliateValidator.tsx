@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useQuery } from 'react-apollo'
 
 import IS_AFFILIATE_VALID_QUERY from './graphql/isAffiliateValid.graphql'
@@ -15,10 +15,10 @@ type Props = {
 
 const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
   const slug = useMemo(() => {
-     const splitPathname = window.location?.pathname.split('/')
+    const splitPathname = window.location?.pathname.split('/')
 
-     return splitPathname && splitPathname[splitPathname.length - 1]
-  }, [window.location.pathname])
+    return splitPathname && splitPathname[splitPathname.length - 1]
+  }, [])
 
   const { data, error } = useQuery<IsAffiliateValidQueryResult>(
     IS_AFFILIATE_VALID_QUERY,
