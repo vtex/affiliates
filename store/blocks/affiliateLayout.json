@@ -1,5 +1,5 @@
 {
-  "affiliate_layout": {
+  "affiliate-layout": {
     "children": [
       "list-context.image-list#demo",
       "rich-text#shelf-title",

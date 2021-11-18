@@ -1,5 +1,5 @@
 {
-  "affiliate_invalid": {
+  "affiliate-invalid": {
     "children": ["rich-text#invalid-affiliate"]
   },
   "rich-text#invalid-affiliate": {
