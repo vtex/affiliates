@@ -14,9 +14,11 @@ type Props = {
 }
 
 const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
-  const splitPathname = window.location?.pathname.split('/')
+  const slug = useMemo(() => {
+     const splitPathname = window.location?.pathname.split('/')
 
-  const slug = splitPathname && splitPathname[splitPathname.length - 1]
+     return splitPathname && splitPathname[splitPathname.length - 1]
+  }, [window.location.pathname])
 
   const { data, error } = useQuery<IsAffiliateValidQueryResult>(
     IS_AFFILIATE_VALID_QUERY,
