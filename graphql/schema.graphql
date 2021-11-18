@@ -1,3 +1,7 @@
 type Query {
   isAffiliateValid(affiliateId: String): Boolean
 }
+
+type Mutation {
+  setAffiliateOnOrderForm(affiliateId: String, orderFormId: String): Boolean
+}
