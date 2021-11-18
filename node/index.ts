@@ -8,6 +8,7 @@ import { updateAffiliate } from './middlewares/updateAffiliate'
 import { validateCreate } from './middlewares/validateCreate'
 import { validateUpdate } from './middlewares/validateUpdate'
 import { isAffiliateValid } from './resolvers/isAffiliateValid'
+import { setAffiliateOnOrderForm } from './resolvers/setAffiliateOnOrderForm'
 import type { AffiliateInput } from './typings/affiliates'
 
 const TIMEOUT_MS = 1000
@@ -48,6 +49,9 @@ export default new Service({
     resolvers: {
       Query: {
         isAffiliateValid,
+      },
+      Mutation: {
+        setAffiliateOnOrderForm,
       },
     },
   },
