@@ -30,7 +30,7 @@ const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
 
   const isAffiliateValid = data?.isAffiliateValid
 
-  if (isAffiliateValid === true) return <Valid />
+  if (isAffiliateValid) return <Valid />
 
   if (isAffiliateValid === false || error) return <Invalid />
 
