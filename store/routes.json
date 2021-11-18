@@ -1,0 +1,6 @@
+{
+  "store.affiliates": {
+    "title": "Affiliate Store",
+    "path": "/affiliates/:affiliateId"
+  }
+}

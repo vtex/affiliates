@@ -1,0 +1,11 @@
+{
+  "store.affiliates": {
+    "blocks": ["affiliate-validator"]
+  },
+  "affiliate-validator": {
+    "props": {
+      "Valid": "affiliate-layout",
+      "Invalid": "affiliate-invalid"
+    }
+  }
+}

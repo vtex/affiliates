@@ -6,13 +6,22 @@
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
-  "dependencies": {},
+  "dependencies": {
+    "vtex.store": "2.x",
+    "vtex.store-image": "0.x",
+    "vtex.slider-layout": "0.x",
+    "vtex.rich-text": "0.x",
+    "vtex.flex-layout": "0.x",
+    "vtex.product-summary": "2.x",
+    "vtex.store-components": "3.x"
+  },
   "builders": {
     "node": "6.x",
     "docs": "0.x",
     "react": "3.x",
     "masterdata": "1.x",
-    "graphql": "1.x"
+    "graphql": "1.x",
+    "store": "0.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"

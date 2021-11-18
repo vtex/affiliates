@@ -1,0 +1,13 @@
+{
+  "store.affiliates": {},
+  "affiliate-validator": {
+    "component": "AffiliateValidator",
+    "composition": "children"
+  },
+  "affiliate-layout": {
+    "composition": "children"
+  },
+  "affiliate-invalid": {
+    "composition": "children"
+  }
+}

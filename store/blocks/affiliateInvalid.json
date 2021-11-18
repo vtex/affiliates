@@ -1,0 +1,13 @@
+{
+  "affiliate-invalid": {
+    "children": ["rich-text#invalid-affiliate"]
+  },
+  "rich-text#invalid-affiliate": {
+    "props": {
+      "textAlignment": "CENTER",
+      "textPosition": "CENTER",
+      "text": "**Affiliate does not exist or has not been approved**",
+      "font": "t-heading-1"
+    }
+  }
+}
