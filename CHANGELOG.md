@@ -13,9 +13,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - affiliate_layout store template
 - affiliate_invalid store template
 
-## [0.3.0] - 2021-11-16
+## [0.5.0] - 2021-11-18
 
-## [0.2.0] - 2021-11-11
+### Added
+
+- onAppInstalled event handler to configure the app
+
+## [0.4.0] - 2021-11-18
 
 ### Added
 
@@ -25,9 +29,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Update middlewares to consider if affiliate param is undefined
 
+## [0.3.0] - 2021-11-16
+
 ### Added
 
 - Update affiliate route
+
+## [0.2.0] - 2021-11-11
 
 ### Added
 
