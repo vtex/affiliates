@@ -6189,9 +6189,41 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.3.0/public/@types/vtex.affiliates":
-  version "0.3.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.3.0/public/@types/vtex.affiliates#1d4dbb2ce2a32c9b54c5129a0bae1abfe0e46a55"
+"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.5.0/public/@types/vtex.affiliates":
+  version "0.5.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.5.0/public/@types/vtex.affiliates#1d0051b31798ca746b71237922874bc2b60cbf68"
+
+"vtex.flex-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.19.0/public/@types/vtex.flex-layout":
+  version "0.19.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.19.0/public/@types/vtex.flex-layout#042e0e1770bafdd157705abefffe0b2645a98f84"
+
+"vtex.order-manager@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.11.1/public/@types/vtex.order-manager":
+  version "0.11.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.11.1/public/@types/vtex.order-manager#cc658148c5e054900c0d692a26d1ac7c872d9262"
+
+"vtex.product-summary@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.77.1/public/@types/vtex.product-summary":
+  version "2.77.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.77.1/public/@types/vtex.product-summary#b273b50132ae3e58198f148600bf0c45769fe933"
+
+"vtex.rich-text@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.rich-text@0.15.0/public/@types/vtex.rich-text":
+  version "0.15.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.rich-text@0.15.0/public/@types/vtex.rich-text#f23416cea64e72531069e58f1b137dfdb5b4b510"
+
+"vtex.slider-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout":
+  version "0.22.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout#d0e9ce16b9f9ea2bcc50a3cc42c5466d565141c0"
+
+"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.3/public/@types/vtex.store-components":
+  version "3.155.3"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.3/public/@types/vtex.store-components#98170fc4dc4221aaf9f91e52135e4448e6de6f06"
+
+"vtex.store-image@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-image@0.14.2/public/@types/vtex.store-image":
+  version "0.14.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-image@0.14.2/public/@types/vtex.store-image#8110d7fe7a27c8e08cab98f52426ca239be38694"
+
+"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.1/public/@types/vtex.store":
+  version "2.120.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.1/public/@types/vtex.store#fda1d0c7a0226d7229a51a81ec3721bf23d5aa6e"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
