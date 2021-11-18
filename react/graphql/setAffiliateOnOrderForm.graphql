@@ -1,0 +1,3 @@
+mutation setAffiliateOnOrderForm($affiliateId: String, $orderFormId: String) {
+  setAffiliateOnOrderForm(affiliateId: $affiliateId, orderFormId: $orderFormId)
+}
