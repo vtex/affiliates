@@ -3,6 +3,7 @@ import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
+import { setupAppConfiguration } from './middlewares/setupAppConfiguration'
 import { updateAffiliate } from './middlewares/updateAffiliate'
 import { validateCreate } from './middlewares/validateCreate'
 import { validateUpdate } from './middlewares/validateUpdate'
@@ -49,5 +50,8 @@ export default new Service({
         isAffiliateValid,
       },
     },
+  },
+  events: {
+    onAppInstalled: setupAppConfiguration,
   },
 })
