@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Use setAffiliateOnOrderForm mutation when accessing a valid affiliate page
+
 ## [0.7.0] - 2021-11-19
 
 ### Added
