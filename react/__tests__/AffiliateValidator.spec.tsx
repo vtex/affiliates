@@ -1,9 +1,10 @@
+/* eslint-disable jest/no-mocks-import */
 import React from 'react'
 import { act, render } from '@vtex/test-tools/react'
 import { MockedProvider, wait } from '@apollo/react-testing'
 
-// eslint-disable-next-line jest/no-mocks-import
-import { mocks } from '../__mocks__/isAffiliateValidQuery'
+import { mocks as queryMocks } from '../__mocks__/isAffiliateValidQuery'
+import { mocks as mutationMocks } from '../__mocks__/setOnOrderFormMutation'
 import AffiliateValidator from '../AffiliateValidator'
 
 describe('Affiliate Validator', () => {
@@ -18,7 +19,10 @@ describe('Affiliate Validator', () => {
     })
 
     const renderObject = render(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider
+        mocks={[...queryMocks, ...mutationMocks]}
+        addTypename={false}
+      >
         <AffiliateValidator
           Valid={MockedValidComponent}
           Invalid={MockedInvalidComponent}
@@ -32,6 +36,8 @@ describe('Affiliate Validator', () => {
 
     return renderObject
   }
+
+  it.todo('Test query loading state')
 
   it('Should render Valid Component if the slug in the URL is valid', async () => {
     const { getByTestId } = await renderTest('/validId')
@@ -49,5 +55,13 @@ describe('Affiliate Validator', () => {
     const { getByTestId } = await renderTest('/malformedId')
 
     expect(getByTestId('invalidDiv')).toBeInTheDocument()
+  })
+
+  it('Should call mutation to set affiliateId on orderForm when the slug is valid', async () => {
+    await renderTest('/validId')
+
+    const mutationSpy = mutationMocks[0].result
+
+    expect(mutationSpy).toHaveBeenCalled()
   })
 })
