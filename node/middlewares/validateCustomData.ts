@@ -27,5 +27,6 @@ export async function validateCustomData(
     throw new Error('Affiliate is not valid')
   }
 
+  state.affiliate = affiliateApp.fields.affiliateId
   await next()
 }
