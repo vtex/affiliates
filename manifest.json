@@ -73,5 +73,15 @@
       "name": "colossus-write-logs"
     }
   ],
+  "settingsSchema": {
+    "title": "Affiliates",
+    "type": "object",
+    "properties": {
+      "leadDuration": {
+        "title": "Lead duration",
+        "type": "integer"
+      }
+    }
+  },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
