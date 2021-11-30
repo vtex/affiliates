@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+# Added
+
+- validateLead, updateLead and getClient middlewares
+- Affiliate id to context state inside the validadeCustomData middleware
+
 ## [0.9.0] - 2021-11-30
 
 ### Added
