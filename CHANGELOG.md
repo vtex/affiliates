@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Listener for the payment-approved event on order
+- getOrder and validateCustomData middlewares
+
 ## [0.8.0] - 2021-11-19
 
 ### Added

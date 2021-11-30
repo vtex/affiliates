@@ -1,11 +1,18 @@
-import type { ClientsConfig, ServiceContext, RecorderState } from '@vtex/api'
+import type {
+  ClientsConfig,
+  ServiceContext,
+  RecorderState,
+  EventContext,
+} from '@vtex/api'
 import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
+import { getOrder } from './middlewares/getOrder'
 import { setupAppConfiguration } from './middlewares/setupAppConfiguration'
 import { updateAffiliate } from './middlewares/updateAffiliate'
 import { validateCreate } from './middlewares/validateCreate'
+import { validateCustomData } from './middlewares/validateCustomData'
 import { validateUpdate } from './middlewares/validateUpdate'
 import { isAffiliateValid } from './resolvers/isAffiliateValid'
 import { setAffiliateOnOrderForm } from './resolvers/setAffiliateOnOrderForm'
@@ -29,6 +36,17 @@ const clients: ClientsConfig<Clients> = {
 declare global {
   // We declare a global Context type just to avoid re-writing ServiceContext<Clients, State> in every handler and resolver
   type Context = ServiceContext<Clients, State>
+
+  interface StatusChangeContext extends EventContext<Clients> {
+    body: {
+      domain: string
+      orderId: string
+      currentState: string
+      lastState: string
+      currentChangeDate: string
+      lastChangeDate: string
+    }
+  }
 
   // The shape of our State object found in `ctx.state`. This is used as state bag to communicate between middlewares.
   interface State extends RecorderState {
@@ -57,5 +75,6 @@ export default new Service({
   },
   events: {
     onAppInstalled: setupAppConfiguration,
+    setAffiliateLead: [getOrder, validateCustomData],
   },
 })

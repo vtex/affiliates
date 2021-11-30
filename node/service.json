@@ -19,6 +19,10 @@
     "onAppInstalled": {
       "sender": "apps",
       "keys": ["setup"]
+    },
+    "setAffiliateLead": {
+      "sender": "vtex.orders-broadcast",
+      "topics": ["payment-approved"]
     }
   }
 }

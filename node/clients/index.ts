@@ -1,5 +1,5 @@
 import { IOClients } from '@vtex/api'
-import { masterDataFor, Checkout } from '@vtex/clients'
+import { masterDataFor, Checkout, OMS } from '@vtex/clients'
 import type { Affiliates } from 'vtex.affiliates'
 
 export class Clients extends IOClients {
@@ -9,5 +9,9 @@ export class Clients extends IOClients {
 
   public get checkout() {
     return this.getOrSet('checkout', Checkout)
+  }
+
+  public get oms() {
+    return this.getOrSet('oms', OMS)
   }
 }
