@@ -12,7 +12,7 @@ describe('validadeLead middleware', () => {
       clients: {
         apps: {
           getAppSettings: jest.fn().mockReturnValue({
-            leadDuration: 90,
+            leadDurationInDays: 90,
           }),
         },
       },
@@ -40,7 +40,7 @@ describe('validadeLead middleware', () => {
       clients: {
         apps: {
           getAppSettings: jest.fn().mockReturnValue({
-            leadDuration: 90,
+            leadDurationInDays: 90,
           }),
         },
       },
@@ -64,7 +64,7 @@ describe('validadeLead middleware', () => {
       clients: {
         apps: {
           getAppSettings: jest.fn().mockReturnValue({
-            leadDuration: 90,
+            leadDurationInDays: 90,
           }),
         },
       },

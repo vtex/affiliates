@@ -77,8 +77,8 @@
     "title": "Affiliates",
     "type": "object",
     "properties": {
-      "leadDuration": {
-        "title": "Lead duration",
+      "leadDurationInDays": {
+        "title": "Lead duration in days",
         "type": "integer"
       }
     }
