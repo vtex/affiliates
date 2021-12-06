@@ -8,9 +8,12 @@ import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
+import { getClient } from './middlewares/getClient'
 import { getOrder } from './middlewares/getOrder'
 import { setupAppConfiguration } from './middlewares/setupAppConfiguration'
 import { updateAffiliate } from './middlewares/updateAffiliate'
+import { updateLead } from './middlewares/updateLead'
+import { validateLead } from './middlewares/validateLead'
 import { validateCreate } from './middlewares/validateCreate'
 import { validateCustomData } from './middlewares/validateCustomData'
 import { validateUpdate } from './middlewares/validateUpdate'
@@ -75,6 +78,12 @@ export default new Service({
   },
   events: {
     onAppInstalled: setupAppConfiguration,
-    setAffiliateLead: [getOrder, validateCustomData],
+    setAffiliateLead: [
+      getOrder,
+      validateCustomData,
+      getClient,
+      validateLead,
+      updateLead,
+    ],
   },
 })
