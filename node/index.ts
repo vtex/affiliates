@@ -20,6 +20,11 @@ import { validateUpdate } from './middlewares/validateUpdate'
 import { isAffiliateValid } from './resolvers/isAffiliateValid'
 import { setAffiliateOnOrderForm } from './resolvers/setAffiliateOnOrderForm'
 import type { AffiliateInput } from './typings/affiliates'
+import { setAffiliateLeadOnCustomData } from './middlewares/setAffiliateLeadOnCustomData'
+import { verifyOrderAffiliation } from './middlewares/verifyOrderAffiliation'
+import { getOrderForm } from './middlewares/getOrderForm'
+import { getClientFromOrderForm } from './middlewares/getClientFromOrderForm'
+import { verifyClientAffiliation } from './middlewares/verifyClientAffiliation'
 
 const TIMEOUT_MS = 1000
 
@@ -48,6 +53,12 @@ declare global {
       lastState: string
       currentChangeDate: string
       lastChangeDate: string
+    }
+  }
+
+  interface UserLoginEventContext extends EventContext<Clients> {
+    body: {
+      orderFormId: string
     }
   }
 
@@ -84,6 +95,13 @@ export default new Service({
       getClient,
       validateLead,
       updateLead,
+    ],
+    verifyUserAffiliateLead: [
+      getOrderForm,
+      verifyOrderAffiliation,
+      getClientFromOrderForm,
+      verifyClientAffiliation,
+      setAffiliateLeadOnCustomData,
     ],
   },
 })

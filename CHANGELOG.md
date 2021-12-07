@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Middlewares for handling the verifyUserAffiliateLead event
+
+### Fixed
+
+- setAffiliateOnOrderForm mutation being called too son on AffiliateValidator
+
 ## [0.10.0] - 2021-12-06
 
 ### Added

@@ -23,6 +23,10 @@
     "setAffiliateLead": {
       "sender": "vtex.orders-broadcast",
       "topics": ["payment-approved"]
+    },
+    "verifyUserAffiliateLead": {
+      "sender": "vtex.order-form-courier",
+      "topics": ["order-form-email-updated"]
     }
   }
 }
