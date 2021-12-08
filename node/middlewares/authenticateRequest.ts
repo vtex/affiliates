@@ -7,7 +7,10 @@ export async function authenticateRequest(
   const appToken = ctx.headers['x-vtex-api-apptoken'] as string
 
   if (!appKey || !appToken) {
-    throw new Error('Missing appKey or appToken')
+    ctx.status = 401
+    ctx.message = 'Missing appKey or appToken'
+
+    return
   }
 
   const { token } = await authentication.getAuthToken({
@@ -21,7 +24,10 @@ export async function authenticateRequest(
   )
 
   if (!canAccessMasterdata) {
-    throw new Error('Unauthorized')
+    ctx.status = 403
+    ctx.message = 'Forbidden'
+
+    return
   }
 
   await next()

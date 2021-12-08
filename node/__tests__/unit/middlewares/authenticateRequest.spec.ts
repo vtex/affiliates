@@ -14,11 +14,14 @@ describe('authenticateRequest middleware', () => {
           canAccessResource: jest.fn(),
         },
       },
+      status: 0,
+      message: '',
     } as unknown as Context
 
-    return expect(authenticateRequest(ctxMock, next)).rejects.toThrowError(
-      'Missing appKey or appToken'
-    )
+    return authenticateRequest(ctxMock, next).then(() => {
+      expect(ctxMock.status).toBe(401)
+      expect(ctxMock.message).toBe('Missing appKey or appToken')
+    })
   })
 
   it('Should throw error if token has no access to masterdata', () => {
@@ -35,11 +38,14 @@ describe('authenticateRequest middleware', () => {
           canAccessResource: jest.fn().mockResolvedValueOnce(false),
         },
       },
+      status: 0,
+      message: '',
     } as unknown as Context
 
-    return expect(authenticateRequest(ctxMock, next)).rejects.toThrowError(
-      'Unauthorized'
-    )
+    return authenticateRequest(ctxMock, next).then(() => {
+      expect(ctxMock.status).toBe(403)
+      expect(ctxMock.message).toBe('Forbidden')
+    })
   })
 
   it('Should call next if everything is ok', () => {
