@@ -1,0 +1,36 @@
+{
+  "affiliate-template": {
+    "children": [
+      "rich-text#affiliate-title",
+      "image#affiliate-banner",
+      "search-result-layout.customQuery#affiliate"
+    ]
+  },
+
+  "rich-text#affiliate-title": {
+    "props": {
+      "textAlignment": "CENTER",
+      "textPosition": "CENTER",
+      "text": "# My Affiliate's Store",
+      "blockClass": "affiliateTitle",
+      "font": "t-heading-1"
+    }
+  },
+
+  "image#affiliate-banner": {
+    "props": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/VTEX_Logo.svg/400px-VTEX_Logo.svg.png"
+    }
+  },
+
+  "search-result-layout.customQuery#affiliate": {
+    "props": {
+      "querySchema": {}
+    },
+    "blocks": [
+      "search-result-layout.desktop",
+      "search-result-layout.mobile",
+      "search-not-found-layout"
+    ]
+  }
+}

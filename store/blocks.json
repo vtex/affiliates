@@ -4,8 +4,8 @@
   },
   "affiliate-validator": {
     "props": {
-      "Valid": "affiliate-layout",
-      "Invalid": "affiliate-invalid"
+      "Valid": "affiliate-template",
+      "Invalid": "affiliate-invalid-template"
     }
   }
 }
