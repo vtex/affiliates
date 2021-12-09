@@ -4,3 +4,14 @@ export const APP_CUSTOM_DATA = {
   fields: ['affiliateId'],
   major: 0,
 }
+
+export const ERRORS = {
+  missingAuthentication: {
+    status: 401,
+    message: 'Missing appKey or appToken',
+  },
+  forbidden: {
+    status: 403,
+    message: 'Forbidden',
+  },
+}

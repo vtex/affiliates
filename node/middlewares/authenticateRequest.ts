@@ -1,3 +1,5 @@
+import { ERRORS } from '../utils/constants'
+
 export async function authenticateRequest(
   ctx: Context,
   next: () => Promise<unknown>
@@ -7,8 +9,8 @@ export async function authenticateRequest(
   const appToken = ctx.headers['x-vtex-api-apptoken'] as string
 
   if (!appKey || !appToken) {
-    ctx.status = 401
-    ctx.message = 'Missing appKey or appToken'
+    ctx.status = ERRORS.missingAuthentication.status
+    ctx.message = ERRORS.missingAuthentication.message
 
     return
   }
@@ -24,8 +26,8 @@ export async function authenticateRequest(
   )
 
   if (!canAccessMasterdata) {
-    ctx.status = 403
-    ctx.message = 'Forbidden'
+    ctx.status = ERRORS.forbidden.status
+    ctx.message = ERRORS.forbidden.message
 
     return
   }

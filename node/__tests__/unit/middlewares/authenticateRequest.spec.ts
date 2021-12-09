@@ -1,4 +1,5 @@
 import { authenticateRequest } from '../../../middlewares/authenticateRequest'
+import { ERRORS } from '../../../utils/constants'
 
 describe('authenticateRequest middleware', () => {
   const next = jest.fn()
@@ -19,8 +20,8 @@ describe('authenticateRequest middleware', () => {
     } as unknown as Context
 
     return authenticateRequest(ctxMock, next).then(() => {
-      expect(ctxMock.status).toBe(401)
-      expect(ctxMock.message).toBe('Missing appKey or appToken')
+      expect(ctxMock.status).toBe(ERRORS.missingAuthentication.status)
+      expect(ctxMock.message).toBe(ERRORS.missingAuthentication.message)
     })
   })
 
@@ -43,8 +44,8 @@ describe('authenticateRequest middleware', () => {
     } as unknown as Context
 
     return authenticateRequest(ctxMock, next).then(() => {
-      expect(ctxMock.status).toBe(403)
-      expect(ctxMock.message).toBe('Forbidden')
+      expect(ctxMock.status).toBe(ERRORS.forbidden.status)
+      expect(ctxMock.message).toBe(ERRORS.forbidden.message)
     })
   })
 
