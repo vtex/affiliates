@@ -2,7 +2,7 @@
   "affiliate-template": {
     "children": [
       "rich-text#affiliate-title",
-      "image#affiliate-banner",
+      "flex-layout.row#banner",
       "search-result-layout.customQuery#affiliate"
     ]
   },
@@ -15,6 +15,10 @@
       "blockClass": "affiliateTitle",
       "font": "t-heading-1"
     }
+  },
+
+  "flex-layout.row#banner": {
+    "children": ["image#affiliate-banner"]
   },
 
   "image#affiliate-banner": {
