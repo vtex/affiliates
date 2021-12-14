@@ -1,9 +1,9 @@
-export async function verifyClientAffiliation(
+export async function verifyUserAffiliation(
   { state, clients: { apps } }: StatusChangeContext,
   next: () => Promise<unknown>
 ) {
   const {
-    client: { affiliateId, affiliateStartDate },
+    affiliateLead: { affiliateId, affiliateStartDate },
   } = state
 
   const { leadDurationInDays }: { leadDurationInDays: number } =
