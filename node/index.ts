@@ -25,6 +25,7 @@ import { verifyOrderAffiliation } from './middlewares/verifyOrderAffiliation'
 import { getOrderForm } from './middlewares/getOrderForm'
 import { getClientFromOrderForm } from './middlewares/getClientFromOrderForm'
 import { verifyClientAffiliation } from './middlewares/verifyClientAffiliation'
+import { authenticateRequest } from './middlewares/authenticateRequest'
 
 const TIMEOUT_MS = 1000
 
@@ -73,8 +74,8 @@ export default new Service({
   clients,
   routes: {
     affiliate: method({
-      POST: [validateCreate, createAffiliate],
-      PATCH: [validateUpdate, updateAffiliate],
+      POST: [authenticateRequest, validateCreate, createAffiliate],
+      PATCH: [authenticateRequest, validateUpdate, updateAffiliate],
     }),
   },
   graphql: {

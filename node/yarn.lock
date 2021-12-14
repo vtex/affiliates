@@ -6189,9 +6189,9 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.8.0/public/@types/vtex.affiliates":
-  version "0.8.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.8.0/public/@types/vtex.affiliates#d341678e4fca6ff16167a34b797b6266b7d283d6"
+"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.12.0/public/@types/vtex.affiliates":
+  version "0.12.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.12.0/public/@types/vtex.affiliates#e9e6f91d84e8d3c3c806611646857fcc99b52763"
 
 "vtex.flex-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.19.0/public/@types/vtex.flex-layout":
   version "0.19.0"
@@ -6221,9 +6221,9 @@ verror@1.10.0:
   version "0.14.2"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-image@0.14.2/public/@types/vtex.store-image#8110d7fe7a27c8e08cab98f52426ca239be38694"
 
-"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.1/public/@types/vtex.store":
-  version "2.120.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.1/public/@types/vtex.store#fda1d0c7a0226d7229a51a81ec3721bf23d5aa6e"
+"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.2/public/@types/vtex.store":
+  version "2.120.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.2/public/@types/vtex.store#737e616a855d3985310f1a7a7695a0757220553f"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"

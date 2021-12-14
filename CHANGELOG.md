@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.13.0] - 2021-12-13
+
+### Added
+
+- authenticate client
+- authenticateRequest middleware
+- authenticateRequest middleware to the affiliate route
+
+## [0.12.0] - 2021-12-08
+
+### Changed
+
+- Affiliates MD schema
+
 ## [0.11.0] - 2021-12-07
 
 ### Added
