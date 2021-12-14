@@ -15,11 +15,7 @@ export async function getAffiliateLead(
       'affiliateStartDate',
     ])
 
-    if (affiliateLead) {
-      state.affiliateLead = affiliateLead
-    } else {
-      return
-    }
+    state.affiliateLead = affiliateLead
   } catch (err) {
     logger.error({
       metric: 'get-affiliate-lead',
