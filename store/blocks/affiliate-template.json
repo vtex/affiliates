@@ -29,7 +29,13 @@
 
   "search-result-layout.customQuery#affiliate": {
     "props": {
-      "querySchema": {}
+      "querySchema": {
+        "skusFilter": "ALL_AVAILABLE",
+        "simulationBehavior": "default",
+        "queryField": "137",
+        "mapField": "productClusterIds",
+        "facetsBehavior": "Dynamic"
+      }
     },
     "blocks": [
       "search-result-layout.desktop",
