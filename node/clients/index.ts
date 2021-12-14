@@ -1,6 +1,6 @@
 import { IOClients } from '@vtex/api'
 import { masterDataFor, Checkout, OMS } from '@vtex/clients'
-import type { Affiliates, ClientAffiliation } from 'vtex.affiliates'
+import type { Affiliates, UserAffiliation } from 'vtex.affiliates'
 
 import AuthenticationClient from './authenticationClient'
 
@@ -9,10 +9,10 @@ export class Clients extends IOClients {
     return this.getOrSet('affiliates', masterDataFor<Affiliates>('affiliates'))
   }
 
-  public get clientAffiliation() {
+  public get userAffiliation() {
     return this.getOrSet(
-      'clientAffiliation',
-      masterDataFor<ClientAffiliation>('clientAffiliation')
+      'userAffiliation',
+      masterDataFor<UserAffiliation>('userAffiliation')
     )
   }
 
