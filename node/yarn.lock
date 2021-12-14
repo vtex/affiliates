@@ -6189,9 +6189,9 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates@https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.11.0+build1639424355/public/@types/vtex.affiliates":
-  version "0.11.0"
-  resolved "https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.11.0+build1639424355/public/@types/vtex.affiliates#3cc98c2fc37ddd2b8b69f4927dc971874a27ccd0"
+"vtex.affiliates@https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.13.0+build1639491336/public/@types/vtex.affiliates":
+  version "0.13.0"
+  resolved "https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.13.0+build1639491336/public/@types/vtex.affiliates#b5a3f8cf5858ca022b85ca429c1f505c9786a573"
 
 "vtex.flex-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.19.0/public/@types/vtex.flex-layout":
   version "0.19.0"
