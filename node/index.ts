@@ -8,7 +8,6 @@ import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
-import { getClient } from './middlewares/getClient'
 import { getOrder } from './middlewares/getOrder'
 import { setupAppConfiguration } from './middlewares/setupAppConfiguration'
 import { updateAffiliate } from './middlewares/updateAffiliate'
@@ -93,7 +92,7 @@ export default new Service({
     setAffiliateLead: [
       getOrder,
       validateCustomData,
-      getClient,
+      getAffiliateLead,
       validateLead,
       updateLead,
     ],
