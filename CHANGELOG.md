@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Update default Affiliate Store Template
 
+## [0.15.0] - 2021-12-17
+
+### Added
+
+- Default value to leadDurationInDays
+
 ## [0.14.0] - 2021-12-17
 
 ## Added
