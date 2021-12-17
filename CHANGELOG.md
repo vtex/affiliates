@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Update default Affiliate Store Template
+
 ## [0.13.0] - 2021-12-13
 
 ### Added
