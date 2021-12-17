@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Added
+
+- Changed data entity being used to store Affiliate Lead from CL to a new entity.
+
 ## [0.13.0] - 2021-12-13
 
 ### Added

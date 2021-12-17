@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "User Affiliation",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "affiliateId": {
+      "type": "string"
+    },
+    "affiliateStartDate": {
+      "type": "string"
+    }
+  },
+  "required": ["email"],
+  "v-indexed": ["email"],
+  "v-cache": false
+}
