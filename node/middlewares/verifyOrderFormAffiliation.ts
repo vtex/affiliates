@@ -3,7 +3,7 @@ import type { App } from '@vtex/clients'
 import { APP_CUSTOM_DATA } from '../utils/constants'
 
 export async function verifyOrderFormAffiliation(
-  { state }: UserLoginEventContext,
+  { state }: UserLoginContext,
   next: () => Promise<unknown>
 ) {
   const {

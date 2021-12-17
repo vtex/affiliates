@@ -27,3 +27,12 @@ export type AffiliateInput = {
   social?: Social
   isApproved: boolean
 }
+
+export type AffiliateLead = {
+  affiliateId: string
+  affiliateStartDate: string
+}
+
+export type GetOrderFormInput = {
+  orderFormId: string
+}

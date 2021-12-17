@@ -1,7 +1,7 @@
 import { APP_CUSTOM_DATA } from '../utils/constants'
 
 export async function setAffiliateLeadOnCustomData(
-  { clients: { checkout }, state, vtex: { logger } }: UserLoginEventContext,
+  { clients: { checkout }, state, vtex: { logger } }: UserLoginContext,
   next: () => Promise<unknown>
 ) {
   const {

@@ -1,5 +1,5 @@
 export async function verifyUserAffiliation(
-  { state: { affiliateLead }, clients: { apps } }: StatusChangeContext,
+  { state: { affiliateLead }, clients: { apps } }: UserLoginContext,
   next: () => Promise<unknown>
 ) {
   const affiliateId = affiliateLead?.affiliateId
@@ -11,7 +11,7 @@ export async function verifyUserAffiliation(
   if (affiliateId) {
     const today = new Date()
 
-    const leadEndDate = new Date(affiliateStartDate)
+    const leadEndDate = new Date(affiliateStartDate as string)
 
     leadEndDate.setDate(leadEndDate.getDate() + leadDurationInDays)
 

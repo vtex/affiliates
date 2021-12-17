@@ -1,13 +1,13 @@
+import { json } from 'co-body'
+
+import type { GetOrderFormInput } from '../typings/affiliates'
+
 export async function getOrderForm(
-  {
-    body,
-    clients: { checkout },
-    state,
-    vtex: { logger },
-  }: UserLoginEventContext,
+  { req, clients: { checkout }, state, vtex: { logger } }: UserLoginContext,
   next: () => Promise<unknown>
 ) {
-  const { orderFormId } = body
+  const reqParams: GetOrderFormInput = await json(req)
+  const { orderFormId } = reqParams
 
   try {
     const orderForm = await checkout.orderForm(orderFormId)

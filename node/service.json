@@ -13,6 +13,10 @@
     "affiliate": {
       "path": "/_v/affiliate",
       "public": true
+    },
+    "verifyUserAffiliateLead": {
+      "path": "/_v/verifyUserAffiliateLead",
+      "public": false
     }
   },
   "events": {
