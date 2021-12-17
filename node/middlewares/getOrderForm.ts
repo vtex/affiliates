@@ -13,6 +13,7 @@ export async function getOrderForm(
     const orderForm = await checkout.orderForm(orderFormId)
 
     state.orderForm = orderForm
+    state.userProfileId = orderForm.userProfileId
   } catch (err) {
     logger.error({
       metric: 'get-order-form',

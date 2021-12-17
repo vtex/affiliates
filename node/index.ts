@@ -8,7 +8,6 @@ import { method, Service } from '@vtex/api'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
-import { getClient } from './middlewares/getClient'
 import { getOrder } from './middlewares/getOrder'
 import { setupAppConfiguration } from './middlewares/setupAppConfiguration'
 import { updateAffiliate } from './middlewares/updateAffiliate'
@@ -21,10 +20,10 @@ import { isAffiliateValid } from './resolvers/isAffiliateValid'
 import { setAffiliateOnOrderForm } from './resolvers/setAffiliateOnOrderForm'
 import type { AffiliateInput } from './typings/affiliates'
 import { setAffiliateLeadOnCustomData } from './middlewares/setAffiliateLeadOnCustomData'
-import { verifyOrderAffiliation } from './middlewares/verifyOrderAffiliation'
+import { verifyOrderFormAffiliation } from './middlewares/verifyOrderFormAffiliation'
 import { getOrderForm } from './middlewares/getOrderForm'
-import { getClientFromOrderForm } from './middlewares/getClientFromOrderForm'
-import { verifyClientAffiliation } from './middlewares/verifyClientAffiliation'
+import { getAffiliateLead } from './middlewares/getAffiliateLead'
+import { verifyUserAffiliation } from './middlewares/verifyUserAffiliation'
 import { authenticateRequest } from './middlewares/authenticateRequest'
 
 const TIMEOUT_MS = 1000
@@ -93,15 +92,15 @@ export default new Service({
     setAffiliateLead: [
       getOrder,
       validateCustomData,
-      getClient,
+      getAffiliateLead,
       validateLead,
       updateLead,
     ],
     verifyUserAffiliateLead: [
       getOrderForm,
-      verifyOrderAffiliation,
-      getClientFromOrderForm,
-      verifyClientAffiliation,
+      verifyOrderFormAffiliation,
+      getAffiliateLead,
+      verifyUserAffiliation,
       setAffiliateLeadOnCustomData,
     ],
   },

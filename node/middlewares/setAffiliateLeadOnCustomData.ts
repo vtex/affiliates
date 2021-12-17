@@ -6,10 +6,9 @@ export async function setAffiliateLeadOnCustomData(
 ) {
   const {
     orderForm: { orderFormId },
-    client: { affiliateId },
+    affiliateLead: { affiliateId },
   } = state
 
-  //   TODO change this logic to a service so it can be shared with the setAffiliateOnOrderForm resolver
   try {
     await checkout.setSingleCustomData(
       orderFormId,

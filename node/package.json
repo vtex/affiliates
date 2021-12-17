@@ -13,7 +13,7 @@
     "@vtex/test-tools": "^3.4.1",
     "@vtex/tsconfig": "^0.5.6",
     "typescript": "3.9.7",
-    "vtex.affiliates": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.12.0/public/@types/vtex.affiliates",
+    "vtex.affiliates": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.14.0/public/@types/vtex.affiliates",
     "vtex.flex-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.19.0/public/@types/vtex.flex-layout",
     "vtex.order-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.11.1/public/@types/vtex.order-manager",
     "vtex.product-summary": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.77.1/public/@types/vtex.product-summary",
@@ -27,5 +27,5 @@
     "lint": "tsc --noEmit --pretty",
     "test": "vtex-test-tools test --collectCoverage"
   },
-  "version": "0.13.0"
+  "version": "0.14.0"
 }
