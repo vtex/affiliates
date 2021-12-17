@@ -79,7 +79,8 @@
     "properties": {
       "leadDurationInDays": {
         "title": "Lead duration in days",
-        "type": "integer"
+        "type": "integer",
+        "default": 60
       }
     }
   },
