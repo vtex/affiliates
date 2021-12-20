@@ -25,6 +25,7 @@ import { verifyOrderAffiliation } from './middlewares/verifyOrderAffiliation'
 import { getOrderForm } from './middlewares/getOrderForm'
 import { getClientFromOrderForm } from './middlewares/getClientFromOrderForm'
 import { verifyClientAffiliation } from './middlewares/verifyClientAffiliation'
+import { getAffiliateStoreName } from './resolvers/getAffiliateStoreName'
 
 const TIMEOUT_MS = 1000
 
@@ -81,6 +82,7 @@ export default new Service({
     resolvers: {
       Query: {
         isAffiliateValid,
+        getAffiliateStoreName,
       },
       Mutation: {
         setAffiliateOnOrderForm,
