@@ -1,7 +1,14 @@
+import { SUCCESS } from '../utils/constants'
+
 export async function verifyUserAffiliation(
-  { state: { affiliateLead }, clients: { apps } }: UserLoginContext,
+  ctx: UserLoginContext,
   next: () => Promise<unknown>
 ) {
+  const {
+    state: { affiliateLead },
+    clients: { apps },
+  } = ctx
+
   const affiliateId = affiliateLead?.affiliateId
   const affiliateStartDate = affiliateLead?.affiliateStartDate
 
@@ -19,6 +26,8 @@ export async function verifyUserAffiliation(
       return
     }
   } else {
+    ctx.status = SUCCESS
+
     return
   }
 
