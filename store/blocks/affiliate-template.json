@@ -1,20 +1,10 @@
 {
   "affiliate-template": {
     "children": [
-      "rich-text#affiliate-title",
+      "affiliate-store-name",
       "flex-layout.row#banner",
       "search-result-layout.customQuery#affiliate"
     ]
-  },
-
-  "rich-text#affiliate-title": {
-    "props": {
-      "textAlignment": "CENTER",
-      "textPosition": "CENTER",
-      "text": "# My Affiliate's Store",
-      "blockClass": "affiliateTitle",
-      "font": "t-heading-1"
-    }
   },
 
   "flex-layout.row#banner": {
