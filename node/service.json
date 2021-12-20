@@ -16,7 +16,15 @@
     },
     "verifyUserAffiliateLead": {
       "path": "/_v/verifyUserAffiliateLead",
-      "public": false
+      "public": false,
+      "access": "authorized",
+      "policies": [
+        {
+          "effect": "allow",
+          "actions": ["post"],
+          "principals": ["vrn:apps:*:*:*:app/vtex.affiliates-order-form-spy@*"]
+        }
+      ]
     }
   },
   "events": {
