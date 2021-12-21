@@ -17,7 +17,7 @@ describe('validadeLead middleware', () => {
         },
       },
       state: {
-        client: {
+        affiliateLead: {
           affiliateId: 'loja',
           affiliateStartDate: endDate,
         },

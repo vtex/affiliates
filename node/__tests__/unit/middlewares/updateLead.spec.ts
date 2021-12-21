@@ -3,17 +3,16 @@ import { updateLead } from '../../../middlewares/updateLead'
 describe('updateLead middleware', () => {
   const next = jest.fn()
 
-  it('Should update the client info with the affiliate data', () => {
+  it('Should update the affiliation info with the affiliate data', () => {
     const ctxMock = {
       clients: {
-        masterdata: {
-          updatePartialDocument: jest.fn(),
+        userAffiliation: {
+          saveOrUpdate: jest.fn(),
         },
       },
       state: {
-        client: {
-          id: 'clientId',
-        },
+        userProfileId: 'clientId',
+        email: 'clientEmail',
         affiliate: 'affiliateId',
       },
       vtex: {
@@ -24,25 +23,20 @@ describe('updateLead middleware', () => {
     } as unknown as StatusChangeContext
 
     return updateLead(ctxMock, next).then(() => {
-      expect(
-        ctxMock.clients.masterdata.updatePartialDocument
-      ).toHaveBeenCalled()
+      expect(ctxMock.clients.userAffiliation.saveOrUpdate).toHaveBeenCalled()
     })
   })
 
-  it('Should throw an error if the client info could not be updated', () => {
+  it('Should throw an error if the affiliation info could not be updated', () => {
     const ctxMock = {
       clients: {
-        masterdata: {
-          updatePartialDocument: jest
-            .fn()
-            .mockRejectedValueOnce(new Error('error')),
+        userAffiliation: {
+          saveOrUpdate: jest.fn().mockRejectedValueOnce(new Error('error')),
         },
       },
       state: {
-        client: {
-          id: 'clientId',
-        },
+        userProfileId: 'clientId',
+        email: 'clientEmail',
         affiliate: 'affiliateId',
       },
       vtex: {
