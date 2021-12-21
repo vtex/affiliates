@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- vtex.affiliates-order-form-spy@0.x as a dependency
+
+### Updated
+
+- verifyUserAffiliateLead to handle a service call instead of an event
+
 ## [0.14.0] - 2021-12-17
 
 ## Added
