@@ -11,6 +11,38 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Affiliate store name block
 
+## [0.16.0] - 2021-12-20
+
+### Changed
+
+- Update default Affiliate Store Template
+
+## [0.15.0] - 2021-12-17
+
+### Added
+
+- Default value to leadDurationInDays
+
+## [0.14.0] - 2021-12-17
+
+## Added
+
+- Changed data entity being used to store Affiliate Lead from CL to a new entity.
+
+## [0.13.0] - 2021-12-13
+
+### Added
+
+- authenticate client
+- authenticateRequest middleware
+- authenticateRequest middleware to the affiliate route
+
+## [0.12.0] - 2021-12-08
+
+### Changed
+
+- Affiliates MD schema
+
 ## [0.11.0] - 2021-12-07
 
 ### Added

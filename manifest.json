@@ -1,7 +1,7 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.11.0",
+  "version": "0.16.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
@@ -42,7 +42,7 @@
       }
     },
     {
-      "name": "OMSViewer"
+      "name": "AcessaTodosPedidos"
     },
     {
       "name": "outbound-access",
@@ -81,7 +81,8 @@
     "properties": {
       "leadDurationInDays": {
         "title": "Lead duration in days",
-        "type": "integer"
+        "type": "integer",
+        "default": 60
       }
     }
   },

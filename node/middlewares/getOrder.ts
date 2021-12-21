@@ -1,13 +1,15 @@
 export async function getOrder(
-  { body, clients: { oms }, state, vtex: { logger } }: StatusChangeContext,
+  { body, clients: { checkout }, state, vtex: { logger } }: StatusChangeContext,
   next: () => Promise<unknown>
 ) {
   const { orderId } = body
 
   try {
-    const order = await oms.order(orderId)
+    const order = await checkout.order(orderId)
 
     state.order = order
+    state.userProfileId = order.userProfileId
+    state.userEmail = order.clientProfileData.email
   } catch (err) {
     logger.error({
       metric: 'get-order',

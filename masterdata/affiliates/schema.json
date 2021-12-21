@@ -47,10 +47,10 @@
         }
       }
     },
-    "cpf": {
+    "document": {
       "type": "string"
     },
-    "cnpj": {
+    "documentType": {
       "type": "string"
     },
     "isApproved": {

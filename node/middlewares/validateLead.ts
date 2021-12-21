@@ -1,10 +1,9 @@
 export async function validateLead(
-  { state, clients: { apps } }: StatusChangeContext,
+  { state: { affiliateLead }, clients: { apps } }: StatusChangeContext,
   next: () => Promise<unknown>
 ) {
-  const {
-    client: { affiliateId, affiliateStartDate },
-  } = state
+  const affiliateId = affiliateLead?.affiliateId
+  const affiliateStartDate = affiliateLead?.affiliateStartDate
 
   const { leadDurationInDays }: { leadDurationInDays: number } =
     await apps.getAppSettings(process.env.VTEX_APP_ID as string)
