@@ -6,6 +6,9 @@
     "name": {
       "type": "string"
     },
+    "storeName": {
+      "type": "string"
+    },
     "email": {
       "type": "string"
     },

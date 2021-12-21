@@ -9,5 +9,8 @@
   },
   "affiliate-invalid-template": {
     "composition": "children"
+  },
+  "affiliate-store-name": {
+    "component": "AffiliateStoreName"
   }
 }
