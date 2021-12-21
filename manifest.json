@@ -7,6 +7,7 @@
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {
+    "vtex.affiliates-order-form-spy": "0.x",
     "vtex.store": "2.x",
     "vtex.store-image": "0.x",
     "vtex.slider-layout": "0.x",
