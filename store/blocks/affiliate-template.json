@@ -1,0 +1,36 @@
+{
+  "affiliate-template": {
+    "children": [
+      "affiliate-store-name",
+      "flex-layout.row#banner",
+      "search-result-layout.customQuery#affiliate"
+    ]
+  },
+
+  "flex-layout.row#banner": {
+    "children": ["image#affiliate-banner"]
+  },
+
+  "image#affiliate-banner": {
+    "props": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/VTEX_Logo.svg/400px-VTEX_Logo.svg.png"
+    }
+  },
+
+  "search-result-layout.customQuery#affiliate": {
+    "props": {
+      "querySchema": {
+        "skusFilter": "ALL_AVAILABLE",
+        "simulationBehavior": "default",
+        "queryField": "137",
+        "mapField": "productClusterIds",
+        "facetsBehavior": "Dynamic"
+      }
+    },
+    "blocks": [
+      "search-result-layout.desktop",
+      "search-result-layout.mobile",
+      "search-not-found-layout"
+    ]
+  }
+}

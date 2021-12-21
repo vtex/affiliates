@@ -4,10 +4,13 @@
     "component": "AffiliateValidator",
     "composition": "children"
   },
-  "affiliate-layout": {
+  "affiliate-template": {
     "composition": "children"
   },
-  "affiliate-invalid": {
+  "affiliate-invalid-template": {
     "composition": "children"
+  },
+  "affiliate-store-name": {
+    "component": "AffiliateStoreName"
   }
 }

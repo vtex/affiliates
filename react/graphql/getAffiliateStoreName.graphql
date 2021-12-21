@@ -1,0 +1,3 @@
+query getAffiliateStoreName($slug: String) {
+  getAffiliateStoreName(affiliateId: $slug)
+}

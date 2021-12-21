@@ -1,5 +1,6 @@
 type Query {
   isAffiliateValid(affiliateId: String): Boolean
+  getAffiliateStoreName(affiliateId: String): String
 }
 
 type Mutation {

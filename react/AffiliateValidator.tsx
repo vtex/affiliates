@@ -5,6 +5,7 @@ import { useOrderForm } from 'vtex.order-manager/OrderForm'
 
 import IS_AFFILIATE_VALID_QUERY from './graphql/isAffiliateValid.graphql'
 import SET_ON_ORDER_FORM_MUTATION from './graphql/setAffiliateOnOrderForm.graphql'
+import { getSlug } from './utils/shared'
 
 const DEFAULT_ORDER_FORM_ID = 'default-order-form'
 
@@ -23,9 +24,7 @@ const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
   } = useOrderForm()
 
   const slug = useMemo(() => {
-    const splitPathname = window.location?.pathname.split('/')
-
-    return splitPathname && splitPathname[splitPathname.length - 1]
+    return getSlug()
   }, [])
 
   const [setAffiliateOnOrderForm, { called: mutationHasBeenCalled }] =

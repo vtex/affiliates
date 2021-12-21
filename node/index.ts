@@ -23,6 +23,7 @@ import type { AffiliateInput, AffiliateLead } from './typings/affiliates'
 import { setAffiliateLeadOnCustomData } from './middlewares/setAffiliateLeadOnCustomData'
 import { verifyOrderFormAffiliation } from './middlewares/verifyOrderFormAffiliation'
 import { getOrderForm } from './middlewares/getOrderForm'
+import { getAffiliateStoreName } from './resolvers/getAffiliateStoreName'
 import { getAffiliateLead } from './middlewares/getAffiliateLead'
 import { verifyUserAffiliation } from './middlewares/verifyUserAffiliation'
 import { authenticateRequest } from './middlewares/authenticateRequest'
@@ -99,6 +100,7 @@ export default new Service({
     resolvers: {
       Query: {
         isAffiliateValid,
+        getAffiliateStoreName,
       },
       Mutation: {
         setAffiliateOnOrderForm,

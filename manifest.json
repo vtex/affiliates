@@ -1,7 +1,7 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.14.0",
+  "version": "0.17.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
@@ -9,13 +9,15 @@
   "dependencies": {
     "vtex.affiliates-order-form-spy": "0.x",
     "vtex.store": "2.x",
-    "vtex.store-image": "0.x",
-    "vtex.slider-layout": "0.x",
     "vtex.rich-text": "0.x",
     "vtex.flex-layout": "0.x",
     "vtex.product-summary": "2.x",
     "vtex.store-components": "3.x",
-    "vtex.order-manager": "0.x"
+    "vtex.order-manager": "0.x",
+    "vtex.search-result": "3.x",
+    "vtex.breadcrumb": "1.x",
+    "vtex.responsive-layout": "0.x",
+    "vtex.store-icons": "0.x"
   },
   "builders": {
     "node": "6.x",
@@ -80,7 +82,8 @@
     "properties": {
       "leadDurationInDays": {
         "title": "Lead duration in days",
-        "type": "integer"
+        "type": "integer",
+        "default": 60
       }
     }
   },
