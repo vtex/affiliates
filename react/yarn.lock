@@ -5148,6 +5148,10 @@ verror@1.10.0:
   version "3.110.6"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.110.6/public/@types/vtex.search-result#b9cb435f2108bf3866b7504a7c2c4f3d022d4a09"
 
+"vtex.slider-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout":
+  version "0.22.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout#d0e9ce16b9f9ea2bcc50a3cc42c5466d565141c0"
+
 "vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.3/public/@types/vtex.store-components":
   version "3.155.3"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.3/public/@types/vtex.store-components#98170fc4dc4221aaf9f91e52135e4448e6de6f06"
