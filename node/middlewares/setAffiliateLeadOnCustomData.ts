@@ -1,9 +1,15 @@
-import { APP_CUSTOM_DATA } from '../utils/constants'
+import { APP_CUSTOM_DATA, SUCCESS } from '../utils/constants'
 
 export async function setAffiliateLeadOnCustomData(
-  { clients: { checkout }, state, vtex: { logger } }: UserLoginEventContext,
+  ctx: UserLoginContext,
   next: () => Promise<unknown>
 ) {
+  const {
+    clients: { checkout },
+    state,
+    vtex: { logger },
+  } = ctx
+
   const {
     orderForm: { orderFormId },
     affiliateLead: { affiliateId },
@@ -31,5 +37,6 @@ export async function setAffiliateLeadOnCustomData(
     throw new Error('Error setting affiliate lead on custom data')
   }
 
+  ctx.status = SUCCESS
   await next()
 }

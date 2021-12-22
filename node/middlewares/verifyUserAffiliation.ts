@@ -1,7 +1,14 @@
+import { SUCCESS } from '../utils/constants'
+
 export async function verifyUserAffiliation(
-  { state: { affiliateLead }, clients: { apps } }: StatusChangeContext,
+  ctx: UserLoginContext,
   next: () => Promise<unknown>
 ) {
+  const {
+    state: { affiliateLead },
+    clients: { apps },
+  } = ctx
+
   const affiliateId = affiliateLead?.affiliateId
   const affiliateStartDate = affiliateLead?.affiliateStartDate
 
@@ -11,7 +18,7 @@ export async function verifyUserAffiliation(
   if (affiliateId) {
     const today = new Date()
 
-    const leadEndDate = new Date(affiliateStartDate)
+    const leadEndDate = new Date(affiliateStartDate as string)
 
     leadEndDate.setDate(leadEndDate.getDate() + leadDurationInDays)
 
@@ -19,6 +26,8 @@ export async function verifyUserAffiliation(
       return
     }
   } else {
+    ctx.status = SUCCESS
+
     return
   }
 
