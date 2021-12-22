@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Fixed
+
+- Service middleware unit tests after changes on implementation
+
 ## [0.17.0] - 2021-12-21
 
 ### Added
