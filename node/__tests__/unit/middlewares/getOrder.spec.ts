@@ -6,9 +6,13 @@ describe('getOrder middleware', () => {
 
     const ctxMock = {
       clients: {
-        oms: {
+        checkout: {
           order: jest.fn().mockResolvedValueOnce({
             id: '123',
+            userProfileId: '456',
+            clientProfileData: {
+              email: '123@email.com',
+            },
           }),
         },
       },
@@ -25,6 +29,8 @@ describe('getOrder middleware', () => {
 
     return getOrder(ctxMock, next).then(() => {
       expect(ctxMock.state).toHaveProperty('order')
+      expect(ctxMock.state).toHaveProperty('userProfileId')
+      expect(ctxMock.state).toHaveProperty('userEmail')
       expect(next).toHaveBeenCalled()
     })
   })
