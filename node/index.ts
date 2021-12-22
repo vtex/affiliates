@@ -5,6 +5,7 @@ import type {
   EventContext,
 } from '@vtex/api'
 import { method, Service } from '@vtex/api'
+import type { OrderForm } from '@vtex/clients'
 
 import { Clients } from './clients'
 import { createAffiliate } from './middlewares/createAffiliate'
@@ -18,7 +19,7 @@ import { validateCustomData } from './middlewares/validateCustomData'
 import { validateUpdate } from './middlewares/validateUpdate'
 import { isAffiliateValid } from './resolvers/isAffiliateValid'
 import { setAffiliateOnOrderForm } from './resolvers/setAffiliateOnOrderForm'
-import type { AffiliateInput } from './typings/affiliates'
+import type { AffiliateInput, AffiliateLead } from './typings/affiliates'
 import { setAffiliateLeadOnCustomData } from './middlewares/setAffiliateLeadOnCustomData'
 import { verifyOrderFormAffiliation } from './middlewares/verifyOrderFormAffiliation'
 import { getOrderForm } from './middlewares/getOrderForm'
@@ -45,6 +46,7 @@ const clients: ClientsConfig<Clients> = {
 declare global {
   // We declare a global Context type just to avoid re-writing ServiceContext<Clients, State> in every handler and resolver
   type Context = ServiceContext<Clients, State>
+  type UserLoginContext = ServiceContext<Clients, UserLoginState>
 
   interface StatusChangeContext extends EventContext<Clients> {
     body: {
@@ -67,6 +69,13 @@ declare global {
   interface State extends RecorderState {
     affiliate?: AffiliateInput
   }
+
+  interface UserLoginState extends RecorderState {
+    affiliate?: AffiliateInput
+    orderForm: OrderForm
+    userProfileId?: string | null
+    affiliateLead: AffiliateLead
+  }
 }
 
 // Export a service that defines route handlers and client options.
@@ -76,6 +85,15 @@ export default new Service({
     affiliate: method({
       POST: [authenticateRequest, validateCreate, createAffiliate],
       PATCH: [authenticateRequest, validateUpdate, updateAffiliate],
+    }),
+    verifyUserAffiliateLead: method({
+      POST: [
+        getOrderForm,
+        verifyOrderFormAffiliation,
+        getAffiliateLead,
+        verifyUserAffiliation,
+        setAffiliateLeadOnCustomData,
+      ],
     }),
   },
   graphql: {
@@ -97,13 +115,6 @@ export default new Service({
       getAffiliateLead,
       validateLead,
       updateLead,
-    ],
-    verifyUserAffiliateLead: [
-      getOrderForm,
-      verifyOrderFormAffiliation,
-      getAffiliateLead,
-      verifyUserAffiliation,
-      setAffiliateLeadOnCustomData,
     ],
   },
 })

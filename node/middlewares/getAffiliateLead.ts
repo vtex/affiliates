@@ -3,7 +3,7 @@ export async function getAffiliateLead(
     clients: { userAffiliation },
     state,
     vtex: { logger },
-  }: UserLoginEventContext | StatusChangeContext,
+  }: UserLoginContext | StatusChangeContext,
   next: () => Promise<unknown>
 ) {
   const { userProfileId } = state

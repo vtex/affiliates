@@ -1,12 +1,13 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {
+    "vtex.affiliates-order-form-spy": "0.x",
     "vtex.store": "2.x",
     "vtex.rich-text": "0.x",
     "vtex.flex-layout": "0.x",
