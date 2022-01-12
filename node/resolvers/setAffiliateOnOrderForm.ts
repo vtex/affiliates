@@ -22,7 +22,7 @@ export const setAffiliateOnOrderForm = async (
   }
 
   try {
-    await checkout.setSingleCustomData(
+    return checkout.setSingleCustomData(
       orderFormId,
       {
         appId: APP_CUSTOM_DATA.id,
@@ -31,8 +31,6 @@ export const setAffiliateOnOrderForm = async (
       },
       'AUTH_TOKEN'
     )
-
-    return true
   } catch (err) {
     logger.error({
       metric: 'set-affiliate-on-orderform',

@@ -4,5 +4,5 @@ type Query {
 }
 
 type Mutation {
-  setAffiliateOnOrderForm(affiliateId: String, orderFormId: String): Boolean
+  setAffiliateOnOrderForm(affiliateId: String, orderFormId: String): OrderForm
 }

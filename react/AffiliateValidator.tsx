@@ -21,6 +21,7 @@ type Props = {
 const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
   const {
     orderForm: { id: orderFormId },
+    setOrderForm,
   } = useOrderForm()
 
   const slug = useMemo(() => {
@@ -28,7 +29,9 @@ const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
   }, [])
 
   const [setAffiliateOnOrderForm, { called: mutationHasBeenCalled }] =
-    useMutation(SET_ON_ORDER_FORM_MUTATION)
+    useMutation(SET_ON_ORDER_FORM_MUTATION, {
+      onCompleted: (data) => setOrderForm(data.setAffiliateOnOrderForm),
+    })
 
   const { data, error } = useQuery<IsAffiliateValidQueryResult>(
     IS_AFFILIATE_VALID_QUERY,
