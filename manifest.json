@@ -84,6 +84,11 @@
         "title": "Lead duration in days",
         "type": "integer",
         "default": 60
+      },
+      "defaultSkuCommissionValue": {
+        "title": "Default value to be used for sku commission",
+        "type": "integer",
+        "default": 0
       }
     }
   },
