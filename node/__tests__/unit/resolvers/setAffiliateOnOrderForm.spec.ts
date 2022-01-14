@@ -96,7 +96,9 @@ describe('setAffiliateOnOrderForm resolver', () => {
         checkout: {
           setSingleCustomData: jest
             .fn()
-            .mockRejectedValueOnce(new Error('error')),
+            .mockRejectedValueOnce(
+              new Error('Error setting affiliate on order form')
+            ),
         },
       },
       vtex: {
