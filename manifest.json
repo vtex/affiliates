@@ -1,13 +1,14 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.18.1",
+  "version": "0.19.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {
     "vtex.affiliates-order-form-spy": "0.x",
+    "vtex.affiliates-commission-service": "0.x",
     "vtex.store": "2.x",
     "vtex.rich-text": "0.x",
     "vtex.flex-layout": "0.x",
@@ -84,6 +85,11 @@
         "title": "Lead duration in days",
         "type": "integer",
         "default": 60
+      },
+      "defaultSkuCommissionValue": {
+        "title": "Default value to be used for sku commission",
+        "type": "integer",
+        "default": 0
       }
     }
   },
