@@ -11,7 +11,20 @@ export const mocks = [
     },
     result: jest.fn(() => ({
       data: {
-        setAffiliateOnOrderForm: true,
+        setAffiliateOnOrderForm: {
+          id: 'mockedOrderFormId',
+          customData: {
+            customApps: [
+              {
+                fields: {
+                  affiliateId: 'validId',
+                },
+                id: 'mockedAppId',
+                major: 1,
+              },
+            ],
+          },
+        },
       },
     })),
   },

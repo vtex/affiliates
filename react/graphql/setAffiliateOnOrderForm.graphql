@@ -1,3 +1,14 @@
 mutation setAffiliateOnOrderForm($affiliateId: String, $orderFormId: String) {
-  setAffiliateOnOrderForm(affiliateId: $affiliateId, orderFormId: $orderFormId)
+  setAffiliateOnOrderForm(
+    affiliateId: $affiliateId
+    orderFormId: $orderFormId
+  ) {
+    customData {
+      customApps {
+        fields
+        id
+        major
+      }
+    }
+  }
 }
