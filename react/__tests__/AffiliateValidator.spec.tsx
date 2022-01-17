@@ -5,6 +5,7 @@ import { MockedProvider, wait } from '@apollo/react-testing'
 
 import { mocks as queryMocks } from '../__mocks__/isAffiliateValidQuery'
 import { mocks as mutationMocks } from '../__mocks__/setOnOrderFormMutation'
+import { setOrderFormSpy } from '../__mocks__/vtex.order-manager/OrderForm'
 import AffiliateValidator from '../AffiliateValidator'
 
 describe('Affiliate Validator', () => {
@@ -63,5 +64,14 @@ describe('Affiliate Validator', () => {
     const mutationSpy = mutationMocks[0].result
 
     expect(mutationSpy).toHaveBeenCalled()
+  })
+
+  it('Should update OrderFormContext after sucessfully calling the mutation', async () => {
+    await renderTest('/validId')
+
+    const mutationMockedResult =
+      mutationMocks[0].result().data.setAffiliateOnOrderForm
+
+    expect(setOrderFormSpy).toHaveBeenCalledWith(mutationMockedResult)
   })
 })

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.20.0] - 2022-01-17
+
+### Updated
+
+- setAffiliateOnOrderForm mutation to respond with the mutated orderform
+- AffiliateValidator component to update OrderFormContext with customData after mutation
+
 ## [0.19.0] - 2022-01-14
 
 ### Added

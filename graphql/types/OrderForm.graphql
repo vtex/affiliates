@@ -1,0 +1,15 @@
+type OrderForm {
+  customData: CustomData
+}
+
+type CustomData {
+  customApps: [CustomApp!]!
+}
+
+scalar CustomFieldsObject
+
+type CustomApp {
+  id: ID!
+  major: Int!
+  fields: CustomFieldsObject!
+}
