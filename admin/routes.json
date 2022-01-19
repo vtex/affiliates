@@ -1,0 +1,11 @@
+{
+  "admin.app.affiliates": {},
+  "admin.app.affiliates.commissions": {
+    "component": "CommissionsPage",
+    "path": "/admin/app/affiliates-commissions"
+  },
+  "admin.app.affiliates.dashboard": {
+    "component": "DashboardPage",
+    "path": "/admin/app/affiliates-dashboard"
+  }
+}

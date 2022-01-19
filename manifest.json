@@ -26,7 +26,9 @@
     "react": "3.x",
     "masterdata": "1.x",
     "graphql": "1.x",
-    "store": "0.x"
+    "store": "0.x",
+    "messages": "1.x",
+    "admin": "0.x"
   },
   "scripts": {
     "prereleasy": "bash lint.sh"

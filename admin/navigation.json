@@ -1,0 +1,14 @@
+{
+  "section": "other",
+  "titleId": "admin/navigation.label",
+  "subSectionItems": [
+    {
+      "labelId": "admin/navigation.commissions.label",
+      "path": "admin/affiliates-commissions"
+    },
+    {
+      "labelId": "admin/navigation.dashboard.label",
+      "path": "admin/affiliates-dashboard"
+    }
+  ]
+}

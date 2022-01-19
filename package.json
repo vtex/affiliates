@@ -20,6 +20,15 @@
       "prettier --write"
     ]
   },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/+(spec|test).+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
   "devDependencies": {
     "@types/node": "^12.12.21",
     "@vtex/danger": "^0.2.7",
