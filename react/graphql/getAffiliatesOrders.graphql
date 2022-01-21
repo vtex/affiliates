@@ -1,0 +1,23 @@
+query getAffiliatesOrders(
+  $page: Int!
+  $pageSize: Int!
+  $filter: AffiliateOrdersFilterInput
+) {
+  affiliateOrders(page: $page, pageSize: $pageSize, filter: $filter)
+    @context(provider: "vtex.affiliates-commission-service") {
+    data {
+      id
+      orderId
+      affiliateId
+      status
+      orderTotal
+      orderTotalCommission
+      orderDate
+    }
+    pagination {
+      page
+      pageSize
+      total
+    }
+  }
+}
