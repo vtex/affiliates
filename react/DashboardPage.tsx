@@ -8,6 +8,8 @@ import {
   createSystem,
 } from '@vtex/admin-ui'
 
+import AffiliateOrdersTable from './components/admin/dashboard/AffiliateOrdersTable'
+
 const [ThemeProvider] = createSystem({
   key: 'affiliates-dashboard',
 })
@@ -19,7 +21,9 @@ const DashboardPage: FC = () => {
         <PageHeader>
           <PageTitle>Dashboard</PageTitle>
         </PageHeader>
-        <PageContent csx={{ padding: 5 }}>Dashboard</PageContent>
+        <PageContent>
+          <AffiliateOrdersTable />
+        </PageContent>
       </Page>
     </ThemeProvider>
   )
