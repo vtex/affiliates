@@ -1,5 +1,18 @@
 {
   "admin/navigation.label": "Afiliados",
   "admin/navigation.commissions.label": "Comissões",
-  "admin/navigation.dashboard.label": "Dashboard"
+  "admin/navigation.dashboard.label": "Dashboard",
+  "admin/table.pagination.preposition": "de",
+  "admin/table.pagination.subject": "resultados",
+  "admin/table.pagination.prevLabel": "Anterior",
+  "admin/table.pagination.nextLabel": "Próximo",
+  "admin/table.dateFilter.from.label": "De",
+  "admin/table.dateFilter.to.label": "Até",
+  "admin/affiliatesOrders.table.search.placeholder": "Procurar por ID do afiliado",
+  "admin/affiliatesOrders.table.affiliateId.header": "ID do afiliado",
+  "admin/affiliatesOrders.table.orderId.header": "ID do pedido",
+  "admin/affiliatesOrders.table.status.header": "Status do pedido",
+  "admin/affiliatesOrders.table.lastUpdatedDate.header": "Ultima atualização",
+  "admin/affiliatesOrders.table.orderTotal.header": "Valor total",
+  "admin/affiliatesOrders.table.orderTotalCommission.header": "Valor total de comissão"
 }

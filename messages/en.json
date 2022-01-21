@@ -1,5 +1,18 @@
 {
   "admin/navigation.label": "Affiliates",
   "admin/navigation.commissions.label": "Commissions",
-  "admin/navigation.dashboard.label": "Dashboard"
+  "admin/navigation.dashboard.label": "Dashboard",
+  "admin/table.pagination.preposition": "of",
+  "admin/table.pagination.subject": "results",
+  "admin/table.pagination.prevLabel": "Previous",
+  "admin/table.pagination.nextLabel": "Next",
+  "admin/table.dateFilter.from.label": "From",
+  "admin/table.dateFilter.to.label": "To",
+  "admin/affiliatesOrders.table.search.placeholder": "Search for an affiliate ID",
+  "admin/affiliatesOrders.table.affiliateId.header": "Affiliate ID",
+  "admin/affiliatesOrders.table.orderId.header": "Order ID",
+  "admin/affiliatesOrders.table.status.header": "Order Status",
+  "admin/affiliatesOrders.table.lastUpdatedDate.header": "Last Update Date",
+  "admin/affiliatesOrders.table.orderTotal.header": "Order Total",
+  "admin/affiliatesOrders.table.orderTotalCommission.header": "Order Total Commission"
 }
