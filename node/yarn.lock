@@ -6167,13 +6167,17 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+"vtex.affiliates-commission-service@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.11.0+build1643025064/public/@types/vtex.affiliates-commission-service":
+  version "0.11.0"
+  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.11.0+build1643025064/public/@types/vtex.affiliates-commission-service#773eb8e3aaad0a39d7e6618f3ef39d0c15fd6f8d"
+
 "vtex.affiliates-order-form-spy@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy":
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy#ced0777e098c53a7dbdb2e1e03c0a03b78bf5edf"
 
-"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.17.0/public/@types/vtex.affiliates":
-  version "0.17.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.17.0/public/@types/vtex.affiliates#e600edb83d0d6fee60d56f13ac36ae8703e0d8ba"
+"vtex.affiliates@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.20.1+build1642798057/public/@types/vtex.affiliates":
+  version "0.20.1"
+  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.20.1+build1642798057/public/@types/vtex.affiliates#4aa2340112c456aedc8e790302ea4ae987587aed"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
@@ -6211,9 +6215,13 @@ verror@1.10.0:
   version "0.18.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons#0ee94d549aa283ce3a13ab987c13eac4fdfd1bba"
 
-"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.3/public/@types/vtex.store":
-  version "2.120.3"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.120.3/public/@types/vtex.store#e583717ceb42993f68f153780f209321a898aa4f"
+"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.121.1/public/@types/vtex.store":
+  version "2.121.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.121.1/public/@types/vtex.store#1401d6ee5e16ff8b52227213f05331bba94a5639"
+
+"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide":
+  version "9.145.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide#ca64bf8408ad3eb487b0822dd68f77565c986a56"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
