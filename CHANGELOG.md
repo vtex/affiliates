@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add affiliates orders table to dashboard section
+
 ## [0.20.1] - 2022-01-19
 
 ### Added
