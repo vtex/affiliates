@@ -16,5 +16,13 @@
   "admin/affiliatesOrders.table.status.header": "Order Status",
   "admin/affiliatesOrders.table.lastUpdatedDate.header": "Last Update Date",
   "admin/affiliatesOrders.table.orderTotal.header": "Order Total",
-  "admin/affiliatesOrders.table.orderTotalCommission.header": "Order Total Commission"
+  "admin/affiliatesOrders.table.orderTotalCommission.header": "Order Total Commission",
+  "admin/skuId.label": "SKU ID",
+  "admin/skuImage.label": "SKU Image",
+  "admin/skuName.label": "SKU Name",
+  "admin/commission.label": "Commission",
+  "admin/quantity.label": "Quantity",
+  "admin/price.label": "Price",
+  "admin/order.label": "Order",
+  "admin/creationDate.label": "Order date"
 }
