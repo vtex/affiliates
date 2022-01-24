@@ -2,9 +2,14 @@ query getAffiliatesOrders(
   $page: Int!
   $pageSize: Int!
   $filter: AffiliateOrdersFilterInput
+  $sorting: AffiliateOrdersSortingInput
 ) {
-  affiliateOrders(page: $page, pageSize: $pageSize, filter: $filter)
-    @context(provider: "vtex.affiliates-commission-service") {
+  affiliateOrders(
+    page: $page
+    pageSize: $pageSize
+    filter: $filter
+    sorting: $sorting
+  ) @context(provider: "vtex.affiliates-commission-service") {
     data {
       id
       orderId
