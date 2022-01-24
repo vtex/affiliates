@@ -6167,17 +6167,17 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates-commission-service@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.11.0+build1643025064/public/@types/vtex.affiliates-commission-service":
+"vtex.affiliates-commission-service@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.11.0+build1643049037/public/@types/vtex.affiliates-commission-service":
   version "0.11.0"
-  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.11.0+build1643025064/public/@types/vtex.affiliates-commission-service#773eb8e3aaad0a39d7e6618f3ef39d0c15fd6f8d"
+  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.11.0+build1643049037/public/@types/vtex.affiliates-commission-service#955c06f944b264b56781aecabef037bfa7c4bbfc"
 
 "vtex.affiliates-order-form-spy@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy":
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy#ced0777e098c53a7dbdb2e1e03c0a03b78bf5edf"
 
-"vtex.affiliates@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.20.1+build1643031323/public/@types/vtex.affiliates":
+"vtex.affiliates@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.20.1+build1643060180/public/@types/vtex.affiliates":
   version "0.20.1"
-  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.20.1+build1643031323/public/@types/vtex.affiliates#8a5c2f24bcf67cfffa6872ae1b2ce34739c605ec"
+  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.20.1+build1643060180/public/@types/vtex.affiliates#c508a409e3be151c378bf55b9bee837ab4a4c174"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
