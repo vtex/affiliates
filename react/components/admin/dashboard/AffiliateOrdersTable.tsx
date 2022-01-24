@@ -16,7 +16,11 @@ import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
 import { useQuery } from 'react-apollo'
-import type { QueryAffiliateOrdersArgs } from 'vtex.affiliates-commission-service'
+import type {
+  AffiliateOrdersSortingField,
+  QueryAffiliateOrdersArgs,
+} from 'vtex.affiliates-commission-service'
+import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
 import { PAGE_SIZE } from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
@@ -38,6 +42,8 @@ const AffiliateOrdersTable: FC = () => {
   const intl = useIntl()
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
+  // We need to do this because of a circular dependency
+  const [sortState, setSortState] = useState<UseSortReturn>()
   const {
     culture: { locale, currency },
   } = useRuntime()
@@ -50,48 +56,6 @@ const AffiliateOrdersTable: FC = () => {
 
   const searchState = useSearchState({
     timeoutMs: 500,
-  })
-
-  const { data, loading } = useQuery<
-    AffiliatesOrdersQueryReturnType,
-    QueryAffiliateOrdersArgs
-  >(GET_AFFILIATES_ORDERS, {
-    variables: {
-      page: pagination.currentPage,
-      pageSize: PAGE_SIZE,
-      filter: {
-        affiliateId: searchState.debouncedValue ?? null,
-        dateRange: {
-          startDate: startDate.toISOString(),
-          endDate: endDate.toISOString(),
-        },
-      },
-    },
-    onCompleted: (resultData) => {
-      if (pagination.total !== resultData.affiliateOrders.pagination.total) {
-        pagination.paginate({
-          type: 'setTotal',
-          total: resultData ? resultData.affiliateOrders.pagination.total : 0,
-        })
-      }
-
-      if (resultData.affiliateOrders.data.length > 0) {
-        view.setStatus({
-          type: 'ready',
-        })
-      } else {
-        view.setStatus({
-          type: 'empty',
-          message: 'No orders found',
-        })
-      }
-    },
-    onError: () => {
-      view.setStatus({
-        type: 'error',
-        message: 'Something went wrong',
-      })
-    },
   })
 
   const columns: Array<DataGridColumn<TableColumns>> = [
@@ -155,6 +119,54 @@ const AffiliateOrdersTable: FC = () => {
     },
   ]
 
+  const { data, loading } = useQuery<
+    AffiliatesOrdersQueryReturnType,
+    QueryAffiliateOrdersArgs
+  >(GET_AFFILIATES_ORDERS, {
+    variables: {
+      page: pagination.currentPage,
+      pageSize: PAGE_SIZE,
+      filter: {
+        affiliateId: searchState.debouncedValue ?? null,
+        dateRange: {
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
+        },
+      },
+      sorting: sortState?.by
+        ? {
+            field: sortState.by as AffiliateOrdersSortingField,
+            order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+          }
+        : undefined,
+    },
+    onCompleted: (resultData) => {
+      if (pagination.total !== resultData.affiliateOrders.pagination.total) {
+        pagination.paginate({
+          type: 'setTotal',
+          total: resultData ? resultData.affiliateOrders.pagination.total : 0,
+        })
+      }
+
+      if (resultData.affiliateOrders.data.length > 0) {
+        view.setStatus({
+          type: 'ready',
+        })
+      } else {
+        view.setStatus({
+          type: 'empty',
+          message: intl.formatMessage(messages.tableNoResults),
+        })
+      }
+    },
+    onError: () => {
+      view.setStatus({
+        type: 'error',
+        message: intl.formatMessage(messages.tableDataError),
+      })
+    },
+  })
+
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 6,
@@ -170,6 +182,16 @@ const AffiliateOrdersTable: FC = () => {
       })
     }
   }, [loading, view, pagination])
+
+  // Controls the sorting state of the table
+  useEffect(() => {
+    if (
+      sortState?.by !== dataGridState.sortState.by ||
+      sortState?.order !== dataGridState.sortState.order
+    ) {
+      setSortState(dataGridState.sortState)
+    }
+  }, [setSortState, dataGridState.sortState, sortState])
 
   return (
     <DataView state={view}>
