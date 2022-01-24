@@ -7,6 +7,8 @@ export const messages = defineMessages({
   paginationNextLabel: { id: 'admin/table.pagination.nextLabel' },
   dateFilterFrom: { id: 'admin/table.dateFilter.from.label' },
   dateFilterTo: { id: 'admin/table.dateFilter.to.label' },
+  tableNoResults: { id: 'admin/table.noData.text' },
+  tableDataError: { id: 'admin/table.error.text' },
   affiliatesOrdersTableSearchPlaceholder: {
     id: 'admin/affiliatesOrders.table.search.placeholder',
   },
