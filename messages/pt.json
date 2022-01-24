@@ -8,6 +8,8 @@
   "admin/table.pagination.nextLabel": "Próximo",
   "admin/table.dateFilter.from.label": "De",
   "admin/table.dateFilter.to.label": "Até",
+  "admin/table.error.text": "Algo deu errado.",
+  "admin/table.noData.text": "Nenhum resultado encontrado.",
   "admin/affiliatesOrders.table.search.placeholder": "Procurar por ID do afiliado",
   "admin/affiliatesOrders.table.affiliateId.header": "ID do afiliado",
   "admin/affiliatesOrders.table.orderId.header": "ID do pedido",

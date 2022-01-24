@@ -8,6 +8,8 @@
   "admin/table.pagination.nextLabel": "Next",
   "admin/table.dateFilter.from.label": "From",
   "admin/table.dateFilter.to.label": "To",
+  "admin/table.error.text": "Something went wrong.",
+  "admin/table.noData.text": "No results found.",
   "admin/affiliatesOrders.table.search.placeholder": "Search for an affiliate ID",
   "admin/affiliatesOrders.table.affiliateId.header": "Affiliate ID",
   "admin/affiliatesOrders.table.orderId.header": "Order ID",
