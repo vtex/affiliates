@@ -36,3 +36,17 @@ export type AffiliatesOrdersQueryReturnType = {
 export type AffiliateOrderQueryReturnType = {
   affiliateOrder: AffiliatesOrdersData
 }
+
+type CommissionBySKU = {
+  id: string
+  skuId: string
+  commission: number
+  refId: string
+}
+
+export type CommissionsQueryReturnType = {
+  commissionsBySKU: {
+    data: [CommissionBySKU]
+    pagination: Pagination
+  }
+}
