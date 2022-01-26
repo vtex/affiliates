@@ -7,19 +7,25 @@ import {
   PageContent,
   createSystem,
 } from '@vtex/admin-ui'
+import { useIntl } from 'react-intl'
 
 import CommissionsTabs from './components/admin/commissions/CommissionsTabs'
+import { messages } from './utils/messages'
 
 const [ThemeProvider] = createSystem({
   key: 'affiliates-commissions',
 })
 
 const CommissionsPage: FC = () => {
+  const intl = useIntl()
+
   return (
     <ThemeProvider>
       <Page>
         <PageHeader>
-          <PageTitle>Page Title</PageTitle>
+          <PageTitle>
+            {intl.formatMessage(messages.commissionsPageTitle)}
+          </PageTitle>
         </PageHeader>
         <PageContent csx={{ padding: 5 }}>
           <CommissionsTabs />
