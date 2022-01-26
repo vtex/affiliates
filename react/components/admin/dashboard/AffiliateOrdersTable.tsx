@@ -168,19 +168,21 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
+  const handleRowClick = (row: TableColumns) => {
+    navigate({
+      page: 'admin.app.affiliates.order',
+      params: {
+        orderId: row.orderId,
+      },
+    })
+  }
+
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.affiliateOrders.data : [],
     view,
-    onRowClick: (row) => {
-      navigate({
-        page: 'admin.app.affiliates.order',
-        params: {
-          orderId: row.orderId,
-        },
-      })
-    },
+    onRowClick: handleRowClick,
   })
 
   // Controls the loading state of the table
