@@ -27,7 +27,7 @@ type TableColumns = {
 
 type OrderItemsTableProps = {
   view: DataViewState
-  data: TableColumns[] | undefined
+  data?: TableColumns[]
 }
 
 const ORDER_ITEMS_TABLE_PAGE_SIZE = 25
