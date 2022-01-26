@@ -19,6 +19,7 @@ const [ThemeProvider] = createSystem({
 
 const AffiliateOrderPage: FC = () => {
   const {
+    navigate,
     route: {
       params: { orderId },
     },
@@ -26,10 +27,16 @@ const AffiliateOrderPage: FC = () => {
 
   const intl = useIntl()
 
+  const handleBackAction = () => {
+    navigate({
+      page: 'admin.app.affiliates.dashboard',
+    })
+  }
+
   return (
     <ThemeProvider>
       <Page>
-        <PageHeader>
+        <PageHeader onPopNavigation={handleBackAction}>
           <PageTitle>{`${intl.formatMessage(
             messages.orderLabel
           )}: ${orderId}`}</PageTitle>
