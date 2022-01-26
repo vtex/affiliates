@@ -18,7 +18,8 @@
     "vtex.search-result": "3.x",
     "vtex.breadcrumb": "1.x",
     "vtex.responsive-layout": "0.x",
-    "vtex.store-icons": "0.x"
+    "vtex.store-icons": "0.x",
+    "vtex.styleguide": "9.x"
   },
   "builders": {
     "node": "6.x",
