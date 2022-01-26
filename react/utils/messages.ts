@@ -30,6 +30,9 @@ export const messages = defineMessages({
   affiliatesOrdersTableOrderTotalCommissionColumnLabel: {
     id: 'admin/affiliatesOrders.table.orderTotalCommission.header',
   },
+  commissionsTableSearchPlaceholder: {
+    id: 'admin/commissions.table.search.placeholder',
+  },
   skuIdLabel: { id: 'admin/skuId.label' },
   skuImageLabel: { id: 'admin/skuImage.label' },
   skuNameLabel: { id: 'admin/skuName.label' },
@@ -38,4 +41,7 @@ export const messages = defineMessages({
   priceLabel: { id: 'admin/price.label' },
   orderLabel: { id: 'admin/order.label' },
   creationDateLabel: { id: 'admin/creationDate.label' },
+  refIdLabel: { id: 'admin/refId.label' },
+  exportTabLabel: { id: 'admin/export.tab.label' },
+  commissionsPageTitle: { id: 'admin/commissions.page.title' },
 })
