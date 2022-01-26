@@ -30,4 +30,12 @@ export const messages = defineMessages({
   affiliatesOrdersTableOrderTotalCommissionColumnLabel: {
     id: 'admin/affiliatesOrders.table.orderTotalCommission.header',
   },
+  skuIdLabel: { id: 'admin/skuId.label' },
+  skuImageLabel: { id: 'admin/skuImage.label' },
+  skuNameLabel: { id: 'admin/skuName.label' },
+  commissionLabel: { id: 'admin/commission.label' },
+  quantityLabel: { id: 'admin/quantity.label' },
+  priceLabel: { id: 'admin/price.label' },
+  orderLabel: { id: 'admin/order.label' },
+  creationDateLabel: { id: 'admin/creationDate.label' },
 })

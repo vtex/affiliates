@@ -1,0 +1,21 @@
+query getAffiliateOrder($orderId: ID!) {
+  affiliateOrder(orderId: $orderId)
+    @context(provider: "vtex.affiliates-commission-service") {
+    id
+    orderId
+    affiliateId
+    status
+    orderItems {
+      skuId
+      skuName
+      skuImageUrl
+      price
+      quantity
+      commission
+    }
+    orderTotal
+    orderTotalCommission
+    orderDate
+    lastInteractionIn
+  }
+}

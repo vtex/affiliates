@@ -45,6 +45,7 @@ const AffiliateOrdersTable: FC = () => {
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
   const {
+    navigate,
     culture: { locale, currency },
   } = useRuntime()
 
@@ -167,11 +168,21 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
+  const handleRowClick = (row: TableColumns) => {
+    navigate({
+      page: 'admin.app.affiliates.order',
+      params: {
+        orderId: row.orderId,
+      },
+    })
+  }
+
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.affiliateOrders.data : [],
     view,
+    onRowClick: handleRowClick,
   })
 
   // Controls the loading state of the table

@@ -7,5 +7,9 @@
   "admin.app.affiliates.dashboard": {
     "component": "DashboardPage",
     "path": "/admin/app/affiliates-dashboard"
+  },
+  "admin.app.affiliates.order": {
+    "component": "AffiliateOrderPage",
+    "path": "/admin/app/affiliates-dashboard/:orderId"
   }
 }

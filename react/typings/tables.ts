@@ -13,7 +13,7 @@ type OrderItem = {
   commission: number
 }
 
-type AffiliatesOrdersData = {
+export type AffiliatesOrdersData = {
   id: string
   orderId: string
   affiliateId: string
@@ -23,6 +23,7 @@ type AffiliatesOrdersData = {
   orderTotalCommission: number
   orderDate: string
   orderItems: [OrderItem]
+  lastInteractionIn: string
 }
 
 export type AffiliatesOrdersQueryReturnType = {
@@ -30,4 +31,8 @@ export type AffiliatesOrdersQueryReturnType = {
     data: [AffiliatesOrdersData]
     pagination: Pagination
   }
+}
+
+export type AffiliateOrderQueryReturnType = {
+  affiliateOrder: AffiliatesOrdersData
 }
