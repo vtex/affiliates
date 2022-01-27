@@ -28,5 +28,9 @@
   "admin/order.label": "Pedido",
   "admin/creationDate.label": "Data do pedido",
   "admin/export.tab.label": "Exportar",
-  "admin/commissions.page.title": "Commissões"
+  "admin/import.tab.label": "Importar",
+  "admin/import.file.section.title": "Importar por arquivo CSV",
+  "admin/commissions.page.title": "Commissões",
+  "admin/dropzone.main.message.text": "Arraste e solte o arquivo CSV aqui ou",
+  "admin/click.message.dropzone.text": "escolha um arquivo"
 }

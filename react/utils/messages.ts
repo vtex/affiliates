@@ -43,5 +43,9 @@ export const messages = defineMessages({
   creationDateLabel: { id: 'admin/creationDate.label' },
   refIdLabel: { id: 'admin/refId.label' },
   exportTabLabel: { id: 'admin/export.tab.label' },
+  importTabLabel: { id: 'admin/import.tab.label' },
   commissionsPageTitle: { id: 'admin/commissions.page.title' },
+  dropzoneMainMessage: { id: 'admin/dropzone.main.message.text' },
+  dropzoneClickMessage: { id: 'admin/click.message.dropzone.text' },
+  importFileSectionTitle: { id: 'admin/import.file.section.title' },
 })
