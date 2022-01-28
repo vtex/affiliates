@@ -1,5 +1,6 @@
 import type { DataGridColumn, DataViewState } from '@vtex/admin-ui'
 import {
+  Skeleton,
   DataGrid,
   DataViewControls,
   FlexSpacer,
@@ -70,6 +71,16 @@ const OrderItemsTable: FC<OrderItemsTableProps> = ({ view, data }) => {
     {
       id: 'commission',
       header: intl.formatMessage(messages.commissionLabel),
+      resolver: {
+        type: 'root',
+        render: function percentageRender({ item, context }) {
+          if (context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
+
+          return <span>{item.commission}%</span>
+        },
+      },
     },
     {
       id: 'price',

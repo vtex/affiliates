@@ -17,12 +17,16 @@
   "admin/affiliatesOrders.table.lastUpdatedDate.header": "Last Update Date",
   "admin/affiliatesOrders.table.orderTotal.header": "Order Total",
   "admin/affiliatesOrders.table.orderTotalCommission.header": "Order Total Commission",
+  "admin/commissions.table.search.placeholder": "Search for a SKU ID",
   "admin/skuId.label": "SKU ID",
+  "admin/refId.label": "Ref ID",
   "admin/skuImage.label": "SKU Image",
   "admin/skuName.label": "SKU Name",
   "admin/commission.label": "Commission",
   "admin/quantity.label": "Quantity",
   "admin/price.label": "Price",
   "admin/order.label": "Order",
-  "admin/creationDate.label": "Order date"
+  "admin/creationDate.label": "Order date",
+  "admin/export.tab.label": "Export",
+  "admin/commissions.page.title": "Commissions"
 }

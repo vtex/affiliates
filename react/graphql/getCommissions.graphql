@@ -1,0 +1,25 @@
+query getCommissionsBySKU(
+  $page: Int!
+  $pageSize: Int!
+  $filter: CommissionsBySKUFilterInput
+  $sorting: CommissionsBySKUSortingInput
+) {
+  commissionsBySKU(
+    page: $page
+    pageSize: $pageSize
+    filter: $filter
+    sorting: $sorting
+  ) @context(provider: "vtex.affiliates-commission-service") {
+    data {
+      id
+      skuId
+      commission
+      refId
+    }
+    pagination {
+      page
+      pageSize
+      total
+    }
+  }
+}

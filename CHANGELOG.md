@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add commissions table
+
+### Changed
+
+- Add a resolver to the orderItems table to show the commission with %
+
 ## [0.22.0] - 2022-01-26
 
 ### Added

@@ -1,8 +1,10 @@
 import type { FC } from 'react'
 import React from 'react'
 
+import CommissionsTable from './CommissionsTable'
+
 const ExportCommissionsTab: FC = () => {
-  return <div>Tab 2</div>
+  return <CommissionsTable />
 }
 
 export default ExportCommissionsTab
