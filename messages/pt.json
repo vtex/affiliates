@@ -28,5 +28,11 @@
   "admin/order.label": "Pedido",
   "admin/creationDate.label": "Data do pedido",
   "admin/export.tab.label": "Exportar",
-  "admin/commissions.page.title": "Commissões"
+  "admin/commissions.page.title": "Commissões",
+  "admin/edit.commission.title": "Editar comissão",
+  "admin/edit.commission.invalid.value.message": "Valor de comissão inválido",
+  "admin/confirm.label": "Confirmar",
+  "admin/cancel.label": "Cancelar",
+  "admin/edit.commission.error.message": "Algo deu errado ao editar a comissão",
+  "admin/edit.commission.success.message": "Comissão editada com sucesso"
 }

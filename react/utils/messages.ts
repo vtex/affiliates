@@ -44,4 +44,12 @@ export const messages = defineMessages({
   refIdLabel: { id: 'admin/refId.label' },
   exportTabLabel: { id: 'admin/export.tab.label' },
   commissionsPageTitle: { id: 'admin/commissions.page.title' },
+  editCommissionTitle: { id: 'admin/edit.commission.title' },
+  editCommissionInvalidValue: {
+    id: 'admin/edit.commission.invalid.value.message',
+  },
+  confirmLabel: { id: 'admin/confirm.label' },
+  cancelLabel: { id: 'admin/cancel.label' },
+  editCommissionSuccessMessage: { id: 'admin/edit.commission.success.message' },
+  editCommissionErrorMessage: { id: 'admin/edit.commission.error.message' },
 })
