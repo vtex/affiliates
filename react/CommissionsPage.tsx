@@ -6,6 +6,7 @@ import {
   PageTitle,
   PageContent,
   createSystem,
+  ToastProvider,
 } from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
@@ -21,16 +22,18 @@ const CommissionsPage: FC = () => {
 
   return (
     <ThemeProvider>
-      <Page>
-        <PageHeader>
-          <PageTitle>
-            {intl.formatMessage(messages.commissionsPageTitle)}
-          </PageTitle>
-        </PageHeader>
-        <PageContent csx={{ padding: 5 }}>
-          <CommissionsTabs />
-        </PageContent>
-      </Page>
+      <ToastProvider>
+        <Page>
+          <PageHeader>
+            <PageTitle>
+              {intl.formatMessage(messages.commissionsPageTitle)}
+            </PageTitle>
+          </PageHeader>
+          <PageContent csx={{ padding: 5 }}>
+            <CommissionsTabs />
+          </PageContent>
+        </Page>
+      </ToastProvider>
     </ThemeProvider>
   )
 }
