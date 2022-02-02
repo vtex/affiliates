@@ -52,4 +52,6 @@ export const messages = defineMessages({
   cancelLabel: { id: 'admin/cancel.label' },
   editCommissionSuccessMessage: { id: 'admin/edit.commission.success.message' },
   editCommissionErrorMessage: { id: 'admin/edit.commission.error.message' },
+  exportReportSuccessMessage: { id: 'admin/export.report.success.message' },
+  exportReportErrorMessage: { id: 'admin/export.report.error.message' },
 })
