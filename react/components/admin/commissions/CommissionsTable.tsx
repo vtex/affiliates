@@ -26,10 +26,16 @@ import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hook
 
 import GET_COMMISSIONS from '../../../graphql/getCommissions.graphql'
 import UPDATE_COMMISSION from '../../../graphql/updateCommission.graphql'
-import { PAGE_SIZE } from '../../../utils/constants'
+import EXPORT_COMMISSIONS from '../../../graphql/exportCommissions.graphql'
+import {
+  COMMISSIONS_TABLE_EXPORT_LIMIT,
+  PAGE_SIZE,
+} from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
 import type { CommissionsQueryReturnType } from '../../../typings/tables'
 import EditCommissionModal from './EditCommissionModal'
+import ExportTableDataControl from '../shared/ExportTableDataControl'
+import { setSortOrder } from '../../../utils/shared'
 
 type TableColumns = {
   id: string
@@ -66,7 +72,7 @@ const CommissionsTable: FC = () => {
       sorting: sortState?.by
         ? {
             field: sortState.by as CommissionsBySkuSortingField,
-            order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+            order: setSortOrder(sortState.order),
           }
         : undefined,
     },
@@ -112,7 +118,7 @@ const CommissionsTable: FC = () => {
             sorting: sortState?.by
               ? {
                   field: sortState.by as CommissionsBySkuSortingField,
-                  order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+                  order: setSortOrder(sortState.order),
                 }
               : undefined,
           },
@@ -132,6 +138,35 @@ const CommissionsTable: FC = () => {
           message: intl.formatMessage(messages.editCommissionErrorMessage),
         })
         modal.setVisible(false)
+      },
+    }
+  )
+
+  const [exportData, { loading: exportLoading }] = useMutation(
+    EXPORT_COMMISSIONS,
+    {
+      variables: {
+        filter: {
+          id: searchState.debouncedValue ?? null,
+        },
+        sorting: sortState?.by
+          ? {
+              field: sortState.by as CommissionsBySkuSortingField,
+              order: setSortOrder(sortState.order),
+            }
+          : undefined,
+      },
+      onCompleted: () => {
+        showToast({
+          tone: 'positive',
+          message: intl.formatMessage(messages.exportReportSuccessMessage),
+        })
+      },
+      onError: () => {
+        showToast({
+          tone: 'critical',
+          message: intl.formatMessage(messages.exportReportErrorMessage),
+        })
       },
     }
   )
@@ -203,6 +238,12 @@ const CommissionsTable: FC = () => {
           placeholder={intl.formatMessage(
             messages.commissionsTableSearchPlaceholder
           )}
+        />
+        <ExportTableDataControl
+          maxResults={COMMISSIONS_TABLE_EXPORT_LIMIT}
+          totalResults={pagination.total}
+          exportAction={exportData}
+          loading={exportLoading}
         />
         <FlexSpacer />
         <Pagination

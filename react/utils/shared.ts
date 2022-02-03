@@ -3,3 +3,7 @@ export const getSlug = () => {
 
   return splitPathname && splitPathname[splitPathname.length - 1]
 }
+
+export const setSortOrder = (sortOrder: string | undefined) => {
+  return sortOrder === 'DSC' ? 'DESC' : 'ASC'
+}

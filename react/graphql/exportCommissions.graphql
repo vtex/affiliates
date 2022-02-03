@@ -1,0 +1,7 @@
+mutation exportCommissionsBySKU(
+  $filter: CommissionsBySKUFilterInput
+  $sorting: CommissionsBySKUSortingInput
+) {
+  exportCommissionsBySKU(filter: $filter, sorting: $sorting)
+    @context(provider: "vtex.affiliates-commission-service")
+}
