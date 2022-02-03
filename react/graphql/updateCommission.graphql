@@ -1,0 +1,9 @@
+mutation updateCommission($newCommission: UpdateCommissionInput!) {
+  updateCommission(newCommission: $newCommission)
+    @context(provider: "vtex.affiliates-commission-service") {
+    id
+    skuId
+    refId
+    commission
+  }
+}

@@ -28,5 +28,11 @@
   "admin/order.label": "Order",
   "admin/creationDate.label": "Order date",
   "admin/export.tab.label": "Export",
-  "admin/commissions.page.title": "Commissions"
+  "admin/commissions.page.title": "Commissions",
+  "admin/edit.commission.title": "Edit commission",
+  "admin/edit.commission.invalid.value.message": "Invalid commission value",
+  "admin/confirm.label": "Confirm",
+  "admin/cancel.label": "Cancel",
+  "admin/edit.commission.error.message": "An error occurred while updating the commission",
+  "admin/edit.commission.success.message": "Commission updated successfully"
 }

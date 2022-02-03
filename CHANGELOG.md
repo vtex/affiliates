@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Edit commission action on row click
+- Edit comission modal
+
 ## [0.23.1] - 2022-01-28
 
 ## [0.23.0] - 2022-01-28
