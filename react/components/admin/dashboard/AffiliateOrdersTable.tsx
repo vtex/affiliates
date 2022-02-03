@@ -27,6 +27,7 @@ import { messages } from '../../../utils/messages'
 import DatesFilter from './DatesFilter'
 import GET_AFFILIATES_ORDERS from '../../../graphql/getAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
+import { setSortOrder } from '../../../utils/shared'
 
 type TableColumns = {
   id: string
@@ -137,7 +138,7 @@ const AffiliateOrdersTable: FC = () => {
       sorting: sortState?.by
         ? {
             field: sortState.by as AffiliateOrdersSortingField,
-            order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+            order: setSortOrder(sortState.order),
           }
         : undefined,
     },

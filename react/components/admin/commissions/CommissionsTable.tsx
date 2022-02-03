@@ -35,6 +35,7 @@ import { messages } from '../../../utils/messages'
 import type { CommissionsQueryReturnType } from '../../../typings/tables'
 import EditCommissionModal from './EditCommissionModal'
 import ExportTableDataControl from '../shared/ExportTableDataControl'
+import { setSortOrder } from '../../../utils/shared'
 
 type TableColumns = {
   id: string
@@ -71,7 +72,7 @@ const CommissionsTable: FC = () => {
       sorting: sortState?.by
         ? {
             field: sortState.by as CommissionsBySkuSortingField,
-            order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+            order: setSortOrder(sortState.order),
           }
         : undefined,
     },
@@ -117,7 +118,7 @@ const CommissionsTable: FC = () => {
             sorting: sortState?.by
               ? {
                   field: sortState.by as CommissionsBySkuSortingField,
-                  order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+                  order: setSortOrder(sortState.order),
                 }
               : undefined,
           },
@@ -151,7 +152,7 @@ const CommissionsTable: FC = () => {
         sorting: sortState?.by
           ? {
               field: sortState.by as CommissionsBySkuSortingField,
-              order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+              order: setSortOrder(sortState.order),
             }
           : undefined,
       },
