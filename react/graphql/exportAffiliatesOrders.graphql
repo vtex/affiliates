@@ -1,0 +1,7 @@
+mutation exportAffiliateOrders(
+  $filter: AffiliateOrdersFilterInput
+  $sorting: AffiliateOrdersSortingInput
+) {
+  exportAffiliateOrders(filter: $filter, sorting: $sorting)
+    @context(provider: "vtex.affiliates-commission-service")
+}
