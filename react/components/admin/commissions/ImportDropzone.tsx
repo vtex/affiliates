@@ -2,16 +2,38 @@ import type { FC } from 'react'
 import React, { useState } from 'react'
 import { useIntl } from 'react-intl'
 import { Dropzone } from 'vtex.styleguide'
-import { Text, Box, Button, Flex } from '@vtex/admin-ui'
+import { Text, Box, Button, Flex, useToast } from '@vtex/admin-ui'
+import { useMutation } from 'react-apollo'
 
 import { messages } from '../../../utils/messages'
+import IMPORT_COMMISSIONS from '../../../graphql/importCommissionsBySKU.graphql'
 
 const ImportDropzone: FC = () => {
   const intl = useIntl()
+  const showToast = useToast()
   const [file, setFile] = useState<File>()
 
-  // eslint-disable-next-line no-console
-  console.log('🚀 ~ file: ImportDropzone.tsx ~ line 6 ~ file', file)
+  const [importData, { loading: importLoading }] = useMutation(
+    IMPORT_COMMISSIONS,
+    {
+      variables: {
+        file,
+      },
+      onCompleted: () => {
+        showToast({
+          tone: 'positive',
+          message: intl.formatMessage(messages.exportReportSuccessMessage),
+        })
+      },
+      onError: () => {
+        showToast({
+          tone: 'critical',
+          message: intl.formatMessage(messages.exportReportErrorMessage),
+        })
+      },
+    }
+  )
+
   const handleFile = async (files: File[]) => {
     setFile(files[0])
   }
@@ -20,8 +42,9 @@ const ImportDropzone: FC = () => {
     setFile(undefined)
   }
 
-  // TODO: Connect with the backend
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    importData()
+  }
 
   return (
     <>
@@ -47,7 +70,9 @@ const ImportDropzone: FC = () => {
         </div>
       </Dropzone>
       <Flex justify="flex-end" csx={{ marginY: '8px' }}>
-        <Button onClick={handleSubmit}>Send file</Button>
+        <Button loading={importLoading} onClick={handleSubmit}>
+          Send file
+        </Button>
       </Flex>
     </>
   )
