@@ -48,4 +48,14 @@ export const messages = defineMessages({
   dropzoneMainMessage: { id: 'admin/dropzone.main.message.text' },
   dropzoneClickMessage: { id: 'admin/click.message.dropzone.text' },
   importFileSectionTitle: { id: 'admin/import.file.section.title' },
+  editCommissionTitle: { id: 'admin/edit.commission.title' },
+  editCommissionInvalidValue: {
+    id: 'admin/edit.commission.invalid.value.message',
+  },
+  confirmLabel: { id: 'admin/confirm.label' },
+  cancelLabel: { id: 'admin/cancel.label' },
+  editCommissionSuccessMessage: { id: 'admin/edit.commission.success.message' },
+  editCommissionErrorMessage: { id: 'admin/edit.commission.error.message' },
+  exportReportSuccessMessage: { id: 'admin/export.report.success.message' },
+  exportReportErrorMessage: { id: 'admin/export.report.error.message' },
 })

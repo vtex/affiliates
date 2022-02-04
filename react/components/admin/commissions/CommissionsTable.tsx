@@ -1,5 +1,5 @@
-import type { DataGridColumn } from '@vtex/admin-ui'
 import {
+  useModalState,
   Skeleton,
   useSearchState,
   Search,
@@ -11,10 +11,12 @@ import {
   useDataViewState,
   usePaginationState,
   DataView,
+  useToast,
 } from '@vtex/admin-ui'
+import type { DataGridColumn } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useState, useEffect } from 'react'
-import { useQuery } from 'react-apollo'
+import { useQuery, useMutation } from 'react-apollo'
 import { useIntl } from 'react-intl'
 import type {
   QueryCommissionsBySkuArgs,
@@ -23,9 +25,17 @@ import type {
 import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
 import GET_COMMISSIONS from '../../../graphql/getCommissions.graphql'
-import { PAGE_SIZE } from '../../../utils/constants'
+import UPDATE_COMMISSION from '../../../graphql/updateCommission.graphql'
+import EXPORT_COMMISSIONS from '../../../graphql/exportCommissions.graphql'
+import {
+  COMMISSIONS_TABLE_EXPORT_LIMIT,
+  PAGE_SIZE,
+} from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
 import type { CommissionsQueryReturnType } from '../../../typings/tables'
+import EditCommissionModal from './EditCommissionModal'
+import ExportTableDataControl from '../shared/ExportTableDataControl'
+import { setSortOrder } from '../../../utils/shared'
 
 type TableColumns = {
   id: string
@@ -37,6 +47,9 @@ type TableColumns = {
 const CommissionsTable: FC = () => {
   const intl = useIntl()
   const view = useDataViewState()
+  const modal = useModalState()
+  const showToast = useToast()
+  const [selectedRow, setSelectedRow] = useState<TableColumns>()
   const [sortState, setSortState] = useState<UseSortReturn>()
   const pagination = usePaginationState({
     pageSize: PAGE_SIZE,
@@ -59,7 +72,7 @@ const CommissionsTable: FC = () => {
       sorting: sortState?.by
         ? {
             field: sortState.by as CommissionsBySkuSortingField,
-            order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+            order: setSortOrder(sortState.order),
           }
         : undefined,
     },
@@ -90,6 +103,74 @@ const CommissionsTable: FC = () => {
     },
   })
 
+  const [updateCommissionMutation, { loading: mutationLoading }] = useMutation(
+    UPDATE_COMMISSION,
+    {
+      refetchQueries: [
+        {
+          query: GET_COMMISSIONS,
+          variables: {
+            page: pagination.currentPage,
+            pageSize: PAGE_SIZE,
+            filter: {
+              id: searchState.debouncedValue ?? null,
+            },
+            sorting: sortState?.by
+              ? {
+                  field: sortState.by as CommissionsBySkuSortingField,
+                  order: setSortOrder(sortState.order),
+                }
+              : undefined,
+          },
+        },
+      ],
+      awaitRefetchQueries: true,
+      onCompleted: () => {
+        showToast({
+          tone: 'positive',
+          message: intl.formatMessage(messages.editCommissionSuccessMessage),
+        })
+        modal.setVisible(false)
+      },
+      onError: () => {
+        showToast({
+          tone: 'critical',
+          message: intl.formatMessage(messages.editCommissionErrorMessage),
+        })
+        modal.setVisible(false)
+      },
+    }
+  )
+
+  const [exportData, { loading: exportLoading }] = useMutation(
+    EXPORT_COMMISSIONS,
+    {
+      variables: {
+        filter: {
+          id: searchState.debouncedValue ?? null,
+        },
+        sorting: sortState?.by
+          ? {
+              field: sortState.by as CommissionsBySkuSortingField,
+              order: setSortOrder(sortState.order),
+            }
+          : undefined,
+      },
+      onCompleted: () => {
+        showToast({
+          tone: 'positive',
+          message: intl.formatMessage(messages.exportReportSuccessMessage),
+        })
+      },
+      onError: () => {
+        showToast({
+          tone: 'critical',
+          message: intl.formatMessage(messages.exportReportErrorMessage),
+        })
+      },
+    }
+  )
+
   const columns: Array<DataGridColumn<TableColumns>> = [
     {
       id: 'skuId',
@@ -116,11 +197,17 @@ const CommissionsTable: FC = () => {
     },
   ]
 
+  const handleRowClick = (item: TableColumns) => {
+    setSelectedRow(item)
+    modal.setVisible(true)
+  }
+
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 3,
     items: data ? data.commissionsBySKU.data : [],
     view,
+    onRowClick: handleRowClick,
   })
 
   // Controls the loading state of the table
@@ -152,6 +239,12 @@ const CommissionsTable: FC = () => {
             messages.commissionsTableSearchPlaceholder
           )}
         />
+        <ExportTableDataControl
+          maxResults={COMMISSIONS_TABLE_EXPORT_LIMIT}
+          totalResults={pagination.total}
+          exportAction={exportData}
+          loading={exportLoading}
+        />
         <FlexSpacer />
         <Pagination
           state={pagination}
@@ -162,6 +255,12 @@ const CommissionsTable: FC = () => {
         />
       </DataViewControls>
       <DataGrid state={dataGridState} />
+      <EditCommissionModal
+        selectedRowId={selectedRow?.id}
+        loading={mutationLoading}
+        updateFunction={updateCommissionMutation}
+        modalState={modal}
+      />
     </DataView>
   )
 }

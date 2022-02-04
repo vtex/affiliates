@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.26.0] - 2022-02-04
+
+### Added
+
+- Export action to the affiliates orders table
+
+## [0.25.0] - 2022-02-03
+
+### Added
+
+- Export action to the commissions table
+
+## [0.24.0] - 2022-02-03
+
+### Added
+
+- Edit commission action on row click
+- Edit comission modal
+
+## [0.23.1] - 2022-01-28
+
+## [0.23.0] - 2022-01-28
+
 ### Added
 
 - Add commissions table

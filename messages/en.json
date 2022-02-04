@@ -32,5 +32,13 @@
   "admin/import.file.section.title": "Import by CSV file",
   "admin/commissions.page.title": "Commissions",
   "admin/dropzone.main.message.text": "Drop here your CSV or",
-  "admin/click.message.dropzone.text": "choose a file"
+  "admin/click.message.dropzone.text": "choose a file",
+  "admin/edit.commission.title": "Edit commission",
+  "admin/edit.commission.invalid.value.message": "Invalid commission value",
+  "admin/confirm.label": "Confirm",
+  "admin/cancel.label": "Cancel",
+  "admin/edit.commission.error.message": "An error occurred while updating the commission",
+  "admin/edit.commission.success.message": "Commission updated successfully",
+  "admin/export.report.success.message": "The report is being generated and will be sent to your e-mail.",
+  "admin/export.report.error.message": "An error occurred while sending the request to generate the report."
 }

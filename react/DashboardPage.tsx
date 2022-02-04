@@ -6,6 +6,7 @@ import {
   PageTitle,
   PageContent,
   createSystem,
+  ToastProvider,
 } from '@vtex/admin-ui'
 
 import AffiliateOrdersTable from './components/admin/dashboard/AffiliateOrdersTable'
@@ -17,14 +18,16 @@ const [ThemeProvider] = createSystem({
 const DashboardPage: FC = () => {
   return (
     <ThemeProvider>
-      <Page>
-        <PageHeader>
-          <PageTitle>Dashboard</PageTitle>
-        </PageHeader>
-        <PageContent>
-          <AffiliateOrdersTable />
-        </PageContent>
-      </Page>
+      <ToastProvider>
+        <Page>
+          <PageHeader>
+            <PageTitle>Dashboard</PageTitle>
+          </PageHeader>
+          <PageContent>
+            <AffiliateOrdersTable />
+          </PageContent>
+        </Page>
+      </ToastProvider>
     </ThemeProvider>
   )
 }

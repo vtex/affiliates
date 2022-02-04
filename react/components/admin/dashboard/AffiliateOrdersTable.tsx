@@ -10,23 +10,30 @@ import {
   useDataViewState,
   usePaginationState,
   DataView,
+  useToast,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
-import { useQuery } from 'react-apollo'
+import { useMutation, useQuery } from 'react-apollo'
 import type {
   AffiliateOrdersSortingField,
   QueryAffiliateOrdersArgs,
 } from 'vtex.affiliates-commission-service'
 import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
-import { PAGE_SIZE } from '../../../utils/constants'
+import {
+  AFFILIATES_ORDERS_EXPORT_LIMIT,
+  PAGE_SIZE,
+} from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
 import DatesFilter from './DatesFilter'
 import GET_AFFILIATES_ORDERS from '../../../graphql/getAffiliatesOrders.graphql'
+import EXPORT_ORDERS from '../../../graphql/exportAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
+import { setSortOrder } from '../../../utils/shared'
+import ExportTableDataControl from '../shared/ExportTableDataControl'
 
 type TableColumns = {
   id: string
@@ -40,7 +47,12 @@ type TableColumns = {
 
 const AffiliateOrdersTable: FC = () => {
   const intl = useIntl()
-  const [startDate, setStartDate] = useState(new Date())
+  const showToast = useToast()
+
+  const minInitialDate = new Date()
+
+  minInitialDate.setMonth(minInitialDate.getMonth() - 3)
+  const [startDate, setStartDate] = useState(minInitialDate)
   const [endDate, setEndDate] = useState(new Date())
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
@@ -137,7 +149,7 @@ const AffiliateOrdersTable: FC = () => {
       sorting: sortState?.by
         ? {
             field: sortState.by as AffiliateOrdersSortingField,
-            order: sortState.order === 'DSC' ? 'DESC' : 'ASC',
+            order: setSortOrder(sortState.order),
           }
         : undefined,
     },
@@ -164,6 +176,38 @@ const AffiliateOrdersTable: FC = () => {
       view.setStatus({
         type: 'error',
         message: intl.formatMessage(messages.tableDataError),
+      })
+    },
+  })
+
+  const [exportData, { loading: exportLoading }] = useMutation(EXPORT_ORDERS, {
+    variables: {
+      page: pagination.currentPage,
+      pageSize: PAGE_SIZE,
+      filter: {
+        affiliateId: searchState.debouncedValue ?? null,
+        dateRange: {
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
+        },
+      },
+      sorting: sortState?.by
+        ? {
+            field: sortState.by as AffiliateOrdersSortingField,
+            order: setSortOrder(sortState.order),
+          }
+        : undefined,
+    },
+    onCompleted: () => {
+      showToast({
+        tone: 'positive',
+        message: intl.formatMessage(messages.exportReportSuccessMessage),
+      })
+    },
+    onError: () => {
+      showToast({
+        tone: 'critical',
+        message: intl.formatMessage(messages.exportReportErrorMessage),
       })
     },
   })
@@ -217,8 +261,15 @@ const AffiliateOrdersTable: FC = () => {
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
+          minStartDate={minInitialDate}
           onChangeStartDate={(date: Date) => setStartDate(date)}
           onChangeEndDate={(date: Date) => setEndDate(date)}
+        />
+        <ExportTableDataControl
+          maxResults={AFFILIATES_ORDERS_EXPORT_LIMIT}
+          totalResults={pagination.total}
+          exportAction={exportData}
+          loading={exportLoading}
         />
         <FlexSpacer />
         <Pagination

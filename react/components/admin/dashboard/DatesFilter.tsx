@@ -10,6 +10,7 @@ import { messages } from '../../../utils/messages'
 type DatesFilterProps = {
   startDate: Date
   endDate: Date
+  minStartDate: Date
   onChangeStartDate: (date: Date) => void
   onChangeEndDate: (date: Date) => void
 }
@@ -17,6 +18,7 @@ type DatesFilterProps = {
 const DatesFilter: FC<DatesFilterProps> = ({
   startDate,
   endDate,
+  minStartDate,
   onChangeStartDate,
   onChangeEndDate,
 }) => {
@@ -35,6 +37,8 @@ const DatesFilter: FC<DatesFilterProps> = ({
         </Flex>
         <DatePicker
           value={startDate}
+          minDate={minStartDate}
+          maxDate={endDate}
           onChange={onChangeStartDate}
           locale={locale}
         />
@@ -48,6 +52,7 @@ const DatesFilter: FC<DatesFilterProps> = ({
         <DatePicker
           value={endDate}
           minDate={startDate}
+          maxDate={new Date()}
           onChange={onChangeEndDate}
           locale={locale}
         />
