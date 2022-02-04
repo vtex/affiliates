@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.26.0] - 2022-02-04
+
 ### Added
 
 - Export action to the affiliates orders table
