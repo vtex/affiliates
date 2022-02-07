@@ -1,0 +1,10 @@
+type Pagination {
+  page: Int!
+  pageSize: Int!
+  total: Int!
+}
+
+enum SortingOrder {
+  ASC
+  DESC
+}

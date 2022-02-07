@@ -1,0 +1,27 @@
+input AffiliatesFilterInput {
+  searchTerm: String
+  isApproved: Boolean
+}
+
+input AffliatesSortingInput {
+  field: AffiliatesSortingField!
+  order: SortingOrder!
+}
+
+type Affiliate {
+  id: ID
+  name: String
+  storeName: String
+  email: String
+  phone: String
+  isApproved: Boolean
+}
+
+type AffiliatesPage {
+  data: [Affiliate]!
+  pagination: Pagination!
+}
+
+enum AffiliatesSortingField {
+  isApproved
+}

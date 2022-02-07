@@ -1,6 +1,12 @@
 type Query {
   isAffiliateValid(affiliateId: String): Boolean
   getAffiliateStoreName(affiliateId: String): String
+  getAffiliates(
+    page: Int!
+    pageSize: Int!
+    filter: AffiliatesFilterInput
+    sorting: AffliatesSortingInput
+  ): AffiliatesPage!
 }
 
 type Mutation {
