@@ -72,6 +72,6 @@
     }
   },
   "required": ["email", "name", "isApproved"],
-  "v-indexed": ["email", "name", "isApproved"],
+  "v-indexed": ["email", "storeName", "name", "phone", "isApproved"],
   "v-cache": false
 }
