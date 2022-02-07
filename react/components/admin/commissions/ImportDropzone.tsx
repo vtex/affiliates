@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { Dropzone } from 'vtex.styleguide'
 import { Text, Box, Button, Flex, useToast } from '@vtex/admin-ui'
@@ -16,9 +16,6 @@ const ImportDropzone: FC = () => {
   const [importData, { loading: importLoading }] = useMutation(
     IMPORT_COMMISSIONS,
     {
-      variables: {
-        file,
-      },
       onCompleted: () => {
         showToast({
           tone: 'positive',
@@ -42,8 +39,16 @@ const ImportDropzone: FC = () => {
     setFile(undefined)
   }
 
+  const isButtonDisabled = useMemo(() => {
+    return !file
+  }, [file])
+
   const handleSubmit = () => {
-    importData()
+    importData({
+      variables: {
+        file,
+      },
+    })
   }
 
   return (
@@ -70,7 +75,11 @@ const ImportDropzone: FC = () => {
         </div>
       </Dropzone>
       <Flex justify="flex-end" csx={{ marginY: '8px' }}>
-        <Button loading={importLoading} onClick={handleSubmit}>
+        <Button
+          disabled={isButtonDisabled}
+          loading={importLoading}
+          onClick={handleSubmit}
+        >
           {intl.formatMessage(messages.sendFileLabel)}
         </Button>
       </Flex>
