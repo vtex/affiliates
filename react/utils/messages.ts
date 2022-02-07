@@ -58,4 +58,7 @@ export const messages = defineMessages({
   editCommissionErrorMessage: { id: 'admin/edit.commission.error.message' },
   exportReportSuccessMessage: { id: 'admin/export.report.success.message' },
   exportReportErrorMessage: { id: 'admin/export.report.error.message' },
+  sendFileLabel: { id: 'admin/send.file.label' },
+  importFileSuccessMessage: { id: 'admin/import.file.success.message' },
+  importFileErrorMessage: { id: 'admin/import.file.error.message' },
 })

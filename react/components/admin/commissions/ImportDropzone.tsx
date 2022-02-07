@@ -22,13 +22,13 @@ const ImportDropzone: FC = () => {
       onCompleted: () => {
         showToast({
           tone: 'positive',
-          message: intl.formatMessage(messages.exportReportSuccessMessage),
+          message: intl.formatMessage(messages.importFileSuccessMessage),
         })
       },
       onError: () => {
         showToast({
           tone: 'critical',
-          message: intl.formatMessage(messages.exportReportErrorMessage),
+          message: intl.formatMessage(messages.importFileErrorMessage),
         })
       },
     }
@@ -71,7 +71,7 @@ const ImportDropzone: FC = () => {
       </Dropzone>
       <Flex justify="flex-end" csx={{ marginY: '8px' }}>
         <Button loading={importLoading} onClick={handleSubmit}>
-          Send file
+          {intl.formatMessage(messages.sendFileLabel)}
         </Button>
       </Flex>
     </>

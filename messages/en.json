@@ -40,5 +40,8 @@
   "admin/edit.commission.error.message": "An error occurred while updating the commission",
   "admin/edit.commission.success.message": "Commission updated successfully",
   "admin/export.report.success.message": "The report is being generated and will be sent to your e-mail.",
-  "admin/export.report.error.message": "An error occurred while sending the request to generate the report."
+  "admin/export.report.error.message": "An error occurred while sending the request to generate the report.",
+  "admin/send.file.label": "Send file",
+  "admin/import.file.success.message": "The file is being proccesed.",
+  "admin/import.file.error.message": "An error occurred while sending the file."
 }
