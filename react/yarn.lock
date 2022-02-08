@@ -5668,13 +5668,13 @@ verror@1.10.0:
   version "0.15.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.rich-text@0.15.0/public/@types/vtex.rich-text#f23416cea64e72531069e58f1b137dfdb5b4b510"
 
-"vtex.search-result@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.0/public/@types/vtex.search-result":
-  version "3.113.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.0/public/@types/vtex.search-result#d805ee4b6c5f19db05a9b31d6527e8766c1ce320"
+"vtex.search-result@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.3/public/@types/vtex.search-result":
+  version "3.113.3"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.3/public/@types/vtex.search-result#0f78a853c7673674ab2add3d8f944329cdc19d0c"
 
-"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.8/public/@types/vtex.store-components":
-  version "3.155.8"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.8/public/@types/vtex.store-components#e999f265c0732be8f77be499db52603989aea612"
+"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.9/public/@types/vtex.store-components":
+  version "3.155.9"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.9/public/@types/vtex.store-components#3dc767937110f31a859765e7ec21a85654151622"
 
 "vtex.store-icons@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons":
   version "0.18.0"
