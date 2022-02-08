@@ -1,7 +1,7 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",

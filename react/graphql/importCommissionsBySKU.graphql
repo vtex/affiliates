@@ -1,0 +1,4 @@
+mutation importCommissionsBySKU($file: Upload!) {
+  importCommissionsBySKU(file: $file)
+    @context(provider: "vtex.affiliates-commission-service")
+}

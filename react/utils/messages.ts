@@ -43,7 +43,11 @@ export const messages = defineMessages({
   creationDateLabel: { id: 'admin/creationDate.label' },
   refIdLabel: { id: 'admin/refId.label' },
   exportTabLabel: { id: 'admin/export.tab.label' },
+  importTabLabel: { id: 'admin/import.tab.label' },
   commissionsPageTitle: { id: 'admin/commissions.page.title' },
+  dropzoneMainMessage: { id: 'admin/dropzone.main.message.text' },
+  dropzoneClickMessage: { id: 'admin/click.message.dropzone.text' },
+  importFileSectionTitle: { id: 'admin/import.file.section.title' },
   editCommissionTitle: { id: 'admin/edit.commission.title' },
   editCommissionInvalidValue: {
     id: 'admin/edit.commission.invalid.value.message',
@@ -54,4 +58,7 @@ export const messages = defineMessages({
   editCommissionErrorMessage: { id: 'admin/edit.commission.error.message' },
   exportReportSuccessMessage: { id: 'admin/export.report.success.message' },
   exportReportErrorMessage: { id: 'admin/export.report.error.message' },
+  sendFileLabel: { id: 'admin/send.file.label' },
+  importFileSuccessMessage: { id: 'admin/import.file.success.message' },
+  importFileErrorMessage: { id: 'admin/import.file.error.message' },
 })

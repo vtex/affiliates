@@ -14,7 +14,7 @@ const CommissionsTabs: FC = () => {
   return (
     <Tabs state={state}>
       <TabList aria-label="Usage Tabs">
-        <Tab id="1">Tab 1</Tab>
+        <Tab id="1">{intl.formatMessage(messages.importTabLabel)}</Tab>
         <Tab id="2">{intl.formatMessage(messages.exportTabLabel)}</Tab>
       </TabList>
       <TabPanel id="1" csx={{ padding: 3 }}>
