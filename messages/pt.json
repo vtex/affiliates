@@ -28,7 +28,11 @@
   "admin/order.label": "Pedido",
   "admin/creationDate.label": "Data do pedido",
   "admin/export.tab.label": "Exportar",
+  "admin/import.tab.label": "Importar",
+  "admin/import.file.section.title": "Importar por arquivo CSV",
   "admin/commissions.page.title": "Commissões",
+  "admin/dropzone.main.message.text": "Arraste e solte o arquivo CSV aqui ou",
+  "admin/click.message.dropzone.text": "escolha um arquivo",
   "admin/edit.commission.title": "Editar comissão",
   "admin/edit.commission.invalid.value.message": "Valor de comissão inválido",
   "admin/confirm.label": "Confirmar",
@@ -36,5 +40,8 @@
   "admin/edit.commission.error.message": "Algo deu errado ao editar a comissão",
   "admin/edit.commission.success.message": "Comissão editada com sucesso",
   "admin/export.report.success.message": "O relatório está sendo gerado e vai ser enviado para o seu e-mail.",
-  "admin/export.report.error.message": "Ocorreu um erro ao enviar a requisição para gerar o relatório."
+  "admin/export.report.error.message": "Ocorreu um erro ao enviar a requisição para gerar o relatório.",
+  "admin/send.file.label": "Enviar arquivo",
+  "admin/import.file.success.message": "O arquivo está sendo processado.",
+  "admin/import.file.error.message": "Ocorreu um erro ao enviar o arquivo."
 }

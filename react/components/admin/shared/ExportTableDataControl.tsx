@@ -9,6 +9,9 @@ import {
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useMemo } from 'react'
+import { useIntl } from 'react-intl'
+
+import { messages } from '../../../utils/messages'
 
 type ExportTableDataControlProps = {
   maxResults: number
@@ -23,6 +26,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
   exportAction,
   loading,
 }) => {
+  const intl = useIntl()
   const toolbar = useToolbarState()
   const isButtonDisabled = useMemo(() => {
     if (maxResults === 0) {
@@ -55,7 +59,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
           loading={loading}
           onClick={exportAction}
         >
-          Export
+          {intl.formatMessage(messages.exportTabLabel)}
         </ToolbarButton>
         {showTooltipHelper}
       </Toolbar>
