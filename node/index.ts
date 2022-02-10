@@ -30,6 +30,7 @@ import { authenticateRequest } from './middlewares/authenticateRequest'
 import { getAffiliates } from './resolvers/getAffiliates'
 import { addAffiliate } from './resolvers/addAffiliate'
 import { updateAffiliate as updateAffiliateResolver } from './resolvers/updateAffiliate'
+import { getAffiliate } from './resolvers/getAffiliate'
 
 const TIMEOUT_MS = 1000
 
@@ -105,6 +106,7 @@ export default new Service({
         isAffiliateValid,
         getAffiliateStoreName,
         getAffiliates,
+        getAffiliate,
       },
       Mutation: {
         addAffiliate,
