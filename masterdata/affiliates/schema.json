@@ -15,6 +15,9 @@
     "phone": {
       "type": "string"
     },
+    "refId": {
+      "type": "string"
+    },
     "address": {
       "type": "object",
       "properties": {
@@ -56,7 +59,7 @@
     "isApproved": {
       "type": "boolean"
     },
-    "social": {
+    "marketing": {
       "type": "object",
       "properties": {
         "instagram": {
@@ -66,6 +69,9 @@
           "type": "string"
         },
         "facebook": {
+          "type": "string"
+        },
+        "gtmId": {
           "type": "string"
         }
       }

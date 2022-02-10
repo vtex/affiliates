@@ -10,5 +10,6 @@ type Query {
 }
 
 type Mutation {
+  addAffiliate(newAffiliate: NewAffiliateInput!): Affiliate!
   setAffiliateOnOrderForm(affiliateId: String, orderFormId: String): OrderForm
 }

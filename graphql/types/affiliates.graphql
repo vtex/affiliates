@@ -8,6 +8,37 @@ input AffliatesSortingInput {
   order: SortingOrder!
 }
 
+input AddresInput {
+  city: String
+  country: String
+  neighborhood: String
+  number: String
+  postalCode: String
+  reference: String
+  street: String
+  state: String
+}
+
+input MarketingInput {
+  instagram: String
+  facebook: String
+  whatsapp: String
+  gtmId: String
+}
+
+input NewAffiliateInput {
+  slug: String!
+  name: String!
+  email: String!
+  isApproved: Boolean!
+  storeName: String
+  address: AddresInput
+  document: String
+  documentType: String
+  phone: String
+  marketing: MarketingInput
+}
+
 type Affiliate {
   id: ID
   name: String

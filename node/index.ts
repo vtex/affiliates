@@ -28,6 +28,7 @@ import { getAffiliateLead } from './middlewares/getAffiliateLead'
 import { verifyUserAffiliation } from './middlewares/verifyUserAffiliation'
 import { authenticateRequest } from './middlewares/authenticateRequest'
 import { getAffiliates } from './resolvers/getAffiliates'
+import { addAffiliate } from './resolvers/addAffiliate'
 
 const TIMEOUT_MS = 1000
 
@@ -105,6 +106,7 @@ export default new Service({
         getAffiliates,
       },
       Mutation: {
+        addAffiliate,
         setAffiliateOnOrderForm,
       },
     },
