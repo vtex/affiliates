@@ -1,0 +1,28 @@
+query getAffiliate($affiliateId: ID!) {
+  getAffiliate(affiliateId: $affiliateId) {
+    id
+    name
+    storeName
+    email
+    phone
+    isApproved
+    address {
+      city
+      country
+      neighborhood
+      number
+      postalCode
+      reference
+      street
+      state
+    }
+    document
+    documentType
+    marketing {
+      instagram
+      facebook
+      whatsapp
+      gtmId
+    }
+  }
+}
