@@ -5680,9 +5680,9 @@ verror@1.10.0:
   version "0.18.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons#0ee94d549aa283ce3a13ab987c13eac4fdfd1bba"
 
-"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.121.1/public/@types/vtex.store":
-  version "2.121.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.121.1/public/@types/vtex.store#1401d6ee5e16ff8b52227213f05331bba94a5639"
+"vtex.store@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.122.0/public/@types/vtex.store":
+  version "2.122.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.122.0/public/@types/vtex.store#6bf27ad5449fe14926287432fc12bdaf27a86b03"
 
 "vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide":
   version "9.145.2"
