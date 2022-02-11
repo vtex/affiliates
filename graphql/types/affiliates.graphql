@@ -39,6 +39,18 @@ input NewAffiliateInput {
   marketing: MarketingInput
 }
 
+input UpdateAffiliateInput {
+  name: String
+  email: String
+  isApproved: Boolean
+  storeName: String
+  address: AddresInput
+  document: String
+  documentType: String
+  phone: String
+  marketing: MarketingInput
+}
+
 type Affiliate {
   id: ID
   name: String

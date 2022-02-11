@@ -6203,9 +6203,9 @@ verror@1.10.0:
   version "0.15.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.rich-text@0.15.0/public/@types/vtex.rich-text#f23416cea64e72531069e58f1b137dfdb5b4b510"
 
-"vtex.search-result@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.3/public/@types/vtex.search-result":
-  version "3.113.3"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.3/public/@types/vtex.search-result#0f78a853c7673674ab2add3d8f944329cdc19d0c"
+"vtex.search-result@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.4/public/@types/vtex.search-result":
+  version "3.113.4"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.4/public/@types/vtex.search-result#495c368fddd230ffb623903b73f08007aeeb440b"
 
 "vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.155.9/public/@types/vtex.store-components":
   version "3.155.9"
