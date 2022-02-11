@@ -1,0 +1,11 @@
+mutation updateAffiliate(
+  $affiliateId: String!
+  $updateAffiliate: UpdateAffiliateInput!
+) {
+  updateAffiliate(
+    affiliateId: $affiliateId
+    updateAffiliate: $updateAffiliate
+  ) {
+    id
+  }
+}
