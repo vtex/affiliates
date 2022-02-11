@@ -5,7 +5,7 @@
     "test": "vtex-test-tools test --collectCoverage"
   },
   "dependencies": {
-    "@vtex/admin-ui": "^0.117.1-next.1",
+    "@vtex/admin-ui": "^0.118.0",
     "apollo-client": "^2.6.8",
     "react": "^16.12.0",
     "react-apollo": "^3.1.3",
@@ -27,8 +27,8 @@
     "apollo-cache-inmemory": "^1.6.5",
     "graphql": "^14.6.0",
     "typescript": "3.9.7",
-    "vtex.affiliates": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.19.0/public/@types/vtex.affiliates",
-    "vtex.affiliates-commission-service": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@0.10.0/public/@types/vtex.affiliates-commission-service",
+    "vtex.affiliates": "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.27.0+build1644510394/public/@types/vtex.affiliates",
+    "vtex.affiliates-commission-service": "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.13.0+build1644004713/public/@types/vtex.affiliates-commission-service",
     "vtex.affiliates-order-form-spy": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy",
     "vtex.breadcrumb": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb",
     "vtex.flex-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.19.0/public/@types/vtex.flex-layout",
