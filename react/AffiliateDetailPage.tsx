@@ -6,6 +6,7 @@ import {
   PageTitle,
   PageContent,
   createSystem,
+  ToastProvider,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
@@ -28,16 +29,18 @@ const AffiliateOrderPage: FC = () => {
 
   return (
     <ThemeProvider>
-      <Page>
-        <PageHeader>
-          <PageTitle>{`${intl.formatMessage(
-            messages.affiliateLabel
-          )}: ${affiliateId}`}</PageTitle>
-        </PageHeader>
-        <PageContent>
-          <AffiliateContent />
-        </PageContent>
-      </Page>
+      <ToastProvider>
+        <Page>
+          <PageHeader>
+            <PageTitle>{`${intl.formatMessage(
+              messages.affiliateLabel
+            )}: ${affiliateId}`}</PageTitle>
+          </PageHeader>
+          <PageContent>
+            <AffiliateContent />
+          </PageContent>
+        </Page>
+      </ToastProvider>
     </ThemeProvider>
   )
 }
