@@ -8,7 +8,7 @@ export const parseAffiliatesFilters = ({
 
   if (searchTerm) {
     where.push(
-      `(id="*${searchTerm}*" OR storeName="*${searchTerm}*" OR email="*${searchTerm}*")`
+      `(id="*${searchTerm}*" OR storeName="*${searchTerm}*" OR email="*${searchTerm}*" OR name="*${searchTerm}*" OR phone="*${searchTerm}*")`
     )
   }
 
