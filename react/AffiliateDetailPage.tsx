@@ -17,7 +17,7 @@ const [ThemeProvider] = createSystem({
   key: 'affiliates-detail',
 })
 
-const AffiliateOrderPage: FC = () => {
+const AffiliateDetailPage: FC = () => {
   const {
     route: {
       params: { affiliateId },
@@ -42,4 +42,4 @@ const AffiliateOrderPage: FC = () => {
   )
 }
 
-export default AffiliateOrderPage
+export default AffiliateDetailPage
