@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.30.0] - 2022-02-11
+
+### Added
+
+- updateAffiliate mutation
+
+## [0.29.0] - 2022-02-10
+
+### Added
+
+- addAffiliate mutation
+
+## [0.28.0] - 2022-02-08
+
 ### Added
 
 - getAffiliates query
