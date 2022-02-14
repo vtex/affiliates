@@ -1,11 +1,4 @@
-import {
-  Box,
-  Column,
-  Columns,
-  FlexSpacer,
-  Skeleton,
-  Text,
-} from '@vtex/admin-ui'
+import { Column, Columns, FlexSpacer, Text } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
 import { useIntl } from 'react-intl'
@@ -13,6 +6,7 @@ import { useRuntime } from 'vtex.render-runtime'
 
 import type { AffiliatesOrdersData } from '../../../typings/tables'
 import { messages } from '../../../utils/messages'
+import LoadingBox from '../shared/LoadingBox'
 
 type OrderInfoProps = {
   order: AffiliatesOrdersData | undefined
@@ -25,11 +19,7 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
   } = useRuntime()
 
   if (!order) {
-    return (
-      <Box csx={{ width: 'full', height: 192 }}>
-        <Skeleton />
-      </Box>
-    )
+    return <LoadingBox csx={{ width: 'full', height: 192 }} />
   }
 
   const {

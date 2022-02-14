@@ -11,5 +11,10 @@
   "admin.app.affiliates.order": {
     "component": "AffiliateOrderPage",
     "path": "/admin/app/affiliates-dashboard/:orderId"
+  },
+  "admin.app.affiliates.affiliate": {},
+  "admin.app.affiliates.affiliate.detail": {
+    "component": "AffiliateDetailPage",
+    "path": "/admin/app/affiliates-data/:affiliateId"
   }
 }
