@@ -10,7 +10,7 @@ import {
   Text,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useQuery } from 'react-apollo'
 import { useRuntime } from 'vtex.render-runtime'
 import type { Affiliate, QueryGetAffiliateArgs } from 'vtex.affiliates'
@@ -62,7 +62,7 @@ const AffiliateContent: FC = () => {
     }
   }, [loading, view])
 
-  const showActions = () => {
+  const showActions = useCallback(() => {
     if (loading) {
       return <LoadingBox csx={{ width: 'full', height: 72 }} />
     }
@@ -81,7 +81,7 @@ const AffiliateContent: FC = () => {
         </Toolbar>
       </>
     )
-  }
+  }, [loading, intl, toolbar, data])
 
   return (
     <DataView state={view}>
