@@ -12,9 +12,12 @@
     "component": "AffiliateOrderPage",
     "path": "/admin/app/affiliates-dashboard/:orderId"
   },
-  "admin.app.affiliates.affiliate": {},
-  "admin.app.affiliates.affiliate.detail": {
+  "admin.app.affiliates.affiliate-management": {
+    "component": "AffiliateManagementPage",
+    "path": "/admin/app/affiliates-management"
+  },
+  "admin.app.affiliates.affiliate-detail": {
     "component": "AffiliateDetailPage",
-    "path": "/admin/app/affiliates-data/:affiliateId"
+    "path": "/admin/app/affiliates-management/:affiliateId"
   }
 }
