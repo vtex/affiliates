@@ -71,6 +71,7 @@ input UpdateAffiliateInput {
 
 type Affiliate {
   id: ID
+  affiliateId: ID
   name: String
   storeName: String
   email: String
