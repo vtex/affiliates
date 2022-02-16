@@ -123,4 +123,9 @@ export const messages = defineMessages({
   editAffiliateApproveFalseMessage: {
     id: 'admin/edit.affiliate.approve.false.message',
   },
+  slugLabel: { id: 'admin/slug.label' },
+  saveLabel: { id: 'admin/save.label' },
+  formRequiredMessage: { id: 'admin/form.validation-required' },
+  formInvalidEmail: { id: 'admin/form.validation-email' },
+  formInvalidNumberField: { id: 'admin/form.validation-number' },
 })
