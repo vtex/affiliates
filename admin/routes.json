@@ -19,5 +19,9 @@
   "admin.app.affiliates.affiliate-detail": {
     "component": "AffiliateDetailPage",
     "path": "/admin/app/affiliates-management/:affiliateId"
+  },
+  "admin.app.affiliates.affiliate-edit": {
+    "component": "AffiliateEditPage",
+    "path": "/admin/app/affiliates-management/:affiliateId/edit"
   }
 }
