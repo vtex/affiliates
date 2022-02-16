@@ -31,6 +31,7 @@ type AffiliateQueryReturn = {
 
 const AffiliateContent: FC = () => {
   const {
+    navigate,
     route: {
       params: { affiliateId },
     },
@@ -69,6 +70,15 @@ const AffiliateContent: FC = () => {
     modal.setVisible(true)
   }, [modal])
 
+  const onEditClick = useCallback(() => {
+    navigate({
+      page: 'admin.app.affiliates.affiliate-edit',
+      params: {
+        affiliateId: data?.getAffiliate.id,
+      },
+    })
+  }, [navigate, data])
+
   const showActions = useCallback(() => {
     if (loading) {
       return <LoadingBox csx={{ width: 'full', height: 72 }} />
@@ -85,13 +95,14 @@ const AffiliateContent: FC = () => {
         />
         <FlexSpacer />
         <Toolbar state={toolbar}>
-          <ToolbarButton variant="adaptative-dark">{`${intl.formatMessage(
-            messages.editLabel
-          )}`}</ToolbarButton>
+          <ToolbarButton
+            variant="adaptative-dark"
+            onClick={onEditClick}
+          >{`${intl.formatMessage(messages.editLabel)}`}</ToolbarButton>
         </Toolbar>
       </>
     )
-  }, [loading, intl, toolbar, data, onToggleClick])
+  }, [loading, intl, toolbar, data, onToggleClick, onEditClick])
 
   return (
     <DataView state={view}>
