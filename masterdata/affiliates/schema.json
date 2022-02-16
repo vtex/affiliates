@@ -3,6 +3,9 @@
   "title": "Affiliates",
   "type": "object",
   "properties": {
+    "slug": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },
@@ -77,7 +80,7 @@
       }
     }
   },
-  "required": ["email", "name", "isApproved"],
-  "v-indexed": ["email", "storeName", "name", "phone", "isApproved"],
+  "required": ["slug", "email", "name", "isApproved"],
+  "v-indexed": ["slug", "email", "storeName", "name", "phone", "isApproved"],
   "v-cache": false
 }
