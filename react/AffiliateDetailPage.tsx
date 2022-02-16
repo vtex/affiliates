@@ -22,6 +22,7 @@ const AffiliateDetailPage: FC = () => {
     route: {
       params: { affiliateId },
     },
+    navigate,
   } = useRuntime()
 
   const intl = useIntl()
@@ -29,7 +30,13 @@ const AffiliateDetailPage: FC = () => {
   return (
     <ThemeProvider>
       <Page>
-        <PageHeader>
+        <PageHeader
+          onPopNavigation={() =>
+            navigate({
+              page: 'admin.app.affiliates.affiliate-management',
+            })
+          }
+        >
           <PageTitle>{`${intl.formatMessage(
             messages.affiliateLabel
           )}: ${affiliateId}`}</PageTitle>
