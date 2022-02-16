@@ -10,10 +10,10 @@ export const updateAffiliate = async (
   }: MutationUpdateAffiliateArgs,
   { clients: { affiliates } }: Context
 ) => {
-  const { email } = updateAffiliateData
+  const { slug, email } = updateAffiliateData
 
-  if (!isSlugValid(affiliateId)) {
-    throw new Error('AffiliateId is not valid, must be alphanumeric')
+  if (slug && !isSlugValid(slug)) {
+    throw new Error('Slug is not valid, must be alphanumeric')
   }
 
   const affiliateInDbById = await affiliates.get(affiliateId, ['_all'])
@@ -22,6 +22,20 @@ export const updateAffiliate = async (
     throw new Error(
       'Affiliate not found. Do you really want to update an affiliate?'
     )
+  }
+
+  const affiliateInDbBySlug = await affiliates.search(
+    { page: 1, pageSize: 10 },
+    ['_all'],
+    undefined,
+    `slug=${slug}`
+  )
+
+  if (
+    affiliateInDbBySlug.length > 0 &&
+    affiliateInDbBySlug[0].id !== affiliateId
+  ) {
+    throw new Error('Affiliate url is already in use')
   }
 
   const affiliateInDbByEmail = await affiliates.search(

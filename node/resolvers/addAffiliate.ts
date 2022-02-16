@@ -7,16 +7,21 @@ export const addAffiliate = async (
   { newAffiliate }: MutationAddAffiliateArgs,
   { clients: { affiliates } }: Context
 ) => {
-  const { slug, email } = newAffiliate
+  const { slug, email } = newAffiliate // change
 
   if (!isSlugValid(slug)) {
     throw new Error('Slug is not valid, must be alphanumeric')
   }
 
-  const affiliateInDbById = await affiliates.get(slug, ['_all'])
+  const affiliateInDbBySlug = await affiliates.search(
+    { page: 1, pageSize: 10 },
+    ['_all'],
+    undefined,
+    `slug=${slug}`
+  )
 
-  if (affiliateInDbById) {
-    throw new Error('Affiliate already exists(slug is already in use)')
+  if (affiliateInDbBySlug.length > 0) {
+    throw new Error('Affiliate url is already in use')
   }
 
   const affiliateInDbByEmail = await affiliates.search(
@@ -27,16 +32,16 @@ export const addAffiliate = async (
   )
 
   if (affiliateInDbByEmail.length > 0) {
-    throw new Error('Affiliate already exists(email is already in use)')
+    throw new Error('Affiliate already exists (email is already in use)')
   }
 
   const mdDocument = {
-    id: slug,
     ...newAffiliate,
   } as Affiliates
 
-  delete mdDocument.slug
-  await affiliates.save(mdDocument)
+  const response = await affiliates.save(mdDocument)
 
-  return affiliates.get(slug, ['_all'])
+  console.info(response)
+
+  return affiliates.get(response.DocumentId, ['_all'])
 }
