@@ -21,10 +21,16 @@ export async function validateCreate(
   }
 
   // Then we check to see if the slug already exists
-  const affiliateInDbById = await affiliates.get(slug, ['_all'])
 
-  if (affiliateInDbById) {
-    throw new Error('Affiliate already exists(slug is already in use)')
+  const affiliateInDbBySlug = await affiliates.search(
+    { page: 1, pageSize: 10 },
+    ['_all'],
+    undefined,
+    `slug=${slug}`
+  )
+
+  if (affiliateInDbBySlug.length > 0) {
+    throw new Error('Affiliate already exists (url slug is already in use)')
   }
 
   // Lastly we check to see if the email already exists

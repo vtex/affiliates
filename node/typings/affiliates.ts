@@ -17,6 +17,7 @@ type Social = {
 }
 
 export type AffiliateInput = {
+  id: string
   slug: string
   name: string
   email: string
