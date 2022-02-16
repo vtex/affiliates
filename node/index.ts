@@ -31,6 +31,7 @@ import { getAffiliates } from './resolvers/getAffiliates'
 import { addAffiliate } from './resolvers/addAffiliate'
 import { updateAffiliate as updateAffiliateResolver } from './resolvers/updateAffiliate'
 import { getAffiliate } from './resolvers/getAffiliate'
+import { fieldResolvers } from './resolvers/fieldResolvers'
 
 const TIMEOUT_MS = 1000
 
@@ -113,6 +114,7 @@ export default new Service({
         updateAffiliate: updateAffiliateResolver,
         setAffiliateOnOrderForm,
       },
+      ...fieldResolvers,
     },
   },
   events: {

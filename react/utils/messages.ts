@@ -9,6 +9,36 @@ export const messages = defineMessages({
   dateFilterTo: { id: 'admin/table.dateFilter.to.label' },
   tableNoResults: { id: 'admin/table.noData.text' },
   tableDataError: { id: 'admin/table.error.text' },
+  affiliatesPageTitle: { id: 'admin/affiliates.page.title' },
+  affiliatesTableSearchPlaceholder: {
+    id: 'admin/affiliates.table.search.placeholder',
+  },
+  affiliatesTableAffiliateIdColumnLabel: {
+    id: 'admin/affiliates.table.affiliateId.header',
+  },
+  affiliatesTableNameColumnLabel: { id: 'admin/affiliates.table.name.header' },
+  affiliatesTableStoreNameColumnLabel: {
+    id: 'admin/affiliates.table.storeName.header',
+  },
+  affiliatesTableEmailColumnLabel: {
+    id: 'admin/affiliates.table.email.header',
+  },
+  affiliatesTablePhoneColumnLabel: {
+    id: 'admin/affiliates.table.phone.header',
+  },
+  affiliatesTableIsApprovedColumnLabel: {
+    id: 'admin/affiliates.table.isApproved.header',
+  },
+  affiliatesTableIsApprovedTextTrue: {
+    id: 'admin/affiliates.table.isApproved.text.true',
+  },
+  affiliatesTableIsApprovedTextFalse: {
+    id: 'admin/affiliates.table.isApproved.text.false',
+  },
+  affiliatesTableIsApprovedTextAny: {
+    id: 'admin/affiliates.table.isApproved.text.any',
+  },
+  dashboardPageTitle: { id: 'admin/dashboard.page.title' },
   affiliatesOrdersTableSearchPlaceholder: {
     id: 'admin/affiliatesOrders.table.search.placeholder',
   },

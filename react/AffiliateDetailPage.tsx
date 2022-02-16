@@ -18,11 +18,12 @@ const [ThemeProvider] = createSystem({
   key: 'affiliates-detail',
 })
 
-const AffiliateOrderPage: FC = () => {
+const AffiliateDetailPage: FC = () => {
   const {
     route: {
       params: { affiliateId },
     },
+    navigate,
   } = useRuntime()
 
   const intl = useIntl()
@@ -31,7 +32,13 @@ const AffiliateOrderPage: FC = () => {
     <ThemeProvider>
       <ToastProvider>
         <Page>
-          <PageHeader>
+          <PageHeader
+            onPopNavigation={() =>
+              navigate({
+                page: 'admin.app.affiliates.affiliate-management',
+              })
+            }
+          >
             <PageTitle>{`${intl.formatMessage(
               messages.affiliateLabel
             )}: ${affiliateId}`}</PageTitle>
@@ -45,4 +52,4 @@ const AffiliateOrderPage: FC = () => {
   )
 }
 
-export default AffiliateOrderPage
+export default AffiliateDetailPage
