@@ -6175,9 +6175,9 @@ verror@1.10.0:
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy#ced0777e098c53a7dbdb2e1e03c0a03b78bf5edf"
 
-"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.31.0/public/@types/vtex.affiliates":
-  version "0.31.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.31.0/public/@types/vtex.affiliates#c740482bdee422391bc874004a030cc319416d6f"
+"vtex.affiliates@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.33.0+build1645044390/public/@types/vtex.affiliates":
+  version "0.33.0"
+  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.33.0+build1645044390/public/@types/vtex.affiliates#29b88700baf5b9b10be7317b0692654a85c84d11"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
