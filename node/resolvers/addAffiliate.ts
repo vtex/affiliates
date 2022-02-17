@@ -13,6 +13,8 @@ export const addAffiliate = async (
     throw new Error('Slug is not valid, must be alphanumeric')
   }
 
+  // TODO: Change this logic to search for the slug in the DB
+  // Right now it's our ID but it will not be anymore
   const affiliateInDbById = await affiliates.get(slug, ['_all'])
 
   if (affiliateInDbById) {
@@ -31,12 +33,10 @@ export const addAffiliate = async (
   }
 
   const mdDocument = {
-    id: slug,
     ...newAffiliate,
   } as Affiliates
 
-  delete mdDocument.slug
-  await affiliates.save(mdDocument)
+  const { DocumentId } = await affiliates.save(mdDocument)
 
-  return affiliates.get(slug, ['_all'])
+  return affiliates.get(DocumentId, ['_all'])
 }
