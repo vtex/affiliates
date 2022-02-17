@@ -46,7 +46,7 @@ const AffiliateEditPage: FC = () => {
 
   const handleBackAction = () => {
     navigate({
-      page: 'admin.app.affiliates.affiliate.detail',
+      page: 'admin.app.affiliates.affiliate-detail',
       params: {
         affiliateId,
       },
