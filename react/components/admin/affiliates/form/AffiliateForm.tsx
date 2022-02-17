@@ -12,6 +12,7 @@ import AddressInfo from './AddressInfo'
 import GeneralInfo from './GeneralInfo'
 import MarketingInfo from './MarketingInfo'
 import UPDATE_AFFILIATE from '../../../../graphql/updateAffiliate.graphql'
+import ADD_AFFILIATE from '../../../../graphql/addAffiliate.graphql'
 import GET_AFFILIATE from '../../../../graphql/getAffiliate.graphql'
 import { messages } from '../../../../utils/messages'
 
@@ -53,7 +54,7 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     }
   }, [affiliate])
 
-  const [updateAffiliate, { loading: mutationLoading }] = useMutation(
+  const [updateAffiliate, { loading: editMutationLoading }] = useMutation(
     UPDATE_AFFILIATE,
     {
       refetchQueries: [
@@ -86,6 +87,26 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     }
   )
 
+  const [addAffiliate, { loading: addMutationLoading }] = useMutation(
+    ADD_AFFILIATE,
+    {
+      onCompleted: (result) => {
+        navigate({
+          page: 'admin.app.affiliates.affiliate-detail',
+          params: {
+            affiliateId: result.addAffiliate.id,
+          },
+        })
+      },
+      onError: () => {
+        showToast({
+          tone: 'critical',
+          message: intl.formatMessage(messages.addAffiliateErrorMessage),
+        })
+      },
+    }
+  )
+
   const onSubmit = (values: Affiliate) => {
     if (affiliate) {
       updateAffiliate({
@@ -95,6 +116,12 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
         },
       })
     }
+
+    addAffiliate({
+      variables: {
+        newAffiliate: { ...values, isApproved: false },
+      },
+    })
   }
 
   return (
@@ -110,7 +137,10 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
           <MarketingInfo />
           <Flex>
             <FlexSpacer />
-            <Button loading={mutationLoading} type="submit">
+            <Button
+              loading={editMutationLoading || addMutationLoading}
+              type="submit"
+            >
               {intl.formatMessage(messages.saveLabel)}
             </Button>
           </Flex>
