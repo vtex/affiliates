@@ -1,0 +1,5 @@
+mutation addAffiliate($newAffiliate: NewAffiliateInput!) {
+  addAffiliate(newAffiliate: $newAffiliate) {
+    id
+  }
+}
