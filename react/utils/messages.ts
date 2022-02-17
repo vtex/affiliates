@@ -115,4 +115,12 @@ export const messages = defineMessages({
   instagramLabel: { id: 'admin/instagram.label' },
   whatsappLabel: { id: 'admin/whatsapp.label' },
   gtmIdLabel: { id: 'admin/gtm.id.label' },
+  editAffiliateSuccessMessage: { id: 'admin/edit.affiliate.success.message' },
+  editAffiliateErrorMessage: { id: 'admin/edit.affiliate.error.message' },
+  editAffiliateApproveTrueMessage: {
+    id: 'admin/edit.affiliate.approve.true.message',
+  },
+  editAffiliateApproveFalseMessage: {
+    id: 'admin/edit.affiliate.approve.false.message',
+  },
 })

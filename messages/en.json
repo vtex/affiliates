@@ -80,5 +80,9 @@
   "admin/facebook.label": "Facebook",
   "admin/whatsapp.label": "Whatsapp",
   "admin/instagram.label": "Instagram",
-  "admin/gtm.id.label": "GTM ID"
+  "admin/gtm.id.label": "GTM ID",
+  "admin/edit.affiliate.success.message": "Affiliate's information updated successfully",
+  "admin/edit.affiliate.error.message": "An error occurred while updating affiliate's information",
+  "admin/edit.affiliate.approve.true.message": "Are you sure you want to activate this affiliate? Their store will become available for users.",
+  "admin/edit.affiliate.approve.false.message": "Are you sure you want to deactivate this affiliate? Their store will become unavailable for users."
 }
