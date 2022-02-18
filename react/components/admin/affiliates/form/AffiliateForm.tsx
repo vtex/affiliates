@@ -1,7 +1,7 @@
 import { Box, Button, Flex, FlexSpacer, useToast } from '@vtex/admin-ui'
 import { Form, Formik } from 'formik'
 import type { FC } from 'react'
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useMutation } from 'react-apollo'
 import type { Affiliate } from 'vtex.affiliates'
 import { useIntl } from 'react-intl'
@@ -107,28 +107,32 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     }
   )
 
-  const onSubmit = (values: Affiliate) => {
-    if (affiliate) {
-      updateAffiliate({
+  const onSubmit = useCallback(
+    (values: Affiliate) => {
+      if (affiliate) {
+        updateAffiliate({
+          variables: {
+            affiliateId: affiliate.id,
+            updateAffiliate: { ...values, isApproved: affiliate.isApproved },
+          },
+        })
+      }
+
+      addAffiliate({
         variables: {
-          affiliateId: affiliate.id,
-          updateAffiliate: { ...values, isApproved: affiliate.isApproved },
+          newAffiliate: { ...values, isApproved: false },
         },
       })
-    }
-
-    addAffiliate({
-      variables: {
-        newAffiliate: { ...values, isApproved: false },
-      },
-    })
-  }
+    },
+    [affiliate, updateAffiliate, addAffiliate]
+  )
 
   return (
     <Box csx={{ marginY: 16 }}>
       <Formik
         onSubmit={onSubmit}
         initialValues={initialValues}
+        enableReinitialize
         validationSchema={VALIDATION_SCHEMAS(intl).affiliateForm}
       >
         <Form>
