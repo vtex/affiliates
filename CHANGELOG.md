@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Page to add a new affiliate
+
 ## [0.35.0] - 2022-02-18
 
 ### Added
