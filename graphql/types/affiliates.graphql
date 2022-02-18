@@ -49,6 +49,7 @@ input NewAffiliateInput {
   name: String!
   email: String!
   isApproved: Boolean!
+  refId: String
   storeName: String
   address: AddresInput
   document: String
@@ -60,6 +61,8 @@ input NewAffiliateInput {
 input UpdateAffiliateInput {
   name: String
   email: String
+  refId: String
+  slug: String
   isApproved: Boolean
   storeName: String
   address: AddresInput
@@ -76,6 +79,8 @@ type Affiliate {
   storeName: String
   email: String
   phone: String
+  refId: String
+  slug: String
   isApproved: Boolean
   address: Address
   document: String

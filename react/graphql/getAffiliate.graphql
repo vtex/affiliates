@@ -4,6 +4,8 @@ query getAffiliate($affiliateId: ID!) {
     name
     storeName
     email
+    slug
+    refId
     phone
     isApproved
     address {

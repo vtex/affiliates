@@ -84,5 +84,10 @@
   "admin/edit.affiliate.success.message": "As informações do afiliado foram editadas com sucesso",
   "admin/edit.affiliate.error.message": "Ocorreu um erro ao editar as informações do afiliado",
   "admin/edit.affiliate.approve.true.message": "Você tem certeza que deseja ativar esse afiliado? A sua loja ficará disponível aos usuários.",
-  "admin/edit.affiliate.approve.false.message": "Você tem certeza que deseja desativar esse afiliado? A sua loja ficará indisponível aos usuários."
+  "admin/edit.affiliate.approve.false.message": "Você tem certeza que deseja desativar esse afiliado? A sua loja ficará indisponível aos usuários.",
+  "admin/slug.label": "Slug",
+  "admin/save.label": "Salvar",
+  "admin/form.validation-required": "Campo obrigatório.",
+  "admin/form.validation-email": "E-mail inválido.",
+  "admin/form.validation-number": "O campo aceita apenas números."
 }
