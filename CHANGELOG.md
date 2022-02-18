@@ -15,6 +15,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - changed all affiliates GraphQL and service routes to use the new slug property
 
+## [0.35.0] - 2022-02-18
+
+### Added
+
+- Affiliate form
+- Affiliate edit page
+
+## [0.34.0] - 2022-02-17
+
+### Added
+
+- Action to the approve affiliate toggle
+
+## [0.33.0] - 2022-02-16
+
+### Added
+
+- Affiliates management page
+
 ## [0.32.0] - 2022-02-14
 
 ### Added

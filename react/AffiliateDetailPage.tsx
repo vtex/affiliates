@@ -6,6 +6,7 @@ import {
   PageTitle,
   PageContent,
   createSystem,
+  ToastProvider,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
@@ -22,22 +23,31 @@ const AffiliateDetailPage: FC = () => {
     route: {
       params: { affiliateId },
     },
+    navigate,
   } = useRuntime()
 
   const intl = useIntl()
 
   return (
     <ThemeProvider>
-      <Page>
-        <PageHeader>
-          <PageTitle>{`${intl.formatMessage(
-            messages.affiliateLabel
-          )}: ${affiliateId}`}</PageTitle>
-        </PageHeader>
-        <PageContent>
-          <AffiliateContent />
-        </PageContent>
-      </Page>
+      <ToastProvider>
+        <Page>
+          <PageHeader
+            onPopNavigation={() =>
+              navigate({
+                page: 'admin.app.affiliates.affiliate-management',
+              })
+            }
+          >
+            <PageTitle>{`${intl.formatMessage(
+              messages.affiliateLabel
+            )}: ${affiliateId}`}</PageTitle>
+          </PageHeader>
+          <PageContent>
+            <AffiliateContent />
+          </PageContent>
+        </Page>
+      </ToastProvider>
     </ThemeProvider>
   )
 }
