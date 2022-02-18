@@ -1,0 +1,28 @@
+query getAffiliates(
+  $page: Int!
+  $pageSize: Int!
+  $filter: AffiliatesFilterInput
+  $sorting: AffliatesSortingInput
+) {
+  getAffiliates(
+    page: $page
+    pageSize: $pageSize
+    filter: $filter
+    sorting: $sorting
+  ) {
+    data {
+      id
+      affiliateId
+      name
+      storeName
+      email
+      phone
+      isApproved
+    }
+    pagination {
+      page
+      pageSize
+      total
+    }
+  }
+}

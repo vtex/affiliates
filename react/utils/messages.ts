@@ -9,6 +9,36 @@ export const messages = defineMessages({
   dateFilterTo: { id: 'admin/table.dateFilter.to.label' },
   tableNoResults: { id: 'admin/table.noData.text' },
   tableDataError: { id: 'admin/table.error.text' },
+  affiliatesPageTitle: { id: 'admin/affiliates.page.title' },
+  affiliatesTableSearchPlaceholder: {
+    id: 'admin/affiliates.table.search.placeholder',
+  },
+  affiliatesTableAffiliateIdColumnLabel: {
+    id: 'admin/affiliates.table.affiliateId.header',
+  },
+  affiliatesTableNameColumnLabel: { id: 'admin/affiliates.table.name.header' },
+  affiliatesTableStoreNameColumnLabel: {
+    id: 'admin/affiliates.table.storeName.header',
+  },
+  affiliatesTableEmailColumnLabel: {
+    id: 'admin/affiliates.table.email.header',
+  },
+  affiliatesTablePhoneColumnLabel: {
+    id: 'admin/affiliates.table.phone.header',
+  },
+  affiliatesTableIsApprovedColumnLabel: {
+    id: 'admin/affiliates.table.isApproved.header',
+  },
+  affiliatesTableIsApprovedTextTrue: {
+    id: 'admin/affiliates.table.isApproved.text.true',
+  },
+  affiliatesTableIsApprovedTextFalse: {
+    id: 'admin/affiliates.table.isApproved.text.false',
+  },
+  affiliatesTableIsApprovedTextAny: {
+    id: 'admin/affiliates.table.isApproved.text.any',
+  },
+  dashboardPageTitle: { id: 'admin/dashboard.page.title' },
   affiliatesOrdersTableSearchPlaceholder: {
     id: 'admin/affiliatesOrders.table.search.placeholder',
   },
@@ -85,4 +115,17 @@ export const messages = defineMessages({
   instagramLabel: { id: 'admin/instagram.label' },
   whatsappLabel: { id: 'admin/whatsapp.label' },
   gtmIdLabel: { id: 'admin/gtm.id.label' },
+  editAffiliateSuccessMessage: { id: 'admin/edit.affiliate.success.message' },
+  editAffiliateErrorMessage: { id: 'admin/edit.affiliate.error.message' },
+  editAffiliateApproveTrueMessage: {
+    id: 'admin/edit.affiliate.approve.true.message',
+  },
+  editAffiliateApproveFalseMessage: {
+    id: 'admin/edit.affiliate.approve.false.message',
+  },
+  slugLabel: { id: 'admin/slug.label' },
+  saveLabel: { id: 'admin/save.label' },
+  formRequiredMessage: { id: 'admin/form.validation-required' },
+  formInvalidEmail: { id: 'admin/form.validation-email' },
+  formInvalidNumberField: { id: 'admin/form.validation-number' },
 })
