@@ -1,6 +1,6 @@
 type Query {
-  isAffiliateValid(affiliateId: String): Boolean
-  getAffiliateStoreName(affiliateId: String): String
+  isAffiliateValid(slug: String): Boolean
+  getAffiliateStoreName(slug: String): String
   getAffiliates(
     page: Int!
     pageSize: Int!
@@ -16,5 +16,5 @@ type Mutation {
     affiliateId: String!
     updateAffiliate: UpdateAffiliateInput!
   ): Affiliate!
-  setAffiliateOnOrderForm(affiliateId: String, orderFormId: String): OrderForm
+  setAffiliateOnOrderForm(slug: String, orderFormId: String): OrderForm
 }

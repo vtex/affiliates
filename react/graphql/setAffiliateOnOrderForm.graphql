@@ -1,8 +1,5 @@
-mutation setAffiliateOnOrderForm($affiliateId: String, $orderFormId: String) {
-  setAffiliateOnOrderForm(
-    affiliateId: $affiliateId
-    orderFormId: $orderFormId
-  ) {
+mutation setAffiliateOnOrderForm($slug: String, $orderFormId: String) {
+  setAffiliateOnOrderForm(slug: $slug, orderFormId: $orderFormId) {
     customData {
       customApps {
         fields
