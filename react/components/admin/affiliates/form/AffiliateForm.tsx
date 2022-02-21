@@ -116,13 +116,13 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
             updateAffiliate: { ...values, isApproved: affiliate.isApproved },
           },
         })
+      } else {
+        addAffiliate({
+          variables: {
+            newAffiliate: { ...values, isApproved: false },
+          },
+        })
       }
-
-      addAffiliate({
-        variables: {
-          newAffiliate: { ...values, isApproved: false },
-        },
-      })
     },
     [affiliate, updateAffiliate, addAffiliate]
   )
