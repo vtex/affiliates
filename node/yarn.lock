@@ -6167,17 +6167,17 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates-commission-service@https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.13.0+build1644271923/public/@types/vtex.affiliates-commission-service":
-  version "0.13.0"
-  resolved "https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.13.0+build1644271923/public/@types/vtex.affiliates-commission-service#028b9af59640f74cb4e0d005ae928d5691f541cb"
+"vtex.affiliates-commission-service@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@0.10.0/public/@types/vtex.affiliates-commission-service":
+  version "0.10.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@0.10.0/public/@types/vtex.affiliates-commission-service#41b2ca61c8a9b22dd89640749bf7d15843579125"
 
 "vtex.affiliates-order-form-spy@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy":
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy#ced0777e098c53a7dbdb2e1e03c0a03b78bf5edf"
 
-"vtex.affiliates@https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.32.0+build1645224673/public/@types/vtex.affiliates":
-  version "0.32.0"
-  resolved "https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.32.0+build1645224673/public/@types/vtex.affiliates#b1e6ff46cf99257246481eed80262951f7f4231e"
+"vtex.affiliates@https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.35.0+build1645537229/public/@types/vtex.affiliates":
+  version "0.35.0"
+  resolved "https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.35.0+build1645537229/public/@types/vtex.affiliates#afedcff418a0cf7feefd10e02c078678962d262a"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
