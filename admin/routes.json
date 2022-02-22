@@ -23,5 +23,9 @@
   "admin.app.affiliates.affiliate-edit": {
     "component": "AffiliateEditPage",
     "path": "/admin/app/affiliates-management/:affiliateId/edit"
+  },
+  "admin.app.affiliates.affiliate-add": {
+    "component": "AffiliateAddPage",
+    "path": "/admin/app/affiliates-management/add"
   }
 }

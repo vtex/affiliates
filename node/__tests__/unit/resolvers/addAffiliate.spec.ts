@@ -89,14 +89,15 @@ describe('addAffiliate mutation', () => {
       email: 'alreadyUsedEmail@email.com',
       name: 'affiliate name',
       isApproved: true,
+      slug: 'validSlug',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          search: jest.fn().mockResolvedValue([]),
-          save: jest.fn().mockResolvedValue({ DocumentId: 'validSlug' }),
-          get: jest.fn(),
+          get: jest.fn().mockResolvedValueOnce(null),
+          search: jest.fn().mockResolvedValueOnce([]),
+          save: jest.fn().mockResolvedValueOnce({ DocumentId: 'newAffiliate' }),
         },
       },
     } as unknown as Context

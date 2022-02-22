@@ -1,13 +1,17 @@
 import {
+  Button,
   createSystem,
+  Flex,
   Page,
   PageContent,
   PageHeader,
   PageTitle,
+  FlexSpacer,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useIntl } from 'react-intl'
+import { useRuntime } from 'vtex.render-runtime'
 
 import AffiliatesTable from './components/admin/affiliates/AffiliatesTable'
 import { messages } from './utils/messages'
@@ -18,6 +22,13 @@ const [ThemeProvider] = createSystem({
 
 const AffiliateManagementPage: FC = () => {
   const intl = useIntl()
+  const { navigate } = useRuntime()
+
+  const handleAddAffiliate = useCallback(() => {
+    navigate({
+      page: 'admin.app.affiliates.affiliate-add',
+    })
+  }, [navigate])
 
   return (
     <ThemeProvider>
@@ -28,6 +39,12 @@ const AffiliateManagementPage: FC = () => {
           </PageTitle>
         </PageHeader>
         <PageContent>
+          <Flex csx={{ marginTop: 16 }}>
+            <FlexSpacer />
+            <Button onClick={handleAddAffiliate}>
+              {intl.formatMessage(messages.addAffiliateTitle)}
+            </Button>
+          </Flex>
           <AffiliatesTable />
         </PageContent>
       </Page>

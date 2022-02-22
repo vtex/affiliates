@@ -39,7 +39,7 @@ export const addAffiliate = async (
     ...newAffiliate,
   } as Affiliates
 
-  const response = await affiliates.save(mdDocument)
+  const { DocumentId } = await affiliates.save(mdDocument)
 
-  return affiliates.get(response.DocumentId, ['_all'])
+  return affiliates.get(DocumentId, ['_all'])
 }
