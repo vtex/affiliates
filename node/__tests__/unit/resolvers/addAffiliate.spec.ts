@@ -14,7 +14,6 @@ describe('addAffiliate mutation', () => {
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn(),
           search: jest.fn(),
         },
       },
@@ -89,14 +88,13 @@ describe('addAffiliate mutation', () => {
       email: 'alreadyUsedEmail@email.com',
       name: 'affiliate name',
       isApproved: true,
-      slug: 'validSlug',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
           get: jest.fn().mockResolvedValueOnce(null),
-          search: jest.fn().mockResolvedValueOnce([]),
+          search: jest.fn().mockResolvedValue([]),
           save: jest.fn().mockResolvedValueOnce({ DocumentId: 'newAffiliate' }),
         },
       },
