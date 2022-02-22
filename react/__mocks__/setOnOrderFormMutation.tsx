@@ -6,7 +6,7 @@ export const mocks = [
       query: SET_ON_ORDER_FORM_MUTATION,
       variables: {
         orderFormId: 'mockedOrderFormId',
-        affiliateId: 'validId',
+        slug: 'validId',
       },
     },
     result: jest.fn(() => ({

@@ -24,5 +24,5 @@ export const isAffiliateValid = async (
     throw new Error('There is no affiliate with this slug')
   }
 
-  return affiliateData?.isApproved ?? false
+  return affiliateData?.isApproved
 }

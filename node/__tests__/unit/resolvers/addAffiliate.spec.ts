@@ -5,6 +5,9 @@ describe('addAffiliate mutation', () => {
     const newAffiliateParams = {
       newAffiliate: {
         slug: 'Invalid Slug',
+        email: 'alreadyUsedEmail@email.com',
+        name: 'affiliate name',
+        isApproved: true,
       },
     }
 
@@ -26,21 +29,23 @@ describe('addAffiliate mutation', () => {
     const newAffiliateParams = {
       newAffiliate: {
         slug: 'validSlug',
+        email: 'alreadyUsedEmail@email.com',
+        name: 'affiliate name',
+        isApproved: true,
       },
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValueOnce({ id: 'validSlug' }),
-          search: jest.fn(),
+          search: jest.fn().mockResolvedValue([{ id: 'validSlug' }]),
         },
       },
     } as unknown as Context
 
     return expect(
       addAffiliate(null, newAffiliateParams, mockCtx)
-    ).rejects.toThrow('Affiliate already exists(slug is already in use)')
+    ).rejects.toThrow('Affiliate url is already in use')
   })
 
   it('Should return error if email is already in use', () => {
@@ -48,24 +53,28 @@ describe('addAffiliate mutation', () => {
       newAffiliate: {
         slug: 'validSlug',
         email: 'alreadyUsedEmail@email.com',
+        name: 'affiliate name',
+        isApproved: true,
       },
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValueOnce(null),
-          search: jest.fn().mockResolvedValueOnce([{ id: 'validSlug' }]),
+          search: jest
+            .fn()
+            .mockResolvedValueOnce([])
+            .mockResolvedValueOnce([{ id: 'validSlug' }]),
         },
       },
     } as unknown as Context
 
     return expect(
       addAffiliate(null, newAffiliateParams, mockCtx)
-    ).rejects.toThrow('Affiliate already exists(email is already in use)')
+    ).rejects.toThrow('Affiliate already exists (email is already in use)')
   })
 
-  it('Should add a new affiliate if no errors were found', () => {
+  it('Should add a new affiliate if no errors were found', async () => {
     const newAffiliateParams = {
       newAffiliate: {
         slug: 'validSlug',
@@ -76,7 +85,7 @@ describe('addAffiliate mutation', () => {
     }
 
     const mdFields = {
-      id: 'validSlug',
+      slug: 'validSlug',
       email: 'alreadyUsedEmail@email.com',
       name: 'affiliate name',
       isApproved: true,
@@ -85,15 +94,15 @@ describe('addAffiliate mutation', () => {
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValueOnce(null),
-          search: jest.fn().mockResolvedValueOnce([]),
-          save: jest.fn(),
+          search: jest.fn().mockResolvedValue([]),
+          save: jest.fn().mockResolvedValue({ DocumentId: 'validSlug' }),
+          get: jest.fn(),
         },
       },
     } as unknown as Context
 
-    return addAffiliate(null, newAffiliateParams, mockCtx).then(() => {
-      expect(mockCtx.clients.affiliates.save).toHaveBeenCalledWith(mdFields)
-    })
+    await addAffiliate(null, newAffiliateParams, mockCtx)
+
+    expect(mockCtx.clients.affiliates.save).toHaveBeenCalledWith(mdFields)
   })
 })

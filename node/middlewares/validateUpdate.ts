@@ -13,7 +13,7 @@ export async function validateUpdate(
   } = ctx
 
   const updateAffiliate: AffiliateInput = await json(req)
-  const { id, slug, email } = updateAffiliate // change
+  const { id, slug, email } = updateAffiliate
 
   // First we check if the slug is valid
   if (slug && !isSlugValid(slug)) {

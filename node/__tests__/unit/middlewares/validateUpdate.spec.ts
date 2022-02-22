@@ -1,7 +1,24 @@
+import coBody from 'co-body'
+
 import { validateUpdate } from '../../../middlewares/validateUpdate'
 
 describe('validateUpdate middleware', () => {
   const next = jest.fn()
+
+  jest
+    .spyOn(coBody, 'json')
+    .mockResolvedValueOnce({
+      id: 'lojaa',
+      slug: 'loja a',
+      name: 'Loja A',
+      email: 'loja@email.com',
+    })
+    .mockResolvedValue({
+      id: 'lojaa',
+      slug: 'lojaa',
+      name: 'Loja A',
+      email: 'loja@email.com',
+    })
 
   it('Should return error if slug is invalid', () => {
     const mockCtx = {
@@ -35,12 +52,31 @@ describe('validateUpdate middleware', () => {
     )
   })
 
+  it('Should return error if slug is already in use by another affiliate', () => {
+    const mockCtx = {
+      clients: {
+        affiliates: {
+          get: jest.fn().mockResolvedValueOnce({ id: 'lojaa' }),
+          search: jest.fn().mockResolvedValue([{ id: 'loja22' }]),
+        },
+      },
+      req: {},
+    } as unknown as Context
+
+    return expect(validateUpdate(mockCtx, next)).rejects.toThrow(
+      'URL slug is already in use by another affiliate'
+    )
+  })
+
   it('Should return error if email is already in use by another affiliate', () => {
     const mockCtx = {
       clients: {
         affiliates: {
           get: jest.fn().mockResolvedValueOnce({ id: 'lojaa' }),
-          search: jest.fn().mockResolvedValueOnce([{ id: 'loja22' }]),
+          search: jest
+            .fn()
+            .mockResolvedValueOnce([])
+            .mockResolvedValue([{ id: 'loja22' }]),
         },
       },
       req: {},
@@ -59,7 +95,7 @@ describe('validateUpdate middleware', () => {
       clients: {
         affiliates: {
           get: jest.fn().mockResolvedValueOnce({ id: 'lojaa' }),
-          search: jest.fn().mockResolvedValueOnce([{ id: 'lojaa' }]),
+          search: jest.fn().mockResolvedValue([{ id: 'lojaa' }]),
         },
       },
       req: {},
@@ -67,6 +103,7 @@ describe('validateUpdate middleware', () => {
 
     return validateUpdate(mockCtx, next).then(() => {
       expect(mockCtx.state.affiliate).toStrictEqual({
+        id: 'lojaa',
         slug: 'lojaa',
         name: 'Loja A',
         email: 'loja@email.com',

@@ -41,7 +41,5 @@ export const addAffiliate = async (
 
   const response = await affiliates.save(mdDocument)
 
-  console.info(response)
-
   return affiliates.get(response.DocumentId, ['_all'])
 }

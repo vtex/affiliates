@@ -3,8 +3,9 @@ import { updateAffiliate } from '../../../resolvers/updateAffiliate'
 describe('updateAffiliate resolver', () => {
   it('Should return error if slug is invalid', () => {
     const updateParams = {
-      affiliateId: 'Invalid Slug',
+      affiliateId: 'any',
       updateAffiliate: {
+        slug: 'Invalid Slug',
         name: 'New name',
         email: 'New email',
         isApproved: true,
@@ -22,13 +23,13 @@ describe('updateAffiliate resolver', () => {
     } as unknown as Context
 
     return expect(updateAffiliate(null, updateParams, mockCtx)).rejects.toThrow(
-      'AffiliateId is not valid, must be alphanumeric'
+      'Slug is not valid, must be alphanumeric'
     )
   })
 
   it('Should return error if slug not found', () => {
     const updateParams = {
-      affiliateId: 'SlugNotFound',
+      affiliateId: 'IDNotFound',
       updateAffiliate: {
         name: 'New name',
         email: 'New email',
@@ -51,6 +52,33 @@ describe('updateAffiliate resolver', () => {
     )
   })
 
+  it('Should return error if slug is already in use by another affiliate', () => {
+    const updateParams = {
+      affiliateId: 'validSlug',
+      updateAffiliate: {
+        name: 'New name',
+        email: 'any email',
+        isApproved: true,
+      },
+    }
+
+    const mockCtx = {
+      clients: {
+        affiliates: {
+          get: jest.fn().mockResolvedValueOnce({ id: 'Valid id' }),
+          search: jest
+            .fn()
+            .mockResolvedValueOnce([{ id: 'Valid id2', email: 'Equal slug' }]),
+        },
+      },
+      req: {},
+    } as unknown as Context
+
+    return expect(updateAffiliate(null, updateParams, mockCtx)).rejects.toThrow(
+      'Affiliate url is already in use'
+    )
+  })
+
   it('Should return error if email is already in use by another affiliate', () => {
     const updateParams = {
       affiliateId: 'validSlug',
@@ -64,12 +92,11 @@ describe('updateAffiliate resolver', () => {
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValueOnce({ id: 'Valid slug' }),
+          get: jest.fn().mockResolvedValueOnce({ id: 'Valid id' }),
           search: jest
             .fn()
-            .mockResolvedValueOnce([
-              { id: 'Valid slug2', email: 'Equal email' },
-            ]),
+            .mockResolvedValueOnce([])
+            .mockResolvedValueOnce([{ id: 'Valid id2', email: 'Equal email' }]),
         },
       },
       req: {},
@@ -82,7 +109,7 @@ describe('updateAffiliate resolver', () => {
 
   it('Should have the affiliate inside the context state if no errors were found', () => {
     const updateParams = {
-      affiliateId: 'validSlug',
+      affiliateId: 'validId',
       updateAffiliate: {
         name: 'New name',
         email: 'New email',
@@ -93,8 +120,8 @@ describe('updateAffiliate resolver', () => {
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValueOnce({ id: 'Valid slug' }),
-          search: jest.fn().mockResolvedValueOnce([]),
+          get: jest.fn().mockResolvedValueOnce({ id: 'Valid id' }),
+          search: jest.fn().mockResolvedValue([]),
           update: jest.fn(),
         },
       },
