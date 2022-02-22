@@ -63,7 +63,6 @@ input UpdateAffiliateInput {
   slug: String
   email: String
   refId: String
-  slug: String
   isApproved: Boolean
   storeName: String
   address: AddresInput
@@ -82,7 +81,6 @@ type Affiliate {
   email: String
   phone: String
   refId: String
-  slug: String
   isApproved: Boolean
   address: Address
   document: String
