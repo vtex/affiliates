@@ -59,7 +59,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
           loading={loading}
           onClick={exportAction}
         >
-          {intl.formatMessage(messages.exportTabLabel)}
+          {intl.formatMessage(messages.exportLabel)}
         </ToolbarButton>
         {showTooltipHelper}
       </Toolbar>
