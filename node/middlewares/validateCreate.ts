@@ -1,7 +1,8 @@
 import { json } from 'co-body'
+import type { Affiliates } from 'vtex.affiliates'
 
 import type { AffiliateInput } from '../typings/affiliates'
-import { isSlugValid } from '../utils/shared'
+import { findDocumentsByField, isSlugValid } from '../utils/shared'
 
 export async function validateCreate(
   ctx: Context,
@@ -22,26 +23,24 @@ export async function validateCreate(
 
   // Then we check to see if the slug already exists
 
-  const affiliateInDbBySlug = await affiliates.search(
-    { page: 1, pageSize: 10 },
-    ['_all'],
-    undefined,
-    `slug=${slug}`
+  const affiliatesInDbBySlug = await findDocumentsByField<Affiliates>(
+    affiliates,
+    'slug',
+    slug
   )
 
-  if (affiliateInDbBySlug.length > 0) {
+  if (affiliatesInDbBySlug.length > 0) {
     throw new Error('Affiliate already exists (url slug is already in use)')
   }
 
   // Lastly we check to see if the email already exists
-  const affiliateInDbByEmail = await affiliates.search(
-    { page: 1, pageSize: 10 },
-    ['_all'],
-    undefined,
-    `email=${email}`
+  const affiliatesInDbByEmail = await findDocumentsByField<Affiliates>(
+    affiliates,
+    'email',
+    email
   )
 
-  if (affiliateInDbByEmail.length > 0) {
+  if (affiliatesInDbByEmail.length > 0) {
     throw new Error('Affiliate already exists(email is already in use)')
   }
 

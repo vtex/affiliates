@@ -1,31 +1,26 @@
-import coBody from 'co-body'
-
 import { validateCreate } from '../../../middlewares/validateCreate'
+
+jest.mock('co-body', () => ({
+  json: jest.fn().mockImplementation((req) =>
+    Promise.resolve({
+      slug: req.slug === 'invalid-slug-test' ? 'loja a' : 'lojaa',
+      name: 'Loja A',
+      email: 'loja@email.com',
+    })
+  ),
+}))
 
 describe('validateCreate middleware', () => {
   const next = jest.fn()
 
-  jest
-    .spyOn(coBody, 'json')
-    .mockResolvedValueOnce({
-      slug: 'loja a',
-      name: 'Loja A',
-      email: 'loja@email.com',
-    })
-    .mockResolvedValue({
-      slug: 'lojaa',
-      name: 'Loja A',
-      email: 'loja@email.com',
-    })
-
   it('Should return error if slug is invalid', () => {
     const mockCtx = {
+      req: { slug: 'invalid-slug-test' },
       clients: {
         affiliates: {
           search: jest.fn(),
         },
       },
-      req: {},
     } as unknown as Context
 
     return expect(validateCreate(mockCtx, next)).rejects.toThrow(
