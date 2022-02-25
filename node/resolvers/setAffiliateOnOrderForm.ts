@@ -2,24 +2,35 @@ import { APP_CUSTOM_DATA } from '../utils/constants'
 import { isSlugValid } from '../utils/shared'
 
 type Props = {
-  affiliateId: string
+  slug: string
   orderFormId: string
 }
 
 export const setAffiliateOnOrderForm = async (
   _: unknown,
-  { affiliateId, orderFormId }: Props,
+  { slug, orderFormId }: Props,
   { clients: { affiliates, checkout }, vtex: { logger } }: Context
 ) => {
-  if (!isSlugValid(affiliateId)) {
-    throw new Error('Affiliate ID is not valid')
+  if (!isSlugValid(slug)) {
+    throw new Error('Affiliate slug is not valid')
   }
 
-  const affiliateData = await affiliates.get(affiliateId, ['id', 'isApproved'])
+  const [affiliateData] = await affiliates.search(
+    { page: 1, pageSize: 10 },
+    ['_all'],
+    undefined,
+    `slug=${slug}`
+  )
+
+  if (!affiliateData) {
+    throw new Error('There is no affiliate with this slug')
+  }
 
   if (!affiliateData?.isApproved) {
     throw new Error('Affiliate is not valid')
   }
+
+  const affiliateId = affiliateData.id as string
 
   try {
     return checkout.setSingleCustomData(

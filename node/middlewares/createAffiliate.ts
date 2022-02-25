@@ -20,7 +20,6 @@ export async function createAffiliate(
 
   try {
     const mdDocument = {
-      id: state.affiliate.slug,
       ...state.affiliate,
     }
 

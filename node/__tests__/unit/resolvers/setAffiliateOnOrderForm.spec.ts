@@ -3,7 +3,7 @@ import { setAffiliateOnOrderForm } from '../../../resolvers/setAffiliateOnOrderF
 describe('setAffiliateOnOrderForm resolver', () => {
   it('Should return an error if id is not valid', () => {
     const mockProps = {
-      affiliateId: 'lo ja',
+      slug: 'lo ja',
       orderFormId: '123',
     }
 
@@ -22,21 +22,23 @@ describe('setAffiliateOnOrderForm resolver', () => {
 
     return expect(
       setAffiliateOnOrderForm({}, mockProps, mockCtx)
-    ).rejects.toThrow('Affiliate ID is not valid')
+    ).rejects.toThrow('Affiliate slug is not valid')
   })
 
   it('Should return an error if affiliate is not valid', () => {
     const mockProps = {
-      affiliateId: 'loja',
+      slug: 'loja',
       orderFormId: '123',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValue({
-            isApproved: false,
-          }),
+          search: jest.fn().mockResolvedValue([
+            {
+              isApproved: false,
+            },
+          ]),
         },
       },
       vtex: {
@@ -53,16 +55,18 @@ describe('setAffiliateOnOrderForm resolver', () => {
 
   it('Should update the customData with the affiliateId', () => {
     const mockProps = {
-      affiliateId: 'loja',
+      slug: 'loja',
       orderFormId: '123',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValue({
-            isApproved: true,
-          }),
+          search: jest.fn().mockResolvedValue([
+            {
+              isApproved: true,
+            },
+          ]),
         },
         checkout: {
           setSingleCustomData: jest.fn(),
@@ -82,16 +86,18 @@ describe('setAffiliateOnOrderForm resolver', () => {
 
   it('Should throw an error if setSingleCustomData fails', () => {
     const mockProps = {
-      affiliateId: 'loja',
+      slug: 'loja',
       orderFormId: '123',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValue({
-            isApproved: true,
-          }),
+          search: jest.fn().mockResolvedValue([
+            {
+              isApproved: true,
+            },
+          ]),
         },
         checkout: {
           setSingleCustomData: jest

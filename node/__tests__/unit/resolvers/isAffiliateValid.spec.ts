@@ -1,91 +1,91 @@
 import { isAffiliateValid } from '../../../resolvers/isAffiliateValid'
 
 describe('isAffiliateValid resolver', () => {
-  it('Should return an error if id is not valid', () => {
+  it('Should return an error if slug is not valid', () => {
     const mockProps = {
-      affiliateId: 'lo ja',
+      slug: 'lo ja',
     }
 
     const mockCtx = {
       clients: {
         affiliate: {
-          get: jest.fn(),
+          search: jest.fn(),
         },
       },
     } as unknown as Context
 
     return expect(isAffiliateValid({}, mockProps, mockCtx)).rejects.toThrow(
-      'Affiliate ID is not valid'
+      'Slug is not valid'
     )
   })
 
-  it('Should return true if affiliate exists and it is approved', () => {
+  it('Should return true if affiliate exists and it is approved', async () => {
     const mockProps = {
-      affiliateId: 'loja',
+      slug: 'loja',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest
+          search: jest
             .fn()
-            .mockResolvedValueOnce({ id: 'loja', isApproved: true }),
+            .mockResolvedValueOnce([{ id: 'loja', isApproved: true }]),
         },
       },
     } as unknown as Context
 
-    return isAffiliateValid({}, mockProps, mockCtx).then((data) => {
-      expect(mockCtx.clients.affiliates.get).toHaveBeenCalledWith('loja', [
-        'id',
-        'isApproved',
-      ])
+    await isAffiliateValid({}, mockProps, mockCtx).then((data) => {
+      expect(mockCtx.clients.affiliates.search).toHaveBeenCalledWith(
+        { page: 1, pageSize: 10 },
+        ['_all'],
+        undefined,
+        'slug=loja'
+      )
       expect(data).toStrictEqual(true)
     })
   })
 
-  it('Should return false if affiliate exists and it is not approved', () => {
+  it('Should return false if affiliate exists and it is not approved', async () => {
     const mockProps = {
-      affiliateId: 'loja',
+      slug: 'loja',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest
+          search: jest
             .fn()
-            .mockResolvedValueOnce({ id: 'loja', isApproved: false }),
+            .mockResolvedValueOnce([{ id: 'loja', isApproved: false }]),
         },
       },
     } as unknown as Context
 
-    return isAffiliateValid({}, mockProps, mockCtx).then((data) => {
-      expect(mockCtx.clients.affiliates.get).toHaveBeenCalledWith('loja', [
-        'id',
-        'isApproved',
-      ])
+    await isAffiliateValid({}, mockProps, mockCtx).then((data) => {
+      expect(mockCtx.clients.affiliates.search).toHaveBeenCalledWith(
+        { page: 1, pageSize: 10 },
+        ['_all'],
+        undefined,
+        'slug=loja'
+      )
       expect(data).toStrictEqual(false)
     })
   })
 
-  it('Should return false if affiliate does not exist', () => {
+  it('Should throw error if affiliate does not exist', async () => {
     const mockProps = {
-      affiliateId: 'loja',
+      slug: 'loja',
     }
 
     const mockCtx = {
       clients: {
         affiliates: {
-          get: jest.fn().mockResolvedValueOnce(''),
+          search: jest.fn().mockResolvedValueOnce([]),
         },
       },
     } as unknown as Context
 
-    return isAffiliateValid({}, mockProps, mockCtx).then((data) => {
-      expect(mockCtx.clients.affiliates.get).toHaveBeenCalledWith('loja', [
-        'id',
-        'isApproved',
-      ])
-      expect(data).toStrictEqual(false)
-    })
+    await expect(isAffiliateValid({}, mockProps, mockCtx)).rejects.toThrow(
+      'There is no affiliate with this slug'
+    )
   })
 })

@@ -46,7 +46,7 @@ const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
   if (isAffiliateValid) {
     if (!mutationHasBeenCalled && orderFormId !== DEFAULT_ORDER_FORM_ID) {
       setAffiliateOnOrderForm({
-        variables: { orderFormId, affiliateId: slug },
+        variables: { orderFormId, slug },
       })
     }
 

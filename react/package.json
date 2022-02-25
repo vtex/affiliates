@@ -30,7 +30,7 @@
     "apollo-cache-inmemory": "^1.6.5",
     "graphql": "^14.6.0",
     "typescript": "3.9.7",
-    "vtex.affiliates": "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.35.0+build1645215791/public/@types/vtex.affiliates",
+    "vtex.affiliates": "https://gabiru--sandboxbrdev.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.35.0+build1645537229/public/@types/vtex.affiliates",
     "vtex.affiliates-commission-service": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@0.10.0/public/@types/vtex.affiliates-commission-service",
     "vtex.affiliates-order-form-spy": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy",
     "vtex.breadcrumb": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb",
