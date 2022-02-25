@@ -131,4 +131,7 @@ export const messages = defineMessages({
   addAffiliateTitle: { id: 'admin/add.affiliate.title' },
   addAffiliateErrorMessage: { id: 'admin/add.affiliate.error.message' },
   exportLabel: { id: 'admin/export.label' },
+  importFileSubtitle1: { id: 'admin/import.file.subtitle.1.text' },
+  importFileSubtitleModel: { id: 'admin/import.file.subtitle.model.text' },
+  importFileSubtitle2: { id: 'admin/import.file.subtitle.2.text' },
 })
