@@ -1,37 +1,35 @@
 import type { Affiliates, MutationAddAffiliateArgs } from 'vtex.affiliates'
 
-import { isSlugValid } from '../utils/shared'
+import { findDocumentsByField, isSlugValid } from '../utils/shared'
 
 export const addAffiliate = async (
   _: unknown,
   { newAffiliate }: MutationAddAffiliateArgs,
   { clients: { affiliates } }: Context
 ) => {
-  const { slug, email } = newAffiliate // change
+  const { slug, email } = newAffiliate
 
   if (!isSlugValid(slug)) {
     throw new Error('Slug is not valid, must be alphanumeric')
   }
 
-  const affiliateInDbBySlug = await affiliates.search(
-    { page: 1, pageSize: 10 },
-    ['_all'],
-    undefined,
-    `slug=${slug}`
+  const affiliatesInDbBySlug = await findDocumentsByField<Affiliates>(
+    affiliates,
+    'slug',
+    slug
   )
 
-  if (affiliateInDbBySlug.length > 0) {
+  if (affiliatesInDbBySlug.length > 0) {
     throw new Error('Affiliate url is already in use')
   }
 
-  const affiliateInDbByEmail = await affiliates.search(
-    { page: 1, pageSize: 10 },
-    ['_all'],
-    undefined,
-    `email=${email}`
+  const affiliatesInDbByEmail = await findDocumentsByField<Affiliates>(
+    affiliates,
+    'email',
+    email
   )
 
-  if (affiliateInDbByEmail.length > 0) {
+  if (affiliatesInDbByEmail.length > 0) {
     throw new Error('Affiliate already exists (email is already in use)')
   }
 

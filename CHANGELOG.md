@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.37.1] - 2022-02-25
+
+### Changed
+
+- Update messages
+- Fix select UI
+
+## [0.37.0] - 2022-02-25
+
 ### Added
 
 - slug property to the Affiliates masterdata schema

@@ -1,6 +1,6 @@
 import type { Affiliates, MutationUpdateAffiliateArgs } from 'vtex.affiliates'
 
-import { isSlugValid } from '../utils/shared'
+import { findDocumentsByField, isSlugValid } from '../utils/shared'
 
 export const updateAffiliate = async (
   _: unknown,
@@ -24,30 +24,28 @@ export const updateAffiliate = async (
     )
   }
 
-  const affiliateInDbBySlug = await affiliates.search(
-    { page: 1, pageSize: 10 },
-    ['_all'],
-    undefined,
-    `slug=${slug}`
+  const affiliatesInDbBySlug = await findDocumentsByField<Affiliates>(
+    affiliates,
+    'slug',
+    slug ?? ''
   )
 
   if (
-    affiliateInDbBySlug.length > 0 &&
-    affiliateInDbBySlug[0].id !== affiliateId
+    affiliatesInDbBySlug.length > 0 &&
+    affiliatesInDbBySlug[0].id !== affiliateId
   ) {
     throw new Error('Affiliate url is already in use')
   }
 
-  const affiliateInDbByEmail = await affiliates.search(
-    { page: 1, pageSize: 10 },
-    ['_all'],
-    undefined,
-    `email=${email}`
+  const affiliatesInDbByEmail = await findDocumentsByField<Affiliates>(
+    affiliates,
+    'email',
+    email ?? ''
   )
 
   if (
-    affiliateInDbByEmail.length > 0 &&
-    affiliateInDbByEmail[0].id !== affiliateId
+    affiliatesInDbByEmail.length > 0 &&
+    affiliatesInDbByEmail[0].id !== affiliateId
   ) {
     throw new Error('Email is already in use by another affiliate')
   }
