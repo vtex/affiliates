@@ -42,7 +42,7 @@ const AffiliatesTable: FC = () => {
 
   const view = useDataViewState()
 
-  const [isApprovedFilter, setIsApprovedFilter] = useState<string>()
+  const [isApprovedFilter, setIsApprovedFilter] = useState<string>('any')
 
   const pagination = usePaginationState({
     pageSize: PAGE_SIZE,
@@ -99,7 +99,10 @@ const AffiliatesTable: FC = () => {
       pageSize: PAGE_SIZE,
       filter: {
         searchTerm: searchState.debouncedValue ?? null,
-        isApproved: isApprovedFilter && isApprovedFilter === 'true',
+        isApproved:
+          isApprovedFilter === 'any'
+            ? undefined
+            : isApprovedFilter === 'true' ?? false,
       },
       sorting: sortState?.by
         ? {
@@ -182,15 +185,12 @@ const AffiliatesTable: FC = () => {
           )}
         />
         <Select
+          csx={{ height: 40 }}
           label={intl.formatMessage(
             messages.affiliatesTableIsApprovedColumnLabel
           )}
           value={isApprovedFilter}
-          onChange={(e) =>
-            setIsApprovedFilter(
-              e.target.value === 'any' ? undefined : e.target.value
-            )
-          }
+          onChange={(e) => setIsApprovedFilter(e.target.value)}
         >
           <option value="any">
             {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}

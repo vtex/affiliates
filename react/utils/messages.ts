@@ -130,4 +130,5 @@ export const messages = defineMessages({
   formInvalidNumberField: { id: 'admin/form.validation-number' },
   addAffiliateTitle: { id: 'admin/add.affiliate.title' },
   addAffiliateErrorMessage: { id: 'admin/add.affiliate.error.message' },
+  exportLabel: { id: 'admin/export.label' },
 })
