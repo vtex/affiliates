@@ -14,6 +14,7 @@
     "react-dom": "^16.12.0",
     "react-intl": "^5.24.3",
     "uuid": "^8.3.2",
+    "xlsx": "^0.18.2",
     "yup": "^0.32.11"
   },
   "resolutions": {
