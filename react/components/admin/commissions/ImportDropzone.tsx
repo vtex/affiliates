@@ -1,9 +1,10 @@
 import type { FC } from 'react'
-import React, { useState, useMemo } from 'react'
+import React, { useCallback, useState, useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { Dropzone } from 'vtex.styleguide'
 import { Text, Box, Button, Flex, useToast } from '@vtex/admin-ui'
 import { useMutation } from 'react-apollo'
+import * as XLSX from 'xlsx'
 
 import { messages } from '../../../utils/messages'
 import IMPORT_COMMISSIONS from '../../../graphql/importCommissionsBySKU.graphql'
@@ -51,6 +52,18 @@ const ImportDropzone: FC = () => {
     })
   }
 
+  const handleTemplateDownload = useCallback(() => {
+    const header = ['id', 'refId', 'commission']
+
+    const ws = XLSX.utils.json_to_sheet([], { header })
+    const wb = XLSX.utils.book_new()
+
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
+    const exportFileName = `commissions-template.xlsx`
+
+    XLSX.writeFile(wb, exportFileName)
+  }, [])
+
   return (
     <>
       <Box csx={{ marginBottom: '8px' }}>
@@ -58,8 +71,21 @@ const ImportDropzone: FC = () => {
           {intl.formatMessage(messages.importFileSectionTitle)}
         </Text>
       </Box>
+      <Box csx={{ marginBottom: '8px' }}>
+        <Text>{intl.formatMessage(messages.importFileSubtitle1)}</Text>
+        <Text
+          as="a"
+          variant="action1"
+          tone="info"
+          csx={{ cursor: 'pointer' }}
+          onClick={handleTemplateDownload}
+        >
+          {` ${intl.formatMessage(messages.importFileSubtitleModel)} `}
+        </Text>
+        <Text>{intl.formatMessage(messages.importFileSubtitle2)}</Text>
+      </Box>
       <Dropzone
-        accept=".csv"
+        accept=".csv,.xlsx"
         onDropAccepted={handleFile}
         onFileReset={handleReset}
       >
