@@ -12,10 +12,12 @@ import {
   usePaginationState,
   DataView,
   useToast,
+  IconGear,
+  IconPencil,
 } from '@vtex/admin-ui'
 import type { DataGridColumn } from '@vtex/admin-ui'
 import type { FC } from 'react'
-import React, { useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { useQuery, useMutation } from 'react-apollo'
 import { useIntl } from 'react-intl'
 import type {
@@ -36,6 +38,7 @@ import type { CommissionsQueryReturnType } from '../../../typings/tables'
 import EditCommissionModal from './EditCommissionModal'
 import ExportTableDataControl from '../shared/ExportTableDataControl'
 import { setSortOrder } from '../../../utils/shared'
+import TableActions from '../shared/TableActions'
 
 type TableColumns = {
   id: string
@@ -171,6 +174,22 @@ const CommissionsTable: FC = () => {
     }
   )
 
+  const tableActions = useCallback(
+    (item: TableColumns) => {
+      return [
+        {
+          label: intl.formatMessage(messages.editLabel),
+          icon: <IconPencil />,
+          handleOnClick: () => {
+            setSelectedRow(item)
+            modal.setVisible(true)
+          },
+        },
+      ]
+    },
+    [intl, setSelectedRow, modal]
+  )
+
   const columns: Array<DataGridColumn<TableColumns>> = [
     {
       id: 'skuId',
@@ -195,19 +214,28 @@ const CommissionsTable: FC = () => {
       },
       sortable: true,
     },
-  ]
+    {
+      id: 'actions',
+      header: () => <IconGear />,
+      width: 44,
+      resolver: {
+        type: 'root',
+        render: function percentageRender({ item, context }) {
+          if (context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
 
-  const handleRowClick = (item: TableColumns) => {
-    setSelectedRow(item)
-    modal.setVisible(true)
-  }
+          return <TableActions actions={tableActions(item)} />
+        },
+      },
+    },
+  ]
 
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 3,
     items: data ? data.commissionsBySKU.data : [],
     view,
-    onRowClick: handleRowClick,
   })
 
   // Controls the loading state of the table
