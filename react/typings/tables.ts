@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 type Pagination = {
   page: number
   pageSize: number
@@ -49,4 +51,10 @@ export type CommissionsQueryReturnType = {
     data: [CommissionBySKU]
     pagination: Pagination
   }
+}
+
+export type Action = {
+  label: string
+  icon: ReactNode
+  handleOnClick: (item: unknown) => void
 }
