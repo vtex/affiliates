@@ -61,7 +61,7 @@ const AffiliatesTable: FC = () => {
     (item: TableColumns) => {
       return [
         {
-          label: 'Detalhes',
+          label: intl.formatMessage(messages.detailsLabel),
           icon: VIEW_DETAILS_ICON,
           handleOnClick: () => {
             navigate({

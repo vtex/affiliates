@@ -134,4 +134,5 @@ export const messages = defineMessages({
   importFileSubtitle1: { id: 'admin/import.file.subtitle.1.text' },
   importFileSubtitleModel: { id: 'admin/import.file.subtitle.model.text' },
   importFileSubtitle2: { id: 'admin/import.file.subtitle.2.text' },
+  detailsLabel: { id: 'admin/details.label' },
 })
