@@ -1,5 +1,6 @@
 import type { DataGridColumn } from '@vtex/admin-ui'
 import {
+  Tag,
   IconGear,
   Skeleton,
   Select,
@@ -17,7 +18,7 @@ import {
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
 import React, { useCallback, useEffect, useState } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { useIntl } from 'react-intl'
 import { useQuery } from 'react-apollo'
 import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
@@ -118,10 +119,18 @@ const AffiliatesTable: FC = () => {
         type: 'plain',
         render: ({ data }) =>
           data ? (
-            <FormattedMessage {...messages.affiliatesTableIsApprovedTextTrue} />
+            <Tag
+              label={intl.formatMessage(
+                messages.affiliatesTableIsApprovedTextTrue
+              )}
+              palette="green"
+            />
           ) : (
-            <FormattedMessage
-              {...messages.affiliatesTableIsApprovedTextFalse}
+            <Tag
+              label={intl.formatMessage(
+                messages.affiliatesTableIsApprovedTextFalse
+              )}
+              palette="gray"
             />
           ),
       },
