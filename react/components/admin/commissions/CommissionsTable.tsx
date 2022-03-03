@@ -13,7 +13,6 @@ import {
   DataView,
   useToast,
   IconGear,
-  IconPencil,
 } from '@vtex/admin-ui'
 import type { DataGridColumn } from '@vtex/admin-ui'
 import type { FC } from 'react'
@@ -39,6 +38,7 @@ import EditCommissionModal from './EditCommissionModal'
 import ExportTableDataControl from '../shared/ExportTableDataControl'
 import { setSortOrder } from '../../../utils/shared'
 import TableActions from '../shared/TableActions'
+import { EDIT_ICON } from '../../../utils/icons'
 
 type TableColumns = {
   id: string
@@ -179,7 +179,7 @@ const CommissionsTable: FC = () => {
       return [
         {
           label: intl.formatMessage(messages.editLabel),
-          icon: <IconPencil />,
+          icon: EDIT_ICON,
           handleOnClick: () => {
             setSelectedRow(item)
             modal.setVisible(true)
