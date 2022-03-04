@@ -1,5 +1,6 @@
 import type { DataGridColumn } from '@vtex/admin-ui'
 import {
+  Select,
   useSearchState,
   Search,
   DataGrid,
@@ -54,6 +55,7 @@ const AffiliateOrdersTable: FC = () => {
   minInitialDate.setMonth(minInitialDate.getMonth() - 3)
   const [startDate, setStartDate] = useState(minInitialDate)
   const [endDate, setEndDate] = useState(new Date())
+  const [statusFilter, setStatusFilter] = useState<string>('any')
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
   const {
@@ -145,6 +147,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
+        status: statusFilter === 'any' ? null : statusFilter,
       },
       sorting: sortState?.by
         ? {
@@ -190,6 +193,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
+        status: statusFilter === 'any' ? null : statusFilter,
       },
       sorting: sortState?.by
         ? {
@@ -258,6 +262,28 @@ const AffiliateOrdersTable: FC = () => {
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
+        <Select
+          csx={{ height: 40 }}
+          label={intl.formatMessage(messages.orderStatusLabel)}
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="any">
+            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
+          </option>
+          <option value="order-created">
+            {intl.formatMessage(messages.orderStatusCreatedLabel)}
+          </option>
+          <option value="payment-approved">
+            {intl.formatMessage(messages.orderStatusPaidLabel)}
+          </option>
+          <option value="invoiced">
+            {intl.formatMessage(messages.orderStatusInvoicedLabel)}
+          </option>
+          <option value="cancel">
+            {intl.formatMessage(messages.orderStatusCancelLabel)}
+          </option>
+        </Select>
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
