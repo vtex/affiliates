@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add actions column to commissions table
+
+### Changed
+
+- Remove row click action on commissions table
+
 ## [0.38.1] - 2022-03-04
 
 ### Changed
