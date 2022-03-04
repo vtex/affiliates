@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Add actions column to commissions table
+- Add actions column to affiliates table
 
 ### Changed
 
 - Remove row click action on commissions table
+- Remove row click action on affiliates table
 
 ## [0.38.1] - 2022-03-04
 
