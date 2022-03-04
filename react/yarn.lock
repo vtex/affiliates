@@ -5691,9 +5691,9 @@ verror@1.10.0:
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.0.1/public/@types/vtex.affiliates-order-form-spy#ced0777e098c53a7dbdb2e1e03c0a03b78bf5edf"
 
-"vtex.affiliates@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.36.0+build1645799451/public/@types/vtex.affiliates":
-  version "0.36.0"
-  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.36.0+build1645799451/public/@types/vtex.affiliates#b537288672c4abdaf9f03e133cecffa3b8a11e9d"
+"vtex.affiliates@https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.38.0+build1646401691/public/@types/vtex.affiliates":
+  version "0.38.0"
+  resolved "https://affiliates--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.38.0+build1646401691/public/@types/vtex.affiliates#523b98f11a7032f330cb4527ffde06cc2186ae47"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
@@ -5727,9 +5727,9 @@ verror@1.10.0:
   version "3.113.4"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.113.4/public/@types/vtex.search-result#495c368fddd230ffb623903b73f08007aeeb440b"
 
-"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.156.0/public/@types/vtex.store-components":
-  version "3.156.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.156.0/public/@types/vtex.store-components#30c0e1f7ca3b6b0f4f33dce2ad997f7753806e6c"
+"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.156.1/public/@types/vtex.store-components":
+  version "3.156.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.156.1/public/@types/vtex.store-components#01ca37eeb2dcff5af69919bd7677098e5bb63964"
 
 "vtex.store-icons@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons":
   version "0.18.0"
