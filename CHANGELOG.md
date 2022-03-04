@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.38.1] - 2022-03-04
+
 ### Changed
 
 - Add affiliate button position to page header
