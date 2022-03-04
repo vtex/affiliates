@@ -35,6 +35,7 @@ import EXPORT_ORDERS from '../../../graphql/exportAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
 import { setSortOrder } from '../../../utils/shared'
 import ExportTableDataControl from '../shared/ExportTableDataControl'
+import StatusTableCell from './StatusTableCell'
 
 type TableColumns = {
   id: string
@@ -91,6 +92,10 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
+      resolver: {
+        type: 'root',
+        render: StatusTableCell,
+      },
     },
     {
       id: 'orderDate',
