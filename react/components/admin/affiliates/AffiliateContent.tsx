@@ -1,11 +1,7 @@
 import {
-  Toolbar,
-  ToolbarButton,
   DataViewControls,
   DataView,
   useDataViewState,
-  useToolbarState,
-  FlexSpacer,
   Toggle,
   Text,
   useModalState,
@@ -31,7 +27,6 @@ type AffiliateQueryReturn = {
 
 const AffiliateContent: FC = () => {
   const {
-    navigate,
     route: {
       params: { affiliateId },
     },
@@ -41,7 +36,6 @@ const AffiliateContent: FC = () => {
 
   const modal = useModalState()
   const view = useDataViewState()
-  const toolbar = useToolbarState()
 
   const { data, loading } = useQuery<
     AffiliateQueryReturn,
@@ -70,15 +64,6 @@ const AffiliateContent: FC = () => {
     modal.setVisible(true)
   }, [modal])
 
-  const onEditClick = useCallback(() => {
-    navigate({
-      page: 'admin.app.affiliates.affiliate-edit',
-      params: {
-        affiliateId: data?.getAffiliate.id,
-      },
-    })
-  }, [navigate, data])
-
   const showActions = useCallback(() => {
     if (loading) {
       return <LoadingBox csx={{ width: 'full', height: 72 }} />
@@ -93,16 +78,9 @@ const AffiliateContent: FC = () => {
           checked={data?.getAffiliate.isApproved ?? false}
           onChange={onToggleClick}
         />
-        <FlexSpacer />
-        <Toolbar state={toolbar}>
-          <ToolbarButton
-            variant="adaptative-dark"
-            onClick={onEditClick}
-          >{`${intl.formatMessage(messages.editLabel)}`}</ToolbarButton>
-        </Toolbar>
       </>
     )
-  }, [loading, intl, toolbar, data, onToggleClick, onEditClick])
+  }, [loading, intl, data, onToggleClick])
 
   return (
     <DataView state={view}>

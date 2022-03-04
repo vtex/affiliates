@@ -1,12 +1,11 @@
 import {
   Button,
   createSystem,
-  Flex,
   Page,
   PageContent,
   PageHeader,
   PageTitle,
-  FlexSpacer,
+  PageActions,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useCallback } from 'react'
@@ -37,14 +36,13 @@ const AffiliateManagementPage: FC = () => {
           <PageTitle>
             {intl.formatMessage(messages.affiliatesPageTitle)}
           </PageTitle>
-        </PageHeader>
-        <PageContent>
-          <Flex csx={{ marginTop: 16 }}>
-            <FlexSpacer />
+          <PageActions>
             <Button onClick={handleAddAffiliate}>
               {intl.formatMessage(messages.addAffiliateTitle)}
             </Button>
-          </Flex>
+          </PageActions>
+        </PageHeader>
+        <PageContent>
           <AffiliatesTable />
         </PageContent>
       </Page>
