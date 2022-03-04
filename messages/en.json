@@ -95,5 +95,6 @@
   "admin/form.validation-email": "Invalid Email.",
   "admin/form.validation-number": "Input must be a number.",
   "admin/add.affiliate.title": "Add affiliate",
-  "admin/add.affiliate.error.message": "An error occurred while adding the affiliate"
+  "admin/add.affiliate.error.message": "An error occurred while adding the affiliate",
+  "admin/details.label": "Details"
 }

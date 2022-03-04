@@ -1,5 +1,8 @@
 import type { DataGridColumn } from '@vtex/admin-ui'
 import {
+  Tag,
+  IconGear,
+  Skeleton,
   Select,
   useSearchState,
   Search,
@@ -14,8 +17,8 @@ import {
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
-import React, { useEffect, useState } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useIntl } from 'react-intl'
 import { useQuery } from 'react-apollo'
 import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
@@ -23,6 +26,8 @@ import { PAGE_SIZE } from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
 import GET_AFFILIATES from '../../../graphql/getAffiliates.graphql'
 import { setSortOrder } from '../../../utils/shared'
+import TableActions from '../shared/TableActions'
+import { EDIT_ICON, VIEW_DETAILS_ICON } from '../../../utils/icons'
 
 type TableColumns = {
   affiliateId: string
@@ -51,6 +56,38 @@ const AffiliatesTable: FC = () => {
   const searchState = useSearchState({
     timeoutMs: 500,
   })
+
+  const tableActions = useCallback(
+    (item: TableColumns) => {
+      return [
+        {
+          label: intl.formatMessage(messages.detailsLabel),
+          icon: VIEW_DETAILS_ICON,
+          handleOnClick: () => {
+            navigate({
+              page: 'admin.app.affiliates.affiliate-detail',
+              params: {
+                affiliateId: item.affiliateId,
+              },
+            })
+          },
+        },
+        {
+          label: intl.formatMessage(messages.editLabel),
+          icon: EDIT_ICON,
+          handleOnClick: () => {
+            navigate({
+              page: 'admin.app.affiliates.affiliate-edit',
+              params: {
+                affiliateId: item.affiliateId,
+              },
+            })
+          },
+        },
+      ]
+    },
+    [intl, navigate]
+  )
 
   const columns: Array<DataGridColumn<TableColumns>> = [
     {
@@ -82,14 +119,37 @@ const AffiliatesTable: FC = () => {
         type: 'plain',
         render: ({ data }) =>
           data ? (
-            <FormattedMessage {...messages.affiliatesTableIsApprovedTextTrue} />
+            <Tag
+              label={intl.formatMessage(
+                messages.affiliatesTableIsApprovedTextTrue
+              )}
+              palette="green"
+            />
           ) : (
-            <FormattedMessage
-              {...messages.affiliatesTableIsApprovedTextFalse}
+            <Tag
+              label={intl.formatMessage(
+                messages.affiliatesTableIsApprovedTextFalse
+              )}
+              palette="gray"
             />
           ),
       },
       sortable: true,
+    },
+    {
+      id: 'actions',
+      header: () => <IconGear />,
+      width: 44,
+      resolver: {
+        type: 'root',
+        render: function percentageRender({ item, context }) {
+          if (context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
+
+          return <TableActions actions={tableActions(item)} />
+        },
+      },
     },
   ]
 
@@ -138,21 +198,11 @@ const AffiliatesTable: FC = () => {
     },
   })
 
-  const handleRowClick = (row: TableColumns) => {
-    navigate({
-      page: 'admin.app.affiliates.affiliate-detail',
-      params: {
-        affiliateId: row.affiliateId,
-      },
-    })
-  }
-
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.getAffiliates.data : [],
     view,
-    onRowClick: handleRowClick,
   })
 
   // Controls the loading state of the table

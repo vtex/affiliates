@@ -95,5 +95,6 @@
   "admin/form.validation-email": "E-mail inválido.",
   "admin/form.validation-number": "O campo aceita apenas números.",
   "admin/add.affiliate.title": "Adicionar afiliado",
-  "admin/add.affiliate.error.message": "Ocorreu um erro ao adicionar o afiliado"
+  "admin/add.affiliate.error.message": "Ocorreu um erro ao adicionar o afiliado",
+  "admin/details.label": "Detalhes"
 }
