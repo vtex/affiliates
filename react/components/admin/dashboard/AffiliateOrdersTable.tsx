@@ -358,7 +358,7 @@ const AffiliateOrdersTable: FC = () => {
           )}
         />
         <Select
-          csx={{ height: 40, width: 155 }}
+          csx={{ height: 40, width: 185 }}
           label={intl.formatMessage(messages.orderStatusLabel)}
           value={statusFilter}
           onChange={handleSelectChange}
