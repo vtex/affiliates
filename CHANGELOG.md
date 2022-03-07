@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Status filter to the affiliates orders table
+- Actions to the affiliates orders table
+
+### Changed
+
+- Change status cell UI to be more user friendly
+- Remove row click on affiliates orders table
+
 ## [0.39.1] - 2022-03-04
 
 ## [0.39.0] - 2022-03-04

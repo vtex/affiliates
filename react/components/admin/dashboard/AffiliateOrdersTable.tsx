@@ -1,5 +1,6 @@
 import type { DataGridColumn } from '@vtex/admin-ui'
 import {
+  Select,
   useSearchState,
   Search,
   DataGrid,
@@ -11,10 +12,12 @@ import {
   usePaginationState,
   DataView,
   useToast,
+  IconGear,
+  Skeleton,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
 import { useMutation, useQuery } from 'react-apollo'
 import type {
@@ -34,6 +37,9 @@ import EXPORT_ORDERS from '../../../graphql/exportAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
 import { setSortOrder } from '../../../utils/shared'
 import ExportTableDataControl from '../shared/ExportTableDataControl'
+import StatusTableCell from './StatusTableCell'
+import TableActions from '../shared/TableActions'
+import { VIEW_DETAILS_ICON } from '../../../utils/icons'
 
 type TableColumns = {
   id: string
@@ -54,6 +60,7 @@ const AffiliateOrdersTable: FC = () => {
   minInitialDate.setMonth(minInitialDate.getMonth() - 3)
   const [startDate, setStartDate] = useState(minInitialDate)
   const [endDate, setEndDate] = useState(new Date())
+  const [statusFilter, setStatusFilter] = useState<string>('any')
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
   const {
@@ -70,6 +77,26 @@ const AffiliateOrdersTable: FC = () => {
   const searchState = useSearchState({
     timeoutMs: 500,
   })
+
+  const tableActions = useCallback(
+    (item: TableColumns) => {
+      return [
+        {
+          label: intl.formatMessage(messages.detailsLabel),
+          icon: VIEW_DETAILS_ICON,
+          handleOnClick: () => {
+            navigate({
+              page: 'admin.app.affiliates.order',
+              params: {
+                orderId: item.orderId,
+              },
+            })
+          },
+        },
+      ]
+    },
+    [intl, navigate]
+  )
 
   const columns: Array<DataGridColumn<TableColumns>> = [
     {
@@ -89,6 +116,10 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
+      resolver: {
+        type: 'root',
+        render: StatusTableCell,
+      },
     },
     {
       id: 'orderDate',
@@ -130,6 +161,21 @@ const AffiliateOrdersTable: FC = () => {
       },
       sortable: true,
     },
+    {
+      id: 'actions',
+      header: () => <IconGear />,
+      width: 44,
+      resolver: {
+        type: 'root',
+        render: function actionsRender({ item, context }) {
+          if (context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
+
+          return <TableActions actions={tableActions(item)} />
+        },
+      },
+    },
   ]
 
   const { data, loading } = useQuery<
@@ -145,6 +191,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
+        status: statusFilter === 'any' ? null : statusFilter,
       },
       sorting: sortState?.by
         ? {
@@ -190,6 +237,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
+        status: statusFilter === 'any' ? null : statusFilter,
       },
       sorting: sortState?.by
         ? {
@@ -212,21 +260,11 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
-  const handleRowClick = (row: TableColumns) => {
-    navigate({
-      page: 'admin.app.affiliates.order',
-      params: {
-        orderId: row.orderId,
-      },
-    })
-  }
-
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.affiliateOrders.data : [],
     view,
-    onRowClick: handleRowClick,
   })
 
   // Controls the loading state of the table
@@ -258,6 +296,28 @@ const AffiliateOrdersTable: FC = () => {
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
+        <Select
+          csx={{ height: 40 }}
+          label={intl.formatMessage(messages.orderStatusLabel)}
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="any">
+            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
+          </option>
+          <option value="order-created">
+            {intl.formatMessage(messages.orderStatusCreatedLabel)}
+          </option>
+          <option value="payment-approved">
+            {intl.formatMessage(messages.orderStatusPaidLabel)}
+          </option>
+          <option value="invoiced">
+            {intl.formatMessage(messages.orderStatusInvoicedLabel)}
+          </option>
+          <option value="cancel">
+            {intl.formatMessage(messages.orderStatusCancelLabel)}
+          </option>
+        </Select>
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
