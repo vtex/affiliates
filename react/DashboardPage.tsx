@@ -7,6 +7,7 @@ import {
   PageContent,
   createSystem,
   ToastProvider,
+  QueryStateProvider,
 } from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
@@ -30,7 +31,9 @@ const DashboardPage: FC = () => {
             </PageTitle>
           </PageHeader>
           <PageContent>
-            <AffiliateOrdersTable />
+            <QueryStateProvider>
+              <AffiliateOrdersTable />
+            </QueryStateProvider>
           </PageContent>
         </Page>
       </ToastProvider>
