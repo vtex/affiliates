@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.42.0] - 2022-03-08
+
 ### Added
 
 - Button to affiliate orders in the affiliate details page
