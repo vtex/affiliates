@@ -1,0 +1,9 @@
+query getLastImportInfo {
+  lastImportedCommissionFileInfo
+    @context(provider: "vtex.affiliates-commission-service") {
+    fileId
+    filename
+    uploadDate
+    uploadedBy
+  }
+}
