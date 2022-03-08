@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Last imported commission file information and download link
+
 ## [0.39.1] - 2022-03-04
 
 ## [0.39.0] - 2022-03-04
