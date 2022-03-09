@@ -24,5 +24,10 @@ query getAffiliatesOrders(
       pageSize
       total
     }
+    totalizers(filter: $filter) {
+      total
+      totalCommissionSum
+      totalOrderSum
+    }
   }
 }
