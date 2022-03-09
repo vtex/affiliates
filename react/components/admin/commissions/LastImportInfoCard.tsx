@@ -1,22 +1,16 @@
-import {
-  Box,
-  Button,
-  Card,
-  IconArrowLineDown,
-  Label,
-  Tooltip,
-} from '@vtex/admin-ui'
+import { Box, Button, IconArrowLineDown, Text, Tooltip } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useMemo, useCallback } from 'react'
 import { useQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
+import { useRuntime } from 'vtex.render-runtime/react/components/RenderContext'
 
 import GET_LAST_IMPORTED_COMMISSION_FILE_INFO from '../../../graphql/getLastImportInfo.graphql'
 import { messages } from '../../../utils/messages'
 import IconHelp from '../shared/IconHelp'
 
 interface LastImportInfo {
-  lastImportedCommissionFileInfo: {
+  lastImportedCommissionFileInfo?: {
     fileId: string
     filename: string
     uploadDate: string
@@ -27,17 +21,19 @@ interface LastImportInfo {
 export const LastImportInfoCard: FC = () => {
   const intl = useIntl()
 
-  const { data } = useQuery<LastImportInfo>(
+  const { account, workspace } = useRuntime()
+
+  const { data, loading } = useQuery<LastImportInfo>(
     GET_LAST_IMPORTED_COMMISSION_FILE_INFO
   )
 
   const tooltipLabel = useMemo(
     () =>
-      data &&
+      data?.lastImportedCommissionFileInfo &&
       intl.formatMessage(messages.commissionLastImportFilenameText) +
         data.lastImportedCommissionFileInfo.filename +
         intl.formatMessage(messages.commissionLastImportUploadDateText) +
-        data.lastImportedCommissionFileInfo.uploadDate +
+        intl.formatDate(data.lastImportedCommissionFileInfo.uploadDate) +
         intl.formatMessage(messages.commissionLastImportUploadedByText) +
         data.lastImportedCommissionFileInfo.uploadedBy,
     [data, intl]
@@ -45,33 +41,32 @@ export const LastImportInfoCard: FC = () => {
 
   const downloadLastImport = useCallback(() => {
     window.open(
-      `https://gabiru--sandboxbrdev.myvtex.com/_v/commissionLastImport/${data?.lastImportedCommissionFileInfo.fileId}`,
+      `https://${workspace}--${account}.myvtex.com/_v/commissionLastImport/${data?.lastImportedCommissionFileInfo?.fileId}`,
       'blank'
     )
-  }, [data])
+  }, [account, data?.lastImportedCommissionFileInfo?.fileId, workspace])
 
   return (
-    <>
-      {data && (
-        <Card>
-          <Label csx={{ display: 'flex', padding: 3 }}>
-            {intl.formatMessage(messages.commissionLastImportHeading)}
-            <Tooltip label={tooltipLabel}>
-              <Box csx={{ paddingLeft: 1 }}>
-                <IconHelp />
-              </Box>
-            </Tooltip>
-          </Label>
-          <Button
-            variant="tertiary"
-            icon={<IconArrowLineDown />}
-            onClick={downloadLastImport}
-          >
-            {data.lastImportedCommissionFileInfo.filename}
-          </Button>
-        </Card>
-      )}
-    </>
+    <Box>
+      <Text variant="title2" csx={{ display: 'flex', padding: 3 }}>
+        {intl.formatMessage(messages.commissionLastImportHeading)}
+        {!loading && (
+          <Tooltip label={tooltipLabel}>
+            <Box csx={{ paddingLeft: 1 }}>
+              <IconHelp />
+            </Box>
+          </Tooltip>
+        )}
+      </Text>
+      <Button
+        variant="tertiary"
+        icon={<IconArrowLineDown />}
+        onClick={downloadLastImport}
+        loading={loading}
+      >
+        {data?.lastImportedCommissionFileInfo?.filename}
+      </Button>
+    </Box>
   )
 }
 
