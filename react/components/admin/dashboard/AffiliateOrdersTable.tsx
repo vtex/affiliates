@@ -1,6 +1,7 @@
 import type { DataGridColumn } from '@vtex/admin-ui'
 import {
-  useSearchState,
+  Select,
+  useQuerySearchState,
   Search,
   DataGrid,
   DataViewControls,
@@ -11,10 +12,12 @@ import {
   usePaginationState,
   DataView,
   useToast,
+  IconGear,
+  Skeleton,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
-import React, { useEffect, useState } from 'react'
+import React, { useRef, useCallback, useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
 import { useMutation, useQuery } from 'react-apollo'
 import type {
@@ -34,6 +37,9 @@ import EXPORT_ORDERS from '../../../graphql/exportAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
 import { setSortOrder } from '../../../utils/shared'
 import ExportTableDataControl from '../shared/ExportTableDataControl'
+import StatusTableCell from './StatusTableCell'
+import TableActions from '../shared/TableActions'
+import { VIEW_DETAILS_ICON } from '../../../utils/icons'
 
 type TableColumns = {
   id: string
@@ -48,28 +54,64 @@ type TableColumns = {
 const AffiliateOrdersTable: FC = () => {
   const intl = useIntl()
   const showToast = useToast()
-
-  const minInitialDate = new Date()
-
-  minInitialDate.setMonth(minInitialDate.getMonth() - 3)
-  const [startDate, setStartDate] = useState(minInitialDate)
-  const [endDate, setEndDate] = useState(new Date())
-  // We need to do this because of a circular dependency
-  const [sortState, setSortState] = useState<UseSortReturn>()
   const {
     navigate,
     culture: { locale, currency },
+    query,
+    setQuery,
   } = useRuntime()
 
+  const minInitialDate = new Date()
+
+  // We make checks to see if the user passed a querystring if so we need to initialize our values with the query values
+  const statusInitialValue = query?.status ?? 'any'
+  const startDateInitialValue = query?.startDate
+    ? new Date(query.startDate)
+    : minInitialDate
+
+  const endDateInitialValue = query?.endDate
+    ? new Date(query.endDate)
+    : new Date()
+
+  minInitialDate.setMonth(minInitialDate.getMonth() - 3)
+  const [startDate, setStartDate] = useState(startDateInitialValue)
+  const [endDate, setEndDate] = useState(endDateInitialValue)
+  const [statusFilter, setStatusFilter] = useState<string>(statusInitialValue)
+  // We need to do this because of a circular dependency
+  const [sortState, setSortState] = useState<UseSortReturn>()
   const view = useDataViewState()
+  // This is a hack for when we have a page in the querystring
+  // If the pagination.paginate setTotal function change in the future this may not be necessary
+  const hasQueryWithPageLoaded = useRef(!query?.page)
 
   const pagination = usePaginationState({
     pageSize: PAGE_SIZE,
+    initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
-  const searchState = useSearchState({
+  const searchState = useQuerySearchState({
     timeoutMs: 500,
   })
+
+  const tableActions = useCallback(
+    (item: TableColumns) => {
+      return [
+        {
+          label: intl.formatMessage(messages.detailsLabel),
+          icon: VIEW_DETAILS_ICON,
+          handleOnClick: () => {
+            navigate({
+              page: 'admin.app.affiliates.order',
+              params: {
+                orderId: item.orderId,
+              },
+            })
+          },
+        },
+      ]
+    },
+    [intl, navigate]
+  )
 
   const columns: Array<DataGridColumn<TableColumns>> = [
     {
@@ -89,6 +131,10 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
+      resolver: {
+        type: 'root',
+        render: StatusTableCell,
+      },
     },
     {
       id: 'orderDate',
@@ -130,6 +176,21 @@ const AffiliateOrdersTable: FC = () => {
       },
       sortable: true,
     },
+    {
+      id: 'actions',
+      header: () => <IconGear />,
+      width: 44,
+      resolver: {
+        type: 'root',
+        render: function actionsRender({ item, context }) {
+          if (context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
+
+          return <TableActions actions={tableActions(item)} />
+        },
+      },
+    },
   ]
 
   const { data, loading } = useQuery<
@@ -145,6 +206,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
+        status: statusFilter === 'any' ? null : statusFilter,
       },
       sorting: sortState?.by
         ? {
@@ -159,6 +221,16 @@ const AffiliateOrdersTable: FC = () => {
           type: 'setTotal',
           total: resultData ? resultData.affiliateOrders.pagination.total : 0,
         })
+
+        // This is a hack for when we have a page in the querystring
+        // If the pagination.paginate setTotal function change in the future this may not be necessary
+        if (!hasQueryWithPageLoaded.current) {
+          hasQueryWithPageLoaded.current = true
+          pagination.paginate({
+            type: 'navigate',
+            page: query?.page ? parseInt(query.page, 10) : 1,
+          })
+        }
       }
 
       if (resultData.affiliateOrders.data.length > 0) {
@@ -190,6 +262,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
+        status: statusFilter === 'any' ? null : statusFilter,
       },
       sorting: sortState?.by
         ? {
@@ -212,22 +285,48 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
-  const handleRowClick = (row: TableColumns) => {
-    navigate({
-      page: 'admin.app.affiliates.order',
-      params: {
-        orderId: row.orderId,
-      },
-    })
-  }
-
   const dataGridState = useDataGridState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.affiliateOrders.data : [],
     view,
-    onRowClick: handleRowClick,
   })
+
+  const handleSelectChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setStatusFilter(event.target.value)
+      setQuery({ ...query, status: event.target.value })
+    },
+    [setStatusFilter, setQuery, query]
+  )
+
+  const handleStartDateChange = useCallback(
+    (date: Date) => {
+      setStartDate(date)
+      setQuery({ ...query, startDate: date.toISOString() })
+    },
+    [setStartDate, setQuery, query]
+  )
+
+  const handleEndDateChange = useCallback(
+    (date: Date) => {
+      setEndDate(date)
+      setQuery({ ...query, endDate: date.toISOString() })
+    },
+    [setEndDate, setQuery, query]
+  )
+
+  useEffect(() => {
+    if (pagination.currentPage.toString() !== query?.page) {
+      // This is a hack for when we have a page in the querystring
+      // If the pagination.paginate setTotal function change in the future this may not be necessary
+      if (!hasQueryWithPageLoaded.current) {
+        return
+      }
+
+      setQuery({ ...query, page: pagination.currentPage })
+    }
+  }, [pagination.currentPage, query, setQuery])
 
   // Controls the loading state of the table
   useEffect(() => {
@@ -258,12 +357,34 @@ const AffiliateOrdersTable: FC = () => {
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
+        <Select
+          csx={{ height: 40, width: 185 }}
+          label={intl.formatMessage(messages.orderStatusLabel)}
+          value={statusFilter}
+          onChange={handleSelectChange}
+        >
+          <option value="any">
+            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
+          </option>
+          <option value="order-created">
+            {intl.formatMessage(messages.orderStatusCreatedLabel)}
+          </option>
+          <option value="payment-approved">
+            {intl.formatMessage(messages.orderStatusPaidLabel)}
+          </option>
+          <option value="invoiced">
+            {intl.formatMessage(messages.orderStatusInvoicedLabel)}
+          </option>
+          <option value="cancel">
+            {intl.formatMessage(messages.orderStatusCancelLabel)}
+          </option>
+        </Select>
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
           minStartDate={minInitialDate}
-          onChangeStartDate={(date: Date) => setStartDate(date)}
-          onChangeEndDate={(date: Date) => setEndDate(date)}
+          onChangeStartDate={(date: Date) => handleStartDateChange(date)}
+          onChangeEndDate={(date: Date) => handleEndDateChange(date)}
         />
         <ExportTableDataControl
           maxResults={AFFILIATES_ORDERS_EXPORT_LIMIT}

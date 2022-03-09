@@ -11,6 +11,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Last imported commission file information and download link
 
+## [0.42.0] - 2022-03-08
+
+### Added
+
+- Button to affiliate orders in the affiliate details page
+
+## [0.41.0] - 2022-03-08
+
+### Added
+
+- Affiliate orders table filters to the querystring
+
+## [0.40.0] - 2022-03-07
+
+### Added
+
+- Status filter to the affiliates orders table
+- Actions to the affiliates orders table
+
+### Changed
+
+- Change status cell UI to be more user friendly
+- Remove row click on affiliates orders table
+
 ## [0.39.1] - 2022-03-04
 
 ## [0.39.0] - 2022-03-04

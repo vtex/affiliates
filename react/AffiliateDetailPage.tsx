@@ -37,6 +37,13 @@ const AffiliateDetailPage: FC = () => {
     })
   }, [navigate, affiliateId])
 
+  const onAffiliateOrdersClick = useCallback(() => {
+    navigate({
+      page: 'admin.app.affiliates.dashboard',
+      query: `search=${affiliateId}`,
+    })
+  }, [navigate, affiliateId])
+
   const intl = useIntl()
 
   return (
@@ -54,6 +61,9 @@ const AffiliateDetailPage: FC = () => {
               messages.affiliateLabel
             )}: ${affiliateId}`}</PageTitle>
             <PageActions>
+              <Button onClick={onAffiliateOrdersClick}>
+                {intl.formatMessage(messages.dashboardPageTitle)}
+              </Button>
               <Button onClick={onEditClick}>
                 {intl.formatMessage(messages.editLabel)}
               </Button>
