@@ -101,5 +101,6 @@
   "admin/order.status.created.label": "Criado",
   "admin/order.status.paid.label": "Pagamento aprovado",
   "admin/order.status.cancel.label": "Cancelado",
-  "admin/order.status.invoiced.label": "Faturado"
+  "admin/order.status.invoiced.label": "Faturado",
+  "admin/total.orders.label": "Total de pedidos"
 }
