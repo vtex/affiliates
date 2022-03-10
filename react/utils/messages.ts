@@ -78,6 +78,16 @@ export const messages = defineMessages({
   dropzoneMainMessage: { id: 'admin/dropzone.main.message.text' },
   dropzoneClickMessage: { id: 'admin/click.message.dropzone.text' },
   importFileSectionTitle: { id: 'admin/import.file.section.title' },
+  commissionLastImportHeading: { id: 'admin/commission.last.import.heading' },
+  commissionLastImportFilenameText: {
+    id: 'admin/commission.last.import.filename.text',
+  },
+  commissionLastImportUploadDateText: {
+    id: 'admin/commission.last.import.uploadDate.text',
+  },
+  commissionLastImportUploadedByText: {
+    id: 'admin/commission.last.import.uploadedBy.text',
+  },
   editCommissionTitle: { id: 'admin/edit.commission.title' },
   editCommissionInvalidValue: {
     id: 'admin/edit.commission.invalid.value.message',
