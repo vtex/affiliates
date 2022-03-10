@@ -15,6 +15,12 @@ type OrderItem = {
   commission: number
 }
 
+type Totalizers = {
+  total: number
+  totalCommissionSum: number
+  totalOrderSum: number
+}
+
 export type AffiliatesOrdersData = {
   id: string
   orderId: string
@@ -32,6 +38,7 @@ export type AffiliatesOrdersQueryReturnType = {
   affiliateOrders: {
     data: [AffiliatesOrdersData]
     pagination: Pagination
+    totalizers: Totalizers
   }
 }
 

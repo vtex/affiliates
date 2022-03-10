@@ -40,6 +40,7 @@ import ExportTableDataControl from '../shared/ExportTableDataControl'
 import StatusTableCell from './StatusTableCell'
 import TableActions from '../shared/TableActions'
 import { VIEW_DETAILS_ICON } from '../../../utils/icons'
+import Totalizers from './Totalizers'
 
 type TableColumns = {
   id: string
@@ -349,6 +350,9 @@ const AffiliateOrdersTable: FC = () => {
 
   return (
     <DataView state={view}>
+      {data && !loading && (
+        <Totalizers totalizers={data.affiliateOrders.totalizers} />
+      )}
       <DataViewControls>
         <Search
           id="search"
