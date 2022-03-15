@@ -106,5 +106,6 @@
   "admin/order.status.paid.label": "Payment approved",
   "admin/order.status.cancel.label": "Canceled",
   "admin/order.status.invoiced.label": "Invoiced",
-  "admin/total.orders.label": "Total orders"
+  "admin/total.orders.label": "Total orders",
+  "admin/import.no.last.file.label": "No file uploaded"
 }
