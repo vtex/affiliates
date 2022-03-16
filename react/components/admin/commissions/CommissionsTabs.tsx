@@ -13,15 +13,15 @@ const CommissionsTabs: FC = () => {
 
   return (
     <Tabs state={state}>
-      <TabList aria-label="Usage Tabs">
-        <Tab id="1">{intl.formatMessage(messages.importTabLabel)}</Tab>
-        <Tab id="2">{intl.formatMessage(messages.exportTabLabel)}</Tab>
+      <TabList aria-label="Commissions tabs">
+        <Tab id="1">{intl.formatMessage(messages.exportTabLabel)}</Tab>
+        <Tab id="2">{intl.formatMessage(messages.importTabLabel)}</Tab>
       </TabList>
       <TabPanel id="1" csx={{ padding: 3 }}>
-        <ImportCommissionsTab />
+        <ExportCommissionsTab />
       </TabPanel>
       <TabPanel id="2" csx={{ padding: 3 }}>
-        <ExportCommissionsTab />
+        <ImportCommissionsTab />
       </TabPanel>
     </Tabs>
   )

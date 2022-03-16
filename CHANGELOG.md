@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Change commissions tab order
+- Update last uploaded file UI logic to consider when no file was uploaded
+
 ## [0.44.2] - 2022-03-14
 
 ### Added
