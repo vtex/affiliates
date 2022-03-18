@@ -41,6 +41,7 @@ import StatusTableCell from './StatusTableCell'
 import TableActions from '../shared/TableActions'
 import { VIEW_DETAILS_ICON } from '../../../utils/icons'
 import Totalizers from './Totalizers'
+import OrderIdTableCell from './OrderIdTableCell'
 
 type TableColumns = {
   id: string
@@ -120,6 +121,10 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableOrderIdColumnLabel
       ),
+      resolver: {
+        type: 'root',
+        render: OrderIdTableCell,
+      },
     },
     {
       id: 'affiliateId',
