@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update totalizers UI
 - Refetch the last uploaded file after a new upload
 
+## [0.44.3] - 2022-03-16
+
+### Changed
+
+- Change commissions tab order
+- Update last uploaded file UI logic to consider when no file was uploaded
+
 ## [0.44.2] - 2022-03-14
 
 ### Added

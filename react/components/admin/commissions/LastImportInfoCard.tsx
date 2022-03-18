@@ -46,11 +46,32 @@ export const LastImportInfoCard: FC = () => {
     )
   }, [account, data?.lastImportedCommissionFileInfo?.fileId, workspace])
 
+  const showDownloadButton = useMemo(() => {
+    if (data) {
+      return (
+        <Button
+          variant="tertiary"
+          icon={<IconArrowLineDown />}
+          onClick={downloadLastImport}
+          loading={loading}
+        >
+          {data.lastImportedCommissionFileInfo?.filename}
+        </Button>
+      )
+    }
+
+    return (
+      <Text csx={{ display: 'flex', padding: 3 }} variant="action1">
+        {intl.formatMessage(messages.noLastFileLabel)}
+      </Text>
+    )
+  }, [data, downloadLastImport, loading, intl])
+
   return (
     <Box>
       <Text variant="title2" csx={{ display: 'flex', padding: 3 }}>
         {intl.formatMessage(messages.commissionLastImportHeading)}
-        {!loading && (
+        {!loading && data && (
           <Tooltip label={tooltipLabel}>
             <Box csx={{ paddingLeft: 1 }}>
               <IconHelp />
@@ -58,14 +79,7 @@ export const LastImportInfoCard: FC = () => {
           </Tooltip>
         )}
       </Text>
-      <Button
-        variant="tertiary"
-        icon={<IconArrowLineDown />}
-        onClick={downloadLastImport}
-        loading={loading}
-      >
-        {data?.lastImportedCommissionFileInfo?.filename}
-      </Button>
+      {showDownloadButton}
     </Box>
   )
 }

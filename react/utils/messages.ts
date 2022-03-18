@@ -154,4 +154,5 @@ export const messages = defineMessages({
   totalOrderValueDisclaimerText: {
     id: 'admin/total.order.value.disclaimer.text',
   },
+  noLastFileLabel: { id: 'admin/import.no.last.file.label' },
 })
