@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, Set } from '@vtex/admin-ui'
+import { Flex, Text, Set, Card, Divider } from '@vtex/admin-ui'
 import React from 'react'
 import { useIntl } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
@@ -22,38 +22,50 @@ const Totalizers = ({ totalizers }: TotalizersProps) => {
   const { total, totalCommissionSum, totalOrderSum } = totalizers
 
   return (
-    <Flex>
-      <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
-        <Heading>{intl.formatMessage(messages.totalOrdersLabel)}</Heading>
-        <Text variant="display">{total}</Text>
-      </Set>
-      <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
-        <Heading>
-          {intl.formatMessage(
-            messages.affiliatesOrdersTableOrderTotalColumnLabel
-          )}
-        </Heading>
-        <Text variant="display">
-          {intl.formatNumber(totalOrderSum, {
-            style: 'currency',
-            currency,
-          })}
-        </Text>
-      </Set>
-      <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
-        <Heading>
-          {intl.formatMessage(
-            messages.affiliatesOrdersTableOrderTotalCommissionColumnLabel
-          )}
-        </Heading>
-        <Text variant="display">
-          {intl.formatNumber(totalCommissionSum, {
-            style: 'currency',
-            currency,
-          })}
-        </Text>
-      </Set>
-    </Flex>
+    <Card>
+      <Flex justify="space-between">
+        <Flex grow={1}>
+          <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
+            <Text variant="pageTitle">
+              {intl.formatMessage(messages.totalOrdersLabel)}
+            </Text>
+            <Text variant="pageTitle">{total}</Text>
+          </Set>
+        </Flex>
+        <Flex grow={1}>
+          <Divider orientation="vertical" csx={{ marginX: 6 }} />
+          <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
+            <Text variant="pageTitle">
+              {intl.formatMessage(
+                messages.affiliatesOrdersTableOrderTotalColumnLabel
+              )}
+            </Text>
+            <Text variant="pageTitle">
+              {intl.formatNumber(totalOrderSum, {
+                style: 'currency',
+                currency,
+              })}
+            </Text>
+          </Set>
+        </Flex>
+        <Flex grow={1}>
+          <Divider orientation="vertical" csx={{ marginX: 6 }} />
+          <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
+            <Text variant="pageTitle">
+              {intl.formatMessage(
+                messages.affiliatesOrdersTableOrderTotalCommissionColumnLabel
+              )}
+            </Text>
+            <Text variant="pageTitle">
+              {intl.formatNumber(totalCommissionSum, {
+                style: 'currency',
+                currency,
+              })}
+            </Text>
+          </Set>
+        </Flex>
+      </Flex>
+    </Card>
   )
 }
 
