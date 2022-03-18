@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
 
 import { messages } from '../../../utils/messages'
+import TotalValueDisclaimer from './TotalValueDisclaimer'
 
 type TotalizersProps = {
   totalizers: {
@@ -35,11 +36,14 @@ const Totalizers = ({ totalizers }: TotalizersProps) => {
         <Flex grow={1}>
           <Divider orientation="vertical" csx={{ marginX: 6 }} />
           <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
-            <Text variant="pageTitle">
-              {intl.formatMessage(
-                messages.affiliatesOrdersTableOrderTotalColumnLabel
-              )}
-            </Text>
+            <Flex>
+              <Text variant="pageTitle">
+                {intl.formatMessage(
+                  messages.affiliatesOrdersTableOrderTotalColumnLabel
+                )}
+              </Text>
+              <TotalValueDisclaimer />
+            </Flex>
             <Text variant="pageTitle">
               {intl.formatNumber(totalOrderSum, {
                 style: 'currency',

@@ -1,4 +1,4 @@
-import { Column, Columns, FlexSpacer, Text } from '@vtex/admin-ui'
+import { Column, Columns, Flex, FlexSpacer, Text } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
 import { useIntl } from 'react-intl'
@@ -6,6 +6,7 @@ import { useRuntime } from 'vtex.render-runtime'
 
 import type { AffiliatesOrdersData } from '../../../typings/tables'
 import { messages } from '../../../utils/messages'
+import TotalValueDisclaimer from '../dashboard/TotalValueDisclaimer'
 import LoadingBox from '../shared/LoadingBox'
 
 type OrderInfoProps = {
@@ -70,14 +71,17 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
         </Text>
       </Column>
       <Column units={4}>
-        <Text variant="title1">
-          {`${intl.formatMessage(
-            messages.affiliatesOrdersTableOrderTotalColumnLabel
-          )}: `}
-        </Text>
-        <Text variant="action2" tone="info">
-          {intl.formatNumber(orderTotal, { style: 'currency', currency })}
-        </Text>
+        <Flex align="center">
+          <Text variant="title1">
+            {`${intl.formatMessage(
+              messages.affiliatesOrdersTableOrderTotalColumnLabel
+            )}: `}
+          </Text>
+          <Text variant="action2" tone="info">
+            {intl.formatNumber(orderTotal, { style: 'currency', currency })}
+          </Text>
+          <TotalValueDisclaimer />
+        </Flex>
         <FlexSpacer />
         <Text variant="title1">
           {`${intl.formatMessage(
