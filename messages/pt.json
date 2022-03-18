@@ -106,5 +106,6 @@
   "admin/order.status.paid.label": "Pagamento aprovado",
   "admin/order.status.cancel.label": "Cancelado",
   "admin/order.status.invoiced.label": "Faturado",
-  "admin/total.orders.label": "Total de pedidos"
+  "admin/total.orders.label": "Total de pedidos",
+  "admin/total.order.value.disclaimer.text": "O valor total considera apenas o valor dos itens do pedido."
 }

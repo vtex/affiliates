@@ -151,4 +151,7 @@ export const messages = defineMessages({
   orderStatusCancelLabel: { id: 'admin/order.status.cancel.label' },
   orderStatusInvoicedLabel: { id: 'admin/order.status.invoiced.label' },
   totalOrdersLabel: { id: 'admin/total.orders.label' },
+  totalOrderValueDisclaimerText: {
+    id: 'admin/total.order.value.disclaimer.text',
+  },
 })
