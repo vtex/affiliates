@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Link for the oms order in the affiliates orders table
+- Slug and ref id fields to the affiliate details page
+- Total order value disclaimer tooltip
+
+### Changed
+
+- Update totalizers UI
+- Refetch the last uploaded file after a new upload
+
 ## [0.44.3] - 2022-03-16
 
 ### Changed

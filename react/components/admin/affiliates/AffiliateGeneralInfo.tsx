@@ -54,6 +54,13 @@ const AffiliateGeneralInfo: FC<AffiliateGeneralInfoProps> = ({
               </Text>
               <FlexSpacer />
               <Text variant="title1">{`${intl.formatMessage(
+                messages.slugLabel
+              )}: `}</Text>
+              <Text variant="action2" tone="info">
+                {affiliate?.slug}
+              </Text>
+              <FlexSpacer />
+              <Text variant="title1">{`${intl.formatMessage(
                 messages.emailLabel
               )}: `}</Text>
               <Text variant="action2" tone="info">
@@ -66,6 +73,13 @@ const AffiliateGeneralInfo: FC<AffiliateGeneralInfoProps> = ({
               )}: `}</Text>
               <Text variant="action2" tone="info">
                 {affiliate?.phone}
+              </Text>
+              <FlexSpacer />
+              <Text variant="title1">{`${intl.formatMessage(
+                messages.refIdLabel
+              )}: `}</Text>
+              <Text variant="action2" tone="info">
+                {affiliate?.refId}
               </Text>
               <FlexSpacer />
               <Text variant="title1">{`${intl.formatMessage(

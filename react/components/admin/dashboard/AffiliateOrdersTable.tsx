@@ -1,5 +1,6 @@
 import type { DataGridColumn } from '@vtex/admin-ui'
 import {
+  Flex,
   Select,
   useQuerySearchState,
   Search,
@@ -41,6 +42,8 @@ import StatusTableCell from './StatusTableCell'
 import TableActions from '../shared/TableActions'
 import { VIEW_DETAILS_ICON } from '../../../utils/icons'
 import Totalizers from './Totalizers'
+import OrderIdTableCell from './OrderIdTableCell'
+import TotalValueDisclaimer from './TotalValueDisclaimer'
 
 type TableColumns = {
   id: string
@@ -120,6 +123,10 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableOrderIdColumnLabel
       ),
+      resolver: {
+        type: 'root',
+        render: OrderIdTableCell,
+      },
     },
     {
       id: 'affiliateId',
@@ -155,13 +162,22 @@ const AffiliateOrdersTable: FC = () => {
     },
     {
       id: 'orderTotal',
-      header: intl.formatMessage(
-        messages.affiliatesOrdersTableOrderTotalColumnLabel
-      ),
       resolver: {
         type: 'currency',
         locale,
         currency,
+      },
+      header: () => {
+        return (
+          <Flex>
+            <span>
+              {intl.formatMessage(
+                messages.affiliatesOrdersTableOrderTotalColumnLabel
+              )}
+            </span>
+            <TotalValueDisclaimer />
+          </Flex>
+        )
       },
       sortable: true,
     },

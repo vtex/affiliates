@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx'
 
 import { messages } from '../../../utils/messages'
 import IMPORT_COMMISSIONS from '../../../graphql/importCommissionsBySKU.graphql'
+import GET_LAST_IMPORTED_COMMISSION_FILE_INFO from '../../../graphql/getLastImportInfo.graphql'
 
 const ImportDropzone: FC = () => {
   const intl = useIntl()
@@ -17,6 +18,12 @@ const ImportDropzone: FC = () => {
   const [importData, { loading: importLoading }] = useMutation(
     IMPORT_COMMISSIONS,
     {
+      refetchQueries: [
+        {
+          query: GET_LAST_IMPORTED_COMMISSION_FILE_INFO,
+        },
+      ],
+      awaitRefetchQueries: true,
       onCompleted: () => {
         showToast({
           tone: 'positive',
