@@ -65,3 +65,14 @@ export type Action = {
   icon: ReactNode
   handleOnClick: (item: unknown) => void
 }
+
+export type PaletteColors =
+  | 'teal'
+  | 'green'
+  | 'red'
+  | 'cyan'
+  | 'gray'
+  | 'orange'
+  | 'purple'
+  | 'lightBlue'
+  | undefined
