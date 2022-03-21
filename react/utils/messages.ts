@@ -155,4 +155,5 @@ export const messages = defineMessages({
     id: 'admin/total.order.value.disclaimer.text',
   },
   noLastFileLabel: { id: 'admin/import.no.last.file.label' },
+  editAffiliateApproveStatusTitle: { id: 'admin/edit.affiliate.approve.title' },
 })

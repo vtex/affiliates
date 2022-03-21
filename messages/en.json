@@ -108,5 +108,6 @@
   "admin/order.status.invoiced.label": "Invoiced",
   "admin/total.orders.label": "Total orders",
   "admin/total.order.value.disclaimer.text": "The total value is based only to the value of the items in the order.",
-  "admin/import.no.last.file.label": "No file uploaded"
+  "admin/import.no.last.file.label": "No file uploaded",
+  "admin/edit.affiliate.approve.title": "Change affiliate approved status"
 }
