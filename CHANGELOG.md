@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.44.4] - 2022-03-21
+
 ### Added
 
 - Link for the oms order in the affiliates orders table
