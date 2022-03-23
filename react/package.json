@@ -1,6 +1,6 @@
 {
   "name": "vtex.affiliates",
-  "version": "0.44.4",
+  "version": "0.44.5",
   "scripts": {
     "test": "vtex-test-tools test --collectCoverage"
   },
