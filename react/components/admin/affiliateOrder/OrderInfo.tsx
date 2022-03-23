@@ -1,11 +1,12 @@
-import { Column, Columns, Flex, FlexSpacer, Text } from '@vtex/admin-ui'
+import { Column, Columns, Flex, FlexSpacer, Text, Tag } from '@vtex/admin-ui'
 import type { FC } from 'react'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
 
 import type { AffiliatesOrdersData } from '../../../typings/tables'
 import { messages } from '../../../utils/messages'
+import { statusTagControl } from '../../../utils/shared'
 import TotalValueDisclaimer from '../dashboard/TotalValueDisclaimer'
 import LoadingBox from '../shared/LoadingBox'
 
@@ -19,13 +20,16 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
     culture: { currency },
   } = useRuntime()
 
+  const tagControls = useMemo(() => {
+    return statusTagControl(intl, order?.status)
+  }, [order, intl])
+
   if (!order) {
     return <LoadingBox csx={{ width: 'full', height: 192 }} />
   }
 
   const {
     affiliateId,
-    status,
     lastInteractionIn,
     orderDate,
     orderTotal,
@@ -49,9 +53,11 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
             messages.affiliatesOrdersTableStatusColumnLabel
           )}: `}
         </Text>
-        <Text variant="action2" tone="info">
-          {status}
-        </Text>
+        <Tag
+          size="small"
+          label={tagControls.label}
+          palette={tagControls.palette}
+        />
       </Column>
       <Column units={4}>
         <Text variant="title1">{`${intl.formatMessage(

@@ -91,16 +91,18 @@ const UpdateApprovedStatusModal: FC<UpdateApprovedStatusModalProps> = ({
 
   return (
     <Modal aria-label="Approve affiliate modal" state={modal}>
-      <ModalHeader title="Change affiliate approved status" />
+      <ModalHeader
+        title={intl.formatMessage(messages.editAffiliateApproveStatusTitle)}
+      />
       <ModalContent>
         <Text>{modalMessage}</Text>
       </ModalContent>
       <ModalFooter>
         <Button variant="secondary" onClick={onCancelHandler}>
-          Cancel
+          {intl.formatMessage(messages.cancelLabel)}
         </Button>
         <Button loading={mutationLoading} onClick={onConfirmHandler}>
-          Confirm
+          {intl.formatMessage(messages.confirmLabel)}
         </Button>
       </ModalFooter>
     </Modal>
