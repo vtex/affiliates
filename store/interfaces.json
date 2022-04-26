@@ -13,5 +13,8 @@
   },
   "affiliate-store-name": {
     "component": "AffiliateStoreName"
+  },
+  "affiliate-profile-button": {
+    "component": "AffiliateProfileButton"
   }
 }
