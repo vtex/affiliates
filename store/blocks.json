@@ -2,6 +2,17 @@
   "store.affiliates": {
     "blocks": ["affiliate-validator"]
   },
+  "store.affiliates.profile": {
+    "children": ["rich-text#affiliate-profile"]
+  },
+  "rich-text#affiliate-profile": {
+    "props": {
+      "textAlignment": "CENTER",
+      "textPosition": "CENTER",
+      "text": "**Affiliate profile**",
+      "font": "t-heading-1"
+    }
+  },
   "affiliate-validator": {
     "props": {
       "Valid": "affiliate-template",
