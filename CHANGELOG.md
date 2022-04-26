@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - getAffiliateByEmail query
 - New route in stores for the affiliate profile (/affiliates/:affiliateId/profile)
+- affiliate profile block
+
+### Removed
+
+- Boilerplate route
 
 ## [0.44.5] - 2022-03-23
 
