@@ -157,3 +157,7 @@ export const messages = defineMessages({
   noLastFileLabel: { id: 'admin/import.no.last.file.label' },
   editAffiliateApproveStatusTitle: { id: 'admin/edit.affiliate.approve.title' },
 })
+
+export const storeMessages = defineMessages({
+  affiliateProfileButtonLabel: { id: 'store/affiliate.profile.button.label' },
+})
