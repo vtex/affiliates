@@ -18,7 +18,7 @@ export const getAffiliateByEmail = async (
   )
 
   if (!affiliateData) {
-    throw new Error('There is no affiliate with this email')
+    return null
   }
 
   return affiliateData
