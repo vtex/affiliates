@@ -8,6 +8,7 @@ type Query {
     sorting: AffliatesSortingInput
   ): AffiliatesPage!
   getAffiliate(affiliateId: ID!): Affiliate
+  getAffiliateByEmail(email: String!): Affiliate
 }
 
 type Mutation {
