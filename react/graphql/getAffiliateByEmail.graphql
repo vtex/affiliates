@@ -1,0 +1,30 @@
+query getAffiliateByEmail($email: String!) {
+  getAffiliateByEmail(email: $email) {
+    id
+    name
+    storeName
+    email
+    slug
+    refId
+    phone
+    isApproved
+    address {
+      city
+      country
+      neighborhood
+      number
+      postalCode
+      reference
+      street
+      state
+    }
+    document
+    documentType
+    marketing {
+      instagram
+      facebook
+      whatsapp
+      gtmId
+    }
+  }
+}

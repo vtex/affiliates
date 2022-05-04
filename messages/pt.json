@@ -109,5 +109,6 @@
   "admin/total.orders.label": "Total de pedidos",
   "admin/edit.affiliate.approve.title": "Modificar o status do afiliado",
   "admin/total.order.value.disclaimer.text": "O valor total considera apenas o valor dos itens do pedido. O valor do frete não é considerado.",
-  "admin/import.no.last.file.label": "Nenhum arquivo enviado"
+  "admin/import.no.last.file.label": "Nenhum arquivo enviado",
+  "store/affiliate.profile.button.label": "Perfil do afiliado"
 }

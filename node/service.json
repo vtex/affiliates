@@ -6,10 +6,6 @@
   "maxReplicas": 4,
   "workers": 1,
   "routes": {
-    "status": {
-      "path": "/_v/status/:code",
-      "public": true
-    },
     "affiliate": {
       "path": "/_v/affiliate",
       "public": true
