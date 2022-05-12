@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.46.0] - 2022-05-12
+
 ### Added
 
 - getAffiliatesOrders query to the context
