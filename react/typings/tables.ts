@@ -15,7 +15,7 @@ type OrderItem = {
   commission: number
 }
 
-type Totalizers = {
+export type Totalizers = {
   total: number
   totalCommissionSum: number
   totalOrderSum: number
