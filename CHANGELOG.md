@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.46.1] - 2022-05-18
+
 ### Added
 
 - Date filter to getAffiliatesOrders query to the current month in the provider
