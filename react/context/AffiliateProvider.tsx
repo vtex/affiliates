@@ -34,6 +34,9 @@ const AffiliateProvider: FC = (props) => {
 
   const affiliate = affiliateReturn?.getAffiliateByEmail
 
+  const date = new Date()
+  const defaultStartDate = new Date(date.getFullYear(), date.getMonth())
+
   const { data: ordersReturn, refetch: refetchOrders } = useQuery<
     AffiliatesOrdersQueryReturnType,
     QueryAffiliateOrdersArgs
@@ -43,6 +46,10 @@ const AffiliateProvider: FC = (props) => {
       pageSize: PAGE_SIZE,
       filter: {
         affiliateId: affiliate?.id,
+        dateRange: {
+          startDate: defaultStartDate.toISOString(),
+          endDate: date.toISOString(),
+        },
       },
     },
     skip: !affiliate,
