@@ -40,7 +40,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
     if (isButtonDisabled) {
       return (
         <Tooltip label="Tooltip Label" placement="right">
-          <Button icon={<IconQuestion />} variant="adaptative-light" />
+          <Button icon={<IconQuestion />} variant="primary" />
         </Tooltip>
       )
     }
@@ -53,7 +53,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
       <Toolbar state={toolbar}>
         <ToolbarButton
           disabled={isButtonDisabled}
-          size="small"
+          size="normal"
           variant="tertiary"
           icon={<IconArrowLineUp />}
           loading={loading}
