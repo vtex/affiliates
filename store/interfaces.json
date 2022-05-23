@@ -16,5 +16,8 @@
   },
   "affiliate-profile-button": {
     "component": "AffiliateProfileButton"
+  },
+  "affiliate-profile-topbar": {
+    "component": "AffiliateProfileTopBar"
   }
 }
