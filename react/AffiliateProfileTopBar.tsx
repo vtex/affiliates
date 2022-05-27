@@ -1,34 +1,35 @@
 import React from 'react'
-import { Box, Avatar, Button, Text, createSystem } from '@vtex/admin-ui'
-import { canUseDOM, NoSSR } from 'vtex.render-runtime'
+import { Button, IconExternalLinkMini, Divider } from 'vtex.styleguide'
+// import { useRuntime } from 'vtex.render-runtime'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-topbar',
-})
+import AffiliateProvider from './context/AffiliateProvider'
+import VtexLogo from './components/store/icons/VtexLogo'
+import Avatar from './components/store/Avatar'
+// import useAffiliate from './context/useAffiliate'
 
 const TopBar = () => {
+  // const { account } = useRuntime()
+  // const affiliate = useAffiliate()
+
+  // console.log(affiliate)
+
   return (
-    <>
-      {canUseDOM ? (
-        <ThemeProvider>
-          <Box>
-            <Text>Programa de afiliados + Nome do Seller</Text>
-            <Button>Acessar a loja</Button>
-            <Avatar label="Avatar" />
-          </Box>
-        </ThemeProvider>
-      ) : (
-        <NoSSR>
-          <ThemeProvider>
-            <Box>
-              <Text>Programa de afiliados + Nome do Seller</Text>
-              <Button>Acessar a loja</Button>
-              <Avatar label="Avatar" />
-            </Box>
-          </ThemeProvider>
-        </NoSSR>
-      )}
-    </>
+    <AffiliateProvider>
+      <div className="flex pa4 justify-between">
+        <div className="flex items-center-s">
+          <VtexLogo className="mr5" />
+          <p className="mb0">Programa de afiliados: </p>
+        </div>
+        <div className="flex">
+          <Button>
+            <IconExternalLinkMini />
+            <p className="pl3 mb0">Acessar a loja</p>
+          </Button>
+          <Avatar name="a" />
+        </div>
+      </div>
+      <Divider />
+    </AffiliateProvider>
   )
 }
 
