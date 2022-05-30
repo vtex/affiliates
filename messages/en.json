@@ -103,6 +103,7 @@
   "admin/details.label": "Details",
   "admin/order.status.label": "Order status",
   "admin/order.status.created.label": "Created",
+  "admin/order.status.pending.label": "Payment pending",
   "admin/order.status.paid.label": "Payment approved",
   "admin/order.status.cancel.label": "Canceled",
   "admin/order.status.invoiced.label": "Invoiced",
