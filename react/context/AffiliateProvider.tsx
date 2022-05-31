@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { useQuery } from 'react-apollo'
 import type { QueryAffiliateOrdersArgs } from 'vtex.affiliates-commission-service'
@@ -21,6 +21,12 @@ const AffiliateProvider: FC = (props) => {
     },
   } = useRuntime()
 
+  const date = new Date()
+  const defaultStartDate = new Date(date.getFullYear(), date.getMonth())
+
+  const [startDate] = useState(defaultStartDate)
+  const [endDate] = useState(date)
+
   const {
     orderForm: { clientProfileData },
   } = useOrderForm()
@@ -37,9 +43,6 @@ const AffiliateProvider: FC = (props) => {
     return affiliateReturn?.getAffiliateByEmail
   }, [affiliateReturn])
 
-  const date = new Date()
-  const defaultStartDate = new Date(date.getFullYear(), date.getMonth())
-
   const { data: ordersReturn, refetch: refetchOrders } = useQuery<
     AffiliatesOrdersQueryReturnType,
     QueryAffiliateOrdersArgs
@@ -50,8 +53,8 @@ const AffiliateProvider: FC = (props) => {
       filter: {
         affiliateId: affiliate?.id,
         dateRange: {
-          startDate: defaultStartDate.toISOString(),
-          endDate: date.toISOString(),
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
         },
       },
     },

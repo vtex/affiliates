@@ -8,7 +8,7 @@ interface AffiliateContextType {
   isLogged: boolean
   refetchAffiliate: () => void
   refetchOrders: () => void
-  affiliate?: Affiliate
+  affiliate: Affiliate
   orders?: AffiliatesOrdersData[]
   totalizer?: Totalizers
 }
@@ -18,6 +18,9 @@ const AffiliateContext = React.createContext<AffiliateContextType>({
   isLogged: false,
   refetchAffiliate: () => {},
   refetchOrders: () => {},
+  affiliate: {
+    isApproved: false,
+  },
 })
 
 export default AffiliateContext
