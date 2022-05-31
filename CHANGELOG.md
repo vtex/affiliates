@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Create Avatar component
+- Create profile Top Bar
+
 ## [0.46.1] - 2022-05-18
 
 ### Added
