@@ -17,7 +17,7 @@ describe('getAffiliates resolver', () => {
       },
     } as QueryGetAffiliatesArgs
 
-    const expectedWhere = `(slug="*loja*" OR storeName="*loja*" OR email="*loja*" OR name="*loja*" OR phone="*loja*") AND isApproved=true`
+    const expectedWhere = `(id="*loja*" OR slug="*loja*" OR storeName="*loja*" OR email="*loja*" OR name="*loja*" OR phone="*loja*") AND isApproved=true`
     const expectedSort = `isApproved ASC`
     const mockCtx = {
       clients: {
