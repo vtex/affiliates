@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.46.2] - 2022-06-01
+
 ### Fixed
 
 - Add ID field to Affiliates table search feature
