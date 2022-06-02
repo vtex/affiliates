@@ -17,7 +17,7 @@ interface Address {
   city: string
   country: string
   neighborhood: string
-  number: string
+  number: number
   postalCode: string
   reference: string
   street: string
