@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Create Avatar component
 - Create profile Top Bar
 
+## [0.46.2] - 2022-06-01
+
+### Fixed
+
+- Add ID field to Affiliates table search feature
+- Add payment-pending status to Orders table
+
 ## [0.46.1] - 2022-05-18
 
 ### Added

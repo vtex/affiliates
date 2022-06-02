@@ -103,6 +103,7 @@
   "admin/details.label": "Detalhes",
   "admin/order.status.label": "Status do pedido",
   "admin/order.status.created.label": "Criado",
+  "admin/order.status.pending.label": "Pagamento pendente",
   "admin/order.status.paid.label": "Pagamento aprovado",
   "admin/order.status.cancel.label": "Cancelado",
   "admin/order.status.invoiced.label": "Faturado",

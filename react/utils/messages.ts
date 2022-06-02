@@ -146,6 +146,7 @@ export const messages = defineMessages({
   importFileSubtitle2: { id: 'admin/import.file.subtitle.2.text' },
   detailsLabel: { id: 'admin/details.label' },
   orderStatusLabel: { id: 'admin/order.status.label' },
+  orderStatusPendingLabel: { id: 'admin/order.status.pending.label' },
   orderStatusCreatedLabel: { id: 'admin/order.status.created.label' },
   orderStatusPaidLabel: { id: 'admin/order.status.paid.label' },
   orderStatusCancelLabel: { id: 'admin/order.status.cancel.label' },
