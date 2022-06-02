@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Button, IconExternalLinkMini, Divider } from 'vtex.styleguide'
+import { ButtonWithIcon, IconExternalLinkMini, Divider } from 'vtex.styleguide'
 import { useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
 
@@ -15,28 +15,27 @@ const TopBar = () => {
 
   const onClick = useCallback(() => {
     navigate({
-      page: 'store.home',
+      page: 'store.affiliates',
+      params: { affiliateId: affiliate?.affiliate?.name },
     })
-  }, [navigate])
+  }, [affiliate, navigate])
 
   return (
     <>
       <div className="flex pa4 justify-between">
         <div className="flex items-center-s">
-          {/* <VtexLogo className="mr5" /> */}
           <h6 className="mb0">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
           )} ${account}`}</h6>
         </div>
         <div className="flex items-center-s">
-          <Button onClick={onClick}>
-            <IconExternalLinkMini />
+          <ButtonWithIcon onClick={onClick} icon={<IconExternalLinkMini />}>
             <p className="pl3 mb0">
               {intl.formatMessage(
                 storeMessages.affiliateProfileAccessStoreButton
               )}
             </p>
-          </Button>
+          </ButtonWithIcon>
           <Avatar name={affiliate?.affiliate?.name ?? ''} />
         </div>
       </div>
