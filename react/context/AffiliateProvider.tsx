@@ -55,7 +55,6 @@ const AffiliateProvider: FC = (props) => {
         },
       },
     },
-    skip: !affiliate,
   })
 
   return (

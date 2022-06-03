@@ -19,5 +19,13 @@
   },
   "affiliate-profile-topbar": {
     "component": "AffiliateProfileTopBar"
+  },
+  "affiliate-profile-title": {
+    "component": "AffiliateProfileTitle"
+  },
+  "affiliate-profile-totalizer": {
+    "component": "AffiliateProfileTotalizer"
   }
+
+
 }

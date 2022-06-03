@@ -1,20 +1,18 @@
-import type { FC } from 'react'
 import React, { useMemo } from 'react'
-import { useQuery } from 'react-apollo'
-import { useCssHandles } from 'vtex.css-handles'
-
 import GET_AFFILIATE_STORE_NAME_QUERY from './graphql/getAffiliateStoreName.graphql'
-import { getSlug } from './utils/shared'
+import { useQuery } from 'react-apollo'
+import { getSlugStoreFront } from './utils/shared'
+import { useCssHandles } from 'vtex.css-handles'
 
 type GetAffiliateStoreNameQueryResult = {
   getAffiliateStoreName: string
 }
 
-const CSS_HANDLES = ['affiliateStoreName'] as const
+const CSS_HANDLES = ['affiliateProfileTitle'] as const
 
-const AffiliateStoreName: FC = () => {
+function AffiliateProfileTitle() {
   const slug = useMemo(() => {
-    return getSlug()
+    return getSlugStoreFront()
   }, [])
 
   const { handles } = useCssHandles(CSS_HANDLES)
@@ -27,13 +25,11 @@ const AffiliateStoreName: FC = () => {
     }
   )
 
-  console.log(error)
-
-  return (
-    <div className={`f1 tc mv6 ${handles.affiliateStoreName}`}>
-      <span>{error ? '' : data?.getAffiliateStoreName}</span>
+  return(
+    <div className={`ma7 ${handles.affiliateProfileTitle} `}>
+      <h4 className={`t-heading-4 `}>{error ? "" : data?.getAffiliateStoreName}</h4>
     </div>
   )
 }
 
-export default AffiliateStoreName
+export default AffiliateProfileTitle
