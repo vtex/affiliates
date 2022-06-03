@@ -1,13 +1,14 @@
 import React from 'react'
 
 import type { AffiliatesOrdersData, Totalizers } from '../typings/tables'
+import type { Affiliate } from '../typings/affiliate'
 
 interface AffiliateContextType {
   isValid: boolean
   isLogged: boolean
   refetchAffiliate: () => void
   refetchOrders: () => void
-  affiliate: unknown
+  affiliate: Affiliate
   orders?: AffiliatesOrdersData[]
   totalizer?: Totalizers
 }
@@ -17,7 +18,9 @@ const AffiliateContext = React.createContext<AffiliateContextType>({
   isLogged: false,
   refetchAffiliate: () => {},
   refetchOrders: () => {},
-  affiliate: {},
+  affiliate: {
+    isApproved: false,
+  },
 })
 
 export default AffiliateContext

@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { useQuery } from 'react-apollo'
 import type { QueryAffiliateOrdersArgs } from 'vtex.affiliates-commission-service'
@@ -9,6 +9,7 @@ import AffiliateContext from './AffiliateContext'
 import GET_AFFILIATE_BY_EMAIL from '../graphql/getAffiliateByEmail.graphql'
 import GET_AFFILIATES_ORDERS from '../graphql/getAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../typings/tables'
+import type { Affiliate } from '../typings/affiliate'
 import { PAGE_SIZE, INITIAL_PAGE } from '../utils/constants'
 
 const AffiliateProvider: FC = (props) => {
@@ -19,6 +20,12 @@ const AffiliateProvider: FC = (props) => {
       params: { affiliateId: slug },
     },
   } = useRuntime()
+
+  const date = new Date()
+  const defaultStartDate = new Date(date.getFullYear(), date.getMonth())
+
+  const [startDate] = useState(defaultStartDate)
+  const [endDate] = useState(date)
 
   const {
     orderForm: { clientProfileData },
@@ -32,10 +39,9 @@ const AffiliateProvider: FC = (props) => {
     }
   )
 
-  const affiliate = affiliateReturn?.getAffiliateByEmail
-
-  const date = new Date()
-  const defaultStartDate = new Date(date.getFullYear(), date.getMonth())
+  const affiliate: Affiliate = useMemo(() => {
+    return affiliateReturn?.getAffiliateByEmail
+  }, [affiliateReturn])
 
   const { data: ordersReturn, refetch: refetchOrders } = useQuery<
     AffiliatesOrdersQueryReturnType,
@@ -47,8 +53,8 @@ const AffiliateProvider: FC = (props) => {
       filter: {
         affiliateId: affiliate?.id,
         dateRange: {
-          startDate: defaultStartDate.toISOString(),
-          endDate: date.toISOString(),
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
         },
       },
     },

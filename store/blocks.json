@@ -3,7 +3,7 @@
     "blocks": ["affiliate-validator"]
   },
   "store.affiliates.profile": {
-    "children": ["rich-text#affiliate-profile"]
+    "children": ["affiliate-profile-topbar", "rich-text#affiliate-profile"]
   },
   "rich-text#affiliate-profile": {
     "props": {

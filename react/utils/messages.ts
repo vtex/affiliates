@@ -161,4 +161,8 @@ export const messages = defineMessages({
 
 export const storeMessages = defineMessages({
   affiliateProfileButtonLabel: { id: 'store/affiliate.profile.button.label' },
+  affiliateProfileTitle: { id: 'store/affiliate.profile.title' },
+  affiliateProfileAccessStoreButton: {
+    id: 'store/affiliate.profile.access.store.label',
+  },
 })
