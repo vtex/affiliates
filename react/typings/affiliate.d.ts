@@ -1,23 +1,23 @@
 export interface Affiliate {
-  id: string
-  name: string
-  storeName: string
-  email: string
-  slug: string
-  refId: string
-  phone: string
+  id?: string
+  name?: string
+  storeName?: string
+  email?: string
+  slug?: string
+  refId?: string
+  phone?: string
   isApproved: boolean
-  address: Address
-  document: string
-  documentType: string
-  marketing: Marketing
+  address?: Address
+  document?: string
+  documentType?: string
+  marketing?: Marketing
 }
 
 interface Address {
   city: string
   country: string
   neighborhood: string
-  number: string
+  number: number
   postalCode: string
   reference: string
   street: string

@@ -111,5 +111,7 @@
   "admin/edit.affiliate.approve.title": "Change affiliate approved status",
   "admin/total.order.value.disclaimer.text": "The total value is based only on the value of the items in the order. Shipping price is not considered.",
   "admin/import.no.last.file.label": "No file uploaded",
-  "store/affiliate.profile.button.label": "Affiliate Profile"
+  "store/affiliate.profile.button.label": "Affiliate Profile",
+  "store/affiliate.profile.access.store.label": "Access the store",
+  "store/affiliate.profile.title": "Affiliate program:"
 }

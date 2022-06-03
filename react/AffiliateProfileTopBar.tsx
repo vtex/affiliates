@@ -1,36 +1,22 @@
 import React from 'react'
-import { Button, IconExternalLinkMini, Divider } from 'vtex.styleguide'
-// import { useRuntime } from 'vtex.render-runtime'
+import type { FC } from 'react'
+import { useCssHandles } from 'vtex.css-handles'
 
 import AffiliateProvider from './context/AffiliateProvider'
-import VtexLogo from './components/store/icons/VtexLogo'
-import Avatar from './components/store/Avatar'
-// import useAffiliate from './context/useAffiliate'
+import TopBar from './components/store/affiliateTopBar/TopBar'
 
-const TopBar = () => {
-  // const { account } = useRuntime()
-  // const affiliate = useAffiliate()
+const CSS_HANDLES = ['topBarContainer'] as const
 
-  // console.log(affiliate)
+const AffiliateTopBar: FC = () => {
+  const { handles } = useCssHandles(CSS_HANDLES)
 
   return (
     <AffiliateProvider>
-      <div className="flex pa4 justify-between">
-        <div className="flex items-center-s">
-          <VtexLogo className="mr5" />
-          <p className="mb0">Programa de afiliados: </p>
-        </div>
-        <div className="flex">
-          <Button>
-            <IconExternalLinkMini />
-            <p className="pl3 mb0">Acessar a loja</p>
-          </Button>
-          <Avatar name="a" />
-        </div>
+      <div className={`${handles.topBarContainer}`}>
+        <TopBar />
       </div>
-      <Divider />
     </AffiliateProvider>
   )
 }
 
-export default TopBar
+export default AffiliateTopBar
