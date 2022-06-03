@@ -8,7 +8,14 @@ import useAffiliate from '../../../context/useAffiliate'
 import { storeMessages } from '../../../utils/messages'
 
 const TopBar = () => {
-  const { account, navigate } = useRuntime()
+  const {
+    account,
+    navigate,
+    route: {
+      params: { affiliateId },
+    },
+  } = useRuntime()
+
   const affiliate = useAffiliate()
 
   const intl = useIntl()
@@ -16,9 +23,9 @@ const TopBar = () => {
   const onClick = useCallback(() => {
     navigate({
       page: 'store.affiliates',
-      params: { affiliateId: affiliate?.affiliate?.name },
+      params: { affiliateId },
     })
-  }, [affiliate, navigate])
+  }, [affiliateId, navigate])
 
   return (
     <>
