@@ -33,6 +33,13 @@ export const statusTagControl = (
     }
   }
 
+  if (status === 'payment-pending') {
+    return {
+      label: intl.formatMessage(messages.orderStatusPendingLabel),
+      palette: 'gray',
+    }
+  }
+
   if (status === 'payment-approved') {
     return {
       label: intl.formatMessage(messages.orderStatusPaidLabel),
