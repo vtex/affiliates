@@ -18,6 +18,8 @@ const TopBar = () => {
 
   const affiliate = useAffiliate()
 
+  const returnUrl = `${window.location?.origin}/affiliates/${affiliateId}`
+
   const intl = useIntl()
 
   const onClick = useCallback(() => {
@@ -43,7 +45,11 @@ const TopBar = () => {
               )}
             </p>
           </ButtonWithIcon>
-          <Avatar name={affiliate?.affiliate?.name ?? ''} />
+          <Avatar
+            name={affiliate?.affiliate?.name ?? ''}
+            account={account}
+            returnUrl={returnUrl}
+          />
         </div>
       </div>
       <Divider />
