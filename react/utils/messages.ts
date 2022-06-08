@@ -165,4 +165,5 @@ export const storeMessages = defineMessages({
   affiliateProfileAccessStoreButton: {
     id: 'store/affiliate.profile.access.store.label',
   },
+  affiliateProfileAvatarLogout: { id: 'store/affiliate.profile.avatar.logout' },
 })
