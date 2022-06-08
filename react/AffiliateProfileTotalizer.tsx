@@ -1,15 +1,16 @@
-import React from "react";
+import React from 'react'
+
 import AffiliateProvider from './context/AffiliateProvider'
-import TestTotalizer from "./components/store/TestTotalizer";
+import ProfileTotalizer from './components/store/ProfileTotalizers'
 
 function AffiliateProfileTotalizer() {
-
-  return(
+  return (
     <AffiliateProvider>
       <div>
-        <TestTotalizer />
+        <ProfileTotalizer />
       </div>
     </AffiliateProvider>
   )
 }
+
 export default AffiliateProfileTotalizer

@@ -1,6 +1,10 @@
 import React from 'react'
 
-import type { AffiliatesOrdersData, Totalizers } from '../typings/tables'
+import type {
+  AffiliatesOrdersData,
+  Totalizers,
+  TotalizersProfile,
+} from '../typings/tables'
 import type { Affiliate } from '../typings/affiliate'
 
 interface AffiliateContextType {
@@ -11,6 +15,7 @@ interface AffiliateContextType {
   affiliate: Affiliate
   orders?: AffiliatesOrdersData[]
   totalizer?: Totalizers
+  totalizersProfile?: TotalizersProfile
 }
 
 const AffiliateContext = React.createContext<AffiliateContextType>({

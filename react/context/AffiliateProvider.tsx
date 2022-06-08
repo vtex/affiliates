@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { useQuery } from 'react-apollo'
 import type { QueryAffiliateOrdersArgs } from 'vtex.affiliates-commission-service'
@@ -20,12 +20,6 @@ const AffiliateProvider: FC = (props) => {
       params: { affiliateId: slug },
     },
   } = useRuntime()
-
-  const date = new Date()
-  const defaultStartDate = new Date(date.getFullYear(), date.getMonth())
-
-  const [startDate] = useState(defaultStartDate)
-  const [endDate] = useState(date)
 
   const {
     orderForm: { clientProfileData },
@@ -52,10 +46,6 @@ const AffiliateProvider: FC = (props) => {
       pageSize: PAGE_SIZE,
       filter: {
         affiliateId: affiliate?.id,
-        dateRange: {
-          startDate: startDate.toISOString(),
-          endDate: endDate.toISOString(),
-        },
       },
     },
     skip: !affiliate,
@@ -71,6 +61,7 @@ const AffiliateProvider: FC = (props) => {
         affiliate,
         orders: ordersReturn?.affiliateOrders.data,
         totalizer: ordersReturn?.affiliateOrders.totalizers,
+        totalizersProfile: ordersReturn?.affiliateOrders.totalizersProfile,
       }}
     >
       {props.children}

@@ -27,8 +27,6 @@ const AffiliateStoreName: FC = () => {
     }
   )
 
-  console.log(error)
-
   return (
     <div className={`f1 tc mv6 ${handles.affiliateStoreName}`}>
       <span>{error ? '' : data?.getAffiliateStoreName}</span>

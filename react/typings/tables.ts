@@ -21,6 +21,13 @@ export type Totalizers = {
   totalOrderSum: number
 }
 
+export type TotalizersProfile = {
+  total: number
+  totalCancelled: number
+  totalApproved: number
+  totalInvoiced: number
+}
+
 export type AffiliatesOrdersData = {
   id: string
   orderId: string
@@ -39,6 +46,7 @@ export type AffiliatesOrdersQueryReturnType = {
     data: [AffiliatesOrdersData]
     pagination: Pagination
     totalizers: Totalizers
+    totalizersProfile: TotalizersProfile
   }
 }
 

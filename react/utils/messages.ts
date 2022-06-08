@@ -165,4 +165,13 @@ export const storeMessages = defineMessages({
   affiliateProfileAccessStoreButton: {
     id: 'store/affiliate.profile.access.store.label',
   },
+  approvedProfileTotalizer: {
+    id: 'store/affiliate.profile.totalizer.approved.title',
+  },
+  cancelledProfileTotalizer: {
+    id: 'store/affiliate.profile.totalizer.cancelled.title',
+  },
+  invoicedProfileTotalizer: {
+    id: 'store/affiliate.profile.totalizer.invoiced.title',
+  },
 })

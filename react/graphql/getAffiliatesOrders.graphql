@@ -29,5 +29,11 @@ query getAffiliatesOrders(
       totalCommissionSum
       totalOrderSum
     }
+    totalizersProfile(filter: $filter) {
+      total
+      totalCancelled
+      totalApproved
+      totalInvoiced
+    }
   }
 }
