@@ -18,6 +18,8 @@ const TopBar = () => {
 
   const affiliate = useAffiliate()
 
+  const returnUrl = `${window.location?.origin}/affiliates/${affiliateId}`
+
   const intl = useIntl()
 
   const onClick = useCallback(() => {
@@ -33,7 +35,7 @@ const TopBar = () => {
         <div className="flex items-center-s">
           <h6 className="mb0">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
-          )} ${account}`}</h6>
+          )}: ${account}`}</h6>
         </div>
         <div className="flex items-center-s">
           <ButtonWithIcon onClick={onClick} icon={<IconExternalLinkMini />}>
@@ -43,7 +45,11 @@ const TopBar = () => {
               )}
             </p>
           </ButtonWithIcon>
-          <Avatar name={affiliate?.affiliate?.name ?? ''} />
+          <Avatar
+            name={affiliate?.affiliate?.name ?? ''}
+            account={account}
+            returnUrl={returnUrl}
+          />
         </div>
       </div>
       <Divider />

@@ -113,5 +113,6 @@
   "admin/import.no.last.file.label": "No file uploaded",
   "store/affiliate.profile.button.label": "Affiliate Profile",
   "store/affiliate.profile.access.store.label": "Access the store",
-  "store/affiliate.profile.title": "Affiliate program:"
+  "store/affiliate.profile.title": "Affiliate program",
+  "store/affiliate.profile.avatar.logout": "Logout"
 }
