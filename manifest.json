@@ -33,7 +33,7 @@
     "admin": "0.x"
   },
   "scripts": {
-    "prereleasy": "bash lint.sh"
+
   },
   "credentialType": "absolute",
   "policies": [
