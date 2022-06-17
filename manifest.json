@@ -1,7 +1,7 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.48.0",
+  "version": "0.49.0-beta.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
@@ -32,9 +32,7 @@
     "messages": "1.x",
     "admin": "0.x"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "credentialType": "absolute",
   "policies": [
     {
