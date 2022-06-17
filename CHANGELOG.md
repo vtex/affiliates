@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.48.0] - 2022-06-15
+
+### Added
+
+- Logout button
+
+### Changed
+
+- Avatar component to be a button and have a dropdown menu
+
+## [0.47.0] - 2022-06-03
+
 ### Added
 
 - Create Avatar component

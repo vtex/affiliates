@@ -116,5 +116,6 @@
   "store/affiliate.profile.title": "Programa de afiliados:",
   "store/affiliate.profile.totalizer.approved.title": "Em andamento",
   "store/affiliate.profile.totalizer.cancelled.title": "Cancelado",
-  "store/affiliate.profile.totalizer.invoiced.title": "Faturado"
+  "store/affiliate.profile.totalizer.invoiced.title": "Faturado",
+  "store/affiliate.profile.avatar.logout": "Sair"
 }

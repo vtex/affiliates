@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useIntl } from 'react-intl'
-import { IconHelp } from 'vtex.styleguide'
 import { useRuntime } from 'vtex.render-runtime'
 
 import { storeMessages } from '../../../utils/messages'
@@ -21,6 +20,8 @@ function ProfileTotalizerItem(props: Props) {
     culture: { currency },
   } = useRuntime()
 
+  const tooltipRef = useRef(null)
+
   const TotalizerTitle = {
     approved: intl.formatMessage(storeMessages.approvedProfileTotalizer),
     cancelled: intl.formatMessage(storeMessages.cancelledProfileTotalizer),
@@ -28,13 +29,15 @@ function ProfileTotalizerItem(props: Props) {
   }
 
   return (
-    <article className="w-33 pa6 ba bt-0 br-0 bl-0 b--light-gray">
-      <div className="flex flex-row items-center">
+    <article
+      ref={tooltipRef}
+      className="w-33 pa6 ba bt-0 br-1 bb-0 bl-0 b--light-gray"
+    >
+      <div id="totalizer-popup" className="flex flex-row items-center">
         <h4 className="f5 mr-1 my-0">{TotalizerTitle[type]}</h4>
-        <IconHelp />
       </div>
       <h2 className={`${color}`}>
-        {intl.formatNumber(value, {
+        {intl.formatNumber(value / 100, {
           style: 'currency',
           currency,
         })}

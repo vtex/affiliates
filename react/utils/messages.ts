@@ -174,4 +174,5 @@ export const storeMessages = defineMessages({
   invoicedProfileTotalizer: {
     id: 'store/affiliate.profile.totalizer.invoiced.title',
   },
+  affiliateProfileAvatarLogout: { id: 'store/affiliate.profile.avatar.logout' },
 })

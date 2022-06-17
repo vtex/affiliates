@@ -8,17 +8,26 @@ import useAffiliate from '../../../context/useAffiliate'
 import { storeMessages } from '../../../utils/messages'
 
 const TopBar = () => {
-  const { account, navigate } = useRuntime()
+  const {
+    account,
+    navigate,
+    route: {
+      params: { affiliateId },
+    },
+  } = useRuntime()
+
   const affiliate = useAffiliate()
+
+  const returnUrl = `${window.location?.origin}/affiliates/${affiliateId}`
 
   const intl = useIntl()
 
   const onClick = useCallback(() => {
     navigate({
       page: 'store.affiliates',
-      params: { affiliateId: affiliate?.affiliate?.name },
+      params: { affiliateId },
     })
-  }, [affiliate, navigate])
+  }, [affiliateId, navigate])
 
   return (
     <>
@@ -26,7 +35,7 @@ const TopBar = () => {
         <div className="flex items-center-s">
           <h6 className="mb0">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
-          )} ${account}`}</h6>
+          )}: ${account}`}</h6>
         </div>
         <div className="flex items-center-s">
           <ButtonWithIcon onClick={onClick} icon={<IconExternalLinkMini />}>
@@ -36,7 +45,11 @@ const TopBar = () => {
               )}
             </p>
           </ButtonWithIcon>
-          <Avatar name={affiliate?.affiliate?.name ?? ''} />
+          <Avatar
+            name={affiliate?.affiliate?.name ?? ''}
+            account={account}
+            returnUrl={returnUrl}
+          />
         </div>
       </div>
       <Divider />

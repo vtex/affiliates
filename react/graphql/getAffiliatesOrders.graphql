@@ -30,7 +30,6 @@ query getAffiliatesOrders(
       totalOrderSum
     }
     totalizersProfile(filter: $filter) {
-      total
       totalCancelled
       totalApproved
       totalInvoiced

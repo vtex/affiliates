@@ -116,5 +116,6 @@
   "store/affiliate.profile.title": "Affiliate program:",
   "store/affiliate.profile.totalizer.approved.title": "Ongoing",
   "store/affiliate.profile.totalizer.cancelled.title": "Cancelled",
-  "store/affiliate.profile.totalizer.invoiced.title": "Invoiced"
+  "store/affiliate.profile.totalizer.invoiced.title": "Invoiced",
+  "store/affiliate.profile.avatar.logout": "Logout"
 }
