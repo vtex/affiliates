@@ -34,7 +34,7 @@ import { getAffiliate } from './resolvers/getAffiliate'
 import { fieldResolvers } from './resolvers/fieldResolvers'
 import { getAffiliateByEmail } from './resolvers/getAffiliateByEmail'
 
-const TIMEOUT_MS = 1000
+const TIMEOUT_MS = 5000
 
 // This is the configuration for clients available in `ctx.clients`.
 const clients: ClientsConfig<Clients> = {
@@ -43,7 +43,7 @@ const clients: ClientsConfig<Clients> = {
   options: {
     // All IO Clients will be initialized with these options, unless otherwise specified.
     default: {
-      retries: 3,
+      retries: 2,
       timeout: TIMEOUT_MS,
     },
   },

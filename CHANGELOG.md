@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Change default timeout for clients to `5000 ms`
+- Raise service timeout configuration to `10 s`
+- Reduce retries to 2
+
 ## [0.48.0] - 2022-06-15
 
 ### Added
