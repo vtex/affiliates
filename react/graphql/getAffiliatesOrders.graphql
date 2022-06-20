@@ -31,7 +31,7 @@ query getAffiliatesOrders(
     }
     totalizersProfile(filter: $filter) {
       totalCancelled
-      totalApproved
+      totalOngoing
       totalInvoiced
     }
   }

@@ -23,7 +23,7 @@ export type Totalizers = {
 
 export type TotalizersProfile = {
   totalCancelled: number
-  totalApproved: number
+  totalOngoing: number
   totalInvoiced: number
 }
 

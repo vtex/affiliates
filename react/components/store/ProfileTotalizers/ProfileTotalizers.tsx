@@ -11,7 +11,7 @@ function ProfileTotalizer() {
       <ProfileTotalizerItem
         value={
           affiliate?.totalizersProfile
-            ? affiliate?.totalizersProfile?.totalApproved
+            ? affiliate?.totalizersProfile?.totalOngoing
             : 0
         }
         type="approved"
