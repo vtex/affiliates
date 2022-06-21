@@ -1,6 +1,6 @@
 {
   "store.affiliates": {
-    "blocks": ["affiliate-validator", "affiliate-template"]
+    "blocks": ["affiliate-validator"]
   },
   "store.affiliates.profile": {
     "children": [
