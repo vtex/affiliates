@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Totalizer Block based on the context and graphQL return
+- Profile Title Block added
+
+### Changed
+
+- Taken the date out of the storefront context because it is not going to be a filter on the page and it helps return all the orders data
+
 ## [0.48.0] - 2022-06-15
 
 ### Added

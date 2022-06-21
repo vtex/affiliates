@@ -3,15 +3,11 @@
     "blocks": ["affiliate-validator"]
   },
   "store.affiliates.profile": {
-    "children": ["affiliate-profile-topbar", "rich-text#affiliate-profile"]
-  },
-  "rich-text#affiliate-profile": {
-    "props": {
-      "textAlignment": "CENTER",
-      "textPosition": "CENTER",
-      "text": "**Affiliate profile**",
-      "font": "t-heading-1"
-    }
+    "children": [
+      "affiliate-profile-topbar",
+      "affiliate-profile-title",
+      "affiliate-profile-totalizer"
+    ]
   },
   "affiliate-validator": {
     "props": {
