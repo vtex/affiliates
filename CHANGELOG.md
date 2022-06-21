@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.49.0] - 2022-06-21
+
 ### Added
 
 - Totalizer Block based on the context and graphQL return
