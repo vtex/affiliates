@@ -6,7 +6,8 @@
     "children": [
       "affiliate-profile-topbar",
       "affiliate-profile-title",
-      "affiliate-profile-totalizer"
+      "affiliate-profile-totalizer",
+      "affiliate-profile-table"
     ]
   },
   "affiliate-validator": {
