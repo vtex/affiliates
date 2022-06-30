@@ -7,7 +7,7 @@ import {
 import { useIntl } from 'react-intl'
 
 import { storeMessages } from '../../../utils/messages'
-import { useProfileTable } from './useProfileTable'
+import { useProfileTable } from '../../../hooks/useProfileTable'
 import useAffiliate from '../../../context/useAffiliate'
 import { usePagination } from '../../../hooks/usePagination'
 
