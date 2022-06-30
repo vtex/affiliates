@@ -114,8 +114,11 @@
   "store/affiliate.profile.button.label": "Affiliate Profile",
   "store/affiliate.profile.access.store.label": "Access the store",
   "store/affiliate.profile.title": "Affiliate program:",
-  "store/affiliate.profile.totalizer.approved.title": "Ongoing",
-  "store/affiliate.profile.totalizer.cancelled.title": "Cancelled",
-  "store/affiliate.profile.totalizer.invoiced.title": "Invoiced",
-  "store/affiliate.profile.avatar.logout": "Logout"
+  "store/affiliate.profile.ongoing.title": "Ongoing",
+  "store/affiliate.profile.cancelled.title": "Cancelled",
+  "store/affiliate.profile.invoiced.title": "Invoiced",
+  "store/affiliate.profile.avatar.logout": "Logout",
+  "store/affiliate.profile.table.dateTitle": "Date",
+  "store/affiliate.profile.table.commissionTitle": "Commission",
+  "store/affiliate.profile.table.totlaTitle": "Order"
 }

@@ -1,6 +1,6 @@
-import type { FC } from 'react'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
-import React, { useMemo } from 'react'
+import type { FC } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { useQuery } from 'react-apollo'
 import type { QueryAffiliateOrdersArgs } from 'vtex.affiliates-commission-service'
@@ -10,7 +10,7 @@ import GET_AFFILIATE_BY_EMAIL from '../graphql/getAffiliateByEmail.graphql'
 import GET_AFFILIATES_ORDERS from '../graphql/getAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../typings/tables'
 import type { Affiliate } from '../typings/affiliate'
-import { PAGE_SIZE, INITIAL_PAGE } from '../utils/constants'
+import { PAGE_SIZE } from '../utils/constants'
 
 const AffiliateProvider: FC = (props) => {
   // It is worth to metion that the alpha had slug as the affiliateId, thats why is has this name
@@ -33,6 +33,13 @@ const AffiliateProvider: FC = (props) => {
     }
   )
 
+  const [pagination, setPagination] = useState({
+    tableSize: PAGE_SIZE,
+    currentPage: 1,
+    currentItemFrom: 1,
+    currentItemTo: PAGE_SIZE,
+  })
+
   const affiliate: Affiliate = useMemo(() => {
     return affiliateReturn?.getAffiliateByEmail
   }, [affiliateReturn])
@@ -42,7 +49,7 @@ const AffiliateProvider: FC = (props) => {
     QueryAffiliateOrdersArgs
   >(GET_AFFILIATES_ORDERS, {
     variables: {
-      page: INITIAL_PAGE,
+      page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
         affiliateId: affiliate?.id,
@@ -58,8 +65,11 @@ const AffiliateProvider: FC = (props) => {
         isLogged: affiliate?.slug === slug,
         refetchAffiliate,
         refetchOrders,
+        setPagination,
+        pagination,
         affiliate,
         orders: ordersReturn?.affiliateOrders.data,
+        ordersPagination: ordersReturn?.affiliateOrders.pagination,
         totalizer: ordersReturn?.affiliateOrders.totalizers,
         totalizersProfile: ordersReturn?.affiliateOrders.totalizersProfile,
       }}

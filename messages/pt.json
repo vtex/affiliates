@@ -114,8 +114,11 @@
   "store/affiliate.profile.button.label": "Perfil do afiliado",
   "store/affiliate.profile.access.store.label": "Acessar a loja",
   "store/affiliate.profile.title": "Programa de afiliados:",
-  "store/affiliate.profile.totalizer.approved.title": "Em andamento",
-  "store/affiliate.profile.totalizer.cancelled.title": "Cancelado",
-  "store/affiliate.profile.totalizer.invoiced.title": "Faturado",
-  "store/affiliate.profile.avatar.logout": "Sair"
+  "store/affiliate.profile.ongoing.title": "Em andamento",
+  "store/affiliate.profile.cancelled.title": "Cancelado",
+  "store/affiliate.profile.invoiced.title": "Faturado",
+  "store/affiliate.profile.avatar.logout": "Sair",
+  "store/affiliate.profile.table.dateTitle": "Data",
+  "store/affiliate.profile.table.commissionTitle": "Comissão",
+  "store/affiliate.profile.table.totlaTitle": "Venda"
 }

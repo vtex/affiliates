@@ -165,14 +165,23 @@ export const storeMessages = defineMessages({
   affiliateProfileAccessStoreButton: {
     id: 'store/affiliate.profile.access.store.label',
   },
-  approvedProfileTotalizer: {
-    id: 'store/affiliate.profile.totalizer.approved.title',
+  onGoingTitle: {
+    id: 'store/affiliate.profile.ongoing.title',
   },
-  cancelledProfileTotalizer: {
-    id: 'store/affiliate.profile.totalizer.cancelled.title',
+  cancelledTitle: {
+    id: 'store/affiliate.profile.cancelled.title',
   },
-  invoicedProfileTotalizer: {
-    id: 'store/affiliate.profile.totalizer.invoiced.title',
+  invoicedTitle: {
+    id: 'store/affiliate.profile.invoiced.title',
+  },
+  dateProfileTable: {
+    id: 'store/affiliate.profile.table.dateTitle',
+  },
+  commissionProfileTable: {
+    id: 'store/affiliate.profile.table.commissionTitle',
+  },
+  totalProfileTable: {
+    id: 'store/affiliate.profile.table.totlaTitle',
   },
   affiliateProfileAvatarLogout: { id: 'store/affiliate.profile.avatar.logout' },
 })
