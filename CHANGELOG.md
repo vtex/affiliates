@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Added missing filtering option, payment-pending
+
 ### Added
 
 - Order Table added to the Affiliate Profile Page
