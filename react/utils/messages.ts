@@ -183,5 +183,8 @@ export const storeMessages = defineMessages({
   totalProfileTable: {
     id: 'store/affiliate.profile.table.totlaTitle',
   },
+  prepositionProfileTable: {
+    id: 'store/affiliate.profile.table.prepositionTable',
+  },
   affiliateProfileAvatarLogout: { id: 'store/affiliate.profile.avatar.logout' },
 })

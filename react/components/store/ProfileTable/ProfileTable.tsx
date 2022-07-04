@@ -10,13 +10,12 @@ import { storeMessages } from '../../../utils/messages'
 import { useProfileTable } from '../../../hooks/useProfileTable'
 import useAffiliate from '../../../context/useAffiliate'
 import { usePagination } from '../../../hooks/usePagination'
+import { PAGE_SIZE } from '../../../utils/constants'
 
 function ProfileTable() {
   const affiliate = useAffiliate()
   const { ordersPagination } = useAffiliate()
   const intl = useIntl()
-
-  const ITEMS_PER_PAGE = 15
 
   const columns = [
     {
@@ -50,13 +49,13 @@ function ProfileTable() {
     ratio: [1, 0.3, 0.3, 0.3, 0.3],
   })
 
-  const measures = useTableMeasures({ size: ITEMS_PER_PAGE })
+  const measures = useTableMeasures({ size: PAGE_SIZE })
 
   const { ...paginationProps } = usePagination()
 
   const pagination = {
     ...paginationProps,
-    textOf: 'de',
+    textOf: intl.formatMessage(storeMessages.prepositionProfileTable),
     totalItems: ordersPagination?.total,
   }
 
@@ -69,7 +68,6 @@ function ProfileTable() {
             measures={measures}
             columns={sizedColumns}
             items={ordersData}
-            onRowClick={() => {}}
             fullWidth
             density="high"
             indexColumnLabel="Index"

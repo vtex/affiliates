@@ -120,5 +120,6 @@
   "store/affiliate.profile.avatar.logout": "Logout",
   "store/affiliate.profile.table.dateTitle": "Date",
   "store/affiliate.profile.table.commissionTitle": "Commission",
-  "store/affiliate.profile.table.totlaTitle": "Order"
+  "store/affiliate.profile.table.totlaTitle": "Order",
+  "store/affiliate.profile.table.prepositionTable": "of"
 }
