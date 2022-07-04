@@ -3,8 +3,8 @@ import React from 'react'
 import { useIntl } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
 
-import type { AffiliatesOrdersData } from '../../../typings/tables'
-import ProfileStatusTag from '../ProfileStatusTag'
+import type { AffiliatesOrdersData } from '../typings/tables'
+import ProfileStatusTag from '../components/store/ProfileStatusTag'
 
 interface OrderTableItem {
   orderId: string
