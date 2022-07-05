@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.50.0] - 2022-07-05
+
 ### Added
 
 - Order Table added to the Affiliate Profile Page
