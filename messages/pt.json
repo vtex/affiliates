@@ -120,5 +120,6 @@
   "store/affiliate.profile.avatar.logout": "Sair",
   "store/affiliate.profile.table.dateTitle": "Data",
   "store/affiliate.profile.table.commissionTitle": "Comissão",
-  "store/affiliate.profile.table.totlaTitle": "Venda"
+  "store/affiliate.profile.table.totlaTitle": "Venda",
+  "store/affiliate.profile.table.prepositionTable": "de"
 }
