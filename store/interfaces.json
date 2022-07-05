@@ -25,7 +25,8 @@
   },
   "affiliate-profile-totalizer": {
     "component": "AffiliateProfileTotalizer"
+  },
+  "affiliate-profile-table": {
+    "component": "AffiliateProfileTable"
   }
-
-
 }

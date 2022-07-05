@@ -24,9 +24,9 @@ function ProfileTotalizerItem(props: Props) {
   const tooltipRef = useRef(null)
 
   const TotalizerTitle = {
-    approved: intl.formatMessage(storeMessages.approvedProfileTotalizer),
-    cancelled: intl.formatMessage(storeMessages.cancelledProfileTotalizer),
-    invoiced: intl.formatMessage(storeMessages.invoicedProfileTotalizer),
+    approved: intl.formatMessage(storeMessages.onGoingTitle),
+    cancelled: intl.formatMessage(storeMessages.cancelledTitle),
+    invoiced: intl.formatMessage(storeMessages.invoicedTitle),
   }
 
   return (

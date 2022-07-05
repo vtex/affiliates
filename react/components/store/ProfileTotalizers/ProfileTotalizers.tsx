@@ -7,7 +7,7 @@ function ProfileTotalizer() {
   const affiliate = useAffiliate()
 
   return (
-    <section className="flex justify-between mw9 ba b--light-gray br3 center mr-auto ml-auto">
+    <section className="flex justify-between mw9 ba b--light-gray br3 center mr-auto ml-auto my-3">
       <ProfileTotalizerItem
         value={
           affiliate?.totalizersProfile
