@@ -31,6 +31,8 @@ import type { Affiliate } from 'vtex.affiliates'
 import {
   AFFILIATES_ORDERS_EXPORT_LIMIT,
   PAGE_SIZE,
+  INITIAL_PAGE,
+  MAX_PAGE_SIZE,
 } from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
 import DatesFilter from './DatesFilter'
@@ -214,8 +216,8 @@ const AffiliateOrdersTable: FC = () => {
 
   const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
     variables: {
-      page: 1,
-      pageSize: 100,
+      page: INITIAL_PAGE,
+      pageSize: MAX_PAGE_SIZE,
       filter: {
         searchTerm: searchState.debouncedValue ?? null,
       },
