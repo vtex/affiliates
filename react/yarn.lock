@@ -5862,17 +5862,17 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates-commission-service@https://izidio--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.22.1+build1657053247/public/@types/vtex.affiliates-commission-service":
-  version "0.22.1"
-  resolved "https://izidio--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@0.22.1+build1657053247/public/@types/vtex.affiliates-commission-service#ae29c875e5916763d6ba20e734166a0f40ff7fde"
+"vtex.affiliates-commission-service@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@0.20.6/public/@types/vtex.affiliates-commission-service":
+  version "0.20.6"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@0.20.6/public/@types/vtex.affiliates-commission-service#da0770467067add4bd3a7bbf9e30918c701b04f7"
 
 "vtex.affiliates-order-form-spy@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.1.2/public/@types/vtex.affiliates-order-form-spy":
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.1.2/public/@types/vtex.affiliates-order-form-spy#144dc115f00078505e02782de613956b903ae41d"
 
-"vtex.affiliates@https://izidio--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.49.0+build1657054767/public/@types/vtex.affiliates":
-  version "0.49.0"
-  resolved "https://izidio--partnerintegrationbra.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.49.0+build1657054767/public/@types/vtex.affiliates#11531b109b3b19f73904a6680a572e8a157cf092"
+"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.48.0/public/@types/vtex.affiliates":
+  version "0.48.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.48.0/public/@types/vtex.affiliates#a06786946a50d9e8604b1e20af005653532d82a7"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
