@@ -31,7 +31,7 @@ function AffiliateProfileTitle() {
 
   return (
     <div
-      className={`f1 mw9 center mr-auto ml-auto my-4 ba br-0 bl-0 bt-0 b--light-gray ${handles.affiliateProfileTitleContainer} `}
+      className={`f1 mw9 center mr-auto ml-auto my-3 ba br-0 bl-0 bt-0 b--light-gray ${handles.affiliateProfileTitleContainer} `}
     >
       <h4 className={`t-heading-4 ${handles.affiliateProfileTitle}`}>
         {error ? '' : data?.getAffiliateStoreName}

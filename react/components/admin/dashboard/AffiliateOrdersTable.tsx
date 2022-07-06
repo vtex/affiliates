@@ -416,6 +416,9 @@ const AffiliateOrdersTable: FC = () => {
           <option value="payment-approved">
             {intl.formatMessage(messages.orderStatusPaidLabel)}
           </option>
+          <option value="payment-pending">
+            {intl.formatMessage(messages.orderStatusPendingLabel)}
+          </option>
           <option value="invoiced">
             {intl.formatMessage(messages.orderStatusInvoicedLabel)}
           </option>

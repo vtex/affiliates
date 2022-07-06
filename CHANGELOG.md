@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Affiliates graphQL to `AffiliateOrdersTable` to get the `affiliateId`'s to get the orders
 
+## [0.50.1] - 2022-07-05
+
+### Fixed
+
+- Added missing filtering option, payment-pending
+
+## [0.50.0] - 2022-07-05
+
+### Added
+
+- Order Table added to the Affiliate Profile Page
+- Components Added `ProfileTable` and `ProfileStatusTag`
+- Hooks added `usePagination` and `useProfileTable`
+
 ## [0.49.0] - 2022-06-21
 
 ### Added

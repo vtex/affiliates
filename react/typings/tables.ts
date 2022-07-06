@@ -40,6 +40,12 @@ export type AffiliatesOrdersData = {
   lastInteractionIn: string
 }
 
+export type OrdersPagination = {
+  page: number
+  pageSize: number
+  total: number
+}
+
 export type AffiliatesOrdersQueryReturnType = {
   affiliateOrders: {
     data: [AffiliatesOrdersData]
