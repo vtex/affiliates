@@ -45,7 +45,7 @@ const AffiliateProvider: FC = (props) => {
       page: INITIAL_PAGE,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: affiliate?.id,
+        affiliateId: [affiliate?.id ?? ''],
       },
     },
     skip: !affiliate,
