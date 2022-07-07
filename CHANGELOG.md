@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.50.1] - 2022-07-05
+### Added
 
+- Affiliates graphQL to `AffiliateOrdersTable` to get the `affiliateId`'s to get the orders
+
+## [0.50.1] - 2022-07-05
 
 ### Fixed
 

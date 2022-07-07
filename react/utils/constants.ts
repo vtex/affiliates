@@ -1,5 +1,6 @@
 export const PAGE_SIZE = 15
 export const INITIAL_PAGE = 1
+export const MAX_PAGE_SIZE = 100
 
 // Our component treats 0 as infinity
 export const COMMISSIONS_TABLE_EXPORT_LIMIT = 0
