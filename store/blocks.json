@@ -3,6 +3,9 @@
     "blocks": ["affiliate-validator"]
   },
   "store.affiliates.profile": {
+    "children": ["affiliate-profile"]
+  },
+  "affiliate-profile": {
     "children": [
       "affiliate-profile-topbar",
       "affiliate-profile-title",

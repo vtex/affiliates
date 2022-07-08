@@ -1,15 +1,41 @@
 import React from 'react'
 
-import AffiliateProvider from './context/AffiliateProvider'
-import ProfileTotalizer from './components/store/ProfileTotalizers'
+import ProfileTotalizerItem from './components/store/ProfileTotalizerItem'
+import useAffiliate from './context/useAffiliate'
 
 function AffiliateProfileTotalizer() {
+  const affiliate = useAffiliate()
+
   return (
-    <AffiliateProvider>
-      <div>
-        <ProfileTotalizer />
-      </div>
-    </AffiliateProvider>
+    <section className="flex justify-between mw9 ba b--light-gray br3 center mr-auto ml-auto my-3">
+      <ProfileTotalizerItem
+        value={
+          affiliate?.totalizersProfile
+            ? affiliate?.totalizersProfile?.totalOngoing
+            : 0
+        }
+        type="approved"
+        color="yellow"
+      />
+      <ProfileTotalizerItem
+        value={
+          affiliate?.totalizersProfile
+            ? affiliate?.totalizersProfile?.totalCancelled
+            : 0
+        }
+        type="cancelled"
+        color="red"
+      />
+      <ProfileTotalizerItem
+        value={
+          affiliate?.totalizersProfile
+            ? affiliate?.totalizersProfile?.totalInvoiced
+            : 0
+        }
+        type="invoiced"
+        color="green"
+      />
+    </section>
   )
 }
 

@@ -14,6 +14,10 @@
   "affiliate-store-name": {
     "component": "AffiliateStoreName"
   },
+  "affiliate-profile": {
+    "component": "AffiliateProfile",
+    "composition": "children"
+  },
   "affiliate-profile-button": {
     "component": "AffiliateProfileButton"
   },
