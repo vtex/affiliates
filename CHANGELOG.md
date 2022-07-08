@@ -7,12 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.50.1] - 2022-07-05
 ### Fixed
 
 - Component `AffiliateProfile` added
 - Structure adjustments for the `Totalizer`, `Table` and `Topbar` components
 - Table measure fix
+
+## [0.51.0] - 2022-07-07
+
+### Added
+
+- Affiliates graphQL to `AffiliateOrdersTable` to get the `affiliateId`'s to get the orders
+
+## [0.50.1] - 2022-07-05
 
 ### Fixed
 

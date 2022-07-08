@@ -26,14 +26,18 @@ import type {
   QueryAffiliateOrdersArgs,
 } from 'vtex.affiliates-commission-service'
 import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
+import type { Affiliate } from 'vtex.affiliates'
 
 import {
   AFFILIATES_ORDERS_EXPORT_LIMIT,
   PAGE_SIZE,
+  INITIAL_PAGE,
+  MAX_PAGE_SIZE,
 } from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
 import DatesFilter from './DatesFilter'
 import GET_AFFILIATES_ORDERS from '../../../graphql/getAffiliatesOrders.graphql'
+import GET_AFFILIATES from '../../../graphql/getAffiliates.graphql'
 import EXPORT_ORDERS from '../../../graphql/exportAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
 import { setSortOrder } from '../../../utils/shared'
@@ -210,6 +214,28 @@ const AffiliateOrdersTable: FC = () => {
     },
   ]
 
+  const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
+    variables: {
+      page: INITIAL_PAGE,
+      pageSize: MAX_PAGE_SIZE,
+      filter: {
+        searchTerm: searchState.debouncedValue ?? null,
+      },
+    },
+  })
+
+  const allAffiliatesId = affiliatesData?.getAffiliates?.data?.map(
+    (affiliate: Affiliate) => affiliate.id
+  )
+
+  let affiliateIdFilter = null
+
+  if (searchState.debouncedValue) {
+    affiliateIdFilter = allAffiliatesId?.length
+      ? allAffiliatesId
+      : [searchState.debouncedValue]
+  }
+
   const { data, loading } = useQuery<
     AffiliatesOrdersQueryReturnType,
     QueryAffiliateOrdersArgs
@@ -218,7 +244,7 @@ const AffiliateOrdersTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: searchState.debouncedValue ?? null,
+        affiliateId: affiliateIdFilter ?? null,
         dateRange: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
