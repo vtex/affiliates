@@ -6,8 +6,15 @@ import { useIntl } from 'react-intl'
 import Avatar from './components/store/affiliateTopBar/Avatar/Avatar'
 import useAffiliate from './context/useAffiliate'
 import { storeMessages } from './utils/messages'
+import LogoImage from './images/logo_rebel.png'
 
-const AffiliateTopBar = () => {
+interface Props {
+  imageURL: string
+}
+
+const AffiliateTopBar = (props: Props) => {
+  const { imageURL } = props
+
   const {
     account,
     navigate,
@@ -29,10 +36,18 @@ const AffiliateTopBar = () => {
     })
   }, [affiliateId, navigate])
 
+  // eslint-disable-next-line no-console
+  console.log(`IMAGE URL`, imageURL)
+
   return (
     <>
       <div className="flex pa4 justify-between">
         <div className="flex items-center-s">
+          <img
+            src={imageURL || LogoImage}
+            alt={`${account} Logo`}
+            style={{ maxHeight: '50px' }}
+          />
           <h6 className="mb0">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
           )}: ${account}`}</h6>
@@ -55,6 +70,22 @@ const AffiliateTopBar = () => {
       <Divider />
     </>
   )
+}
+
+AffiliateTopBar.schema = {
+  title: 'Topbar',
+  type: 'object',
+  properties: {
+    imageURL: {
+      title: 'Logo Image',
+      description: 'Imagem que será disponibilizada como logo na página',
+      type: 'string',
+      default: null,
+      widget: {
+        'ui:widget': 'image-uploader',
+      },
+    },
+  },
 }
 
 export default AffiliateTopBar
