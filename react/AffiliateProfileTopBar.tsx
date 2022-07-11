@@ -6,11 +6,13 @@ import { useIntl } from 'react-intl'
 import Avatar from './components/store/affiliateTopBar/Avatar/Avatar'
 import useAffiliate from './context/useAffiliate'
 import { storeMessages } from './utils/messages'
-import LogoImage from './images/logo_rebel.png'
+//import LogoImage from './images/logo_rebel.png'
 
 interface Props {
   imageURL: string
 }
+
+const logoPadrao = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/VTEX_Logo.svg/1200px-VTEX_Logo.svg.png"
 
 const AffiliateTopBar = (props: Props) => {
   const { imageURL } = props
@@ -44,7 +46,7 @@ const AffiliateTopBar = (props: Props) => {
       <div className="flex pa4 justify-between">
         <div className="flex items-center-s">
           <img
-            src={imageURL || LogoImage}
+            src={imageURL || logoPadrao}
             alt={`${account} Logo`}
             style={{ maxHeight: '50px' }}
           />
