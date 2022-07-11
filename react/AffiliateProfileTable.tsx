@@ -50,7 +50,9 @@ function AffiliateProfileTable() {
   })
 
   const relatedMeasures =
-    ordersData.length > 15 ? { size: PAGE_SIZE } : { size: ordersData.length }
+    ordersData.length > PAGE_SIZE
+      ? { size: PAGE_SIZE }
+      : { size: ordersData.length }
 
   const measures = useTableMeasures(relatedMeasures)
 
