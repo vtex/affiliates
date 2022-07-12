@@ -80,7 +80,7 @@ AffiliateTopBar.schema = {
       title: 'Logo Image',
       description: 'Imagem que será disponibilizada como logo na página',
       type: 'string',
-      default: null,
+      default: LogoImage,
       widget: {
         'ui:widget': 'image-uploader',
       },
