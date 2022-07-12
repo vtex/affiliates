@@ -7,7 +7,16 @@ import Avatar from './components/store/affiliateTopBar/Avatar/Avatar'
 import useAffiliate from './context/useAffiliate'
 import { storeMessages } from './utils/messages'
 
-const AffiliateTopBar = () => {
+interface Props {
+  imageURL: string
+}
+
+const baseLogo =
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/VTEX_Logo.svg/1200px-VTEX_Logo.svg.png'
+
+const AffiliateTopBar = (props: Props) => {
+  const { imageURL } = props
+
   const {
     account,
     navigate,
@@ -33,6 +42,11 @@ const AffiliateTopBar = () => {
     <>
       <div className="flex pa4 justify-between">
         <div className="flex items-center-s">
+          <img
+            src={imageURL || baseLogo}
+            alt={`${account} Logo`}
+            style={{ maxHeight: '35px', paddingRight: '10px' }}
+          />
           <h6 className="mb0">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
           )}: ${account}`}</h6>
@@ -55,6 +69,22 @@ const AffiliateTopBar = () => {
       <Divider />
     </>
   )
+}
+
+AffiliateTopBar.schema = {
+  title: 'Topbar',
+  type: 'object',
+  properties: {
+    imageURL: {
+      title: 'Logo Image',
+      description: 'Imagem que será disponibilizada como logo na página',
+      type: 'string',
+      default: baseLogo,
+      widget: {
+        'ui:widget': 'image-uploader',
+      },
+    },
+  },
 }
 
 export default AffiliateTopBar
