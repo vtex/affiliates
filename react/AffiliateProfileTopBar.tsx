@@ -38,9 +38,6 @@ const AffiliateTopBar = (props: Props) => {
     })
   }, [affiliateId, navigate])
 
-  // eslint-disable-next-line no-console
-  console.log(`IMAGE URL`, imageURL)
-
   return (
     <>
       <div className="flex pa4 justify-between">
