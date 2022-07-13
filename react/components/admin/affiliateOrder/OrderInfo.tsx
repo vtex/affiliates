@@ -69,7 +69,7 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
         <FlexSpacer />
         <Text variant="title1">
           {`${intl.formatMessage(
-            messages.affiliatesOrdersTableLastUpdatedColumnLabel
+            messages.affiliatesOrdersTableOrderDateColumnLabel
           )}: `}
         </Text>
         <Text variant="action2" tone="info">

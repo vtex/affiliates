@@ -41,6 +41,7 @@ const DatesFilter: FC<DatesFilterProps> = ({
           maxDate={endDate}
           onChange={onChangeStartDate}
           locale={locale}
+          useTime
         />
       </Flex>
       <Flex basis="220px" align="center" justify="space-between">
@@ -55,6 +56,7 @@ const DatesFilter: FC<DatesFilterProps> = ({
           maxDate={new Date()}
           onChange={onChangeEndDate}
           locale={locale}
+          useTime
         />
       </Flex>
     </>

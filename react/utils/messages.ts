@@ -51,8 +51,8 @@ export const messages = defineMessages({
   affiliatesOrdersTableStatusColumnLabel: {
     id: 'admin/affiliatesOrders.table.status.header',
   },
-  affiliatesOrdersTableLastUpdatedColumnLabel: {
-    id: 'admin/affiliatesOrders.table.lastUpdatedDate.header',
+  affiliatesOrdersTableOrderDateColumnLabel: {
+    id: 'admin/affiliatesOrders.table.orderDate.header',
   },
   affiliatesOrdersTableOrderTotalColumnLabel: {
     id: 'admin/affiliatesOrders.table.orderTotal.header',
