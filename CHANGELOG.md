@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.53.1] - 2022-07-13
+
 ### Fixed
 
 - DatePicker on order Table now have a time to pick to be able to use 1 day range
