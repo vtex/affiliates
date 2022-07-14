@@ -32,5 +32,8 @@
   },
   "affiliate-profile-table": {
     "component": "AffiliateProfileTable"
+  },
+  "affiliate-profile-validator": {
+    "component": "AffiliateProfileValidator"
   }
 }

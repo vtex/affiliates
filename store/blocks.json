@@ -6,17 +6,39 @@
     "children": ["affiliate-profile"]
   },
   "affiliate-profile": {
-    "children": [
-      "affiliate-profile-topbar",
-      "affiliate-profile-title",
-      "affiliate-profile-totalizer",
-      "affiliate-profile-table"
-    ]
+    "children": ["affiliate-profile-topbar", "affiliate-profile-validator"]
   },
   "affiliate-validator": {
     "props": {
       "Valid": "affiliate-template",
       "Invalid": "affiliate-invalid-template"
+    }
+  },
+
+  "flex-layout.row#profile": {
+    "children": ["flex-layout.col#profile"]
+  },
+
+  "flex-layout.col#profile": {
+    "children": [
+      "affiliate-profile-title",
+      "affiliate-profile-totalizer",
+      "affiliate-profile-table"
+    ]
+  },
+
+  "rich-text#profileerror": {
+    "props": {
+      "text": "### Faça o login com a conta correta do afiliado para acessar as informações",
+      "textAlignment": "CENTER",
+      "textPosition": "CENTER"
+    }
+  },
+
+  "affiliate-profile-validator": {
+    "props": {
+      "Valid": "flex-layout.row#profile",
+      "Invalid": "rich-text#profileerror"
     }
   }
 }
