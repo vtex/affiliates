@@ -151,7 +151,7 @@ const AffiliateOrdersTable: FC = () => {
     {
       id: 'orderDate',
       header: intl.formatMessage(
-        messages.affiliatesOrdersTableLastUpdatedColumnLabel
+        messages.affiliatesOrdersTableOrderDateColumnLabel
       ),
       resolver: {
         type: 'date',

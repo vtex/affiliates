@@ -27,7 +27,7 @@
   "admin/affiliatesOrders.table.affiliateId.header": "ID do afiliado",
   "admin/affiliatesOrders.table.orderId.header": "ID do pedido",
   "admin/affiliatesOrders.table.status.header": "Status do pedido",
-  "admin/affiliatesOrders.table.lastUpdatedDate.header": "Ultima atualização",
+  "admin/affiliatesOrders.table.orderDate.header": "Data do Pedido",
   "admin/affiliatesOrders.table.orderTotal.header": "Valor total",
   "admin/affiliatesOrders.table.orderTotalCommission.header": "Valor total de comissão",
   "admin/commissions.table.search.placeholder": "Procurar por ID do SKU",
