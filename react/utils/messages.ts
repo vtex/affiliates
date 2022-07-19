@@ -187,4 +187,13 @@ export const storeMessages = defineMessages({
     id: 'store/affiliate.profile.table.prepositionTable',
   },
   affiliateProfileAvatarLogout: { id: 'store/affiliate.profile.avatar.logout' },
+  affiliateProfileApprovedTooltip: {
+    id: 'store/affiliate.profile.approvedTooltip',
+  },
+  affiliateProfileCancelledTooltip: {
+    id: 'store/affiliate.profile.cancelledTooltip',
+  },
+  affiliateProfileInvoicedTooltip: {
+    id: 'store/affiliate.profile.invoicedTooltip',
+  },
 })
