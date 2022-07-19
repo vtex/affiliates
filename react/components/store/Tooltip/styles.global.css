@@ -38,39 +38,3 @@
   top: 100%;
   border-top-color: #000;
 }
-
-.tooltipTip.right {
-  left: calc(100% + 30px);
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
-}
-.tooltipTip.right::before {
-  left: calc(6px * -1);
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
-  border-right-color: #000;
-}
-
-.tooltipTip.bottom {
-  bottom: calc(30px * -1);
-}
-
-.tooltipTip.bottom::before {
-  bottom: 100%;
-  border-bottom-color: #000;
-}
-
-.tooltipTip.left {
-  left: auto;
-  right: calc(100% + 30px);
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
-}
-
-.tooltipTip.left::before {
-  left: auto;
-  right: calc(6px * -2);
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
-  border-left-color: #000;
-}
