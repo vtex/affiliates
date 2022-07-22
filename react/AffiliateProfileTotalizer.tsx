@@ -1,10 +1,13 @@
 import React from 'react'
+import { useIntl } from 'react-intl'
 
+import { storeMessages } from './utils/messages'
 import ProfileTotalizerItem from './components/store/ProfileTotalizerItem'
 import useAffiliate from './context/useAffiliate'
 
 function AffiliateProfileTotalizer() {
   const affiliate = useAffiliate()
+  const intl = useIntl()
 
   return (
     <section className="flex justify-between mw9 ba b--light-gray br3 center mr-auto ml-auto my-3">
@@ -16,6 +19,9 @@ function AffiliateProfileTotalizer() {
         }
         type="approved"
         color="yellow"
+        tooltip={intl.formatMessage(
+          storeMessages.affiliateProfileApprovedTooltip
+        )}
       />
       <ProfileTotalizerItem
         value={
@@ -25,6 +31,9 @@ function AffiliateProfileTotalizer() {
         }
         type="cancelled"
         color="red"
+        tooltip={intl.formatMessage(
+          storeMessages.affiliateProfileCancelledTooltip
+        )}
       />
       <ProfileTotalizerItem
         value={
@@ -34,6 +43,9 @@ function AffiliateProfileTotalizer() {
         }
         type="invoiced"
         color="green"
+        tooltip={intl.formatMessage(
+          storeMessages.affiliateProfileInvoicedTooltip
+        )}
       />
     </section>
   )

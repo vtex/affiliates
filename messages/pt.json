@@ -121,5 +121,8 @@
   "store/affiliate.profile.table.dateTitle": "Data",
   "store/affiliate.profile.table.commissionTitle": "Comissão",
   "store/affiliate.profile.table.totlaTitle": "Venda",
-  "store/affiliate.profile.table.prepositionTable": "de"
+  "store/affiliate.profile.table.prepositionTable": "de",
+  "store/affiliate.profile.approvedTooltip": "Valor acumulado de comissões em andamento",
+  "store/affiliate.profile.cancelledTooltip": "Valor acumulado de comprar canceladas",
+  "store/affiliate.profile.invoicedTooltip": "Valor Acumulado de compras faturadas"
 }

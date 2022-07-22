@@ -121,5 +121,8 @@
   "store/affiliate.profile.table.dateTitle": "Date",
   "store/affiliate.profile.table.commissionTitle": "Commission",
   "store/affiliate.profile.table.totlaTitle": "Order",
-  "store/affiliate.profile.table.prepositionTable": "of"
+  "store/affiliate.profile.table.prepositionTable": "of",
+  "store/affiliate.profile.approvedTooltip": "Cumulative value of commissions in progress",
+  "store/affiliate.profile.cancelledTooltip": "Accumulated value of canceled purchases",
+  "store/affiliate.profile.invoicedTooltip": "Accumulated value of invoiced purchases"
 }
