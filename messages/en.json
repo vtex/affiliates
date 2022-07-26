@@ -121,5 +121,11 @@
   "store/affiliate.profile.table.dateTitle": "Date",
   "store/affiliate.profile.table.commissionTitle": "Commission",
   "store/affiliate.profile.table.totlaTitle": "Order",
-  "store/affiliate.profile.table.prepositionTable": "of"
+  "store/affiliate.profile.table.prepositionTable": "of",
+  "store/affiliates.table.isApproved.text.any": "Any",
+  "store/table.dateFilter.from.label": "From",
+  "store/table.dateFilter.to.label": "To",
+  "store/affiliatesOrders.table.status.header": "Order Status:",
+  "store/affiliatesOrders.table.inputSearch.placeholder": "Order ID",
+  "store/affiliatesOrders.table.emptyState": "No orders found"
 }

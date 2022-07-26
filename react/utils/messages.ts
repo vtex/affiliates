@@ -187,4 +187,18 @@ export const storeMessages = defineMessages({
     id: 'store/affiliate.profile.table.prepositionTable',
   },
   affiliateProfileAvatarLogout: { id: 'store/affiliate.profile.avatar.logout' },
+  affiliatesTableIsApprovedTextAny: {
+    id: 'store/affiliates.table.isApproved.text.any',
+  },
+  dateFilterFrom: { id: 'store/table.dateFilter.from.label' },
+  dateFilterTo: { id: 'store/table.dateFilter.to.label' },
+  affiliatesOrdersTableStatusColumnLabel: {
+    id: 'store/affiliatesOrders.table.status.header',
+  },
+  searchPlaceholder: {
+    id: 'store/affiliatesOrders.table.inputSearch.placeholder',
+  },
+  tableEmptyState: {
+    id: 'store/affiliatesOrders.table.emptyState',
+  },
 })

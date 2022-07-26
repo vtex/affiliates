@@ -121,5 +121,11 @@
   "store/affiliate.profile.table.dateTitle": "Data",
   "store/affiliate.profile.table.commissionTitle": "Comissão",
   "store/affiliate.profile.table.totlaTitle": "Venda",
-  "store/affiliate.profile.table.prepositionTable": "de"
+  "store/affiliate.profile.table.prepositionTable": "de",
+  "store/affiliates.table.isApproved.text.any": "Todos",
+  "store/table.dateFilter.from.label": "De",
+  "store/table.dateFilter.to.label": "Até",
+  "store/affiliatesOrders.table.status.header": "Status do pedido:",
+  "store/affiliatesOrders.table.inputSearch.placeholder": "ID do pedido",
+  "store/affiliatesOrders.table.emptyState": "Nenhum pedido encontrado"
 }
