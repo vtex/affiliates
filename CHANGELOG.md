@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Minimum table size for the profile
+- Table empty state
+- Filter by orderId, status and date for the profile table
+
 ## [0.53.1] - 2022-07-13
 
 ### Fixed
