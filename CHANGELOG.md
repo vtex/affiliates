@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Table empty state
 - Filter by orderId, status and date for the profile table
 
+## [0.55.0] - 2022-07-22
+
+### Added
+
+- Created and added the `Tooltip` component to be used inside `Totalizer`
+
+## [0.54.0] - 2022-07-18
+
+### Added
+
+- Created and added the `ProfileValidator` component and `profile-validator` block
+
 ## [0.53.1] - 2022-07-13
 
 ### Fixed

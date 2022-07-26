@@ -127,5 +127,8 @@
   "store/table.dateFilter.to.label": "Até",
   "store/affiliatesOrders.table.status.header": "Status do pedido:",
   "store/affiliatesOrders.table.inputSearch.placeholder": "ID do pedido",
-  "store/affiliatesOrders.table.emptyState": "Nenhum pedido encontrado"
+  "store/affiliatesOrders.table.emptyState": "Nenhum pedido encontrado",
+  "store/affiliate.profile.approvedTooltip": "Valor acumulado de comissões em andamento",
+  "store/affiliate.profile.cancelledTooltip": "Valor acumulado de comprar canceladas",
+  "store/affiliate.profile.invoicedTooltip": "Valor Acumulado de compras faturadas"
 }

@@ -201,4 +201,13 @@ export const storeMessages = defineMessages({
   tableEmptyState: {
     id: 'store/affiliatesOrders.table.emptyState',
   },
+  affiliateProfileApprovedTooltip: {
+    id: 'store/affiliate.profile.approvedTooltip',
+  },
+  affiliateProfileCancelledTooltip: {
+    id: 'store/affiliate.profile.cancelledTooltip',
+  },
+  affiliateProfileInvoicedTooltip: {
+    id: 'store/affiliate.profile.invoicedTooltip',
+  },
 })

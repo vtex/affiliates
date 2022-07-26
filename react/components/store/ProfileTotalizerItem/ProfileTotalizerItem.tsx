@@ -4,18 +4,20 @@ import { useRuntime } from 'vtex.render-runtime'
 import { IconHelp } from 'vtex.styleguide'
 
 import { storeMessages } from '../../../utils/messages'
+import Tooltip from '../Tooltip'
 
 interface Props {
   value: number
   type: TotalizerType
   color: TotalizerColor
+  tooltip: string
 }
 
 type TotalizerType = 'approved' | 'cancelled' | 'invoiced'
 type TotalizerColor = 'red' | 'yellow' | 'green'
 
 function ProfileTotalizerItem(props: Props) {
-  const { value, type, color } = props
+  const { value, type, color, tooltip } = props
   const intl = useIntl()
   const {
     culture: { currency },
@@ -37,7 +39,9 @@ function ProfileTotalizerItem(props: Props) {
       <div id="totalizer-popup" className="flex flex-row items-center">
         <h4 className="f5 mr-1 my-0">{TotalizerTitle[type]}</h4>
         <span>
-          <IconHelp />
+          <Tooltip content={tooltip} delay={200}>
+            <IconHelp />
+          </Tooltip>
         </span>
       </div>
       <h2 className={`${color}`}>

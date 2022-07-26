@@ -127,5 +127,8 @@
   "store/table.dateFilter.to.label": "To",
   "store/affiliatesOrders.table.status.header": "Order Status:",
   "store/affiliatesOrders.table.inputSearch.placeholder": "Order ID",
-  "store/affiliatesOrders.table.emptyState": "No orders found"
+  "store/affiliatesOrders.table.emptyState": "No orders found",
+  "store/affiliate.profile.approvedTooltip": "Cumulative value of commissions in progress",
+  "store/affiliate.profile.cancelledTooltip": "Accumulated value of canceled purchases",
+  "store/affiliate.profile.invoicedTooltip": "Accumulated value of invoiced purchases"
 }
