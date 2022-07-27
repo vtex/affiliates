@@ -293,6 +293,7 @@ const AffiliateOrdersTable: FC = () => {
         message: intl.formatMessage(messages.tableDataError),
       })
     },
+    notifyOnNetworkStatusChange: true,
   })
 
   const [exportData, { loading: exportLoading }] = useMutation(EXPORT_ORDERS, {

@@ -49,10 +49,14 @@ const AffiliateTopBar = (props: Props) => {
           />
           <h6 className="mb0">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
-          )}: ${account}`}</h6>
+          )} ${account}`}</h6>
         </div>
         <div className="flex items-center-s">
-          <ButtonWithIcon onClick={onClick} icon={<IconExternalLinkMini />}>
+          <ButtonWithIcon
+            variation="primary"
+            onClick={onClick}
+            icon={<IconExternalLinkMini />}
+          >
             <p className="pl3 mb0">
               {intl.formatMessage(
                 storeMessages.affiliateProfileAccessStoreButton

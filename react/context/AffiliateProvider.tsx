@@ -3,12 +3,19 @@ import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { useQuery } from 'react-apollo'
-import type { QueryAffiliateOrdersArgs } from 'vtex.affiliates-commission-service'
+import type {
+  QueryAffiliateOrdersArgs,
+  QueryAffiliateOrderArgs,
+} from 'vtex.affiliates-commission-service'
 
 import AffiliateContext from './AffiliateContext'
 import GET_AFFILIATE_BY_EMAIL from '../graphql/getAffiliateByEmail.graphql'
 import GET_AFFILIATES_ORDERS from '../graphql/getAffiliatesOrders.graphql'
-import type { AffiliatesOrdersQueryReturnType } from '../typings/tables'
+import GET_AFFILIATE_ORDER from '../graphql/getAffiliateOrder.graphql'
+import type {
+  AffiliatesOrdersQueryReturnType,
+  AffiliateOrderQueryReturnType,
+} from '../typings/tables'
 import type { Affiliate } from '../typings/affiliate'
 import { PAGE_SIZE } from '../utils/constants'
 
@@ -33,6 +40,8 @@ const AffiliateProvider: FC = (props) => {
     }
   )
 
+  const [orderId, setOrderId] = useState('')
+
   const [pagination, setPagination] = useState({
     tableSize: PAGE_SIZE,
     currentPage: 1,
@@ -40,22 +49,53 @@ const AffiliateProvider: FC = (props) => {
     currentItemTo: PAGE_SIZE,
   })
 
+  const minInitialDate = new Date()
+
+  const startDateInitialValue = minInitialDate
+
+  const endDateInitialValue = new Date()
+
+  minInitialDate.setMonth(minInitialDate.getMonth() - 3)
+  const [startDate, setStartDate] = useState(startDateInitialValue)
+  const [endDate, setEndDate] = useState(endDateInitialValue)
+  const [statusFilter, setStatusFilter] = useState('')
+
   const affiliate: Affiliate = useMemo(() => {
     return affiliateReturn?.getAffiliateByEmail
   }, [affiliateReturn])
 
-  const { data: ordersReturn, refetch: refetchOrders } = useQuery<
-    AffiliatesOrdersQueryReturnType,
-    QueryAffiliateOrdersArgs
-  >(GET_AFFILIATES_ORDERS, {
-    variables: {
-      page: pagination.currentPage,
-      pageSize: PAGE_SIZE,
-      filter: {
-        affiliateId: [affiliate?.id ?? ''],
+  const {
+    data: ordersReturn,
+    refetch: refetchOrders,
+    loading: affiliateOrdersLoading,
+  } = useQuery<AffiliatesOrdersQueryReturnType, QueryAffiliateOrdersArgs>(
+    GET_AFFILIATES_ORDERS,
+    {
+      variables: {
+        page: pagination.currentPage,
+        pageSize: pagination.tableSize,
+        filter: {
+          affiliateId: [affiliate?.id ?? ''],
+          dateRange: {
+            startDate: startDate.toISOString(),
+            endDate: endDate.toISOString(),
+          },
+          status: statusFilter,
+        },
       },
+      skip: !affiliate,
+    }
+  )
+
+  const { data: affiliateOrderData, loading: orderLoading } = useQuery<
+    AffiliateOrderQueryReturnType,
+    QueryAffiliateOrderArgs
+  >(GET_AFFILIATE_ORDER, {
+    variables: {
+      orderId,
     },
-    skip: !affiliate,
+    skip: !orderId,
+    fetchPolicy: 'no-cache',
   })
 
   return (
@@ -68,6 +108,18 @@ const AffiliateProvider: FC = (props) => {
         setPagination,
         pagination,
         affiliate,
+        setStartDate,
+        setEndDate,
+        setStatusFilter,
+        startDate,
+        endDate,
+        statusFilter,
+        minInitialDate,
+        affiliateOrderData,
+        orderId,
+        setOrderId,
+        orderLoading,
+        affiliateOrdersLoading,
         orders: ordersReturn?.affiliateOrders.data,
         ordersPagination: ordersReturn?.affiliateOrders.pagination,
         totalizer: ordersReturn?.affiliateOrders.totalizers,
