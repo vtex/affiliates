@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Minimum table size for the profile
 - Table empty state
 - Filter by orderId, status and date for the profile table
+- `notifyOnNetworkStatusChange` prop to the affiliateOrders query
 
 ## [0.55.0] - 2022-07-22
 
