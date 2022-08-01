@@ -210,4 +210,22 @@ export const storeMessages = defineMessages({
   affiliateProfileInvoicedTooltip: {
     id: 'store/affiliate.profile.invoicedTooltip',
   },
+  affiliateProfileOrderItems: {
+    id: 'store/affiliate.profile.orderItems',
+  },
+  affiliateProfileOrderItemsPrice: {
+    id: 'store/affiliate.profile.orderItemsPrice',
+  },
+  affiliateProfileOrderItemsCommission: {
+    id: 'store/affiliate.profile.orderItemsCommission',
+  },
+  affiliateProfileOrderItemsQuantity: {
+    id: 'store/affiliate.profile.orderItemsQuantity',
+  },
+  affiliateProfileOrderTitle: {
+    id: 'store/affiliate.profile.orderTitle',
+  },
+  affiliateProfileOrderDetails: {
+    id: 'store/affiliate.profile.orderDetails',
+  },
 })

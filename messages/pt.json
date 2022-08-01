@@ -130,5 +130,11 @@
   "store/affiliatesOrders.table.emptyState": "Nenhum pedido encontrado",
   "store/affiliate.profile.approvedTooltip": "Valor acumulado de comissões em andamento",
   "store/affiliate.profile.cancelledTooltip": "Valor acumulado de comprar canceladas",
-  "store/affiliate.profile.invoicedTooltip": "Valor Acumulado de compras faturadas"
+  "store/affiliate.profile.invoicedTooltip": "Valor Acumulado de compras faturadas",
+  "store/affiliate.profile.orderItems": "Itens",
+  "store/affiliate.profile.orderItemsPrice": "Preço: ",
+  "store/affiliate.profile.orderItemsCommission": "Comissão: ",
+  "store/affiliate.profile.orderItemsQuantity": "Quantidade: ",
+  "store/affiliate.profile.orderTitle": "Pedido",
+  "store/affiliate.profile.orderDetails": "Detalhes"
 }
