@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { FC } from 'react'
 import React, { useCallback } from 'react'
 import { useIntl } from 'react-intl'
@@ -20,7 +21,7 @@ const ProfileButton: FC = () => {
 
   const onClick = useCallback(() => {
     navigate({
-      page: 'store.affiliates.profile',
+      page: 'store.affiliates-profile',
       params: {
         affiliateId,
       },

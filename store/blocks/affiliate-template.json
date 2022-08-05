@@ -3,6 +3,7 @@
     "children": [
       "affiliate-store-name",
       "flex-layout.row#banner",
+      "affiliate-profile-button",
       "search-result-layout.customQuery#affiliate"
     ]
   },

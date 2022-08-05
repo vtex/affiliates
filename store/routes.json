@@ -3,7 +3,7 @@
     "title": "Affiliate Store",
     "path": "/affiliates/:affiliateId"
   },
-  "store.affiliates.profile": {
+  "store.affiliates-profile": {
     "title": "Affiliate Profile",
     "path": "/affiliates/:affiliateId/profile"
   }
