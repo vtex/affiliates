@@ -68,15 +68,15 @@ function AffiliateProfileTable() {
       label: intl.formatMessage(storeMessages.affiliatesTableIsApprovedTextAny),
     },
     {
-      value: 'ongoing',
+      value: 'ONGOING',
       label: intl.formatMessage(storeMessages.onGoingTitle),
     },
     {
-      value: 'cancel',
+      value: 'CANCEL',
       label: intl.formatMessage(storeMessages.cancelledTitle),
     },
     {
-      value: 'invoiced',
+      value: 'INVOICED',
       label: intl.formatMessage(storeMessages.invoicedTitle),
     },
   ]
