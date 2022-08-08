@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.56.1] - 2022-08-08
+
 ### Changed
 
 - Status filters values to match the status enum
