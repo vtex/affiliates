@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Component `ProfileModal` added
+- Hook `UseDisclosure` added
+- Some messages added to the StoreMessage utils
 ## [0.56.1] - 2022-08-08
 
 ### Changed

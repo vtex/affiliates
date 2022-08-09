@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useReducer } from 'react'
 import type { ChangeEvent, SyntheticEvent } from 'react'
 import {
@@ -9,6 +10,7 @@ import {
 } from 'vtex.styleguide'
 import { useIntl } from 'react-intl'
 
+import ProfileModal from './components/store/ProfileModal'
 import { storeMessages } from './utils/messages'
 import { useProfileTable } from './hooks/useProfileTable'
 import useAffiliate from './context/useAffiliate'
@@ -59,6 +61,13 @@ function AffiliateProfileTable() {
     {
       id: 'status',
       title: 'Status',
+    },
+    {
+      id: `actions`,
+      width: '3rem',
+      cellRenderer: (props: any) => <Actions {...props} />,
+      /** This column is extended, its data is the entire row */
+      extended: true,
     },
   ]
 
@@ -137,6 +146,10 @@ function AffiliateProfileTable() {
     : !!ordersData.length
 
   const loading = affiliate?.orderLoading || affiliate?.affiliateOrdersLoading
+
+  function Actions({ data }: any) {
+    return <ProfileModal id={data.orderId} />
+  }
 
   return (
     <section className="mw9 mr-auto ml-auto my-3">
