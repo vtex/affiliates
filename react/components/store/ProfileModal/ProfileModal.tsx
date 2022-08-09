@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, ActionMenu, IconOptionsDots } from 'vtex.styleguide'
+import { Modal, ActionMenu, IconOptionsDots, Spinner } from 'vtex.styleguide'
 import { useQuery } from 'react-apollo'
 import type { QueryAffiliateOrderArgs } from 'vtex.affiliates-commission-service'
 import { useIntl } from 'react-intl'
@@ -57,7 +57,7 @@ function ProfileModal(props: Props) {
         aria-describedby="modal-order-details"
       >
         {loading ? (
-          <></>
+          <Spinner />
         ) : (
           <>
             <header className="mb-3">
@@ -104,7 +104,7 @@ function ProfileModal(props: Props) {
                           </strong>
                           {intl.formatNumber(
                             data?.affiliateOrder?.orderTotal
-                              ? data?.affiliateOrder?.orderTotal *
+                              ? data.affiliateOrder.orderTotal *
                                   (item.commission / 100)
                               : 0,
                             {
