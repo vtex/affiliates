@@ -410,22 +410,22 @@ const AffiliateOrdersTable: FC = () => {
           value={statusFilter}
           onChange={handleSelectChange}
         >
-          <option value="any">
+          <option value="">
             {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
           </option>
-          <option value="order-created">
+          <option value="ORDER_CREATED">
             {intl.formatMessage(messages.orderStatusCreatedLabel)}
           </option>
-          <option value="payment-approved">
+          <option value="PAYMENT_APPROVED">
             {intl.formatMessage(messages.orderStatusPaidLabel)}
           </option>
-          <option value="payment-pending">
+          <option value="PAYMENT_PENDING">
             {intl.formatMessage(messages.orderStatusPendingLabel)}
           </option>
-          <option value="invoiced">
+          <option value="INVOICED">
             {intl.formatMessage(messages.orderStatusInvoicedLabel)}
           </option>
-          <option value="cancel">
+          <option value="CANCEL">
             {intl.formatMessage(messages.orderStatusCancelLabel)}
           </option>
         </Select>
