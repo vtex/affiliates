@@ -20,7 +20,7 @@ const ProfileButton: FC = () => {
 
   const onClick = useCallback(() => {
     navigate({
-      page: 'store.affiliates.profile',
+      page: 'store.affiliates-profile',
       params: {
         affiliateId,
       },

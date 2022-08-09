@@ -2,12 +2,15 @@
   "store.affiliates": {
     "blocks": ["affiliate-validator"]
   },
-  "store.affiliates.profile": {
+
+  "store.affiliates-profile": {
     "children": ["affiliate-profile"]
   },
+
   "affiliate-profile": {
     "children": ["affiliate-profile-topbar", "affiliate-profile-validator"]
   },
+
   "affiliate-validator": {
     "props": {
       "Valid": "affiliate-template",
