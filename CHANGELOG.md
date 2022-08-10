@@ -7,15 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.57.1] - 2022-08-09
+
 ### Fixed
 
 - Fixed block structure
+## [0.57.0] - 2022-08-09
 
 ### Added
 
 - Component `ProfileModal` added
 - Hook `UseDisclosure` added
 - Some messages added to the StoreMessage utils
+## [0.56.1] - 2022-08-08
+
+### Changed
+
+- Status filters values to match the status enum
 
 ## [0.56.0] - 2022-07-27
 

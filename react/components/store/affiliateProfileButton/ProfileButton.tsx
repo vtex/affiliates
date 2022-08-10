@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { FC } from 'react'
 import React, { useCallback } from 'react'
 import { useIntl } from 'react-intl'
