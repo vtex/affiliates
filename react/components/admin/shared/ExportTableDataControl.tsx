@@ -40,7 +40,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
     if (isButtonDisabled) {
       return (
         <Tooltip label="Tooltip Label" placement="right">
-          <Button icon={<IconQuestion />} variant="adaptative-light" />
+          <Button icon={<IconQuestion />} variant="neutralTertiary" />
         </Tooltip>
       )
     }

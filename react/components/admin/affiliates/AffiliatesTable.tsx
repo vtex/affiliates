@@ -123,14 +123,14 @@ const AffiliatesTable: FC = () => {
               label={intl.formatMessage(
                 messages.affiliatesTableIsApprovedTextTrue
               )}
-              palette="green"
+              variant="green"
             />
           ) : (
             <Tag
               label={intl.formatMessage(
                 messages.affiliatesTableIsApprovedTextFalse
               )}
-              palette="gray"
+              variant="gray"
             />
           ),
       },
