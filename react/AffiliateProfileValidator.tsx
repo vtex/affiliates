@@ -1,5 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import type { FC } from 'react'
+import { useOrderForm } from 'vtex.order-manager/OrderForm'
+import { Spinner } from 'vtex.styleguide'
 
 import useAffiliate from './context/useAffiliate'
 import { getSlugStoreFront } from './utils/shared'
@@ -10,17 +12,32 @@ type Props = {
 }
 
 const AffiliateProfileValidator: FC<Props> = ({ Valid, Invalid }) => {
-  const [valid, setValid] = useState(false)
   const affiliate = useAffiliate()
   const slug = useMemo(() => {
     return getSlugStoreFront()
   }, [])
 
-  useEffect(() => {
-    setValid(affiliate?.affiliate?.slug === slug)
-  }, [affiliate, slug])
+  const { orderForm } = useOrderForm()
 
-  return <div>{valid ? <Valid /> : <Invalid />}</div>
+  const loading =
+    orderForm?.clientProfileData === undefined ||
+    affiliate.affiliateOrdersLoading
+
+  const isValid = affiliate?.affiliate?.slug === slug
+
+  if (loading) {
+    return (
+      <div className="justify-center-s flex-s pa9-s">
+        <Spinner />
+      </div>
+    )
+  }
+
+  if (isValid) {
+    return <Valid />
+  }
+
+  return <Invalid />
 }
 
 export default AffiliateProfileValidator
