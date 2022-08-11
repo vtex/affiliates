@@ -1,14 +1,14 @@
-import type { DataGridColumn } from '@vtex/admin-ui'
+import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
   Select,
   useQuerySearchState,
   Search,
-  DataGrid,
+  Table,
   DataViewControls,
   FlexSpacer,
   Pagination,
-  useDataGridState,
+  useTableState,
   useDataViewState,
   usePaginationState,
   DataView,
@@ -25,7 +25,6 @@ import type {
   AffiliateOrdersSortingField,
   QueryAffiliateOrdersArgs,
 } from 'vtex.affiliates-commission-service'
-import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 import type { Affiliate } from 'vtex.affiliates'
 
 import {
@@ -97,8 +96,8 @@ const AffiliateOrdersTable: FC = () => {
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
-  const searchState = useQuerySearchState({
-    timeoutMs: 500,
+  const { value, onChange, onClear } = useQuerySearchState({
+    timeout: 500,
   })
 
   const tableActions = useCallback(
@@ -121,7 +120,7 @@ const AffiliateOrdersTable: FC = () => {
     [intl, navigate]
   )
 
-  const columns: Array<DataGridColumn<TableColumns>> = [
+  const columns: Array<TableColumn<TableColumns>> = [
     {
       id: 'orderId',
       header: intl.formatMessage(
@@ -143,6 +142,7 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
+      width: 140,
       resolver: {
         type: 'root',
         render: StatusTableCell,
@@ -219,7 +219,7 @@ const AffiliateOrdersTable: FC = () => {
       page: INITIAL_PAGE,
       pageSize: MAX_PAGE_SIZE,
       filter: {
-        searchTerm: searchState.debouncedValue ?? null,
+        searchTerm: value ?? null,
       },
     },
   })
@@ -230,10 +230,8 @@ const AffiliateOrdersTable: FC = () => {
 
   let affiliateIdFilter = null
 
-  if (searchState.debouncedValue) {
-    affiliateIdFilter = allAffiliatesId?.length
-      ? allAffiliatesId
-      : [searchState.debouncedValue]
+  if (value) {
+    affiliateIdFilter = allAffiliatesId?.length ? allAffiliatesId : [value]
   }
 
   const { data, loading } = useQuery<
@@ -301,7 +299,7 @@ const AffiliateOrdersTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: searchState.debouncedValue ?? null,
+        affiliateId: value ?? null,
         dateRange: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
@@ -329,9 +327,9 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
-  const dataGridState = useDataGridState<TableColumns>({
+  const dataGridState = useTableState<TableColumns>({
     columns,
-    length: 6,
+    length: 10,
     items: data ? data.affiliateOrders.data : [],
     view,
   })
@@ -399,7 +397,9 @@ const AffiliateOrdersTable: FC = () => {
       <DataViewControls>
         <Search
           id="search"
-          state={searchState}
+          value={value}
+          onChange={onChange}
+          onClear={onClear}
           placeholder={intl.formatMessage(
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
@@ -451,7 +451,7 @@ const AffiliateOrdersTable: FC = () => {
           nextLabel={intl.formatMessage(messages.paginationNextLabel)}
         />
       </DataViewControls>
-      <DataGrid state={dataGridState} />
+      <Table state={dataGridState} />
     </DataView>
   )
 }

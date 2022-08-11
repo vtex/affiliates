@@ -1,11 +1,11 @@
-import type { DataGridColumn, DataViewState } from '@vtex/admin-ui'
+import type { TableColumn, DataViewState } from '@vtex/admin-ui'
 import {
   Skeleton,
-  DataGrid,
+  Table,
   DataViewControls,
   FlexSpacer,
   Pagination,
-  useDataGridState,
+  useTableState,
   usePaginationState,
   DataView,
 } from '@vtex/admin-ui'
@@ -43,7 +43,7 @@ const OrderItemsTable: FC<OrderItemsTableProps> = ({ view, data }) => {
     pageSize: ORDER_ITEMS_TABLE_PAGE_SIZE,
   })
 
-  const columns: Array<DataGridColumn<TableColumns>> = [
+  const columns: Array<TableColumn<TableColumns>> = [
     {
       id: 'skuId',
       header: intl.formatMessage(messages.skuIdLabel),
@@ -93,7 +93,7 @@ const OrderItemsTable: FC<OrderItemsTableProps> = ({ view, data }) => {
     },
   ]
 
-  const dataGridState = useDataGridState<TableColumns>({
+  const dataGridState = useTableState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.slice(pagination.range[0] - 1, pagination.range[1]) : [],
@@ -121,7 +121,7 @@ const OrderItemsTable: FC<OrderItemsTableProps> = ({ view, data }) => {
           nextLabel={intl.formatMessage(messages.paginationNextLabel)}
         />
       </DataViewControls>
-      <DataGrid state={dataGridState} />
+      <Table state={dataGridState} />
     </DataView>
   )
 }
