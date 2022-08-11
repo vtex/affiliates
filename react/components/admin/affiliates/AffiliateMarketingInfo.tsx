@@ -1,6 +1,6 @@
 import {
   Card,
-  Set,
+  Stack,
   Heading,
   FlexSpacer,
   Columns,
@@ -37,7 +37,7 @@ const AffiliateMarketingInfo: FC<AffiliateMarketingInfoProps> = ({
     <tag.div csx={{ marginTop: '16px' }}>
       <Heading>{intl.formatMessage(messages.socialLabel)}</Heading>
       <Card>
-        <Set orientation="vertical" spacing={2} fluid>
+        <Stack space="$xs" fluid>
           <Columns spacing={1}>
             <Column units={6}>
               <Text variant="title1">{`${intl.formatMessage(
@@ -70,7 +70,7 @@ const AffiliateMarketingInfo: FC<AffiliateMarketingInfoProps> = ({
               </Text>
             </Column>
           </Columns>
-        </Set>
+        </Stack>
       </Card>
     </tag.div>
   )
