@@ -9,7 +9,7 @@ export const messages = defineMessages({
   dateFilterTo: { id: 'admin/table.dateFilter.to.label' },
   tableNoResults: { id: 'admin/table.noData.text' },
   tableDataError: { id: 'admin/table.error.text' },
-  affiliatesPageTitle: { id: 'admin/affiliates.page.title' },
+  affiliatesPageHeaderTitle: { id: 'admin/affiliates.page.title' },
   affiliatesTableSearchPlaceholder: {
     id: 'admin/affiliates.table.search.placeholder',
   },
@@ -38,7 +38,7 @@ export const messages = defineMessages({
   affiliatesTableIsApprovedTextAny: {
     id: 'admin/affiliates.table.isApproved.text.any',
   },
-  dashboardPageTitle: { id: 'admin/dashboard.page.title' },
+  dashboardPageHeaderTitle: { id: 'admin/dashboard.page.title' },
   affiliatesOrdersTableSearchPlaceholder: {
     id: 'admin/affiliatesOrders.table.search.placeholder',
   },
@@ -74,7 +74,7 @@ export const messages = defineMessages({
   refIdLabel: { id: 'admin/refId.label' },
   exportTabLabel: { id: 'admin/export.tab.label' },
   importTabLabel: { id: 'admin/import.tab.label' },
-  commissionsPageTitle: { id: 'admin/commissions.page.title' },
+  commissionsPageHeaderTitle: { id: 'admin/commissions.page.title' },
   dropzoneMainMessage: { id: 'admin/dropzone.main.message.text' },
   dropzoneClickMessage: { id: 'admin/click.message.dropzone.text' },
   importFileSectionTitle: { id: 'admin/import.file.section.title' },
