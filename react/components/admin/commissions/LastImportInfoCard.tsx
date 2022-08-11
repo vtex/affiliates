@@ -72,7 +72,7 @@ export const LastImportInfoCard: FC = () => {
       <Text variant="title2" csx={{ display: 'flex', padding: 3 }}>
         {intl.formatMessage(messages.commissionLastImportHeading)}
         {!loading && data && (
-          <Tooltip label={tooltipLabel}>
+          <Tooltip text={tooltipLabel ?? ''}>
             <Box csx={{ paddingLeft: 1 }}>
               <IconHelp />
             </Box>

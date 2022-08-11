@@ -3,18 +3,18 @@ import {
   Skeleton,
   useSearchState,
   Search,
-  DataGrid,
+  Table,
   DataViewControls,
   FlexSpacer,
   Pagination,
-  useDataGridState,
+  useTableState,
   useDataViewState,
   usePaginationState,
   DataView,
   useToast,
   IconGear,
 } from '@vtex/admin-ui'
-import type { DataGridColumn } from '@vtex/admin-ui'
+import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useCallback, useState, useEffect } from 'react'
 import { useQuery, useMutation } from 'react-apollo'
@@ -23,7 +23,6 @@ import type {
   QueryCommissionsBySkuArgs,
   CommissionsBySkuSortingField,
 } from 'vtex.affiliates-commission-service'
-import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
 import GET_COMMISSIONS from '../../../graphql/getCommissions.graphql'
 import UPDATE_COMMISSION from '../../../graphql/updateCommission.graphql'
@@ -58,8 +57,8 @@ const CommissionsTable: FC = () => {
     pageSize: PAGE_SIZE,
   })
 
-  const searchState = useSearchState({
-    timeoutMs: 500,
+  const { value, onChange, onClear } = useSearchState({
+    timeout: 500,
   })
 
   const { data, loading } = useQuery<
@@ -70,7 +69,7 @@ const CommissionsTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        id: searchState.debouncedValue ?? null,
+        id: value ?? null,
       },
       sorting: sortState?.by
         ? {
@@ -116,7 +115,7 @@ const CommissionsTable: FC = () => {
             page: pagination.currentPage,
             pageSize: PAGE_SIZE,
             filter: {
-              id: searchState.debouncedValue ?? null,
+              id: value ?? null,
             },
             sorting: sortState?.by
               ? {
@@ -150,7 +149,7 @@ const CommissionsTable: FC = () => {
     {
       variables: {
         filter: {
-          id: searchState.debouncedValue ?? null,
+          id: value ?? null,
         },
         sorting: sortState?.by
           ? {
@@ -190,7 +189,7 @@ const CommissionsTable: FC = () => {
     [intl, setSelectedRow, modal]
   )
 
-  const columns: Array<DataGridColumn<TableColumns>> = [
+  const columns: Array<TableColumn<TableColumns>> = [
     {
       id: 'skuId',
       header: intl.formatMessage(messages.skuIdLabel),
@@ -231,7 +230,7 @@ const CommissionsTable: FC = () => {
     },
   ]
 
-  const dataGridState = useDataGridState<TableColumns>({
+  const dataGridState = useTableState<TableColumns>({
     columns,
     length: 3,
     items: data ? data.commissionsBySKU.data : [],
@@ -262,7 +261,9 @@ const CommissionsTable: FC = () => {
       <DataViewControls>
         <Search
           id="search"
-          state={searchState}
+          value={value}
+          onChange={onChange}
+          onClear={onClear}
           placeholder={intl.formatMessage(
             messages.commissionsTableSearchPlaceholder
           )}
@@ -282,7 +283,7 @@ const CommissionsTable: FC = () => {
           nextLabel={intl.formatMessage(messages.paginationNextLabel)}
         />
       </DataViewControls>
-      <DataGrid state={dataGridState} />
+      <Table state={dataGridState} />
       <EditCommissionModal
         selectedRowId={selectedRow?.id}
         loading={mutationLoading}
