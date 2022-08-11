@@ -3,7 +3,7 @@ import React from 'react'
 import {
   Page,
   PageHeader,
-  PageTitle,
+  PageHeaderTitle,
   PageContent,
   createSystem,
   ToastProvider,
@@ -14,9 +14,7 @@ import { useIntl } from 'react-intl'
 import AffiliateForm from './components/admin/affiliates/form/AffiliateForm'
 import { messages } from './utils/messages'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-add',
-})
+const [ThemeProvider] = createSystem()
 
 const AffiliateAddPage: FC = () => {
   const intl = useIntl()
@@ -33,9 +31,9 @@ const AffiliateAddPage: FC = () => {
       <ToastProvider>
         <Page>
           <PageHeader onPopNavigation={handleBackAction}>
-            <PageTitle>
+            <PageHeaderTitle>
               {intl.formatMessage(messages.addAffiliateTitle)}
-            </PageTitle>
+            </PageHeaderTitle>
           </PageHeader>
           <PageContent>
             <AffiliateForm />

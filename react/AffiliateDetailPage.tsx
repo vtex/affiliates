@@ -3,11 +3,11 @@ import React, { useCallback } from 'react'
 import {
   Page,
   PageHeader,
-  PageTitle,
+  PageHeaderTitle,
   PageContent,
   createSystem,
   ToastProvider,
-  PageActions,
+  PageHeaderActions,
   Button,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
@@ -16,9 +16,7 @@ import { useIntl } from 'react-intl'
 import { messages } from './utils/messages'
 import AffiliateContent from './components/admin/affiliates/AffiliateContent'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-detail',
-})
+const [ThemeProvider] = createSystem()
 
 const AffiliateDetailPage: FC = () => {
   const {
@@ -57,17 +55,17 @@ const AffiliateDetailPage: FC = () => {
               })
             }
           >
-            <PageTitle>{`${intl.formatMessage(
+            <PageHeaderTitle>{`${intl.formatMessage(
               messages.affiliateLabel
-            )}: ${affiliateId}`}</PageTitle>
-            <PageActions>
+            )}: ${affiliateId}`}</PageHeaderTitle>
+            <PageHeaderActions>
               <Button onClick={onAffiliateOrdersClick}>
-                {intl.formatMessage(messages.dashboardPageTitle)}
+                {intl.formatMessage(messages.dashboardPageHeaderTitle)}
               </Button>
               <Button onClick={onEditClick}>
                 {intl.formatMessage(messages.editLabel)}
               </Button>
-            </PageActions>
+            </PageHeaderActions>
           </PageHeader>
           <PageContent>
             <AffiliateContent />
