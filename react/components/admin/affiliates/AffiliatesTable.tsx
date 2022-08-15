@@ -1,9 +1,9 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
+  Flex,
   Tag,
   IconGear,
   Skeleton,
-  Select,
   useSearchState,
   Search,
   Table,
@@ -14,6 +14,8 @@ import {
   useDataViewState,
   usePaginationState,
   DataView,
+  Dropdown,
+  useDropdownState,
   Stack,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
@@ -38,6 +40,11 @@ type TableColumns = {
   isApproved: boolean
 }
 
+interface IsApprovedItemType {
+  value: string
+  label: string
+}
+
 const AffiliatesTable: FC = () => {
   const intl = useIntl()
 
@@ -47,7 +54,10 @@ const AffiliatesTable: FC = () => {
 
   const view = useDataViewState()
 
-  const [isApprovedFilter, setIsApprovedFilter] = useState<string>('any')
+  const initialValues = {
+    value: 'any',
+    label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+  }
 
   const pagination = usePaginationState({
     pageSize: PAGE_SIZE,
@@ -157,6 +167,27 @@ const AffiliatesTable: FC = () => {
     },
   ]
 
+  const isApprovedItems: IsApprovedItemType[] = [
+    {
+      value: 'any',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+    },
+    {
+      value: 'true',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextTrue),
+    },
+    {
+      value: 'false',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextFalse),
+    },
+  ]
+
+  const isApprovedState = useDropdownState({
+    items: isApprovedItems,
+    itemToString: (item: IsApprovedItemType | null) => item?.label ?? '',
+    initialSelectedItem: initialValues,
+  })
+
   const { data, loading } = useQuery(GET_AFFILIATES, {
     variables: {
       page: pagination.currentPage,
@@ -164,9 +195,9 @@ const AffiliatesTable: FC = () => {
       filter: {
         searchTerm: value ?? null,
         isApproved:
-          isApprovedFilter === 'any'
+          isApprovedState.selectedItem?.value === 'any'
             ? undefined
-            : isApprovedFilter === 'true' ?? false,
+            : isApprovedState.selectedItem?.value === 'true' ?? false,
       },
       sorting: sortState?.by
         ? {
@@ -240,24 +271,17 @@ const AffiliatesTable: FC = () => {
             messages.affiliatesTableSearchPlaceholder
           )}
         />
-        <Select
-          csx={{ height: 40 }}
-          label={intl.formatMessage(
-            messages.affiliatesTableIsApprovedColumnLabel
-          )}
-          value={isApprovedFilter}
-          onChange={(e) => setIsApprovedFilter(e.target.value)}
-        >
-          <option value="any">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
-          </option>
-          <option value="true">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextTrue)}
-          </option>
-          <option value="false">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextFalse)}
-          </option>
-        </Select>
+        <Flex align="center">
+          {intl.formatMessage(messages.affiliatesTableIsApprovedColumnLabel)}
+          <Dropdown
+            items={isApprovedItems}
+            state={isApprovedState}
+            label="isApproved"
+            renderItem={(item: IsApprovedItemType | null) => item?.label}
+            variant="tertiary"
+            csx={{ width: 120 }}
+          />
+        </Flex>
         <FlexSpacer />
         <Pagination
           state={pagination}

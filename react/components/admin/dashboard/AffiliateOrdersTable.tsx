@@ -111,7 +111,10 @@ const AffiliateOrdersTable: FC = () => {
   // We make checks to see if the user passed a querystring if so we need to initialize our values with the query values
   const statusInitialValue = query?.status
     ? { value: query.status, label: initialStatusLabel }
-    : null
+    : {
+        value: '',
+        label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+      }
 
   const startDateInitialValue = query?.startDate
     ? new Date(query.startDate)
@@ -124,7 +127,6 @@ const AffiliateOrdersTable: FC = () => {
   minInitialDate.setMonth(minInitialDate.getMonth() - 3)
   const [startDate, setStartDate] = useState(startDateInitialValue)
   const [endDate, setEndDate] = useState(endDateInitialValue)
-  // const [statusFilter, setStatusFilter] = useState<string>(statusInitialValue)
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
   const view = useDataViewState()
