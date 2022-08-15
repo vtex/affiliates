@@ -17,6 +17,7 @@ import {
   Dropdown,
   useDropdownState,
   Skeleton,
+  Stack,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
@@ -249,7 +250,7 @@ const AffiliateOrdersTable: FC = () => {
     {
       id: 'actions',
       header: () => <IconGear />,
-      width: 44,
+      width: 120,
       resolver: {
         type: 'root',
         render: function actionsRender({ item, context }) {
@@ -257,7 +258,11 @@ const AffiliateOrdersTable: FC = () => {
             return <Skeleton csx={{ height: 24 }} />
           }
 
-          return <TableActions actions={tableActions(item)} />
+          return (
+            <Stack csx={{ justifyContent: 'center', height: 64 }}>
+              <TableActions actions={tableActions(item)} />
+            </Stack>
+          )
         },
       },
     },

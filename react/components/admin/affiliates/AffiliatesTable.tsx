@@ -14,6 +14,7 @@ import {
   useDataViewState,
   usePaginationState,
   DataView,
+  Stack,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
@@ -118,19 +119,23 @@ const AffiliatesTable: FC = () => {
         type: 'plain',
         render: ({ data }) =>
           data ? (
-            <Tag
-              label={intl.formatMessage(
-                messages.affiliatesTableIsApprovedTextTrue
-              )}
-              variant="green"
-            />
+            <Stack csx={{ justifyContent: 'center', height: 64 }}>
+              <Tag
+                label={intl.formatMessage(
+                  messages.affiliatesTableIsApprovedTextTrue
+                )}
+                variant="green"
+              />
+            </Stack>
           ) : (
-            <Tag
-              label={intl.formatMessage(
-                messages.affiliatesTableIsApprovedTextFalse
-              )}
-              variant="gray"
-            />
+            <Stack csx={{ justifyContent: 'center', height: 64 }}>
+              <Tag
+                label={intl.formatMessage(
+                  messages.affiliatesTableIsApprovedTextFalse
+                )}
+                variant="gray"
+              />
+            </Stack>
           ),
       },
       sortable: true,
@@ -138,7 +143,7 @@ const AffiliatesTable: FC = () => {
     {
       id: 'actions',
       header: () => <IconGear />,
-      width: 44,
+      width: 120,
       resolver: {
         type: 'root',
         render: function percentageRender({ item, context }) {

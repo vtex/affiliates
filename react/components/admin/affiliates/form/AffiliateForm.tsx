@@ -54,10 +54,16 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     }
   }, [affiliate])
 
+  // eslint-disable-next-line no-console
+  console.log(`INITIALVALUES`, initialValues)
+
   const form = useFormState({
     resolver: yupResolver(VALIDATION_SCHEMAS(intl).affiliateForm),
     defaultValues: initialValues,
   })
+
+  // eslint-disable-next-line no-console
+  console.log(`FORM`, form)
 
   const [updateAffiliate, { loading: editMutationLoading }] = useMutation(
     UPDATE_AFFILIATE,
