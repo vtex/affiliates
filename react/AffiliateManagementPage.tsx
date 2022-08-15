@@ -4,6 +4,7 @@ import {
   Page,
   PageContent,
   PageHeader,
+  PageHeaderTop,
   PageHeaderTitle,
   PageHeaderActions,
 } from '@vtex/admin-ui'
@@ -31,16 +32,18 @@ const AffiliateManagementPage: FC = () => {
     <ThemeProvider>
       <Page>
         <PageHeader>
-          <PageHeaderTitle>
-            {intl.formatMessage(messages.affiliatesPageHeaderTitle)}
-          </PageHeaderTitle>
-          <PageHeaderActions>
-            <Button onClick={handleAddAffiliate}>
-              {intl.formatMessage(messages.addAffiliateTitle)}
-            </Button>
-          </PageHeaderActions>
+          <PageHeaderTop>
+            <PageHeaderTitle>
+              {intl.formatMessage(messages.affiliatesPageHeaderTitle)}
+            </PageHeaderTitle>
+            <PageHeaderActions>
+              <Button onClick={handleAddAffiliate}>
+                {intl.formatMessage(messages.addAffiliateTitle)}
+              </Button>
+            </PageHeaderActions>
+          </PageHeaderTop>
         </PageHeader>
-        <PageContent>
+        <PageContent layout="wide">
           <AffiliatesTable />
         </PageContent>
       </Page>

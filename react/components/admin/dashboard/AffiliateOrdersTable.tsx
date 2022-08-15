@@ -1,7 +1,7 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
-  Select,
+  // Select,
   useQuerySearchState,
   Search,
   Table,
@@ -14,6 +14,8 @@ import {
   DataView,
   useToast,
   IconGear,
+  Dropdown,
+  useDropdownState,
   Skeleton,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
@@ -58,6 +60,11 @@ type TableColumns = {
   orderTotalCommission: number
 }
 
+interface StatusItemType {
+  value: string
+  label: string
+}
+
 const AffiliateOrdersTable: FC = () => {
   const intl = useIntl()
   const showToast = useToast()
@@ -69,9 +76,42 @@ const AffiliateOrdersTable: FC = () => {
   } = useRuntime()
 
   const minInitialDate = new Date()
+  const statusItems: StatusItemType[] = [
+    {
+      value: '',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+    },
+    {
+      value: 'ORDER_CREATED',
+      label: intl.formatMessage(messages.orderStatusCreatedLabel),
+    },
+    {
+      value: 'PAYMENT_APPROVED',
+      label: intl.formatMessage(messages.orderStatusPaidLabel),
+    },
+    {
+      value: 'PAYMENT_PENDING',
+      label: intl.formatMessage(messages.orderStatusPendingLabel),
+    },
+    {
+      value: 'INVOICED',
+      label: intl.formatMessage(messages.orderStatusInvoicedLabel),
+    },
+    {
+      value: 'CANCEL',
+      label: intl.formatMessage(messages.orderStatusCancelLabel),
+    },
+  ]
+
+  const initialStatusLabel = query?.status
+    ? statusItems.find((item) => item.value === query.status)?.label ?? ''
+    : statusItems[0].label
 
   // We make checks to see if the user passed a querystring if so we need to initialize our values with the query values
-  const statusInitialValue = query?.status ?? 'any'
+  const statusInitialValue = query?.status
+    ? { value: query.status, label: initialStatusLabel }
+    : null
+
   const startDateInitialValue = query?.startDate
     ? new Date(query.startDate)
     : minInitialDate
@@ -83,7 +123,7 @@ const AffiliateOrdersTable: FC = () => {
   minInitialDate.setMonth(minInitialDate.getMonth() - 3)
   const [startDate, setStartDate] = useState(startDateInitialValue)
   const [endDate, setEndDate] = useState(endDateInitialValue)
-  const [statusFilter, setStatusFilter] = useState<string>(statusInitialValue)
+  // const [statusFilter, setStatusFilter] = useState<string>(statusInitialValue)
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
   const view = useDataViewState()
@@ -98,6 +138,15 @@ const AffiliateOrdersTable: FC = () => {
 
   const { value, onChange, onClear } = useQuerySearchState({
     timeout: 500,
+  })
+
+  const statusState = useDropdownState({
+    items: statusItems,
+    itemToString: (item: StatusItemType | null) => item?.label ?? '',
+    initialSelectedItem: statusInitialValue,
+    onSelectedItemChange: (item) => {
+      setQuery({ ...query, status: item.selectedItem?.value })
+    },
   })
 
   const tableActions = useCallback(
@@ -247,7 +296,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
-        status: statusFilter === 'any' ? null : statusFilter,
+        status: statusState.selectedItem?.value,
       },
       sorting: sortState?.by
         ? {
@@ -304,7 +353,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
-        status: statusFilter === 'any' ? null : statusFilter,
+        status: statusState.selectedItem?.value,
       },
       sorting: sortState?.by
         ? {
@@ -334,13 +383,13 @@ const AffiliateOrdersTable: FC = () => {
     view,
   })
 
-  const handleSelectChange = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setStatusFilter(event.target.value)
-      setQuery({ ...query, status: event.target.value })
-    },
-    [setStatusFilter, setQuery, query]
-  )
+  // const handleSelectChange = useCallback(
+  //   (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //     setStatusFilter(event.target.value)
+  //     setQuery({ ...query, status: event.target.value })
+  //   },
+  //   [setStatusFilter, setQuery, query]
+  // )
 
   const handleStartDateChange = useCallback(
     (date: Date) => {
@@ -404,31 +453,17 @@ const AffiliateOrdersTable: FC = () => {
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
-        <Select
-          csx={{ height: 40, width: 185 }}
-          label={intl.formatMessage(messages.orderStatusLabel)}
-          value={statusFilter}
-          onChange={handleSelectChange}
-        >
-          <option value="">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
-          </option>
-          <option value="ORDER_CREATED">
-            {intl.formatMessage(messages.orderStatusCreatedLabel)}
-          </option>
-          <option value="PAYMENT_APPROVED">
-            {intl.formatMessage(messages.orderStatusPaidLabel)}
-          </option>
-          <option value="PAYMENT_PENDING">
-            {intl.formatMessage(messages.orderStatusPendingLabel)}
-          </option>
-          <option value="INVOICED">
-            {intl.formatMessage(messages.orderStatusInvoicedLabel)}
-          </option>
-          <option value="CANCEL">
-            {intl.formatMessage(messages.orderStatusCancelLabel)}
-          </option>
-        </Select>
+        <Flex>
+          {intl.formatMessage(messages.orderStatusLabel)}
+          <Dropdown
+            items={statusItems}
+            state={statusState}
+            label="status"
+            renderItem={(item: StatusItemType | null) => item?.label}
+            variant="tertiary"
+            csx={{ width: 185 }}
+          />
+        </Flex>
         <DatesFilter
           startDate={startDate}
           endDate={endDate}

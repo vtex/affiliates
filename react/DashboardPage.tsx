@@ -28,7 +28,7 @@ const DashboardPage: FC = () => {
               {intl.formatMessage(messages.dashboardPageHeaderTitle)}
             </PageHeaderTitle>
           </PageHeader>
-          <PageContent>
+          <PageContent layout="wide">
             <QueryStateProvider>
               <AffiliateOrdersTable />
             </QueryStateProvider>

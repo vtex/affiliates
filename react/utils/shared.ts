@@ -46,7 +46,7 @@ export const statusTagControl = (
   if (status === 'payment-approved') {
     return {
       label: intl.formatMessage(messages.orderStatusPaidLabel),
-      palette: undefined,
+      palette: 'cyan',
       size: 'large',
     }
   }
