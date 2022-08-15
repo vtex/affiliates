@@ -1,5 +1,5 @@
 import { Box, Button, Flex, FlexSpacer, useToast } from '@vtex/admin-ui'
-import { Form, Formik } from 'formik'
+import { Form, useFormState, yupResolver } from '@vtex/admin-ui-form'
 import type { FC } from 'react'
 import React, { useCallback, useMemo } from 'react'
 import { useMutation } from 'react-apollo'
@@ -53,6 +53,11 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
       },
     }
   }, [affiliate])
+
+  const form = useFormState({
+    resolver: yupResolver(VALIDATION_SCHEMAS(intl).affiliateForm),
+    defaultValues: initialValues,
+  })
 
   const [updateAffiliate, { loading: editMutationLoading }] = useMutation(
     UPDATE_AFFILIATE,
@@ -129,27 +134,20 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
 
   return (
     <Box csx={{ marginY: 16 }}>
-      <Formik
-        onSubmit={onSubmit}
-        initialValues={initialValues}
-        enableReinitialize
-        validationSchema={VALIDATION_SCHEMAS(intl).affiliateForm}
-      >
-        <Form>
-          <GeneralInfo />
-          <AddressInfo />
-          <MarketingInfo />
-          <Flex>
-            <FlexSpacer />
-            <Button
-              loading={editMutationLoading || addMutationLoading}
-              type="submit"
-            >
-              {intl.formatMessage(messages.saveLabel)}
-            </Button>
-          </Flex>
-        </Form>
-      </Formik>
+      <Form state={form} onSubmit={onSubmit}>
+        <GeneralInfo />
+        <AddressInfo />
+        <MarketingInfo />
+        <Flex>
+          <FlexSpacer />
+          <Button
+            loading={editMutationLoading || addMutationLoading}
+            type="submit"
+          >
+            {intl.formatMessage(messages.saveLabel)}
+          </Button>
+        </Flex>
+      </Form>
     </Box>
   )
 }

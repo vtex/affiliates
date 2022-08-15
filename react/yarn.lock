@@ -1198,6 +1198,11 @@
     intl-messageformat "9.13.0"
     tslib "^2.1.0"
 
+"@hookform/resolvers@2.8.8":
+  version "2.8.8"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.8.8.tgz#17cf806485435877fdafce9f3bee6ff68f7f87b6"
+  integrity sha512-meAEDur1IJBfKyTo9yPYAuzjIfrxA7m9Ov+1nxaW/YupsqMeseWifoUjWK03+hz/RJizsVQAaUjVxFEkyu0GWg==
+
 "@internationalized/date@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.0.1.tgz#66332e9ca8f59b7be010ca65d946bca430ba4b66"
@@ -1932,6 +1937,14 @@
     "@stitches/react" "1.2.8"
     "@vtex/admin-ui-util" "^0.4.0"
     csstype "3.0.10"
+
+"@vtex/admin-ui-form@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-form/-/admin-ui-form-0.4.0.tgz#201e734d621de5eefa78149bffd24e7610776eca"
+  integrity sha512-85YLUizvP1CLpAEpz5Jw+Hr/V0SET+Va72zg0IuKSGmb/YE7TtCQDEbsoi7RwcW/vxxs116aXHtQk1yBICmVYQ==
+  dependencies:
+    "@hookform/resolvers" "2.8.8"
+    react-hook-form "7.21.0"
 
 "@vtex/admin-ui-hooks@^0.4.0":
   version "0.4.0"
@@ -4834,6 +4847,11 @@ react-helmet@^6.1.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
+
+react-hook-form@7.21.0:
+  version "7.21.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.21.0.tgz#f6f0311295b83ca768873ca9f2a787ff1525f591"
+  integrity sha512-aekCf+dedYFIg+7nCK2acMvZ+s6Ohw2I7UNQ+zNIadBl1SoXow2Tl6c3F49xF8GFCdn5jeK43JHH26rmtdRyLQ==
 
 react-intl@^5.24.3:
   version "5.25.1"
