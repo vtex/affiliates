@@ -4,6 +4,7 @@ import {
   Page,
   PageHeader,
   PageHeaderTitle,
+  PageHeaderTop,
   PageContent,
   createSystem,
   ToastProvider,
@@ -55,17 +56,19 @@ const AffiliateDetailPage: FC = () => {
               })
             }
           >
-            <PageHeaderTitle>{`${intl.formatMessage(
-              messages.affiliateLabel
-            )}: ${affiliateId}`}</PageHeaderTitle>
-            <PageHeaderActions>
-              <Button onClick={onAffiliateOrdersClick}>
-                {intl.formatMessage(messages.dashboardPageHeaderTitle)}
-              </Button>
-              <Button onClick={onEditClick}>
-                {intl.formatMessage(messages.editLabel)}
-              </Button>
-            </PageHeaderActions>
+            <PageHeaderTop>
+              <PageHeaderTitle>{`${intl.formatMessage(
+                messages.affiliateLabel
+              )}: ${affiliateId}`}</PageHeaderTitle>
+              <PageHeaderActions>
+                <Button onClick={onAffiliateOrdersClick}>
+                  {intl.formatMessage(messages.dashboardPageHeaderTitle)}
+                </Button>
+                <Button onClick={onEditClick}>
+                  {intl.formatMessage(messages.editLabel)}
+                </Button>
+              </PageHeaderActions>
+            </PageHeaderTop>
           </PageHeader>
           <PageContent>
             <AffiliateContent />

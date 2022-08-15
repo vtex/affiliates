@@ -7,7 +7,7 @@ import {
   ModalHeader,
   FlexSpacer,
   Text,
-  Input,
+  TextInput,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
@@ -91,14 +91,14 @@ const EditCommissionModal: FC<EditCommissionModalProps> = ({
           messages.skuIdLabel
         )}: ${selectedRowId}`}</Text>
         <FlexSpacer />
-        <Input
+        <TextInput
           id="edit-input"
           label={intl.formatMessage(messages.commissionLabel)}
           suffix="%"
           value={commissionInput}
           onChange={onCommissionInputChange}
-          tone={commissionInputError.tone}
-          criticalText={commissionInputError.message}
+          // tone={commissionInputError.tone}
+          errorText={commissionInputError.message}
         />
       </ModalContent>
       <ModalFooter>

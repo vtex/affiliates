@@ -54,17 +54,6 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     }
   }, [affiliate])
 
-  // eslint-disable-next-line no-console
-  console.log(`INITIALVALUES`, initialValues)
-
-  const form = useFormState({
-    resolver: yupResolver(VALIDATION_SCHEMAS(intl).affiliateForm),
-    defaultValues: initialValues,
-  })
-
-  // eslint-disable-next-line no-console
-  console.log(`FORM`, form)
-
   const [updateAffiliate, { loading: editMutationLoading }] = useMutation(
     UPDATE_AFFILIATE,
     {
@@ -124,13 +113,21 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
         updateAffiliate({
           variables: {
             affiliateId: affiliate.id,
-            updateAffiliate: { ...values, isApproved: affiliate.isApproved },
+            updateAffiliate: {
+              ...values,
+              phone: values.phone?.toString(),
+              isApproved: affiliate.isApproved,
+            },
           },
         })
       } else {
         addAffiliate({
           variables: {
-            newAffiliate: { ...values, isApproved: false },
+            newAffiliate: {
+              ...values,
+              phone: values.phone?.toString(),
+              isApproved: false,
+            },
           },
         })
       }
@@ -138,12 +135,17 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     [affiliate, updateAffiliate, addAffiliate]
   )
 
+  const form = useFormState({
+    resolver: yupResolver(VALIDATION_SCHEMAS(intl).affiliateForm),
+    defaultValues: initialValues,
+  })
+
   return (
     <Box csx={{ marginY: 16 }}>
       <Form state={form} onSubmit={onSubmit}>
-        <GeneralInfo />
-        <AddressInfo />
-        <MarketingInfo />
+        <GeneralInfo form={form} />
+        <AddressInfo form={form} />
+        <MarketingInfo form={form} />
         <Flex>
           <FlexSpacer />
           <Button

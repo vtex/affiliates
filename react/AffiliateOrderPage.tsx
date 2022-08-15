@@ -4,6 +4,7 @@ import {
   Page,
   PageHeader,
   PageHeaderTitle,
+  PageHeaderTop,
   PageContent,
   createSystem,
 } from '@vtex/admin-ui'
@@ -35,9 +36,11 @@ const AffiliateOrderPage: FC = () => {
     <ThemeProvider>
       <Page>
         <PageHeader onPopNavigation={handleBackAction}>
-          <PageHeaderTitle>{`${intl.formatMessage(
-            messages.orderLabel
-          )}: ${orderId}`}</PageHeaderTitle>
+          <PageHeaderTop>
+            <PageHeaderTitle>{`${intl.formatMessage(
+              messages.orderLabel
+            )}: ${orderId}`}</PageHeaderTitle>
+          </PageHeaderTop>
         </PageHeader>
         <PageContent>
           <OrderContent />

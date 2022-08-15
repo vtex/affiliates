@@ -4,6 +4,7 @@ import {
   Page,
   PageHeader,
   PageHeaderTitle,
+  PageHeaderTop,
   PageContent,
   createSystem,
   ToastProvider,
@@ -56,9 +57,11 @@ const AffiliateEditPage: FC = () => {
       <ToastProvider>
         <Page>
           <PageHeader onPopNavigation={handleBackAction}>
-            <PageHeaderTitle>{`${intl.formatMessage(
-              messages.affiliateLabel
-            )}: ${affiliateId}`}</PageHeaderTitle>
+            <PageHeaderTop>
+              <PageHeaderTitle>{`${intl.formatMessage(
+                messages.affiliateLabel
+              )}: ${affiliateId}`}</PageHeaderTitle>
+            </PageHeaderTop>
           </PageHeader>
           <PageContent>
             <AffiliateForm affiliate={data?.getAffiliate} />
