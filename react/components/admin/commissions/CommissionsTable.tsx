@@ -216,7 +216,7 @@ const CommissionsTable: FC = () => {
     {
       id: 'actions',
       header: () => <IconGear />,
-      width: 44,
+      width: 120,
       resolver: {
         type: 'root',
         render: function percentageRender({ item, context }) {
