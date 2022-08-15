@@ -3,7 +3,7 @@ import React from 'react'
 import {
   Page,
   PageHeader,
-  PageTitle,
+  PageHeaderTitle,
   PageContent,
   createSystem,
   ToastProvider,
@@ -17,9 +17,7 @@ import { messages } from './utils/messages'
 import AffiliateForm from './components/admin/affiliates/form/AffiliateForm'
 import GET_AFFILIATE from './graphql/getAffiliate.graphql'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-edit',
-})
+const [ThemeProvider] = createSystem()
 
 type AffiliateQueryReturn = {
   getAffiliate: Affiliate
@@ -58,9 +56,9 @@ const AffiliateEditPage: FC = () => {
       <ToastProvider>
         <Page>
           <PageHeader onPopNavigation={handleBackAction}>
-            <PageTitle>{`${intl.formatMessage(
+            <PageHeaderTitle>{`${intl.formatMessage(
               messages.affiliateLabel
-            )}: ${affiliateId}`}</PageTitle>
+            )}: ${affiliateId}`}</PageHeaderTitle>
           </PageHeader>
           <PageContent>
             <AffiliateForm affiliate={data?.getAffiliate} />

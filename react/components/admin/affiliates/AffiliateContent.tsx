@@ -2,7 +2,7 @@ import {
   DataViewControls,
   DataView,
   useDataViewState,
-  Toggle,
+  Switch,
   Text,
   useModalState,
 } from '@vtex/admin-ui'
@@ -74,9 +74,10 @@ const AffiliateContent: FC = () => {
         <Text variant="title1">{`${intl.formatMessage(
           messages.activeLabel
         )}?`}</Text>
-        <Toggle
+        <Switch
           checked={data?.getAffiliate.isApproved ?? false}
           onChange={onToggleClick}
+          label=""
         />
       </>
     )

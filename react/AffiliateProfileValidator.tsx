@@ -7,8 +7,8 @@ import useAffiliate from './context/useAffiliate'
 import { getSlugStoreFront } from './utils/shared'
 
 type Props = {
-  Invalid: React.ComponentType
-  Valid: React.ComponentType
+  Invalid: React.FC
+  Valid: React.FC
 }
 
 const AffiliateProfileValidator: FC<Props> = ({ Valid, Invalid }) => {

@@ -3,7 +3,7 @@ import React from 'react'
 import {
   Page,
   PageHeader,
-  PageTitle,
+  PageHeaderTitle,
   PageContent,
   createSystem,
   ToastProvider,
@@ -14,9 +14,7 @@ import { useIntl } from 'react-intl'
 import AffiliateOrdersTable from './components/admin/dashboard/AffiliateOrdersTable'
 import { messages } from './utils/messages'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-dashboard',
-})
+const [ThemeProvider] = createSystem()
 
 const DashboardPage: FC = () => {
   const intl = useIntl()
@@ -26,11 +24,11 @@ const DashboardPage: FC = () => {
       <ToastProvider>
         <Page>
           <PageHeader>
-            <PageTitle>
-              {intl.formatMessage(messages.dashboardPageTitle)}
-            </PageTitle>
+            <PageHeaderTitle>
+              {intl.formatMessage(messages.dashboardPageHeaderTitle)}
+            </PageHeaderTitle>
           </PageHeader>
-          <PageContent>
+          <PageContent layout="wide">
             <QueryStateProvider>
               <AffiliateOrdersTable />
             </QueryStateProvider>

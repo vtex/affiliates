@@ -39,8 +39,8 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
   const showTooltipHelper = useMemo(() => {
     if (isButtonDisabled) {
       return (
-        <Tooltip label="Tooltip Label" placement="right">
-          <Button icon={<IconQuestion />} variant="adaptative-light" />
+        <Tooltip text="Tooltip Label" placement="right">
+          <Button icon={<IconQuestion />} variant="neutralTertiary" />
         </Tooltip>
       )
     }
@@ -53,7 +53,7 @@ const ExportTableDataControl: FC<ExportTableDataControlProps> = ({
       <Toolbar state={toolbar}>
         <ToolbarButton
           disabled={isButtonDisabled}
-          size="small"
+          size="normal"
           variant="tertiary"
           icon={<IconArrowLineUp />}
           loading={loading}

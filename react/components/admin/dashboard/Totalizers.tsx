@@ -1,4 +1,4 @@
-import { Flex, Text, Set, Card, Divider } from '@vtex/admin-ui'
+import { Flex, Text, Stack, Card, Divider } from '@vtex/admin-ui'
 import React from 'react'
 import { useIntl } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
@@ -26,16 +26,16 @@ const Totalizers = ({ totalizers }: TotalizersProps) => {
     <Card>
       <Flex justify="space-between">
         <Flex grow={1}>
-          <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
+          <Stack space="$s" fluid csx={{ paddingX: 4 }}>
             <Text variant="pageTitle">
               {intl.formatMessage(messages.totalOrdersLabel)}
             </Text>
             <Text variant="pageTitle">{total}</Text>
-          </Set>
+          </Stack>
         </Flex>
         <Flex grow={1}>
           <Divider orientation="vertical" csx={{ marginX: 6 }} />
-          <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
+          <Stack space="$s" fluid csx={{ paddingX: 4 }}>
             <Flex>
               <Text variant="pageTitle">
                 {intl.formatMessage(
@@ -50,11 +50,11 @@ const Totalizers = ({ totalizers }: TotalizersProps) => {
                 currency,
               })}
             </Text>
-          </Set>
+          </Stack>
         </Flex>
         <Flex grow={1}>
           <Divider orientation="vertical" csx={{ marginX: 6 }} />
-          <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
+          <Stack space="$s" fluid csx={{ paddingX: 4 }}>
             <Text variant="pageTitle">
               {intl.formatMessage(
                 messages.affiliatesOrdersTableOrderTotalCommissionColumnLabel
@@ -66,7 +66,7 @@ const Totalizers = ({ totalizers }: TotalizersProps) => {
                 currency,
               })}
             </Text>
-          </Set>
+          </Stack>
         </Flex>
       </Flex>
     </Card>

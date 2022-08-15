@@ -54,9 +54,9 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
           )}: `}
         </Text>
         <Tag
-          size="small"
+          size="normal"
           label={tagControls.label}
-          palette={tagControls.palette}
+          variant={tagControls.palette}
         />
       </Column>
       <Column units={4}>

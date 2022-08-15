@@ -1,4 +1,4 @@
-import type { DataGridColumn } from '@vtex/admin-ui'
+import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Tag,
   IconGear,
@@ -6,11 +6,11 @@ import {
   Select,
   useSearchState,
   Search,
-  DataGrid,
+  Table,
   DataViewControls,
   FlexSpacer,
   Pagination,
-  useDataGridState,
+  useTableState,
   useDataViewState,
   usePaginationState,
   DataView,
@@ -20,7 +20,6 @@ import type { FC } from 'react'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
 import { useQuery } from 'react-apollo'
-import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
 import { PAGE_SIZE } from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
@@ -53,8 +52,8 @@ const AffiliatesTable: FC = () => {
     pageSize: PAGE_SIZE,
   })
 
-  const searchState = useSearchState({
-    timeoutMs: 500,
+  const { value, onChange, onClear } = useSearchState({
+    timeout: 500,
   })
 
   const tableActions = useCallback(
@@ -89,7 +88,7 @@ const AffiliatesTable: FC = () => {
     [intl, navigate]
   )
 
-  const columns: Array<DataGridColumn<TableColumns>> = [
+  const columns: Array<TableColumn<TableColumns>> = [
     {
       id: 'affiliateId',
       header: intl.formatMessage(
@@ -123,14 +122,14 @@ const AffiliatesTable: FC = () => {
               label={intl.formatMessage(
                 messages.affiliatesTableIsApprovedTextTrue
               )}
-              palette="green"
+              variant="green"
             />
           ) : (
             <Tag
               label={intl.formatMessage(
                 messages.affiliatesTableIsApprovedTextFalse
               )}
-              palette="gray"
+              variant="gray"
             />
           ),
       },
@@ -158,7 +157,7 @@ const AffiliatesTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        searchTerm: searchState.debouncedValue ?? null,
+        searchTerm: value ?? null,
         isApproved:
           isApprovedFilter === 'any'
             ? undefined
@@ -198,7 +197,7 @@ const AffiliatesTable: FC = () => {
     },
   })
 
-  const dataGridState = useDataGridState<TableColumns>({
+  const dataGridState = useTableState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.getAffiliates.data : [],
@@ -229,7 +228,9 @@ const AffiliatesTable: FC = () => {
       <DataViewControls>
         <Search
           id="search"
-          state={searchState}
+          value={value}
+          onChange={onChange}
+          onClear={onClear}
           placeholder={intl.formatMessage(
             messages.affiliatesTableSearchPlaceholder
           )}
@@ -261,7 +262,7 @@ const AffiliatesTable: FC = () => {
           nextLabel={intl.formatMessage(messages.paginationNextLabel)}
         />
       </DataViewControls>
-      <DataGrid state={dataGridState} />
+      <Table state={dataGridState} />
     </DataView>
   )
 }

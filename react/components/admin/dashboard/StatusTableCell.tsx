@@ -1,5 +1,5 @@
 import { Skeleton, Tag } from '@vtex/admin-ui'
-import type { ResolverRenderProps } from '@vtex/admin-ui/dist/components/DataGrid/resolvers/core'
+import type { ResolverRenderProps } from '@vtex/admin-ui/dist/declarations/src/table/resolvers/resolver-core'
 import React, { useMemo } from 'react'
 import { useIntl } from 'react-intl'
 
@@ -23,7 +23,13 @@ const StatusTableCell = ({
     return <Skeleton csx={{ height: 24 }} />
   }
 
-  return <Tag label={tagControls.label} palette={tagControls.palette} />
+  return (
+    <Tag
+      label={tagControls.label}
+      variant={tagControls.palette}
+      size={tagControls.size}
+    />
+  )
 }
 
 export default StatusTableCell
