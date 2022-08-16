@@ -1,8 +1,6 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
-  useQuerySearchState,
-  Search,
   Table,
   DataViewControls,
   FlexSpacer,
@@ -146,9 +144,54 @@ const AffiliateOrdersTable: FC = () => {
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
-  const { value, onChange, onClear } = useQuerySearchState({
-    timeout: 500,
+  const combobox = useComboboxMultipleState({
+    getOptionValue: (option: ComboboxItemType) => option.value,
+    renderOption: (option: ComboboxItemType) => (
+      <>
+        {option.name} - {option.value}
+      </>
+    ),
+    renderTag: (option: ComboboxItemType) => option.name,
+    timeoutMs: 500,
   })
+
+  // eslint-disable-next-line no-console
+  console.log(combobox.deferredValue)
+
+  // eslint-disable-next-line no-console
+  console.log(combobox)
+
+  const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
+    variables: {
+      page: INITIAL_PAGE,
+      pageSize: MAX_PAGE_SIZE,
+      filter: {
+        searchTerm: combobox.deferredValue ?? null,
+      },
+    },
+    fetchPolicy: 'no-cache',
+  })
+
+  // eslint-disable-next-line no-console
+  console.log(affiliatesData)
+
+  const allAffiliatesData = affiliatesData?.getAffiliates?.data?.map(
+    (affiliate: Affiliate) => ({
+      value: affiliate.id,
+      name: affiliate.name,
+    })
+  )
+
+  useEffect(() => {
+    if (combobox.deferredValue === '') {
+      combobox.setMatches([])
+    } else {
+      combobox.setLoading(true)
+      combobox.setMatches(allAffiliatesData.slice(0, 5))
+      combobox.setLoading(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [combobox.deferredValue])
 
   const statusState = useDropdownState({
     items: statusItems,
@@ -277,24 +320,10 @@ const AffiliateOrdersTable: FC = () => {
     },
   ]
 
-  const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
-    variables: {
-      page: INITIAL_PAGE,
-      pageSize: MAX_PAGE_SIZE,
-      filter: {
-        searchTerm: value ?? null,
-      },
-    },
-  })
-
-  const allAffiliatesId = affiliatesData?.getAffiliates?.data?.map(
-    (affiliate: Affiliate) => affiliate.id
-  )
-
   let affiliateIdFilter = null
 
-  if (value) {
-    affiliateIdFilter = allAffiliatesId?.length ? allAffiliatesId : [value]
+  if (combobox.selectedItems.length) {
+    affiliateIdFilter = combobox.selectedItems.map((item) => item.value)
   }
 
   const { data, loading } = useQuery<
@@ -362,7 +391,7 @@ const AffiliateOrdersTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: value ?? null,
+        affiliateId: combobox.value ?? null,
         dateRange: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
@@ -388,22 +417,6 @@ const AffiliateOrdersTable: FC = () => {
         message: intl.formatMessage(messages.exportReportErrorMessage),
       })
     },
-  })
-
-  const combobox = useComboboxMultipleState({
-    list: affiliatesData?.getAffiliates?.data
-      ?.map((affiliate: Affiliate) => ({
-        value: affiliate.id,
-        name: affiliate.name,
-      }))
-      .slice(0, 5),
-    getOptionValue: (option: ComboboxItemType) => option.value,
-    renderOption: (option: ComboboxItemType) => (
-      <>
-        {option.name} - {option.value}
-      </>
-    ),
-    renderTag: (option: ComboboxItemType) => option.name,
   })
 
   const dataGridState = useTableState<TableColumns>({
@@ -466,15 +479,6 @@ const AffiliateOrdersTable: FC = () => {
         <Totalizers totalizers={data.affiliateOrders.totalizers} />
       )}
       <DataViewControls>
-        <Search
-          id="search"
-          value={value}
-          onChange={onChange}
-          onClear={onClear}
-          placeholder={intl.formatMessage(
-            messages.affiliatesOrdersTableSearchPlaceholder
-          )}
-        />
         <ComboboxMultipleField
           state={combobox}
           id="search"
