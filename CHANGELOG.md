@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Added the `Combobox` component to the affiliate orders page
+- Changed the orders filter to work with the `Combobox` values
+
+### Changed
+
 - update `admin-ui` version to `0.132.7`
 - `Set` component to `Stack`
 - `DataGrid` component to `Table`
