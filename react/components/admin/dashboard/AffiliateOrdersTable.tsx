@@ -382,7 +382,7 @@ const AffiliateOrdersTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: combobox.value ?? null,
+        affiliateId: combobox.selectedItems ?? null,
         dateRange: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
