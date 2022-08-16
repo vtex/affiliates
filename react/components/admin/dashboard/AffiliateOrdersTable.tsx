@@ -1,7 +1,6 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
-  // Select,
   useQuerySearchState,
   Search,
   Table,
@@ -18,6 +17,9 @@ import {
   useDropdownState,
   Skeleton,
   Stack,
+  experimental_ComboboxMultipleField as ComboboxMultipleField,
+  experimental_ComboboxMultiplePopover as ComboboxMultiplePopover,
+  experimental_useComboboxMultipleState as useComboboxMultipleState,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
@@ -64,6 +66,11 @@ type TableColumns = {
 interface StatusItemType {
   value: string
   label: string
+}
+
+interface ComboboxItemType {
+  value: string
+  name: string
 }
 
 const AffiliateOrdersTable: FC = () => {
@@ -383,20 +390,28 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
+  const combobox = useComboboxMultipleState({
+    list: affiliatesData?.getAffiliates?.data
+      ?.map((affiliate: Affiliate) => ({
+        value: affiliate.id,
+        name: affiliate.name,
+      }))
+      .slice(0, 5),
+    getOptionValue: (option: ComboboxItemType) => option.value,
+    renderOption: (option: ComboboxItemType) => (
+      <>
+        {option.name} - {option.value}
+      </>
+    ),
+    renderTag: (option: ComboboxItemType) => option.name,
+  })
+
   const dataGridState = useTableState<TableColumns>({
     columns,
     length: 10,
     items: data ? data.affiliateOrders.data : [],
     view,
   })
-
-  // const handleSelectChange = useCallback(
-  //   (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //     setStatusFilter(event.target.value)
-  //     setQuery({ ...query, status: event.target.value })
-  //   },
-  //   [setStatusFilter, setQuery, query]
-  // )
 
   const handleStartDateChange = useCallback(
     (date: Date) => {
@@ -460,6 +475,14 @@ const AffiliateOrdersTable: FC = () => {
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
+        <ComboboxMultipleField
+          state={combobox}
+          id="search"
+          label={intl.formatMessage(
+            messages.affiliatesOrdersTableSearchPlaceholder
+          )}
+        />
+        <ComboboxMultiplePopover state={combobox} />
         <Flex>
           {intl.formatMessage(messages.orderStatusLabel)}
           <Dropdown
