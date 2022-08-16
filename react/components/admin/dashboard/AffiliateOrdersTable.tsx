@@ -155,12 +155,6 @@ const AffiliateOrdersTable: FC = () => {
     timeoutMs: 500,
   })
 
-  // eslint-disable-next-line no-console
-  console.log(combobox.deferredValue)
-
-  // eslint-disable-next-line no-console
-  console.log(combobox)
-
   const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
     variables: {
       page: INITIAL_PAGE,
@@ -171,9 +165,6 @@ const AffiliateOrdersTable: FC = () => {
     },
     fetchPolicy: 'no-cache',
   })
-
-  // eslint-disable-next-line no-console
-  console.log(affiliatesData)
 
   const allAffiliatesData = affiliatesData?.getAffiliates?.data?.map(
     (affiliate: Affiliate) => ({
