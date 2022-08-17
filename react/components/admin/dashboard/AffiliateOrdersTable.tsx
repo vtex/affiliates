@@ -144,6 +144,8 @@ const AffiliateOrdersTable: FC = () => {
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
+  const dict = new Map<string, string>()
+
   const combobox = useComboboxMultipleState({
     getOptionValue: (option: ComboboxItemType) => option.value,
     renderOption: (option: ComboboxItemType) => (
@@ -163,15 +165,15 @@ const AffiliateOrdersTable: FC = () => {
         searchTerm: combobox.deferredValue ?? null,
       },
     },
-    fetchPolicy: 'no-cache',
+    notifyOnNetworkStatusChange: true,
   })
 
-  const allAffiliatesData = affiliatesData?.getAffiliates?.data?.map(
-    (affiliate: Affiliate) => ({
-      value: affiliate.id,
-      name: affiliate.name,
-    })
-  )
+  const allAffiliatesData = combobox.deferredValue
+    ? affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => ({
+        value: affiliate.id,
+        name: affiliate.name,
+      }))
+    : []
 
   useEffect(() => {
     if (combobox.deferredValue === '') {
@@ -183,6 +185,10 @@ const AffiliateOrdersTable: FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [combobox.deferredValue])
+
+  // useEffect(() => {
+  //   dict.has(combobox.deferredValue) ? combobox.setMatches() : dict.set
+  // }, [])
 
   const statusState = useDropdownState({
     items: statusItems,
@@ -314,7 +320,11 @@ const AffiliateOrdersTable: FC = () => {
   let affiliateIdFilter = null
 
   if (combobox.selectedItems.length) {
-    affiliateIdFilter = combobox.selectedItems.map((item) => item.value)
+    affiliateIdFilter = combobox.selectedItems.map((item) => {
+      dict.has(item.value) ? null : dict.set(item.value, item.name)
+
+      return item.value
+    })
   }
 
   const { data, loading } = useQuery<
