@@ -1,7 +1,6 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
-  // Select,
   useQuerySearchState,
   Search,
   Table,
@@ -389,14 +388,6 @@ const AffiliateOrdersTable: FC = () => {
     items: data ? data.affiliateOrders.data : [],
     view,
   })
-
-  // const handleSelectChange = useCallback(
-  //   (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //     setStatusFilter(event.target.value)
-  //     setQuery({ ...query, status: event.target.value })
-  //   },
-  //   [setStatusFilter, setQuery, query]
-  // )
 
   const handleStartDateChange = useCallback(
     (date: Date) => {
