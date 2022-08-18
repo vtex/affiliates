@@ -14,8 +14,8 @@ export type IsAffiliateValidQueryResult = {
 }
 
 type Props = {
-  Invalid: React.ComponentType
-  Valid: React.ComponentType
+  Invalid: React.FC
+  Valid: React.FC
 }
 
 const AffiliateValidator: FC<Props> = ({ Invalid, Valid }) => {
