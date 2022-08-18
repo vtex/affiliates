@@ -7,8 +7,8 @@ import useAffiliate from './context/useAffiliate'
 import { getSlugStoreFront } from './utils/shared'
 
 type Props = {
-  Invalid: React.ComponentType
-  Valid: React.ComponentType
+  Invalid: React.FC
+  Valid: React.FC
 }
 
 const AffiliateProfileValidator: FC<Props> = ({ Valid, Invalid }) => {
@@ -19,11 +19,16 @@ const AffiliateProfileValidator: FC<Props> = ({ Valid, Invalid }) => {
 
   const { orderForm } = useOrderForm()
 
-  const loading =
-    orderForm?.clientProfileData === undefined ||
-    affiliate.affiliateOrdersLoading
+  const loading = useMemo(() => {
+    return (
+      orderForm?.clientProfileData === undefined ||
+      affiliate.affiliateOrdersLoading
+    )
+  }, [orderForm, affiliate])
 
-  const isValid = affiliate?.affiliate?.slug === slug
+  const isValid = useMemo(() => {
+    return affiliate?.affiliate?.slug === slug
+  }, [affiliate, slug])
 
   if (loading) {
     return (
