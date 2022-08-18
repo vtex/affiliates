@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.57.2] - 2022-08-18
+
 ### Fixed
 - `Spinner` added to the loading state in the profile page
 
