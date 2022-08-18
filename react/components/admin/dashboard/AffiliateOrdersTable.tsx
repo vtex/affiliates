@@ -50,6 +50,7 @@ import { VIEW_DETAILS_ICON } from '../../../utils/icons'
 import Totalizers from './Totalizers'
 import OrderIdTableCell from './OrderIdTableCell'
 import TotalValueDisclaimer from './TotalValueDisclaimer'
+import '../../../typings/map.extensions'
 
 type TableColumns = {
   id: string
@@ -178,6 +179,11 @@ const AffiliateOrdersTable: FC = () => {
   useEffect(() => {
     if (combobox.deferredValue === '') {
       combobox.setMatches([])
+    } else if (
+      dict.hasPartialKey(combobox.deferredValue) ||
+      dict.hasPartialValue(combobox.deferredValue)
+    ) {
+      combobox.setMatches(dict.getByPartialKey(combobox.deferredValue))
     } else {
       combobox.setLoading(true)
       combobox.setMatches(allAffiliatesData.slice(0, 5))
@@ -185,10 +191,6 @@ const AffiliateOrdersTable: FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [combobox.deferredValue])
-
-  // useEffect(() => {
-  //   dict.has(combobox.deferredValue) ? combobox.setMatches() : dict.set
-  // }, [])
 
   const statusState = useDropdownState({
     items: statusItems,
