@@ -155,16 +155,19 @@ const AffiliateOrdersTable: FC = () => {
     timeoutMs: 500,
   })
 
-  const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
-    variables: {
-      page: INITIAL_PAGE,
-      pageSize: MAX_PAGE_SIZE,
-      filter: {
-        searchTerm: combobox.deferredValue ?? null,
+  const { data: affiliatesData, loading: queryLoading } = useQuery(
+    GET_AFFILIATES,
+    {
+      variables: {
+        page: INITIAL_PAGE,
+        pageSize: MAX_PAGE_SIZE,
+        filter: {
+          searchTerm: combobox.deferredValue ?? null,
+        },
       },
-    },
-    fetchPolicy: 'no-cache',
-  })
+      fetchPolicy: 'no-cache',
+    }
+  )
 
   const allAffiliatesData = affiliatesData?.getAffiliates?.data?.map(
     (affiliate: Affiliate) => ({
@@ -177,12 +180,11 @@ const AffiliateOrdersTable: FC = () => {
     if (combobox.deferredValue === '') {
       combobox.setMatches([])
     } else {
-      combobox.setLoading(true)
-      combobox.setMatches(allAffiliatesData.slice(0, 5))
-      combobox.setLoading(false)
+      combobox.setLoading(queryLoading)
+      combobox.setMatches(allAffiliatesData)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [combobox.deferredValue])
+  }, [combobox.deferredValue, queryLoading])
 
   const statusState = useDropdownState({
     items: statusItems,
