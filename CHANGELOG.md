@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Added the "Not Mapped" status to the affiliate orders table
 ### Changed
 
 - Added the `Combobox` component to the affiliate orders page
