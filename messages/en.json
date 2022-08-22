@@ -107,6 +107,7 @@
   "admin/order.status.paid.label": "Payment approved",
   "admin/order.status.cancel.label": "Canceled",
   "admin/order.status.invoiced.label": "Invoiced",
+  "admin/order.status.notmapped.label": "Not Mapped",
   "admin/total.orders.label": "Total orders",
   "admin/edit.affiliate.approve.title": "Change affiliate approved status",
   "admin/total.order.value.disclaimer.text": "The total value is based only on the value of the items in the order. Shipping price is not considered.",

@@ -237,7 +237,7 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
-      width: 140,
+      width: 200,
       resolver: {
         type: 'root',
         render: StatusTableCell,

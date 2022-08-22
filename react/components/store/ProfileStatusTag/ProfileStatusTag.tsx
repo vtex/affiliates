@@ -20,7 +20,7 @@ function ProfileStatusTag(props: StatusProp) {
     )
   }
 
-  if (status === 'invoiced') {
+  if (status === 'invoiced' || status === 'invoice') {
     return (
       <Tag type="success" variation="low">
         {intl.formatMessage(storeMessages.invoicedTitle)}
