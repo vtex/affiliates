@@ -35,9 +35,9 @@ Map.prototype.hasPartialValue = function (searchTerm: string) {
 Map.prototype.getByPartialKey = function (partialKey: string) {
   const result = []
 
-  for (const key of this.keys()) {
-    if (typeof key === 'string' && key.includes(partialKey)) {
-      result.push({ value: key, name: this.get(key) })
+  for (const entrie of this.entries()) {
+    if (entrie[0].includes(partialKey) || entrie[1].includes(partialKey)) {
+      result.push({ value: entrie[0], name: entrie[1] })
     }
   }
 

@@ -21,7 +21,7 @@ import {
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
-import React, { useRef, useCallback, useEffect, useState } from 'react'
+import React, { useRef, useCallback, useEffect, useState, useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { useMutation, useQuery } from 'react-apollo'
 import type {
@@ -56,6 +56,7 @@ type TableColumns = {
   id: string
   orderId: string
   affiliateId: string
+  name: string
   status: string
   orderDate: string | null
   orderTotal: number
@@ -135,6 +136,10 @@ const AffiliateOrdersTable: FC = () => {
   const [endDate, setEndDate] = useState(endDateInitialValue)
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
+  const [affiliatesOrdersIds, setAffiliateOrdersIds] = useState<
+    string[] | undefined
+  >([])
+
   const view = useDataViewState()
   // This is a hack for when we have a page in the querystring
   // If the pagination.paginate setTotal function change in the future this may not be necessary
@@ -145,7 +150,9 @@ const AffiliateOrdersTable: FC = () => {
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
-  const dict = new Map<string, string>()
+  const dict = useMemo(() => {
+    return new Map<string, string>()
+  }, [])
 
   const combobox = useComboboxMultipleState({
     getOptionValue: (option: ComboboxItemType) => option.value,
@@ -164,6 +171,8 @@ const AffiliateOrdersTable: FC = () => {
       pageSize: MAX_PAGE_SIZE,
       filter: {
         searchTerm: combobox.deferredValue ?? null,
+        affiliateList:
+          affiliatesOrdersIds?.length !== 0 ? affiliatesOrdersIds : null,
       },
     },
     notifyOnNetworkStatusChange: true,
@@ -175,6 +184,14 @@ const AffiliateOrdersTable: FC = () => {
         name: affiliate.name,
       }))
     : []
+
+  useEffect(() => {
+    affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => {
+      return dict.set(affiliate.id ?? '', affiliate.name ?? '')
+    })
+  }, [affiliatesData, dict])
+
+  // console.log(dict)
 
   useEffect(() => {
     if (combobox.deferredValue === '') {
@@ -237,6 +254,20 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableAffiliateIdColumnLabel
       ),
+    },
+    {
+      id: 'name',
+      header: 'Nome',
+      resolver: {
+        type: 'root',
+        render: ({ item, context }) => {
+          if (item.name === '' || context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
+
+          return item.name
+        },
+      },
     },
     {
       id: 'status',
@@ -389,6 +420,14 @@ const AffiliateOrdersTable: FC = () => {
     notifyOnNetworkStatusChange: true,
   })
 
+  useEffect(() => {
+    const itemsAffiliatesIds = data?.affiliateOrders.data.map((item) => {
+      return item.affiliateId
+    })
+
+    setAffiliateOrdersIds(itemsAffiliatesIds)
+  }, [data])
+
   const [exportData, { loading: exportLoading }] = useMutation(EXPORT_ORDERS, {
     variables: {
       page: pagination.currentPage,
@@ -422,10 +461,19 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
+  const tableItems = data?.affiliateOrders?.data.map((item) => {
+    const affiliateName = dict.get(item.affiliateId)
+
+    return {
+      ...item,
+      name: affiliateName ?? '',
+    }
+  })
+
   const dataGridState = useTableState<TableColumns>({
     columns,
     length: 10,
-    items: data ? data.affiliateOrders.data : [],
+    items: data ? tableItems : [],
     view,
   })
 

@@ -1,6 +1,7 @@
 input AffiliatesFilterInput {
   searchTerm: String
   isApproved: Boolean
+  affiliateList: [String]
 }
 
 input AffliatesSortingInput {
