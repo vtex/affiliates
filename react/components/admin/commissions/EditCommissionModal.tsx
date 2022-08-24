@@ -97,7 +97,6 @@ const EditCommissionModal: FC<EditCommissionModalProps> = ({
           suffix="%"
           value={commissionInput}
           onChange={onCommissionInputChange}
-          // tone={commissionInputError.tone}
           errorText={commissionInputError.message}
         />
       </ModalContent>

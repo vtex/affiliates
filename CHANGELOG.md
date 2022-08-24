@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added the `Combobox` component to the affiliate orders page
 - Changed the orders filter to work with the `Combobox` values
 
+## [0.57.3] - 2022-08-24
+
 ### Changed
 
 - update `admin-ui` version to `0.132.7`
