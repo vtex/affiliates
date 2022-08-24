@@ -15,6 +15,8 @@ import {
   useDropdownState,
   Skeleton,
   Stack,
+  Text,
+  tag,
   experimental_ComboboxMultipleField as ComboboxMultipleField,
   experimental_ComboboxMultiplePopover as ComboboxMultiplePopover,
   experimental_useComboboxMultipleState as useComboboxMultipleState,
@@ -165,7 +167,7 @@ const AffiliateOrdersTable: FC = () => {
     timeoutMs: 500,
   })
 
-  const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
+  const { data: affiliatesData, refetch } = useQuery(GET_AFFILIATES, {
     variables: {
       page: INITIAL_PAGE,
       pageSize: MAX_PAGE_SIZE,
@@ -186,12 +188,31 @@ const AffiliateOrdersTable: FC = () => {
     : []
 
   useEffect(() => {
-    affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => {
-      return dict.set(affiliate.id ?? '', affiliate.name ?? '')
-    })
-  }, [affiliatesData, dict])
+    const hasAllIds = affiliatesOrdersIds?.reduce(
+      (acc, cur) => dict.has(cur) && acc,
+      true
+    )
 
-  // console.log(dict)
+    if (!hasAllIds) {
+      refetch({
+        page: INITIAL_PAGE,
+        pageSize: MAX_PAGE_SIZE,
+        filter: {
+          searchTerm: combobox.deferredValue ?? null,
+          affiliateList: affiliatesOrdersIds,
+        },
+      })
+    }
+
+    affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => {
+      if (!dict.has(affiliate.id ?? '')) {
+        return dict.set(affiliate.id ?? '', affiliate.name ?? '')
+      }
+
+      return ''
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [affiliatesData, dict])
 
   useEffect(() => {
     if (combobox.deferredValue === '') {
@@ -265,7 +286,11 @@ const AffiliateOrdersTable: FC = () => {
             return <Skeleton csx={{ height: 24 }} />
           }
 
-          return item.name
+          return (
+            <tag.div>
+              <Text>{item.name}</Text>
+            </tag.div>
+          )
         },
       },
     },
