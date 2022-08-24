@@ -1,6 +1,6 @@
 import {
   Card,
-  Set,
+  Stack,
   Heading,
   FlexSpacer,
   Columns,
@@ -37,7 +37,7 @@ const AffiliateAddressInfo: FC<AffiliateAddressInfoProps> = ({
     <tag.div csx={{ marginTop: '16px' }}>
       <Heading>{intl.formatMessage(messages.addressLabel)}</Heading>
       <Card>
-        <Set orientation="vertical" spacing={2} fluid>
+        <Stack space="$xs" fluid>
           <Columns spacing={1}>
             <Column units={6}>
               <Text variant="title1">{`${intl.formatMessage(
@@ -98,7 +98,7 @@ const AffiliateAddressInfo: FC<AffiliateAddressInfoProps> = ({
               </Text>
             </Column>
           </Columns>
-        </Set>
+        </Stack>
       </Card>
     </tag.div>
   )

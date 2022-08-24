@@ -25,11 +25,13 @@ export const statusTagControl = (
 ): {
   label: string
   palette: PaletteColors
+  size: 'normal' | 'large'
 } => {
   if (status === 'order-created') {
     return {
       label: intl.formatMessage(messages.orderStatusCreatedLabel),
       palette: 'gray',
+      size: 'large',
     }
   }
 
@@ -37,13 +39,15 @@ export const statusTagControl = (
     return {
       label: intl.formatMessage(messages.orderStatusPendingLabel),
       palette: 'gray',
+      size: 'large',
     }
   }
 
   if (status === 'payment-approved') {
     return {
       label: intl.formatMessage(messages.orderStatusPaidLabel),
-      palette: undefined,
+      palette: 'cyan',
+      size: 'large',
     }
   }
 
@@ -51,11 +55,13 @@ export const statusTagControl = (
     return {
       label: intl.formatMessage(messages.orderStatusInvoicedLabel),
       palette: 'green',
+      size: 'large',
     }
   }
 
   return {
     label: intl.formatMessage(messages.orderStatusCancelLabel),
     palette: 'red',
+    size: 'large',
   }
 }

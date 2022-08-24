@@ -1,20 +1,22 @@
-import type { DataGridColumn } from '@vtex/admin-ui'
+import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
-  Select,
   useQuerySearchState,
   Search,
-  DataGrid,
+  Table,
   DataViewControls,
   FlexSpacer,
   Pagination,
-  useDataGridState,
+  useTableState,
   useDataViewState,
   usePaginationState,
   DataView,
   useToast,
   IconGear,
+  Dropdown,
+  useDropdownState,
   Skeleton,
+  Stack,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
@@ -25,7 +27,6 @@ import type {
   AffiliateOrdersSortingField,
   QueryAffiliateOrdersArgs,
 } from 'vtex.affiliates-commission-service'
-import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 import type { Affiliate } from 'vtex.affiliates'
 
 import {
@@ -59,6 +60,11 @@ type TableColumns = {
   orderTotalCommission: number
 }
 
+interface StatusItemType {
+  value: string
+  label: string
+}
+
 const AffiliateOrdersTable: FC = () => {
   const intl = useIntl()
   const showToast = useToast()
@@ -70,9 +76,45 @@ const AffiliateOrdersTable: FC = () => {
   } = useRuntime()
 
   const minInitialDate = new Date()
+  const statusItems: StatusItemType[] = [
+    {
+      value: '',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+    },
+    {
+      value: 'ORDER_CREATED',
+      label: intl.formatMessage(messages.orderStatusCreatedLabel),
+    },
+    {
+      value: 'PAYMENT_APPROVED',
+      label: intl.formatMessage(messages.orderStatusPaidLabel),
+    },
+    {
+      value: 'PAYMENT_PENDING',
+      label: intl.formatMessage(messages.orderStatusPendingLabel),
+    },
+    {
+      value: 'INVOICED',
+      label: intl.formatMessage(messages.orderStatusInvoicedLabel),
+    },
+    {
+      value: 'CANCEL',
+      label: intl.formatMessage(messages.orderStatusCancelLabel),
+    },
+  ]
+
+  const initialStatusLabel = query?.status
+    ? statusItems.find((item) => item.value === query.status)?.label ?? ''
+    : statusItems[0].label
 
   // We make checks to see if the user passed a querystring if so we need to initialize our values with the query values
-  const statusInitialValue = query?.status ?? 'any'
+  const statusInitialValue = query?.status
+    ? { value: query.status, label: initialStatusLabel }
+    : {
+        value: '',
+        label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+      }
+
   const startDateInitialValue = query?.startDate
     ? new Date(query.startDate)
     : minInitialDate
@@ -84,7 +126,6 @@ const AffiliateOrdersTable: FC = () => {
   minInitialDate.setMonth(minInitialDate.getMonth() - 3)
   const [startDate, setStartDate] = useState(startDateInitialValue)
   const [endDate, setEndDate] = useState(endDateInitialValue)
-  const [statusFilter, setStatusFilter] = useState<string>(statusInitialValue)
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
   const view = useDataViewState()
@@ -97,8 +138,17 @@ const AffiliateOrdersTable: FC = () => {
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
-  const searchState = useQuerySearchState({
-    timeoutMs: 500,
+  const { value, onChange, onClear } = useQuerySearchState({
+    timeout: 500,
+  })
+
+  const statusState = useDropdownState({
+    items: statusItems,
+    itemToString: (item: StatusItemType | null) => item?.label ?? '',
+    initialSelectedItem: statusInitialValue,
+    onSelectedItemChange: (item) => {
+      setQuery({ ...query, status: item.selectedItem?.value })
+    },
   })
 
   const tableActions = useCallback(
@@ -121,7 +171,7 @@ const AffiliateOrdersTable: FC = () => {
     [intl, navigate]
   )
 
-  const columns: Array<DataGridColumn<TableColumns>> = [
+  const columns: Array<TableColumn<TableColumns>> = [
     {
       id: 'orderId',
       header: intl.formatMessage(
@@ -143,6 +193,7 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
+      width: 140,
       resolver: {
         type: 'root',
         render: StatusTableCell,
@@ -200,7 +251,7 @@ const AffiliateOrdersTable: FC = () => {
     {
       id: 'actions',
       header: () => <IconGear />,
-      width: 44,
+      width: 120,
       resolver: {
         type: 'root',
         render: function actionsRender({ item, context }) {
@@ -208,7 +259,11 @@ const AffiliateOrdersTable: FC = () => {
             return <Skeleton csx={{ height: 24 }} />
           }
 
-          return <TableActions actions={tableActions(item)} />
+          return (
+            <Stack csx={{ justifyContent: 'center', height: 64 }}>
+              <TableActions actions={tableActions(item)} />
+            </Stack>
+          )
         },
       },
     },
@@ -219,7 +274,7 @@ const AffiliateOrdersTable: FC = () => {
       page: INITIAL_PAGE,
       pageSize: MAX_PAGE_SIZE,
       filter: {
-        searchTerm: searchState.debouncedValue ?? null,
+        searchTerm: value ?? null,
       },
     },
   })
@@ -230,10 +285,8 @@ const AffiliateOrdersTable: FC = () => {
 
   let affiliateIdFilter = null
 
-  if (searchState.debouncedValue) {
-    affiliateIdFilter = allAffiliatesId?.length
-      ? allAffiliatesId
-      : [searchState.debouncedValue]
+  if (value) {
+    affiliateIdFilter = allAffiliatesId?.length ? allAffiliatesId : [value]
   }
 
   const { data, loading } = useQuery<
@@ -249,7 +302,7 @@ const AffiliateOrdersTable: FC = () => {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
-        status: statusFilter === 'any' ? null : statusFilter,
+        status: statusState.selectedItem?.value,
       },
       sorting: sortState?.by
         ? {
@@ -301,12 +354,12 @@ const AffiliateOrdersTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: searchState.debouncedValue ?? null,
+        affiliateId: value ?? null,
         dateRange: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
         },
-        status: statusFilter === 'any' ? null : statusFilter,
+        status: statusState.selectedItem?.value,
       },
       sorting: sortState?.by
         ? {
@@ -329,20 +382,12 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
-  const dataGridState = useDataGridState<TableColumns>({
+  const dataGridState = useTableState<TableColumns>({
     columns,
-    length: 6,
+    length: 10,
     items: data ? data.affiliateOrders.data : [],
     view,
   })
-
-  const handleSelectChange = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setStatusFilter(event.target.value)
-      setQuery({ ...query, status: event.target.value })
-    },
-    [setStatusFilter, setQuery, query]
-  )
 
   const handleStartDateChange = useCallback(
     (date: Date) => {
@@ -399,36 +444,24 @@ const AffiliateOrdersTable: FC = () => {
       <DataViewControls>
         <Search
           id="search"
-          state={searchState}
+          value={value}
+          onChange={onChange}
+          onClear={onClear}
           placeholder={intl.formatMessage(
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
-        <Select
-          csx={{ height: 40, width: 185 }}
-          label={intl.formatMessage(messages.orderStatusLabel)}
-          value={statusFilter}
-          onChange={handleSelectChange}
-        >
-          <option value="">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
-          </option>
-          <option value="ORDER_CREATED">
-            {intl.formatMessage(messages.orderStatusCreatedLabel)}
-          </option>
-          <option value="PAYMENT_APPROVED">
-            {intl.formatMessage(messages.orderStatusPaidLabel)}
-          </option>
-          <option value="PAYMENT_PENDING">
-            {intl.formatMessage(messages.orderStatusPendingLabel)}
-          </option>
-          <option value="INVOICED">
-            {intl.formatMessage(messages.orderStatusInvoicedLabel)}
-          </option>
-          <option value="CANCEL">
-            {intl.formatMessage(messages.orderStatusCancelLabel)}
-          </option>
-        </Select>
+        <Flex>
+          {intl.formatMessage(messages.orderStatusLabel)}
+          <Dropdown
+            items={statusItems}
+            state={statusState}
+            label="status"
+            renderItem={(item: StatusItemType | null) => item?.label}
+            variant="tertiary"
+            csx={{ width: 185 }}
+          />
+        </Flex>
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
@@ -451,7 +484,7 @@ const AffiliateOrdersTable: FC = () => {
           nextLabel={intl.formatMessage(messages.paginationNextLabel)}
         />
       </DataViewControls>
-      <DataGrid state={dataGridState} />
+      <Table state={dataGridState} />
     </DataView>
   )
 }

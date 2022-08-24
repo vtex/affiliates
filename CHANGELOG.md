@@ -7,16 +7,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.57.2] - 2022-08-18
+### Changed
 
-### Fixed
-- `Spinner` added to the loading state in the profile page
+- update `admin-ui` version to `0.132.7`
+- `Set` component to `Stack`
+- `DataGrid` component to `Table`
+- `PageTitle` and `PageActions` component to `PageHeaderTitle` and `PageHeaderActions`
+- `Toggle` component to `Swtich`
+- update on `Button` component
+- remove prop key on `createSystem`
+- changed `Search` state to `value`, `onChange` and `onClear` props
+- `Tooltip` label to text
+
+## [0.57.2] - 2022-08-18
 
 ## [0.57.1] - 2022-08-09
 
 ### Fixed
 
 - Fixed block structure
+
 ## [0.57.0] - 2022-08-09
 
 ### Added
@@ -24,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Component `ProfileModal` added
 - Hook `UseDisclosure` added
 - Some messages added to the StoreMessage utils
+
 ## [0.56.1] - 2022-08-08
 
 ### Changed

@@ -4,8 +4,9 @@ import {
   Page,
   PageContent,
   PageHeader,
-  PageTitle,
-  PageActions,
+  PageHeaderTop,
+  PageHeaderTitle,
+  PageHeaderActions,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useCallback } from 'react'
@@ -15,9 +16,7 @@ import { useRuntime } from 'vtex.render-runtime'
 import AffiliatesTable from './components/admin/affiliates/AffiliatesTable'
 import { messages } from './utils/messages'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliate-management',
-})
+const [ThemeProvider] = createSystem()
 
 const AffiliateManagementPage: FC = () => {
   const intl = useIntl()
@@ -33,16 +32,18 @@ const AffiliateManagementPage: FC = () => {
     <ThemeProvider>
       <Page>
         <PageHeader>
-          <PageTitle>
-            {intl.formatMessage(messages.affiliatesPageTitle)}
-          </PageTitle>
-          <PageActions>
-            <Button onClick={handleAddAffiliate}>
-              {intl.formatMessage(messages.addAffiliateTitle)}
-            </Button>
-          </PageActions>
+          <PageHeaderTop>
+            <PageHeaderTitle>
+              {intl.formatMessage(messages.affiliatesPageHeaderTitle)}
+            </PageHeaderTitle>
+            <PageHeaderActions>
+              <Button onClick={handleAddAffiliate}>
+                {intl.formatMessage(messages.addAffiliateTitle)}
+              </Button>
+            </PageHeaderActions>
+          </PageHeaderTop>
         </PageHeader>
-        <PageContent>
+        <PageContent layout="wide">
           <AffiliatesTable />
         </PageContent>
       </Page>

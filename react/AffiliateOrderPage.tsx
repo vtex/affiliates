@@ -3,7 +3,8 @@ import React from 'react'
 import {
   Page,
   PageHeader,
-  PageTitle,
+  PageHeaderTitle,
+  PageHeaderTop,
   PageContent,
   createSystem,
 } from '@vtex/admin-ui'
@@ -13,9 +14,7 @@ import { useIntl } from 'react-intl'
 import OrderContent from './components/admin/affiliateOrder/OrderContent'
 import { messages } from './utils/messages'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-order',
-})
+const [ThemeProvider] = createSystem()
 
 const AffiliateOrderPage: FC = () => {
   const {
@@ -37,9 +36,11 @@ const AffiliateOrderPage: FC = () => {
     <ThemeProvider>
       <Page>
         <PageHeader onPopNavigation={handleBackAction}>
-          <PageTitle>{`${intl.formatMessage(
-            messages.orderLabel
-          )}: ${orderId}`}</PageTitle>
+          <PageHeaderTop>
+            <PageHeaderTitle>{`${intl.formatMessage(
+              messages.orderLabel
+            )}: ${orderId}`}</PageHeaderTitle>
+          </PageHeaderTop>
         </PageHeader>
         <PageContent>
           <OrderContent />

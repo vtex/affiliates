@@ -1,26 +1,28 @@
-import type { DataGridColumn } from '@vtex/admin-ui'
+import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
+  Flex,
   Tag,
   IconGear,
   Skeleton,
-  Select,
   useSearchState,
   Search,
-  DataGrid,
+  Table,
   DataViewControls,
   FlexSpacer,
   Pagination,
-  useDataGridState,
+  useTableState,
   useDataViewState,
   usePaginationState,
   DataView,
+  Dropdown,
+  useDropdownState,
+  Stack,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
 import { useQuery } from 'react-apollo'
-import type { UseSortReturn } from '@vtex/admin-ui/dist/components/DataGrid/hooks/useDataGridSort'
 
 import { PAGE_SIZE } from '../../../utils/constants'
 import { messages } from '../../../utils/messages'
@@ -38,6 +40,11 @@ type TableColumns = {
   isApproved: boolean
 }
 
+interface IsApprovedItemType {
+  value: string
+  label: string
+}
+
 const AffiliatesTable: FC = () => {
   const intl = useIntl()
 
@@ -47,14 +54,17 @@ const AffiliatesTable: FC = () => {
 
   const view = useDataViewState()
 
-  const [isApprovedFilter, setIsApprovedFilter] = useState<string>('any')
+  const initialValues = {
+    value: 'any',
+    label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+  }
 
   const pagination = usePaginationState({
     pageSize: PAGE_SIZE,
   })
 
-  const searchState = useSearchState({
-    timeoutMs: 500,
+  const { value, onChange, onClear } = useSearchState({
+    timeout: 500,
   })
 
   const tableActions = useCallback(
@@ -89,7 +99,7 @@ const AffiliatesTable: FC = () => {
     [intl, navigate]
   )
 
-  const columns: Array<DataGridColumn<TableColumns>> = [
+  const columns: Array<TableColumn<TableColumns>> = [
     {
       id: 'affiliateId',
       header: intl.formatMessage(
@@ -119,19 +129,23 @@ const AffiliatesTable: FC = () => {
         type: 'plain',
         render: ({ data }) =>
           data ? (
-            <Tag
-              label={intl.formatMessage(
-                messages.affiliatesTableIsApprovedTextTrue
-              )}
-              palette="green"
-            />
+            <Stack csx={{ justifyContent: 'center', height: 64 }}>
+              <Tag
+                label={intl.formatMessage(
+                  messages.affiliatesTableIsApprovedTextTrue
+                )}
+                variant="green"
+              />
+            </Stack>
           ) : (
-            <Tag
-              label={intl.formatMessage(
-                messages.affiliatesTableIsApprovedTextFalse
-              )}
-              palette="gray"
-            />
+            <Stack csx={{ justifyContent: 'center', height: 64 }}>
+              <Tag
+                label={intl.formatMessage(
+                  messages.affiliatesTableIsApprovedTextFalse
+                )}
+                variant="gray"
+              />
+            </Stack>
           ),
       },
       sortable: true,
@@ -139,7 +153,7 @@ const AffiliatesTable: FC = () => {
     {
       id: 'actions',
       header: () => <IconGear />,
-      width: 44,
+      width: 120,
       resolver: {
         type: 'root',
         render: function percentageRender({ item, context }) {
@@ -153,16 +167,37 @@ const AffiliatesTable: FC = () => {
     },
   ]
 
+  const isApprovedItems: IsApprovedItemType[] = [
+    {
+      value: 'any',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+    },
+    {
+      value: 'true',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextTrue),
+    },
+    {
+      value: 'false',
+      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextFalse),
+    },
+  ]
+
+  const isApprovedState = useDropdownState({
+    items: isApprovedItems,
+    itemToString: (item: IsApprovedItemType | null) => item?.label ?? '',
+    initialSelectedItem: initialValues,
+  })
+
   const { data, loading } = useQuery(GET_AFFILIATES, {
     variables: {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        searchTerm: searchState.debouncedValue ?? null,
+        searchTerm: value ?? null,
         isApproved:
-          isApprovedFilter === 'any'
+          isApprovedState.selectedItem?.value === 'any'
             ? undefined
-            : isApprovedFilter === 'true' ?? false,
+            : isApprovedState.selectedItem?.value === 'true' ?? false,
       },
       sorting: sortState?.by
         ? {
@@ -198,7 +233,7 @@ const AffiliatesTable: FC = () => {
     },
   })
 
-  const dataGridState = useDataGridState<TableColumns>({
+  const dataGridState = useTableState<TableColumns>({
     columns,
     length: 6,
     items: data ? data.getAffiliates.data : [],
@@ -229,29 +264,24 @@ const AffiliatesTable: FC = () => {
       <DataViewControls>
         <Search
           id="search"
-          state={searchState}
+          value={value}
+          onChange={onChange}
+          onClear={onClear}
           placeholder={intl.formatMessage(
             messages.affiliatesTableSearchPlaceholder
           )}
         />
-        <Select
-          csx={{ height: 40 }}
-          label={intl.formatMessage(
-            messages.affiliatesTableIsApprovedColumnLabel
-          )}
-          value={isApprovedFilter}
-          onChange={(e) => setIsApprovedFilter(e.target.value)}
-        >
-          <option value="any">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextAny)}
-          </option>
-          <option value="true">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextTrue)}
-          </option>
-          <option value="false">
-            {intl.formatMessage(messages.affiliatesTableIsApprovedTextFalse)}
-          </option>
-        </Select>
+        <Flex align="center">
+          {intl.formatMessage(messages.affiliatesTableIsApprovedColumnLabel)}
+          <Dropdown
+            items={isApprovedItems}
+            state={isApprovedState}
+            label="isApproved"
+            renderItem={(item: IsApprovedItemType | null) => item?.label}
+            variant="tertiary"
+            csx={{ width: 120 }}
+          />
+        </Flex>
         <FlexSpacer />
         <Pagination
           state={pagination}
@@ -261,7 +291,7 @@ const AffiliatesTable: FC = () => {
           nextLabel={intl.formatMessage(messages.paginationNextLabel)}
         />
       </DataViewControls>
-      <DataGrid state={dataGridState} />
+      <Table state={dataGridState} />
     </DataView>
   )
 }

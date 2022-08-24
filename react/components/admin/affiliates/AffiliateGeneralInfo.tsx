@@ -1,6 +1,6 @@
 import {
   Card,
-  Set,
+  Stack,
   Heading,
   FlexSpacer,
   Columns,
@@ -36,7 +36,7 @@ const AffiliateGeneralInfo: FC<AffiliateGeneralInfoProps> = ({
     <>
       <Heading>{intl.formatMessage(messages.generalInfoLabel)}</Heading>
       <Card>
-        <Set orientation="vertical" spacing={2} fluid>
+        <Stack space="$xs" fluid>
           <Columns spacing={1}>
             <Column units={6}>
               <Text variant="title1">{`${intl.formatMessage(
@@ -97,7 +97,7 @@ const AffiliateGeneralInfo: FC<AffiliateGeneralInfoProps> = ({
               </Text>
             </Column>
           </Columns>
-        </Set>
+        </Stack>
       </Card>
     </>
   )

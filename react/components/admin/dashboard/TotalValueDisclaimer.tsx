@@ -9,7 +9,7 @@ const TotalValueDisclaimer = () => {
   const intl = useIntl()
 
   return (
-    <Tooltip label={intl.formatMessage(messages.totalOrderValueDisclaimerText)}>
+    <Tooltip text={intl.formatMessage(messages.totalOrderValueDisclaimerText)}>
       <Box csx={{ paddingLeft: 1 }}>
         <IconHelp />
       </Box>

@@ -1,5 +1,5 @@
 import { Flex, Skeleton, Text, IconArrowSquareOut, tag } from '@vtex/admin-ui'
-import type { ResolverRenderProps } from '@vtex/admin-ui/dist/components/DataGrid/resolvers/core'
+import type { ResolverRenderProps } from '@vtex/admin-ui/dist/declarations/src/table/resolvers/resolver-core'
 import React, { useCallback } from 'react'
 
 type TableColumns = {

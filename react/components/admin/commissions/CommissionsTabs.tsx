@@ -1,6 +1,12 @@
 import type { FC } from 'react'
 import React from 'react'
-import { Tabs, Tab, TabList, TabPanel, useTabState } from '@vtex/admin-ui'
+import {
+  Tab,
+  TabList,
+  TabPanel,
+  useTabState,
+  TabPanelList,
+} from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
 import ImportCommissionsTab from './ImportCommissionsTab'
@@ -12,18 +18,20 @@ const CommissionsTabs: FC = () => {
   const state = useTabState()
 
   return (
-    <Tabs state={state}>
-      <TabList aria-label="Commissions tabs">
+    <>
+      <TabList aria-label="Commissions tabs" state={state}>
         <Tab id="1">{intl.formatMessage(messages.exportTabLabel)}</Tab>
         <Tab id="2">{intl.formatMessage(messages.importTabLabel)}</Tab>
       </TabList>
-      <TabPanel id="1" csx={{ padding: 3 }}>
-        <ExportCommissionsTab />
-      </TabPanel>
-      <TabPanel id="2" csx={{ padding: 3 }}>
-        <ImportCommissionsTab />
-      </TabPanel>
-    </Tabs>
+      <TabPanelList state={state}>
+        <TabPanel tabId="1" csx={{ padding: 3 }}>
+          <ExportCommissionsTab />
+        </TabPanel>
+        <TabPanel tabId="2" csx={{ padding: 3 }}>
+          <ImportCommissionsTab />
+        </TabPanel>
+      </TabPanelList>
+    </>
   )
 }
 

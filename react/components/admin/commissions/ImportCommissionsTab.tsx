@@ -1,4 +1,4 @@
-import { Set } from '@vtex/admin-ui'
+import { Stack } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
 
@@ -7,10 +7,10 @@ import LastImportInfoCard from './LastImportInfoCard'
 
 const ImportCommissionsTab: FC = () => {
   return (
-    <Set orientation="vertical" spacing={3} fluid>
+    <Stack space="$s" fluid>
       <ImportDropzone />
       <LastImportInfoCard />
-    </Set>
+    </Stack>
   )
 }
 

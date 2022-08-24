@@ -3,7 +3,7 @@ import React from 'react'
 import {
   Page,
   PageHeader,
-  PageTitle,
+  PageHeaderTitle,
   PageContent,
   createSystem,
   ToastProvider,
@@ -13,9 +13,7 @@ import { useIntl } from 'react-intl'
 import CommissionsTabs from './components/admin/commissions/CommissionsTabs'
 import { messages } from './utils/messages'
 
-const [ThemeProvider] = createSystem({
-  key: 'affiliates-commissions',
-})
+const [ThemeProvider] = createSystem()
 
 const CommissionsPage: FC = () => {
   const intl = useIntl()
@@ -25,9 +23,9 @@ const CommissionsPage: FC = () => {
       <ToastProvider>
         <Page>
           <PageHeader>
-            <PageTitle>
-              {intl.formatMessage(messages.commissionsPageTitle)}
-            </PageTitle>
+            <PageHeaderTitle>
+              {intl.formatMessage(messages.commissionsPageHeaderTitle)}
+            </PageHeaderTitle>
           </PageHeader>
           <PageContent csx={{ padding: 5 }}>
             <CommissionsTabs />
