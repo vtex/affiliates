@@ -151,6 +151,7 @@ export const messages = defineMessages({
   orderStatusPaidLabel: { id: 'admin/order.status.paid.label' },
   orderStatusCancelLabel: { id: 'admin/order.status.cancel.label' },
   orderStatusInvoicedLabel: { id: 'admin/order.status.invoiced.label' },
+  orderStatusNotMapped: { id: 'admin/order.status.notmapped.label' },
   totalOrdersLabel: { id: 'admin/total.orders.label' },
   totalOrderValueDisclaimerText: {
     id: 'admin/total.order.value.disclaimer.text',
