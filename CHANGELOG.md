@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Affiliate name column to the orders table
+- Combobox suggestions via dictionary
+
 ## [0.58.1] - 2022-08-25
 
 ### Added
