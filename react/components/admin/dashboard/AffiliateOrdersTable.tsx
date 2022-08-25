@@ -167,7 +167,11 @@ const AffiliateOrdersTable: FC = () => {
     timeoutMs: 500,
   })
 
-  const { data: affiliatesData, refetch } = useQuery(GET_AFFILIATES, {
+  const {
+    data: affiliatesData,
+    refetch,
+    loading: queryLoading,
+  } = useQuery(GET_AFFILIATES, {
     variables: {
       page: INITIAL_PAGE,
       pageSize: MAX_PAGE_SIZE,
@@ -223,12 +227,11 @@ const AffiliateOrdersTable: FC = () => {
     ) {
       combobox.setMatches(dict.getByPartialKey(combobox.deferredValue))
     } else {
-      combobox.setLoading(true)
-      combobox.setMatches(allAffiliatesData.slice(0, 5))
-      combobox.setLoading(false)
+      combobox.setLoading(queryLoading)
+      combobox.setMatches(allAffiliatesData)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [combobox.deferredValue])
+  }, [combobox.deferredValue, queryLoading])
 
   const statusState = useDropdownState({
     items: statusItems,
@@ -299,7 +302,7 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
-      width: 140,
+      width: 200,
       resolver: {
         type: 'root',
         render: StatusTableCell,

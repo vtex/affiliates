@@ -51,7 +51,7 @@ export const statusTagControl = (
     }
   }
 
-  if (status === 'invoiced') {
+  if (status === 'invoiced' || status === 'invoice') {
     return {
       label: intl.formatMessage(messages.orderStatusInvoicedLabel),
       palette: 'green',
@@ -59,9 +59,17 @@ export const statusTagControl = (
     }
   }
 
+  if (status === 'cancel' || status === 'canceled') {
+    return {
+      label: intl.formatMessage(messages.orderStatusCancelLabel),
+      palette: 'red',
+      size: 'large',
+    }
+  }
+
   return {
-    label: intl.formatMessage(messages.orderStatusCancelLabel),
-    palette: 'red',
+    label: intl.formatMessage(messages.orderStatusNotMapped),
+    palette: 'gray',
     size: 'large',
   }
 }
