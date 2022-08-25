@@ -1,8 +1,6 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
   Flex,
-  useQuerySearchState,
-  Search,
   Table,
   DataViewControls,
   FlexSpacer,
@@ -17,6 +15,9 @@ import {
   useDropdownState,
   Skeleton,
   Stack,
+  experimental_ComboboxMultipleField as ComboboxMultipleField,
+  experimental_ComboboxMultiplePopover as ComboboxMultiplePopover,
+  experimental_useComboboxMultipleState as useComboboxMultipleState,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
@@ -63,6 +64,11 @@ type TableColumns = {
 interface StatusItemType {
   value: string
   label: string
+}
+
+interface ComboboxItemType {
+  value: string
+  name: string
 }
 
 const AffiliateOrdersTable: FC = () => {
@@ -138,9 +144,47 @@ const AffiliateOrdersTable: FC = () => {
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
 
-  const { value, onChange, onClear } = useQuerySearchState({
-    timeout: 500,
+  const combobox = useComboboxMultipleState({
+    getOptionValue: (option: ComboboxItemType) => option.value,
+    renderOption: (option: ComboboxItemType) => (
+      <>
+        {option.name} - {option.value}
+      </>
+    ),
+    renderTag: (option: ComboboxItemType) => option.name,
+    timeoutMs: 500,
   })
+
+  const { data: affiliatesData, loading: queryLoading } = useQuery(
+    GET_AFFILIATES,
+    {
+      variables: {
+        page: INITIAL_PAGE,
+        pageSize: MAX_PAGE_SIZE,
+        filter: {
+          searchTerm: combobox.deferredValue ?? null,
+        },
+      },
+      fetchPolicy: 'no-cache',
+    }
+  )
+
+  const allAffiliatesData = affiliatesData?.getAffiliates?.data?.map(
+    (affiliate: Affiliate) => ({
+      value: affiliate.id,
+      name: affiliate.name,
+    })
+  )
+
+  useEffect(() => {
+    if (combobox.deferredValue === '') {
+      combobox.setMatches([])
+    } else {
+      combobox.setLoading(queryLoading)
+      combobox.setMatches(allAffiliatesData)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [combobox.deferredValue, queryLoading])
 
   const statusState = useDropdownState({
     items: statusItems,
@@ -269,24 +313,10 @@ const AffiliateOrdersTable: FC = () => {
     },
   ]
 
-  const { data: affiliatesData } = useQuery(GET_AFFILIATES, {
-    variables: {
-      page: INITIAL_PAGE,
-      pageSize: MAX_PAGE_SIZE,
-      filter: {
-        searchTerm: value ?? null,
-      },
-    },
-  })
-
-  const allAffiliatesId = affiliatesData?.getAffiliates?.data?.map(
-    (affiliate: Affiliate) => affiliate.id
-  )
-
   let affiliateIdFilter = null
 
-  if (value) {
-    affiliateIdFilter = allAffiliatesId?.length ? allAffiliatesId : [value]
+  if (combobox.selectedItems.length) {
+    affiliateIdFilter = combobox.selectedItems.map((item) => item.value)
   }
 
   const { data, loading } = useQuery<
@@ -354,7 +384,7 @@ const AffiliateOrdersTable: FC = () => {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
       filter: {
-        affiliateId: value ?? null,
+        affiliateId: combobox.selectedItems ?? null,
         dateRange: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
@@ -442,15 +472,14 @@ const AffiliateOrdersTable: FC = () => {
         <Totalizers totalizers={data.affiliateOrders.totalizers} />
       )}
       <DataViewControls>
-        <Search
+        <ComboboxMultipleField
+          state={combobox}
           id="search"
-          value={value}
-          onChange={onChange}
-          onClear={onClear}
-          placeholder={intl.formatMessage(
+          label={intl.formatMessage(
             messages.affiliatesOrdersTableSearchPlaceholder
           )}
         />
+        <ComboboxMultiplePopover state={combobox} />
         <Flex>
           {intl.formatMessage(messages.orderStatusLabel)}
           <Dropdown
