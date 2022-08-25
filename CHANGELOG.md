@@ -10,10 +10,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added the "Not Mapped" status to the affiliate orders table
+
+## [0.58.0] - 2022-08-25
+
 ### Changed
 
 - Added the `Combobox` component to the affiliate orders page
 - Changed the orders filter to work with the `Combobox` values
+
+## [0.57.3] - 2022-08-24
 
 ### Changed
 
@@ -27,11 +32,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - changed `Search` state to `value`, `onChange` and `onClear` props
 - `Tooltip` label to text
 
+## [0.57.2] - 2022-08-18
+
 ## [0.57.1] - 2022-08-09
 
 ### Fixed
 
 - Fixed block structure
+
 ## [0.57.0] - 2022-08-09
 
 ### Added
