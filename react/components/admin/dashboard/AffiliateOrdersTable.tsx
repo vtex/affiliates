@@ -52,7 +52,6 @@ import { VIEW_DETAILS_ICON } from '../../../utils/icons'
 import Totalizers from './Totalizers'
 import OrderIdTableCell from './OrderIdTableCell'
 import TotalValueDisclaimer from './TotalValueDisclaimer'
-import '../../../typings/map.extensions'
 
 type TableColumns = {
   id: string
