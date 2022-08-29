@@ -14,7 +14,7 @@ export const parseAffiliatesFilters = ({
     )
   }
 
-  if (affiliateList) {
+  if (affiliateList && !searchTerm) {
     affiliateList.map((id) => id !== '' && affiliateIdFilter.push(`id=${id}`))
     const joinaffiliateIdFilter = `(${affiliateIdFilter.join(' OR ')})`
 

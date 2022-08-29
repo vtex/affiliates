@@ -58,7 +58,6 @@ type TableColumns = {
   id: string
   orderId: string
   affiliateId: string
-  name: string
   status: string
   orderDate: string | null
   orderTotal: number
@@ -89,7 +88,7 @@ const AffiliateOrdersTable: FC = () => {
   const statusItems: StatusItemType[] = [
     {
       value: '',
-      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+      label: intl.formatMessage(messages.orderStatusLabel),
     },
     {
       value: 'ORDER_CREATED',
@@ -122,7 +121,7 @@ const AffiliateOrdersTable: FC = () => {
     ? { value: query.status, label: initialStatusLabel }
     : {
         value: '',
-        label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+        label: intl.formatMessage(messages.orderStatusLabel),
       }
 
   const startDateInitialValue = query?.startDate
@@ -221,11 +220,6 @@ const AffiliateOrdersTable: FC = () => {
   useEffect(() => {
     if (combobox.deferredValue === '') {
       combobox.setMatches([])
-    } else if (
-      dict.hasPartialKey(combobox.deferredValue) ||
-      dict.hasPartialValue(combobox.deferredValue)
-    ) {
-      combobox.setMatches(dict.getByPartialKey(combobox.deferredValue))
     } else {
       combobox.setLoading(queryLoading)
       combobox.setMatches(allAffiliatesData)
@@ -285,13 +279,13 @@ const AffiliateOrdersTable: FC = () => {
       resolver: {
         type: 'root',
         render: ({ item, context }) => {
-          if (item.name === '' || context.status === 'loading') {
+          if (context.status === 'loading') {
             return <Skeleton csx={{ height: 24 }} />
           }
 
           return (
             <tag.div>
-              <Text>{item.name}</Text>
+              <Text>{dict.get(item.affiliateId)}</Text>
             </tag.div>
           )
         },
@@ -489,19 +483,10 @@ const AffiliateOrdersTable: FC = () => {
     },
   })
 
-  const tableItems = data?.affiliateOrders?.data.map((item) => {
-    const affiliateName = dict.get(item.affiliateId)
-
-    return {
-      ...item,
-      name: affiliateName ?? '',
-    }
-  })
-
   const dataGridState = useTableState<TableColumns>({
     columns,
     length: 10,
-    items: data ? tableItems : [],
+    items: data ? data.affiliateOrders.data : [],
     view,
   })
 
@@ -566,17 +551,14 @@ const AffiliateOrdersTable: FC = () => {
           )}
         />
         <ComboboxMultiplePopover state={combobox} />
-        <Flex>
-          {intl.formatMessage(messages.orderStatusLabel)}
-          <Dropdown
-            items={statusItems}
-            state={statusState}
-            label="status"
-            renderItem={(item: StatusItemType | null) => item?.label}
-            variant="tertiary"
-            csx={{ width: 185 }}
-          />
-        </Flex>
+        <Dropdown
+          items={statusItems}
+          state={statusState}
+          label="status"
+          renderItem={(item: StatusItemType | null) => item?.label}
+          variant="tertiary"
+          csx={{ width: 185 }}
+        />
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
