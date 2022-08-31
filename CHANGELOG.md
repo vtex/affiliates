@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.59.0] - 2022-08-31
+
 ### Added
 
 - Affiliate name column to the orders table
