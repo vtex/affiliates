@@ -35,5 +35,8 @@
   },
   "affiliate-profile-validator": {
     "component": "AffiliateProfileValidator"
+  },
+  "affiliate-url-monitoring": {
+    "component": "AffiliateURLMonitoring"
   }
 }
