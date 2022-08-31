@@ -15,13 +15,15 @@ import {
   useDropdownState,
   Skeleton,
   Stack,
+  Text,
+  tag,
   experimental_ComboboxMultipleField as ComboboxMultipleField,
   experimental_ComboboxMultiplePopover as ComboboxMultiplePopover,
   experimental_useComboboxMultipleState as useComboboxMultipleState,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import type { FC } from 'react'
-import React, { useRef, useCallback, useEffect, useState } from 'react'
+import React, { useRef, useCallback, useEffect, useState, useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { useMutation, useQuery } from 'react-apollo'
 import type {
@@ -85,7 +87,7 @@ const AffiliateOrdersTable: FC = () => {
   const statusItems: StatusItemType[] = [
     {
       value: '',
-      label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+      label: intl.formatMessage(messages.orderStatusLabel),
     },
     {
       value: 'ORDER_CREATED',
@@ -118,7 +120,7 @@ const AffiliateOrdersTable: FC = () => {
     ? { value: query.status, label: initialStatusLabel }
     : {
         value: '',
-        label: intl.formatMessage(messages.affiliatesTableIsApprovedTextAny),
+        label: intl.formatMessage(messages.orderStatusLabel),
       }
 
   const startDateInitialValue = query?.startDate
@@ -134,6 +136,10 @@ const AffiliateOrdersTable: FC = () => {
   const [endDate, setEndDate] = useState(endDateInitialValue)
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
+  const [affiliatesOrdersIds, setAffiliateOrdersIds] = useState<
+    string[] | undefined
+  >([])
+
   const view = useDataViewState()
   // This is a hack for when we have a page in the querystring
   // If the pagination.paginate setTotal function change in the future this may not be necessary
@@ -143,6 +149,10 @@ const AffiliateOrdersTable: FC = () => {
     pageSize: PAGE_SIZE,
     initialPage: query?.page ? parseInt(query.page, 10) : 1,
   })
+
+  const dict = useMemo(() => {
+    return new Map<string, string>()
+  }, [])
 
   const combobox = useComboboxMultipleState({
     getOptionValue: (option: ComboboxItemType) => option.value,
@@ -155,26 +165,56 @@ const AffiliateOrdersTable: FC = () => {
     timeoutMs: 500,
   })
 
-  const { data: affiliatesData, loading: queryLoading } = useQuery(
-    GET_AFFILIATES,
-    {
-      variables: {
+  const {
+    data: affiliatesData,
+    refetch,
+    loading: queryLoading,
+  } = useQuery(GET_AFFILIATES, {
+    variables: {
+      page: INITIAL_PAGE,
+      pageSize: MAX_PAGE_SIZE,
+      filter: {
+        searchTerm: combobox.deferredValue ?? null,
+        affiliateList:
+          affiliatesOrdersIds?.length !== 0 ? affiliatesOrdersIds : null,
+      },
+    },
+    notifyOnNetworkStatusChange: true,
+  })
+
+  const allAffiliatesData = combobox.deferredValue
+    ? affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => ({
+        value: affiliate.id,
+        name: affiliate.name,
+      }))
+    : []
+
+  useEffect(() => {
+    const hasAllIds = affiliatesOrdersIds?.reduce(
+      (acc, cur) => dict.has(cur) && acc,
+      true
+    )
+
+    if (!hasAllIds) {
+      refetch({
         page: INITIAL_PAGE,
         pageSize: MAX_PAGE_SIZE,
         filter: {
           searchTerm: combobox.deferredValue ?? null,
+          affiliateList: affiliatesOrdersIds,
         },
-      },
-      fetchPolicy: 'no-cache',
+      })
     }
-  )
 
-  const allAffiliatesData = affiliatesData?.getAffiliates?.data?.map(
-    (affiliate: Affiliate) => ({
-      value: affiliate.id,
-      name: affiliate.name,
+    affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => {
+      if (!dict.has(affiliate.id ?? '')) {
+        return dict.set(affiliate.id ?? '', affiliate.name ?? '')
+      }
+
+      return ''
     })
-  )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [affiliatesData, dict])
 
   useEffect(() => {
     if (combobox.deferredValue === '') {
@@ -231,6 +271,24 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableAffiliateIdColumnLabel
       ),
+    },
+    {
+      id: 'name',
+      header: 'Nome',
+      resolver: {
+        type: 'root',
+        render: ({ item, context }) => {
+          if (context.status === 'loading') {
+            return <Skeleton csx={{ height: 24 }} />
+          }
+
+          return (
+            <tag.div>
+              <Text>{dict.get(item.affiliateId)}</Text>
+            </tag.div>
+          )
+        },
+      },
     },
     {
       id: 'status',
@@ -316,7 +374,11 @@ const AffiliateOrdersTable: FC = () => {
   let affiliateIdFilter = null
 
   if (combobox.selectedItems.length) {
-    affiliateIdFilter = combobox.selectedItems.map((item) => item.value)
+    affiliateIdFilter = combobox.selectedItems.map((item) => {
+      dict.has(item.value) ? null : dict.set(item.value, item.name)
+
+      return item.value
+    })
   }
 
   const { data, loading } = useQuery<
@@ -378,6 +440,14 @@ const AffiliateOrdersTable: FC = () => {
     },
     notifyOnNetworkStatusChange: true,
   })
+
+  useEffect(() => {
+    const itemsAffiliatesIds = data?.affiliateOrders.data.map((item) => {
+      return item.affiliateId
+    })
+
+    setAffiliateOrdersIds(itemsAffiliatesIds)
+  }, [data])
 
   const [exportData, { loading: exportLoading }] = useMutation(EXPORT_ORDERS, {
     variables: {
@@ -480,17 +550,14 @@ const AffiliateOrdersTable: FC = () => {
           )}
         />
         <ComboboxMultiplePopover state={combobox} />
-        <Flex>
-          {intl.formatMessage(messages.orderStatusLabel)}
-          <Dropdown
-            items={statusItems}
-            state={statusState}
-            label="status"
-            renderItem={(item: StatusItemType | null) => item?.label}
-            variant="tertiary"
-            csx={{ width: 185 }}
-          />
-        </Flex>
+        <Dropdown
+          items={statusItems}
+          state={statusState}
+          label="status"
+          renderItem={(item: StatusItemType | null) => item?.label}
+          variant="tertiary"
+          csx={{ width: 185 }}
+        />
         <DatesFilter
           startDate={startDate}
           endDate={endDate}
