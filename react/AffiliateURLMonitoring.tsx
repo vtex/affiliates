@@ -29,7 +29,7 @@ function AffiliateURLMonitoring() {
     })
   }
 
-  return null
+  return <></>
 }
 
 export default AffiliateURLMonitoring
