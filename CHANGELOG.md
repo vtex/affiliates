@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- URL Monitoring Site Editor config and Props added
+
+### Added
+
 - Affiliate Monitoring URL component, logic and block created
 
 ## [0.59.0] - 2022-08-31

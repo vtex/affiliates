@@ -137,5 +137,9 @@
   "store/affiliate.profile.orderItemsCommission": "Commission: ",
   "store/affiliate.profile.orderItemsQuantity": "Quantity: ",
   "store/affiliate.profile.orderTitle": "Order",
-  "store/affiliate.profile.orderDetails": "Details"
+  "store/affiliate.profile.orderDetails": "Details",
+  "editor.affiliateURLmonitoring.title": "Affiliates Monitor",
+  "editor.affiliateURLmonitoring.details": "Component that validate affiliate parameters set on the URL",
+  "editor.affiliateURLmonitoring.param": "Parameter",
+  "editor.affiliateURLmonitoring.paramDetails": "Parameter to be used with the affiliates"
 }
