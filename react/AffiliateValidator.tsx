@@ -6,8 +6,7 @@ import { useOrderForm } from 'vtex.order-manager/OrderForm'
 import IS_AFFILIATE_VALID_QUERY from './graphql/isAffiliateValid.graphql'
 import SET_ON_ORDER_FORM_MUTATION from './graphql/setAffiliateOnOrderForm.graphql'
 import { getSlug } from './utils/shared'
-
-const DEFAULT_ORDER_FORM_ID = 'default-order-form'
+import { DEFAULT_ORDER_FORM_ID } from './utils/constants'
 
 export type IsAffiliateValidQueryResult = {
   isAffiliateValid: boolean
