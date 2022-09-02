@@ -21,11 +21,6 @@ function AffiliateURLMonitoring(props: Props) {
   const slug = queryString ? queryString[param] : false
   const orderFormId = orderForm.id
 
-  // eslint-disable-next-line no-console
-  console.log(`SLUG`, slug)
-  // eslint-disable-next-line no-console
-  console.log(`ORDER-FORM`, orderForm)
-
   const [setAffiliateOnOrderForm, { called: mutationHasBeenCalled }] =
     useMutation(SET_ON_ORDER_FORM_MUTATION, {
       onCompleted: (data) => setOrderForm(data.setAffiliateOnOrderForm),
