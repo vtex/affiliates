@@ -1,4 +1,3 @@
-import React from 'react'
 import { useMutation } from 'react-apollo'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
 import { useRuntime } from 'vtex.render-runtime'
@@ -38,7 +37,7 @@ function AffiliateURLMonitoring(props: Props) {
     })
   }
 
-  return <></>
+  return null
 }
 
 AffiliateURLMonitoring.schema = {
