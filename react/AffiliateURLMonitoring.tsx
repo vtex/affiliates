@@ -19,7 +19,7 @@ function AffiliateURLMonitoring(props: Props) {
   const { parameter } = props
 
   const param = parameter || `targeting`
-  const slug = queryString != null ? queryString[param] : false
+  const slug = queryString ? queryString[param] : false
   const orderFormId = orderForm.id
 
   const [setAffiliateOnOrderForm, { called: mutationHasBeenCalled }] =
