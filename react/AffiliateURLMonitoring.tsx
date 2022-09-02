@@ -18,7 +18,7 @@ function AffiliateURLMonitoring(props: Props) {
   const { parameter } = props
 
   const param = parameter || `targeting`
-  const slug = queryString != null ? queryString[param] : false
+  const slug = queryString ? queryString[param] : false
   const orderFormId = orderForm.id
 
   // eslint-disable-next-line no-console
