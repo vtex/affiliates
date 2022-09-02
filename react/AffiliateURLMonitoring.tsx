@@ -1,4 +1,3 @@
-import React from 'react'
 import { useMutation } from 'react-apollo'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
 import { useRuntime } from 'vtex.render-runtime'
@@ -22,6 +21,11 @@ function AffiliateURLMonitoring(props: Props) {
   const slug = queryString != null ? queryString[param] : false
   const orderFormId = orderForm.id
 
+  // eslint-disable-next-line no-console
+  console.log(`SLUG`, slug)
+  // eslint-disable-next-line no-console
+  console.log(`ORDER-FORM`, orderForm)
+
   const [setAffiliateOnOrderForm, { called: mutationHasBeenCalled }] =
     useMutation(SET_ON_ORDER_FORM_MUTATION, {
       onCompleted: (data) => setOrderForm(data.setAffiliateOnOrderForm),
@@ -38,17 +42,17 @@ function AffiliateURLMonitoring(props: Props) {
     })
   }
 
-  return <></>
+  return null
 }
 
 AffiliateURLMonitoring.schema = {
-  title: 'editor.affiliateURLmonitoring.title',
-  description: 'editor.affiliateURLmonitoring.description',
+  title: 'admin/editor.affiliateURLmonitoring.title',
+  description: 'admin/editor.affiliateURLmonitoring.description',
   type: 'object',
   properties: {
     parameter: {
-      title: 'editor.affiliateURLmonitoring.param',
-      description: 'editor.affiliateURLmonitoring.paramDetails',
+      title: 'admin/editor.affiliateURLmonitoring.param',
+      description: 'admin/editor.affiliateURLmonitoring.paramDetails',
       type: 'string',
       default: null,
     },
