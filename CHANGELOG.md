@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Loading spinner to edit page
+- Loading to names on the affiliates orders table
+
 ## [0.61.0] - 2022-09-02
 
 ## [0.60.0] - 2022-09-01
