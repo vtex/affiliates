@@ -18,7 +18,7 @@
     "vtex.affiliates-order-form-spy": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.1.2/public/@types/vtex.affiliates-order-form-spy",
     "vtex.breadcrumb": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb",
     "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.0/public/@types/vtex.css-handles",
-    "vtex.flex-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.20.0/public/@types/vtex.flex-layout",
+    "vtex.flex-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.flex-layout@0.20.1/public/@types/vtex.flex-layout",
     "vtex.order-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.12.0/public/@types/vtex.order-manager",
     "vtex.product-summary": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.80.1/public/@types/vtex.product-summary",
     "vtex.responsive-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-layout@0.1.2/public/@types/vtex.responsive-layout",
@@ -26,9 +26,9 @@
     "vtex.search-result": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.118.14/public/@types/vtex.search-result",
     "vtex.session-client": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.session-client@1.0.2/public/@types/vtex.session-client",
     "vtex.store": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store@2.127.0/public/@types/vtex.store",
-    "vtex.store-components": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.162.0/public/@types/vtex.store-components",
+    "vtex.store-components": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.162.2/public/@types/vtex.store-components",
     "vtex.store-icons": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-icons@0.18.0/public/@types/vtex.store-icons",
-    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.1/public/@types/vtex.styleguide"
+    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.3/public/@types/vtex.styleguide"
   },
   "scripts": {
     "lint": "tsc --noEmit --pretty",

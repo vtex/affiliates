@@ -8,6 +8,8 @@ import {
   PageContent,
   createSystem,
   ToastProvider,
+  Spinner,
+  Flex,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
@@ -34,14 +36,15 @@ const AffiliateEditPage: FC = () => {
 
   const intl = useIntl()
 
-  const { data } = useQuery<AffiliateQueryReturn, QueryGetAffiliateArgs>(
-    GET_AFFILIATE,
-    {
-      variables: {
-        affiliateId,
-      },
-    }
-  )
+  const { data, loading } = useQuery<
+    AffiliateQueryReturn,
+    QueryGetAffiliateArgs
+  >(GET_AFFILIATE, {
+    variables: {
+      affiliateId,
+    },
+    notifyOnNetworkStatusChange: true,
+  })
 
   const handleBackAction = () => {
     navigate({
@@ -64,7 +67,13 @@ const AffiliateEditPage: FC = () => {
             </PageHeaderTop>
           </PageHeader>
           <PageContent>
-            <AffiliateForm affiliate={data?.getAffiliate} />
+            {loading ? (
+              <Flex justify="center">
+                <Spinner size={72} />
+              </Flex>
+            ) : (
+              <AffiliateForm affiliate={data?.getAffiliate} />
+            )}
           </PageContent>
         </Page>
       </ToastProvider>
