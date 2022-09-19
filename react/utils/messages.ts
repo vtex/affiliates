@@ -229,4 +229,60 @@ export const storeMessages = defineMessages({
   affiliateProfileOrderDetails: {
     id: 'store/affiliate.profile.orderDetails',
   },
+  affiliateNameLabel: {
+    id: 'store/affiliate.nameLabel',
+  },
+  affiliateStoreNameLabel: {
+    id: 'store/affiliate.storeNameLabel',
+  },
+  affiliateEmailLabel: {
+    id: 'store/affiliate.emailLabel',
+  },
+  affiliatePhoneLabel: {
+    id: 'store/affiliate.phoneLabel',
+  },
+  affiliateDocumentLabel: {
+    id: 'store/affiliate.documentLabel',
+  },
+  affiliateDocumentTypeLabel: {
+    id: 'store/affiliate.documentTypeLabel',
+  },
+
+  affiliateCEPLabel: {
+    id: 'store/affiliate.CEPLabel',
+  },
+  affiliateStreetLabel: {
+    id: 'store/affiliate.streetLabel',
+  },
+  affiliateNumberLabel: {
+    id: 'store/affiliate.numberLabel',
+  },
+  affiliateDistrictLabel: {
+    id: 'store/affiliate.districtLabel',
+  },
+  affiliateReferenceLabel: {
+    id: 'store/affiliate.referenceLabel',
+  },
+  affiliateCityLabel: {
+    id: 'store/affiliate.cityLabel',
+  },
+  affiliateStateLabel: {
+    id: 'store/affiliate.stateLabel',
+  },
+  affiliateCountryLabel: {
+    id: 'store/affiliate.countryLabel',
+  },
+
+  affiliateGeneralInfo: {
+    id: 'store/affiliate.generaInfo',
+  },
+  affiliateAddressInfo: {
+    id: 'store/affiliate.AddressInfo',
+  },
+  affiliateSocialInfo: {
+    id: 'store/affiliate.SocialInfo',
+  },
+  affiliateRegisterButton: {
+    id: 'store/affiliate.registerButton',
+  },
 })
