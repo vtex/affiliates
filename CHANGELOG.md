@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Base Form element to be added on the store-front
+
+### Added
+
 - URL Monitoring Site Editor config and Props added
 
 ### Added
