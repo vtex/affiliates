@@ -247,7 +247,9 @@ export const storeMessages = defineMessages({
   affiliateDocumentTypeLabel: {
     id: 'store/affiliate.documentTypeLabel',
   },
-
+  affiliateSlugLabel: {
+    id: 'store/affiliate.slugLabel',
+  },
   affiliateCEPLabel: {
     id: 'store/affiliate.CEPLabel',
   },
@@ -272,7 +274,6 @@ export const storeMessages = defineMessages({
   affiliateCountryLabel: {
     id: 'store/affiliate.countryLabel',
   },
-
   affiliateGeneralInfo: {
     id: 'store/affiliate.generaInfo',
   },

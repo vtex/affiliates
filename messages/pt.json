@@ -142,10 +142,10 @@
   "admin/editor.affiliateURLmonitoring.description": "Componente que valida o parametro de afiliados utilizado na URL",
   "admin/editor.affiliateURLmonitoring.param": "Parâmetro",
   "admin/editor.affiliateURLmonitoring.paramDetails": "Parâmetro a ser utilizado para os afiliados",
-  "store/affiliate.nameLabel": "Nome",
+  "store/affiliate.nameLabel": "Nome *",
   "store/affiliate.storeNameLabel": "Nome da Loja",
-  "store/affiliate.emailLabel": "E-mail",
-  "store/affiliate.phoneLabel": "Telefone",
+  "store/affiliate.emailLabel": "E-mail *",
+  "store/affiliate.phoneLabel": "Telefone *",
   "store/affiliate.documentLabel": "Documento",
   "store/affiliate.documentTypeLabel": "Tipo de Documento",
   "store/affiliate.CEPLabel": "CEP",
@@ -159,5 +159,6 @@
   "store/affiliate.generaInfo": "Informações Gerais",
   "store/affiliate.AddressInfo": "Endereço",
   "store/affiliate.SocialInfo": "Social",
-  "store/affiliate.registerButton": "Registrar Afiliado"
+  "store/affiliate.registerButton": "Registrar Afiliado",
+  "store/affiliate.slugLabel": "Slug *"
 }

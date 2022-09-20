@@ -142,10 +142,10 @@
   "admin/editor.affiliateURLmonitoring.description": "Component that validate affiliate parameters set on the URL",
   "admin/editor.affiliateURLmonitoring.param": "Parameter",
   "admin/editor.affiliateURLmonitoring.paramDetails": "Parameter to be used with the affiliates",
-  "store/affiliate.nameLabel": "Name",
+  "store/affiliate.nameLabel": "Name *",
   "store/affiliate.storeNameLabel": "Store Name",
-  "store/affiliate.emailLabel": "Email",
-  "store/affiliate.phoneLabel": "Phone",
+  "store/affiliate.emailLabel": "Email *",
+  "store/affiliate.phoneLabel": "Phone *",
   "store/affiliate.documentLabel": "Document",
   "store/affiliate.documentTypeLabel": "Document Type",
   "store/affiliate.CEPLabel": "ZIP Code",
@@ -159,5 +159,6 @@
   "store/affiliate.generaInfo": "General Information",
   "store/affiliate.AddressInfo": "Address",
   "store/affiliate.SocialInfo": "Social",
-  "store/affiliate.registerButton": "Register Affiliate"
+  "store/affiliate.registerButton": "Register Affiliate",
+  "store/affiliate.slugLabel": "Slug *"
 }
