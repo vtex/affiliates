@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Storefront form logic added to create a new Affiliate
+
+### Added
+
 - Base Form element to be added on the store-front
 
 ### Added
