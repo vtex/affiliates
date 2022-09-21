@@ -7,6 +7,10 @@
     "children": ["affiliate-profile"]
   },
 
+  "store.affiliate-form": {
+    "children": ["affiliate-form"]
+  },
+
   "affiliate-profile": {
     "children": ["affiliate-profile-topbar", "affiliate-profile-validator"]
   },
