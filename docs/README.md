@@ -195,4 +195,47 @@ Therefore, in order to customize these pages configuration, you should:
 3. Copy the code above, paste it in the new file and change it as you wish.
 4. Deploy your changes.
 
+## Props
+
+There a two specific component types with props that must be configured for properly functioning.
+
+#### `affiliate-validator` and `affiliate-profile-validator` props
+
+| Prop name |   Type   |                            Description                               |         Default value           |
+| :-------: | :------: | :------------------------------------------------------------------: | :-----------------------------: |
+|  `valid`  | `string` |  Set the block name that will be rendered if the affiliate is valid  |     `affiliate-template`        |
+| `invalid` | `string` | Set the block name that will be rendered if the affiliate is invalid |  `affiliate-invalid-template`   |
+
+#### `affiliate_url_monitoring` props
+
+| Prop name |   Type   |                            Description                                    |    Default value    |
+| :-------: | :------: | :-----------------------------------------------------------------------: | :-----------------: |
+|`parameter`| `string` | Parameter name that will be used to validate the URL the affiliate shared |     `targeting`     |
+
+## Customization
+
+In order to apply CSS customizations to this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+
+| CSS Handles             |
+| ----------------------- |
+| `affiliateStoreName`    |
+| `affiliateProfileTitle` |
+| `profileButtonContainer`|
+
+<!-- DOCS-IGNORE:start -->
+
+## Contributors ✨
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
+
+<!-- DOCS-IGNORE:end -->
+
 
