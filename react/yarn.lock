@@ -5794,17 +5794,17 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.affiliates-commission-service@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@2.0.0/public/@types/vtex.affiliates-commission-service":
-  version "2.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-commission-service@2.0.0/public/@types/vtex.affiliates-commission-service#b963f0c7410d23f62834f87e2e9cbd634a55efa2"
+"vtex.affiliates-commission-service@https://izidio--honeybe.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@2.0.3+build1663779271/public/@types/vtex.affiliates-commission-service":
+  version "2.0.3"
+  resolved "https://izidio--honeybe.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-commission-service@2.0.3+build1663779271/public/@types/vtex.affiliates-commission-service#86cb9694a66cd9eead56f9c885256bf376921a99"
 
-"vtex.affiliates-order-form-spy@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.1.2/public/@types/vtex.affiliates-order-form-spy":
+"vtex.affiliates-order-form-spy@https://izidio--honeybe.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-order-form-spy@0.1.2+build1661802027/public/@types/vtex.affiliates-order-form-spy":
   version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates-order-form-spy@0.1.2/public/@types/vtex.affiliates-order-form-spy#144dc115f00078505e02782de613956b903ae41d"
+  resolved "https://izidio--honeybe.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates-order-form-spy@0.1.2+build1661802027/public/@types/vtex.affiliates-order-form-spy#9b2c9872c23a8ea74139cc2509eeea86ef1c02e6"
 
-"vtex.affiliates@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.48.0/public/@types/vtex.affiliates":
-  version "0.48.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.affiliates@0.48.0/public/@types/vtex.affiliates#a06786946a50d9e8604b1e20af005653532d82a7"
+"vtex.affiliates@https://izidio--honeybe.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.61.1+build1663088001/public/@types/vtex.affiliates":
+  version "0.61.1"
+  resolved "https://izidio--honeybe.myvtex.com/_v/private/typings/linked/v1/vtex.affiliates@0.61.1+build1663088001/public/@types/vtex.affiliates#3df4082a62a967773207b0ae43b3a14becce03cd"
 
 "vtex.breadcrumb@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.breadcrumb@1.9.4/public/@types/vtex.breadcrumb":
   version "1.9.4"
@@ -5838,9 +5838,9 @@ verror@1.10.0:
   version "0.15.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.rich-text@0.15.0/public/@types/vtex.rich-text#f23416cea64e72531069e58f1b137dfdb5b4b510"
 
-"vtex.search-result@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.118.14/public/@types/vtex.search-result":
-  version "3.118.14"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.118.14/public/@types/vtex.search-result#6804ec3f3d57b9f576a5f9faf46eff770402a967"
+"vtex.search-result@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.118.15/public/@types/vtex.search-result":
+  version "3.118.15"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-result@3.118.15/public/@types/vtex.search-result#4219f3559d8812d349754aa89e4ead20ec20edcf"
 
 "vtex.session-client@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.session-client@1.0.2/public/@types/vtex.session-client":
   version "1.0.2"
