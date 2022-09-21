@@ -28,6 +28,7 @@ import { getAffiliateLead } from './middlewares/getAffiliateLead'
 import { verifyUserAffiliation } from './middlewares/verifyUserAffiliation'
 import { authenticateRequest } from './middlewares/authenticateRequest'
 import { getAffiliates } from './resolvers/getAffiliates'
+import { getAffiliatesScroll } from './resolvers/getAffiliatesScroll'
 import { addAffiliate } from './resolvers/addAffiliate'
 import { updateAffiliate as updateAffiliateResolver } from './resolvers/updateAffiliate'
 import { getAffiliate } from './resolvers/getAffiliate'
@@ -110,6 +111,7 @@ export default new Service({
         getAffiliates,
         getAffiliate,
         getAffiliateByEmail,
+        getAffiliatesScroll,
       },
       Mutation: {
         addAffiliate,
