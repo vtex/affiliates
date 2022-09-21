@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.0] - 2022-09-21
+
+## [1.0.0] - 2022-09-21
+
+### Added
+
+- Billing options at manifest
+
+### Changed
+
+- Status label message of affiliates orders table
+
+## [0.61.1] - 2022-09-12
+
+### Added
+
+- Loading spinner to edit page
+- Loading to names on the affiliates orders table
+
+## [0.61.0] - 2022-09-02
+
+## [0.60.0] - 2022-09-01
+
 ### Added
 
 - Storefront form logic added to create a new Affiliate

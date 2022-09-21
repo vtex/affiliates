@@ -1,7 +1,7 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "0.59.0",
+  "version": "1.1.0",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
@@ -96,6 +96,15 @@
         "type": "integer",
         "default": 0
       }
+    }
+  },
+  "billingOptions": {
+    "type": "free",
+    "availableCountries": [
+      "*"
+    ],
+    "support": {
+      "url": "https://support.vtex.com/hc/requests"
     }
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"

@@ -101,7 +101,7 @@
   "admin/add.affiliate.title": "Add affiliate",
   "admin/add.affiliate.error.message": "An error occurred while adding the affiliate",
   "admin/details.label": "Details",
-  "admin/order.status.label": "Order status",
+  "admin/order.status.label": "All orders",
   "admin/order.status.created.label": "Created",
   "admin/order.status.pending.label": "Payment pending",
   "admin/order.status.paid.label": "Payment approved",
