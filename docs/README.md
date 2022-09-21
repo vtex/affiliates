@@ -1,127 +1,65 @@
 
 
-# Service Example
+# Affiliates
 
-A reference app implementing a VTEX IO service with HTTP route handlers.
+The affiliates app adds some data layer and pages that will allow your store to work with a partner structure, this app will give the affiliates a page and slug for them to share with the client, and when something is bought they will have a commission related to this purchase.
+The app also adds some configurations and management pages for the store owner and affiliate aswell.
 
-![Service Example Architecture](https://user-images.githubusercontent.com/18706156/77381360-72489680-6d5c-11ea-9da8-f4f03b6c5f4c.jpg)
+![Here comes an example of the store affiliate page]()<br/>
+_Example of an affiliate page that can be shared with the clients._
 
-We use [**KoaJS**](https://koajs.com/) as the web framework, so you might want to get into that
+![Here comes an example of the store affiliate profile page]()
+_Example of the affiliate profile page_
 
-We also use the [**node-vtex-api**](https://github.com/vtex/node-vtex-api), a VTEX set of utilities for Node services. You can import this package using NPM from `@vtex/api` (already imported on this project)
+![Here comes an example of the store affiliate management page]()
+_Example of the affiliate management page_
 
-- Start from `node/index.ts` and follow the comments and imports :)
+![Here comes an example of the store affiliate form page]()
+_Example of the affilate form that will allow people interested in being an affiliate to register_
 
-## Recipes
+## Configuration
 
-### Defining routes on _service.json_ 
-```json
-{
-  "memory": 256,
-  "ttl": 10,
-  "timeout": 2,
-  "minReplicas": 2,
-  "maxReplicas": 4,
-  "routes": {
-    "status": {
-      "path": "/_v/status/:code",
-      "public": true
-    }
-  }
-}
+1. [Install](https://vtex.io/docs/recipes/development/installing-an-app/) the Affiliate app in the desired VTEX account by running `vtex install vtex.affiliates` in your terminal.
+2. Open your store's Store Theme app directory in your code editor.
+3. Add the Affiliates app to your theme's `manifest.json` file inside **peerDependencies** as shown below:
+
+```diff
+ "peerDependencies": {
++  "vtex.affiliates": "1.x"
+ }
 ```
 
-The `service.json` file that sits on the root of the `node` folder holds informations about this service, like the maximum timeout and number of replicas, what might be discontinued on the future, but also **sets its routes**. 
+> ℹ️ _The Affiliates app can export several theme blocks when added as a dependency. They are responsible for creating several different pages on the storefront, `affiliate`, `affiliate-profile` and `affiliate-form`, and there are several functionality blocks that will be used within this context aswell, we will show them on the advanced section._
 
-Koa uses the [path-to-regexp](https://github.com/pillarjs/path-to-regexp) format for defining routes and, as seen on the example, we use the `:code` notation for declaring a **route param** named code, in this case. A HTTP request for `https://{{workspace}}--{{account}}.myvtex.com/_v/status/500` will match the route we've defined. 
+3. After installing the app, the main pages will be available with a default layout, you can access them by `/affiliates/:affiliate-slug` and `/affiliates/profile/:affiliate-slug`
 
-For cach _key_ on the `routes` object, there should be a **corresponding entry** on the exported Service object on `node/index.ts`, this will hook your code to a specific route.
+4. If you want your affiliates to have the possibility to send any product URL for the client, you will have to add the `affiliate-url-monitoring` block into the header of your theme as shown below:
 
-### Access Control
-You can also provide a `public` option for each route. If `true`, that resource will be reachable for everyone on the internet. If `false`, VTEX credentials will be requested as well.
-
-Another way of controlling access to specific routes is using **ReBACs (Resource-based access)**, that supports more robust configuration. You can read more [on this document](https://docs.google.com/document/d/1ZxNHMFIXfXz3BgTN9xyrHL3V5dYz14wivYgQjRBZ6J8/edit#heading=h.z7pad3qd2qw7) (VTEX only).
-
-#### Query String
-For `?accepting=query-string`, you **don't need to declare anything**, as any query provided to the URL will already be available for you to use on the code as `ctx.query`, already parsed as an object, or `ctx.queryString`, taken directly from the URL as a string.
-
-#### Route Params
-Route Params will be available for you to use on the code as `ctx.vtex.params`, already parsed as an object.
-For a path like `/_v/status/:code`, if you receive the request `/_v/status/200`, `ctx.vtex.params` will return `{ code: '200' }`
-
-#### HTTP methods
-When you define a route on the `service.json`, your NodeJS handlers for that route will be triggered  **on every HTTP method** (GET, POST, PUT...), so, if you need to handle them separately you need to implement a "sub-router". Fortunately, the _node-vtex-api_ provides a helper function `method`, exported from `@vtex/api`, to accomplish that behaviour. Instead of passing your handlers directly to the corresponding route on `index.ts`, you pass a `method` call passing **an object with the desired method as key and one handler as its corresponding value**. Check this example:
-```typescript
-import { method } from '@vtex/api'
-...
-
-export default new Service<Clients, State>({
-  clients,
-  routes: {
-    status: method({
-      GET: statusGetHandler,
-      POST: statusPostHandler,
-    }),
+```diff
+  "header-layout.desktop": {
+    "children": [
++     "affiliate-url-monitoring",
+      "flex-layout.row#1-desktop",
+      "flex-layout.row#3-desktop",
+    ]
   },
-})
+
+    "header-layout.mobile": {
+    "children": [
++     "affiliate-url-monitoring",
+      "flex-layout.row#1-desktop",
+    ]
+  },
 ```
 
-### Throwing errors
+> ℹ️ _The `affiliate_url_monitoring` app adds a logic that will seek for specific parameter on the URL, if the parameter is found with a valid value, it will add the affiliate informations for this purchase. The default parameter is **targeting**
 
-When building a HTTP service, we should follow HTTP rules regarding data types, cache, authorization, and status code. Our example app sets a `ctx.status` value that will be used as a HTTP status code return value, but often we also want to give proper information about errors as well.
+5. Now your affiliate can send any product URL with the parameter **targeting** with their slug value, it will adds this affiliate information to be linked to the purchase
 
-The **node-vtex-api** already exports a handful of **custom error classes** that can be used for that purpose, like the `NotFoundError`. You just need to throw them inside one of the the route handlers that the appropriate response will be sent to the server.
+6. If you want to change the parameter that will be used for the affiliate share, you can edit the parameter property from the `URL Monitoring` block inside the Site Editor.
 
-```typescript
-import { UserInputError } from '@vtex/api'
+!(Parameter Editing)[https://user-images.githubusercontent.com/53904010/191607498-a58c11ba-57f9-4d1c-aa65-b3d4c82c0c90.png]
 
-export async function validate(ctx: Context, next: () => Promise<any>) {
-  const { code } = ctx.vtex.route.params
-  if (isNaN(code) || code < 100 || code > 600) {
-    throw new UserInputError('Code must be a number between 100 and 600')
-  }
-...
-```
-
-You can check all the available errors [here](https://github.com/vtex/node-vtex-api/tree/fd6139349de4e68825b1074f1959dd8d0c8f4d5b/src/errors), but some are not useful for just-HTTP services. Check the most useful ones:
-
-|Error Class | HTTP Code |
-|--|:--:|
-| `UserInputError` | 400 |
-| `AuthenticationError` | 401 |
-| `ForbiddenError` | 403 |
-| `NotFoundError` | 404 |
-
-You can also **create your custom error**, just see how it's done above ;)
-
-### Reading a JSON body
-
-When writing POST or PUT handlers, for example, often you need to have access to the **request body** that comes as a JSON format, which is not provided directly by the handler function.
-
-For this, you have to use the [co-body](https://www.npmjs.com/package/co-body) package that will parse the request into a readable JSON object, used as below: 
-```typescript
-import { json } from 'co-body'
-export async function method(ctx: Context, next: () => Promise<any>) {
-    const body = await json(ctx.req)
-```
-
-### Other example apps
-
-We use Node services across all VTEX, and there are a lot inspiring examples. If you want to dive deeper on learning about this subject, don't miss those internal apps: [builder-hub](https://github.com/vtex/builder-hub) or [store-sitemap](https://github.com/vtex-apps/store-sitemap)
+## Advanced configurations
 
 
-## Testing
-
-`@vtex/test-tools` and `@types/jest` should be installed on `./node` package as `devDependencies`.
-
-Run `vtex test` and [Jest](https://jestjs.io/) will do its thing.
-
-Check the `node/__tests__/simple.test.ts` test case and also [Jest's Documentation](https://jestjs.io/docs/en/getting-started).
-
-## Splunk Dashboard
-
-We have an (for now, VTEX-only, internal) Splunk dashboard to show all metrics related to your app. You can find it [here](https://splunk7.vtex.com/en-US/app/vtex_colossus/node_app_metrics).
-
-After linking this app and making some requests, you can select `vtex.service-example` and see the metrics for your app. **Don't forget to check the box Development, as you are linking your app in a development workspace**.
-
-For convenience, the link for the current version: https://splunk7.vtex.com/en-US/app/vtex_colossus/node_app_metrics?form.time.earliest=-30m%40m&form.time.latest=%40m&form.picked_context=false&form.picked_region=aws-us-east-*&form.picked_service=vtex.service-example
