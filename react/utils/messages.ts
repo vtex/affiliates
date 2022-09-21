@@ -247,7 +247,9 @@ export const storeMessages = defineMessages({
   affiliateDocumentTypeLabel: {
     id: 'store/affiliate.documentTypeLabel',
   },
-
+  affiliateSlugLabel: {
+    id: 'store/affiliate.slugLabel',
+  },
   affiliateCEPLabel: {
     id: 'store/affiliate.CEPLabel',
   },
@@ -272,7 +274,6 @@ export const storeMessages = defineMessages({
   affiliateCountryLabel: {
     id: 'store/affiliate.countryLabel',
   },
-
   affiliateGeneralInfo: {
     id: 'store/affiliate.generaInfo',
   },
@@ -284,5 +285,17 @@ export const storeMessages = defineMessages({
   },
   affiliateRegisterButton: {
     id: 'store/affiliate.registerButton',
+  },
+  affiliateFacebookLabel: {
+    id: 'store/affiliate.facebookLabel',
+  },
+  affiliateInstagramLabel: {
+    id: 'store/affiliate.instagramLabel',
+  },
+  affiliateWhatsappLabel: {
+    id: 'store/affiliate.whatsappLabel',
+  },
+  affiliateGTMLabel: {
+    id: 'store/affiliate.gtmLabel',
   },
 })

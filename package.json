@@ -41,5 +41,7 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "formik": "^2.2.9"
+  }
 }
