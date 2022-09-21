@@ -207,14 +207,14 @@ const AffiliateOrdersTable: FC = () => {
     }
 
     affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => {
-      if (!dict.has(affiliate.id ?? '')) {
-        return dict.set(affiliate.id ?? '', affiliate.name ?? '')
+      if (affiliate.id && !dict.has(affiliate.id)) {
+        return dict.set(affiliate.id, affiliate.name ?? '')
       }
 
       return ''
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [affiliatesData, dict])
+  }, [affiliatesData?.getAffiliates?.data, dict])
 
   useEffect(() => {
     if (combobox.deferredValue === '') {
@@ -278,7 +278,7 @@ const AffiliateOrdersTable: FC = () => {
       resolver: {
         type: 'root',
         render: ({ item, context }) => {
-          if (context.status === 'loading') {
+          if (context.status === 'loading' || !dict.get(item.affiliateId)) {
             return <Skeleton csx={{ height: 24 }} />
           }
 
@@ -295,7 +295,7 @@ const AffiliateOrdersTable: FC = () => {
       header: intl.formatMessage(
         messages.affiliatesOrdersTableStatusColumnLabel
       ),
-      width: 200,
+      width: 210,
       resolver: {
         type: 'root',
         render: StatusTableCell,
