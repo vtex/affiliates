@@ -160,5 +160,9 @@
   "store/affiliate.AddressInfo": "Endereço",
   "store/affiliate.SocialInfo": "Social",
   "store/affiliate.registerButton": "Registrar Afiliado",
-  "store/affiliate.slugLabel": "Slug *"
+  "store/affiliate.slugLabel": "Slug *",
+  "store/affiliate.facebookLabel": "Facebook",
+  "store/affiliate.instagramLabel": "Instagram",
+  "store/affiliate.whatsappLabel": "Whatsapp",
+  "store/affiliate.gtmLabel": "GTM ID"
 }

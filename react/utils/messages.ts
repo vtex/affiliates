@@ -286,4 +286,16 @@ export const storeMessages = defineMessages({
   affiliateRegisterButton: {
     id: 'store/affiliate.registerButton',
   },
+  affiliateFacebookLabel: {
+    id: 'store/affiliate.facebookLabel',
+  },
+  affiliateInstagramLabel: {
+    id: 'store/affiliate.instagramLabel',
+  },
+  affiliateWhatsappLabel: {
+    id: 'store/affiliate.whatsappLabel',
+  },
+  affiliateGTMLabel: {
+    id: 'store/affiliate.gtmLabel',
+  },
 })
