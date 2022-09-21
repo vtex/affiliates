@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Billing options at manifest
+
 ### Changed
 
 - Status label message of affiliates orders table
