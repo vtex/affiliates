@@ -19,7 +19,7 @@ _Example of the affilate form that will allow people interested in being an affi
 
 ## Configuration
 
-1. Search for the Affiliate app on our app store and install it on your.
+1. Search for the Affiliate app on our app store and install it on your account.
 2. Open your store's Store Theme app directory in your code editor.
 3. Add the Affiliates app to your theme's `manifest.json` file inside **peerDependencies** as shown below:
 
