@@ -19,7 +19,7 @@ _Example of the affilate form that will allow people interested in being an affi
 
 ## Configuration
 
-1. [Install](https://vtex.io/docs/recipes/development/installing-an-app/) the Affiliate app in the desired VTEX account by running `vtex install vtex.affiliates` in your terminal.
+1. Search for the Affiliate app on our app store and install it on your.
 2. Open your store's Store Theme app directory in your code editor.
 3. Add the Affiliates app to your theme's `manifest.json` file inside **peerDependencies** as shown below:
 
@@ -33,7 +33,7 @@ _Example of the affilate form that will allow people interested in being an affi
 
 3. After installing the app, the main pages will be available with a default layout, you can access them by `/affiliates/:slug` and `/affiliates/profile/:slug`
 
-4. If you want your affiliates to have the possibility to send any product URL for the client, you will have to add the `affiliate-url-monitoring` block into the header of your theme as shown below:
+4. If you want your affiliates to have the possibility to send any URL of the site for the client, you will have to add the `affiliate-url-monitoring` block into the header of your theme as shown below:
 
 ```diff
   "header-layout.desktop": {
