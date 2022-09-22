@@ -29,7 +29,7 @@ _Example of the affilate form that will allow people interested in being an affi
  }
 ```
 
-> ℹ️ _The Affiliates app can export several theme blocks when added as a dependency. There are some that are responsible for creating several different pages on the storefront, like `affiliate`, `affiliate-profile` and `affiliate-form`, and there are several functionality blocks that will be used within these pages context aswell, we will show more about them on the advanced section._
+> ℹ️ _The Affiliates app can export several theme blocks when added as a dependency. There are some that are responsible for creating several different pages on the storefront, like `affiliate`, `affiliate-profile` and `affiliate-form`, and there are several functionality blocks that will be used within these pages context as well, we will show more about them on the advanced section._
 
 3. After installing the app, the main pages will be available with a default layout, you can access them by `/affiliates/:slug` and `/affiliates/profile/:slug`
 
