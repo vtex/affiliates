@@ -197,7 +197,7 @@ Therefore, in order to customize these pages configuration, you should:
 
 ## Props
 
-There a two specific component types with props that must be configured for properly functioning.
+There a two specific component types with props that must be configured to work properly.
 
 #### `affiliate-validator` and `affiliate-profile-validator` props
 
