@@ -54,7 +54,7 @@ _Example of the affilate form that will allow people interested in being an affi
 
 > ℹ️ _The `affiliate_url_monitoring` app adds a logic that will seek for specific parameter on the URL, if the parameter is found with a valid affiliate slug as it's value, it will add the affiliate informations on the purchase.
 
-5. Now your affiliate can send any product URL with the parameter **targeting** with their slug as value, it will adds this affiliate information to be linked to the purchase
+5. Now your affiliate can send any URL with the parameter **targeting** with their slug as value, it will adds this affiliate information to be linked to the purchase
 
 6. If you want to change the parameter that will be used for the affiliate to share, you can edit the parameter property from the `Affiliate Monitoring` block inside the Site Editor.
 
