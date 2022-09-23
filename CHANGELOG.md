@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Scroll on affiliates
 - Send all affiliates to export orders via new variable in the query
 
+## [1.2.1] - 2022-09-22
+
+### Added
+
+- README adjustments
+
 ## [1.2.0] - 2022-09-21
 
 ## [1.1.0] - 2022-09-21
