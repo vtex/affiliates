@@ -9,6 +9,10 @@ type Query {
   ): AffiliatesPage!
   getAffiliate(affiliateId: ID!): Affiliate
   getAffiliateByEmail(email: String!): Affiliate
+  getAffiliatesScroll(
+    filter: AffiliatesFilterInput
+    sorting: AffliatesSortingInput
+  ): [AffiliateScroll]!
 }
 
 type Mutation {

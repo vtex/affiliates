@@ -89,6 +89,16 @@ type Affiliate {
   marketing: Marketing
 }
 
+type AffiliateScroll {
+  id: ID
+  name: String
+  email: String
+}
+
+type AffiliatesScroll {
+  data: [AffiliateScroll]
+}
+
 type AffiliatesPage {
   data: [Affiliate]!
   pagination: Pagination!
