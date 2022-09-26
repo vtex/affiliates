@@ -60,6 +60,11 @@ This page contains a form that can be filled by anyone that wants to became an a
 
 5. Now your affiliate can send any URL with the parameter **targeting** with their slug as value, it will adds this affiliate information to be linked to the purchase
 
+| URL                                                   | Behavior                                                       |
+|-------------------------------------------------------|----------------------------------------------------------------|
+| https://mystore.com/product/p                         | Just a simple product URL                                      |
+| https://mystore.com/product/p?targeting=affiliateName | URL with the parameter, will link this client to the affiliate |
+
 6. If you want to change the parameter that will be used for the affiliate to share, you can edit the parameter property from the `Affiliate Monitoring` block inside the Site Editor.
 
 ![Parameter Editing](https://user-images.githubusercontent.com/53904010/191607498-a58c11ba-57f9-4d1c-aa65-b3d4c82c0c90.png)
