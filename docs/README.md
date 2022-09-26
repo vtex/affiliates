@@ -6,19 +6,19 @@ The affiliates app adds some data layer and pages that will allow your store to 
 The app also adds some configurations and management pages for the store owner and affiliate as well.
 
 ![Here comes an example of the store affiliate page]()<br/>
-_Example of an affiliate page that can be shared with the clients._
+_**Example of an affiliate page that can be shared with the clients.**_<br/>
 This is the main page that will be shared by the affiliate with their clients, it's a page that can be customized to show some products and guide the customer.
 
 ![Here comes an example of the store affiliate profile page]()<br/>
-_Example of the affiliate profile page_
+_**Example of the affiliate profile page**_<br/>
 This is the page where the affiliate can see their information that is registered on the store.
 
 ![Here comes an example of the store affiliate management page]()<br/>
-_Example of the affiliate management page_
+_**Example of the affiliate management page**_<br/>
 This is the page where the affiliate can see the orders related to their account, with a totalizer and dashboard for a better experience.
 
 ![Here comes an example of the store affiliate form page]()<br/>
-_Example of the affilate form that will allow people interested in being an affiliate to register_
+_**Example of the affilate form that will allow people interested in being an affiliate to register**_<br/>
 This page contains a form that can be filled by anyone that wants to became an affiliate
 
 ## Configuration
