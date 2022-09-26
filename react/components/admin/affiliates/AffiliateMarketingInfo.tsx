@@ -1,12 +1,13 @@
 import {
   Card,
+  CardContent,
   Stack,
   Heading,
   FlexSpacer,
   Columns,
   Column,
   Text,
-  tag,
+  Box,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
@@ -34,45 +35,47 @@ const AffiliateMarketingInfo: FC<AffiliateMarketingInfoProps> = ({
   }
 
   return (
-    <tag.div csx={{ marginTop: '16px' }}>
+    <Box as="div" csx={{ marginTop: '16px' }}>
       <Heading>{intl.formatMessage(messages.socialLabel)}</Heading>
       <Card>
-        <Stack space="$xs" fluid>
-          <Columns spacing={1}>
-            <Column units={6}>
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.instagramLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {marketing?.instagram}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.facebookLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {marketing?.facebook}
-              </Text>
-            </Column>
-            <Column units={6}>
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.whatsappLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {marketing?.whatsapp}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.gtmIdLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {marketing?.gtmId}
-              </Text>
-            </Column>
-          </Columns>
-        </Stack>
+        <CardContent>
+          <Stack space="$xs" fluid>
+            <Columns space="1">
+              <Column units={6}>
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.instagramLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {marketing?.instagram}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.facebookLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {marketing?.facebook}
+                </Text>
+              </Column>
+              <Column units={6}>
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.whatsappLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {marketing?.whatsapp}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.gtmIdLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {marketing?.gtmId}
+                </Text>
+              </Column>
+            </Columns>
+          </Stack>
+        </CardContent>
       </Card>
-    </tag.div>
+    </Box>
   )
 }
 
