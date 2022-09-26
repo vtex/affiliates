@@ -232,6 +232,9 @@ export const storeMessages = defineMessages({
   affiliateNameLabel: {
     id: 'store/affiliate.nameLabel',
   },
+  affiliateNamePlaceholder: {
+    id: 'store/affiliate.namePlaceholder',
+  },
   affiliateStoreNameLabel: {
     id: 'store/affiliate.storeNameLabel',
   },
@@ -297,5 +300,11 @@ export const storeMessages = defineMessages({
   },
   affiliateGTMLabel: {
     id: 'store/affiliate.gtmLabel',
+  },
+  affiliateWentWrong: {
+    id: 'store/affiliate.wentWrong',
+  },
+  affiliateNoSpecial: {
+    id: 'store/affiliate.noSpecial',
   },
 })
