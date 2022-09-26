@@ -5,7 +5,7 @@ import {
   PageHeader,
   PageHeaderTitle,
   PageContent,
-  createSystem,
+  ThemeProvider,
   ToastProvider,
   QueryStateProvider,
 } from '@vtex/admin-ui'
@@ -13,8 +13,6 @@ import { useIntl } from 'react-intl'
 
 import AffiliateOrdersTable from './components/admin/dashboard/AffiliateOrdersTable'
 import { messages } from './utils/messages'
-
-const [ThemeProvider] = createSystem()
 
 const DashboardPage: FC = () => {
   const intl = useIntl()
