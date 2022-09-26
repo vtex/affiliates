@@ -15,3 +15,5 @@ export const ERRORS = {
     message: 'Forbidden',
   },
 }
+
+export const SCROLL_PAGE_SIZE = 1000

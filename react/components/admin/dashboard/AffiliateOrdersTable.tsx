@@ -30,7 +30,6 @@ import type {
   AffiliateOrdersSortingField,
   QueryAffiliateOrdersArgs,
 } from 'vtex.affiliates-commission-service'
-import type { Affiliate } from 'vtex.affiliates'
 
 import {
   AFFILIATES_ORDERS_EXPORT_LIMIT,
@@ -42,6 +41,7 @@ import { messages } from '../../../utils/messages'
 import DatesFilter from './DatesFilter'
 import GET_AFFILIATES_ORDERS from '../../../graphql/getAffiliatesOrders.graphql'
 import GET_AFFILIATES from '../../../graphql/getAffiliates.graphql'
+import GET_AFFILIATES_SCROLL from '../../../graphql/getAffiliatesScroll.graphql'
 import EXPORT_ORDERS from '../../../graphql/exportAffiliatesOrders.graphql'
 import type { AffiliatesOrdersQueryReturnType } from '../../../typings/tables'
 import { setSortOrder } from '../../../utils/shared'
@@ -61,6 +61,16 @@ type TableColumns = {
   orderDate: string | null
   orderTotal: number
   orderTotalCommission: number
+}
+
+interface Affiliate {
+  id: string
+  name: string
+  email: string
+}
+
+interface GetAffiliateScrollReturn {
+  getAffiliatesScroll: Affiliate[]
 }
 
 interface StatusItemType {
@@ -181,6 +191,19 @@ const AffiliateOrdersTable: FC = () => {
     },
     notifyOnNetworkStatusChange: true,
   })
+
+  const { data: affiliatesScrollData } = useQuery<GetAffiliateScrollReturn>(
+    GET_AFFILIATES_SCROLL,
+    {
+      variables: {
+        filter: {
+          searchTerm: combobox.deferredValue ?? null,
+          affiliateList: null,
+        },
+      },
+      notifyOnNetworkStatusChange: true,
+    }
+  )
 
   const allAffiliatesData = combobox.deferredValue
     ? affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => ({
@@ -453,6 +476,7 @@ const AffiliateOrdersTable: FC = () => {
     variables: {
       page: pagination.currentPage,
       pageSize: PAGE_SIZE,
+      affiliates: affiliatesScrollData?.getAffiliatesScroll,
       filter: {
         affiliateId: combobox.selectedItems ?? null,
         dateRange: {

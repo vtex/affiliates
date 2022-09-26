@@ -1,0 +1,10 @@
+query getAffiliatesScroll(
+  $filter: AffiliatesFilterInput
+  $sorting: AffliatesSortingInput
+) {
+  getAffiliatesScroll(filter: $filter, sorting: $sorting) {
+    id
+    name
+    email
+  }
+}
