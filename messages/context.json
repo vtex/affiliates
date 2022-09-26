@@ -143,6 +143,7 @@
   "admin/editor.affiliateURLmonitoring.param": "Parameter",
   "admin/editor.affiliateURLmonitoring.paramDetails": "Parameter to be used with the affiliates",
   "store/affiliate.nameLabel": "Name *",
+  "store/affiliate.namePlaceholder": "Your name here *",
   "store/affiliate.storeNameLabel": "Store Name",
   "store/affiliate.emailLabel": "Email *",
   "store/affiliate.phoneLabel": "Phone *",
@@ -160,9 +161,11 @@
   "store/affiliate.AddressInfo": "Address",
   "store/affiliate.SocialInfo": "Social",
   "store/affiliate.registerButton": "Register Affiliate",
-  "store/affiliate.slugLabel": "Slug *",
+  "store/affiliate.slugLabel": "URL Identifier *",
   "store/affiliate.facebookLabel": "Facebook",
   "store/affiliate.instagramLabel": "Instagram",
   "store/affiliate.whatsappLabel": "Whatsapp",
-  "store/affiliate.gtmLabel": "GTM ID"
+  "store/affiliate.gtmLabel": "GTM ID",
+  "store/affiliate.wentWrong": "Something went wrong, verify the form again",
+  "store/affiliate.noSpecial": "No spaces or special characters "
 }
