@@ -60,7 +60,7 @@ This page contains a form that can be filled by anyone that wants to became an a
 
 5. Now your affiliate can send any URL with the parameter **targeting** with their slug as value, it will adds this affiliate information to be linked to the purchase
 
-| URL                                                   | Behavior                                                       |
+| Example URL                                                   | Behavior                                                       |
 |-------------------------------------------------------|----------------------------------------------------------------|
 | https://mystore.com/product/p                         | Just a simple product URL                                      |
 | https://mystore.com/product/p?targeting=affiliateName | URL with the parameter, will link this client to the affiliate |
@@ -223,6 +223,161 @@ There a two specific component types with props that must be configured to work 
 | :-------: | :------: | :-----------------------------------------------------------------------: | :-----------------: |
 |`parameter`| `string` | Parameter name that will be used to validate the URL the affiliate shared |     `targeting`     |
 
+## Email Template
+
+For the export function to work properly and send an email for the user, it is needed to create a new template on the messafe center, based on the example below:
+
+<img width="1224" alt="image" src="https://user-images.githubusercontent.com/53904010/192376163-1a0d427a-af57-463e-a9fc-2476a0794fc8.png">
+
+#### HTML code example
+
+```diff
+  <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <!-- So that mobile webkit will display zoomed in -->
+    <meta name="format-detection" content="telephone=no">
+    <!-- disable auto telephone linking in iOS -->
+    <title>{{_accountInfo.TradingName}}</title>
+    <style type="text/css">
+        p {
+            font-family: Fabriga, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+        };
+        .vtex-button {
+            border-width: .125rem;
+            border-style: solid;
+            font-weight: 500;
+            vertical-align: middle;
+            padding: 0;
+            line-height: 1;
+            border-radius: .25rem;
+            min-height: 2.5rem;
+            box-sizing: border-box;
+            font-family: Fabriga, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            background-color: #134cd8;
+            border-color: #134cd8;
+            color: #fff;
+            cursor: pointer;
+        };
+    </style>
+</head>
+
+<body marginwidth="0" marginheight="0" bgcolor="#fff" style="padding:0px 0px;color:#333;" leftmargin="0" topmargin="0">
+    <!-- 100% wrapper (grey background) -->
+    <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0" align="left" valign="top">
+        <tbody>
+            <tr>
+                <td align="center" valign="top">
+                    <table width="100%" style="max-width: 36rem;" align="center" cellpadding="0" cellspacing="0"
+                        border="0" valign="top">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div
+                                        style="border:1px solid #e3e4e6;border-radius:8px;margin-top:1rem;margin-bottom:1rem;padding-top:3rem;padding-right:3rem;padding-bottom:3rem;padding-left:3rem">
+                                        <img src="https://master--qamarketplace.myvtex.com/_v/public/assets/v1/published/vtex.messages-templates@0.1.12/public/react/cdbfb2a8b730a7ee840752d7af7ddc1c.png"
+                                            width="77px" height="28px"
+                                            style="display:block;outline:none;border:none;text-decoration:none"
+                                            class="CToWUd">
+                                        <p style="font-size:24px;color:#25354d;margin-bottom:32px">
+                                            <strong>Planilha de pedidos de afiliados exportada</strong></p>
+                                        <p style="font-size:16px;color:#3f3f40;margin-bottom:32px">
+                                            Olá,</p>
+                                        <p style="font-size:16px;color:#3f3f40">
+                                            Segue o link para baixar a planilha pedidos de afiliados.
+                                        </p>
+                                        <div style="margin-bottom: 24px">
+                                            <a href="{{link}}" download>
+                                                <button
+                                                    style="border-width: .125rem; border-style: solid; font-weight: 500; vertical-align: middle; padding: 0; line-height: 1; border-radius: .25rem; min-height: 2.5rem;  box-sizing: border-box; font-family: Fabriga, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;  font-size: 1rem;  text-transform: uppercase;  letter-spacing: 0; background-color: #134cd8; border-color: #134cd8;  color: #fff; cursor: pointer;"
+                                                    type="button">
+                                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 0.25rem; padding-bottom: 0.25rem;">
+                                                        Baixar Planilha
+                                                    </div>
+                                                </button>
+                                            </a>
+                                        </div>
+                                        <p style="margin-bottom:4px;font-size:16px;color:#3f3f40">
+                                            Abraços,</p>
+                                        <p style="margin-top:0px;font-size:16px;color:#3f3f40">
+                                            VTEX</p><br>
+                                        <p style="font-size:12px;color:#727273;margin-bottom:0px">
+                                            O link para download é válido por 24 horas. Após esse tempo, será necessário realizar a exportação novamente.
+                                        </p>
+                                        <div
+                                            style="color:#e3e4e6;border-top:1px solid #e3e4e6;border-bottom:0px solid #e3e4e6;margin-bottom:2rem;margin-top:1rem">
+                                        </div>
+                                        <p style="font-size:12px;color:#727273;margin-bottom:0px">
+                                            Esse email é enviado automaticamente e não recebe respostas.
+                                        </p>
+                                        <p style="font-size:12px;color:#727273;margin-top:.25rem;margin-bottom:0px">
+                                            Precisa de ajuda? <a href="https://help.vtex.com/?locale=pt" alt="VTEX Help"
+                                                style="font-weight:bold;color:#3F3F40">Fale Conosco</a>
+                                        </p><br>
+                                        <p style="font-size:12px;color:#727273;margin-bottom:0px">
+                                            © VTEX Praia de Botafogo, 300, 3º Andar, Botafogo, Rio de Janeiro, RJ,
+                                            22250-040
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--/600px container -->
+    <!--/100% wrapper-->
+</body>
+</html>
+
+```
+
+#### JSON example
+```json
+{
+	"email": "matheus.baziloni@vtex.com.br",
+	"link": "https://master--honeybe.myvtex.com/_v/export/affiliateOrders/c206c3df-bbfb-4abf-9cb3-eda0e78c37bf.csv",
+	"_accountInfo": {
+		"MainAccountName": "honeybe",
+		"AccountName": "honeybe",
+		"Cnpj": "10490519000159",
+		"Id": "aef1b097-a06a-4ba9-8c69-f86b4571d7d3",
+		"AppId": "e61135bb-a7c7-4d01-a263-5f939312f5a9",
+		"IsActive": true,
+		"IsOperating": true,
+		"CreationDate": "2013-09-26T00:00:00",
+		"OperationDate": "2013-01-01T00:00:00",
+		"CompanyName": "PONTE 1 COMÉRCIO ELETRÔNICO",
+		"TradingName": "HoneyBe",
+		"City": "",
+		"Complement": "",
+		"Country": "",
+		"State": "",
+		"Address": "",
+		"District": "",
+		"Number": "",
+		"PostalCode": "",
+		"Licenses": [
+			8
+		],
+		"ParentAccountId": null,
+		"ParentAccountName": null,
+		"InactivationDate": null,
+		"Platform": "vtex",
+		"Privacy": null,
+		"HasPiiRestriction": false,
+		"Infra": null
+	}
+}
+```
 ## Customization
 
 In order to apply CSS customizations to this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
