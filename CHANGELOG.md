@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Update admin-ui version from 0.132.x to 0.133.x
+
 ### Added
 
 - Scroll on affiliates
