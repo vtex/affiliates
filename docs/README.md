@@ -24,7 +24,9 @@ This page contains a form that can be filled by anyone that wants to became an a
 ## Configuration
 
 1. Search for the Affiliate app on our app store and install it on your account.
+
 2. Open your store's Store Theme app directory in your code editor.
+
 3. Add the Affiliates app to your theme's `manifest.json` file inside **peerDependencies** as shown below:
 
 ```diff
@@ -35,7 +37,9 @@ This page contains a form that can be filled by anyone that wants to became an a
 
 > ℹ️ _The Affiliates app can export several theme blocks when added as a dependency. There are some that are responsible for creating several different pages on the storefront, like `affiliate`, `affiliate-profile` and `affiliate-form`, and there are several functionality blocks that will be used within these pages context as well, we will show more about them on the advanced section._
 
+
 3. After installing the app, the main pages will be available with a default layout, you can access them by `/affiliates/:slug` and `/affiliates/profile/:slug`
+
 
 4. If you want your affiliates to have the possibility to send any URL of the site for the client, you will have to add the `affiliate-url-monitoring` block into the header of your theme as shown below:
 
@@ -58,6 +62,7 @@ This page contains a form that can be filled by anyone that wants to became an a
 
 > ℹ️ _The `affiliate_url_monitoring` app adds a logic that will seek for specific parameter on the URL, if the parameter is found with a valid affiliate slug as it's value, it will add the affiliate informations on the purchase.
 
+
 5. Now your affiliate can send any URL with the parameter **targeting** with their slug as value, it will adds this affiliate information to be linked to the purchase
 
 | Example URL                                                   | Behavior                                                       |
@@ -65,9 +70,11 @@ This page contains a form that can be filled by anyone that wants to became an a
 | https://mystore.com/product/p                         | Just a simple product URL                                      |
 | https://mystore.com/product/p?targeting=affiliateName | URL with the parameter, will link this client to the affiliate |
 
+
 6. If you want to change the parameter that will be used for the affiliate to share, you can edit the parameter property from the `Affiliate Monitoring` block inside the Site Editor.
 
 ![Parameter Editing](https://user-images.githubusercontent.com/53904010/191607498-a58c11ba-57f9-4d1c-aa65-b3d4c82c0c90.png)
+
 
 > ℹ️ _After the affiliate send their URL for the client, their Affiliate ID will be linked to this client for some time and will be prioritized even if another Affiliate send an URL to the same client, the time the Affiliate ID usually persists is 60 days
 
