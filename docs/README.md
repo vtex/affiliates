@@ -64,6 +64,8 @@ This page contains a form that can be filled by anyone that wants to became an a
 
 ![Parameter Editing](https://user-images.githubusercontent.com/53904010/191607498-a58c11ba-57f9-4d1c-aa65-b3d4c82c0c90.png)
 
+> ℹ️ _After the affiliate send their URL for the client, their Affiliate ID will be linked to this client for some time and will be prioritized even if another Affiliate send an URL to the same client, the time the Affiliate ID usually persists is 60 days
+
 ## Advanced configurations
 
 According to the Affiliate app composition, the `/affiliates/:slug` page can be highly customizable using other blocks. Currently, its default implementation is as follows:
