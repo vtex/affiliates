@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { IconInfo } from 'vtex.styleguide'
+import { IconFailure } from 'vtex.styleguide'
 import { useIntl } from 'react-intl'
 
 import { storeMessages } from '../../../utils/messages'
@@ -29,7 +29,7 @@ function ErrorMessage(props: Props) {
 
   return (
     <div className="w-100 center mw8-m ph3 pa5 mv8 bg-washed-red flex items-center">
-      <IconInfo />
+      <IconFailure />
       <p className="mv0 ml2">{error}</p>
     </div>
   )

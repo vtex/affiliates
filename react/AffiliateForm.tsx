@@ -115,6 +115,7 @@ function AffiliateForm() {
                           required
                           name="phone"
                           type="tel"
+                          pattern="\d*"
                           placeholder={intl.formatMessage(
                             storeMessages.affiliateNoSpecial
                           )}
@@ -172,6 +173,7 @@ function AffiliateForm() {
                           label={intl.formatMessage(
                             storeMessages.affiliateDocumentLabel
                           )}
+                          pattern="\d*"
                           value={values.document}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -193,6 +195,7 @@ function AffiliateForm() {
                           label={intl.formatMessage(
                             storeMessages.affiliateCEPLabel
                           )}
+                          pattern="\d*"
                           value={values.address.postalCode}
                           onChange={handleChange}
                           onBlur={handleBlur}
