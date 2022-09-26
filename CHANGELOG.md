@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Update admin-ui version from 0.132.x to 0.133.x
 
+## [1.3.0] - 2022-09-26
+
+### Added
+
+- Error message component created
+- Toast Provider added to the StoreFront component
+- Form adjustments
+
 ### Added
 
 - Scroll on affiliates
