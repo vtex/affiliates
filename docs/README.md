@@ -7,15 +7,19 @@ The app also adds some configurations and management pages for the store owner a
 
 ![Here comes an example of the store affiliate page]()<br/>
 _Example of an affiliate page that can be shared with the clients._
+This is the main page that will be shared by the affiliate with their clients, it's a page that can be customized to show some products and guide the customer.
 
 ![Here comes an example of the store affiliate profile page]()<br/>
 _Example of the affiliate profile page_
+This is the page where the affiliate can see their information that is registered on the store.
 
 ![Here comes an example of the store affiliate management page]()<br/>
 _Example of the affiliate management page_
+This is the page where the affiliate can see the orders related to their account, with a totalizer and dashboard for a better experience.
 
 ![Here comes an example of the store affiliate form page]()<br/>
 _Example of the affilate form that will allow people interested in being an affiliate to register_
+This page contains a form that can be filled by anyone that wants to became an affiliate
 
 ## Configuration
 
