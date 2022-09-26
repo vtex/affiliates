@@ -339,45 +339,6 @@ For the export function to work properly and send an email for the user, it is n
 </html>
 
 ```
-
-#### JSON example
-```json
-{
-	"email": "matheus.baziloni@vtex.com.br",
-	"link": "https://master--honeybe.myvtex.com/_v/export/affiliateOrders/c206c3df-bbfb-4abf-9cb3-eda0e78c37bf.csv",
-	"_accountInfo": {
-		"MainAccountName": "honeybe",
-		"AccountName": "honeybe",
-		"Cnpj": "10490519000159",
-		"Id": "aef1b097-a06a-4ba9-8c69-f86b4571d7d3",
-		"AppId": "e61135bb-a7c7-4d01-a263-5f939312f5a9",
-		"IsActive": true,
-		"IsOperating": true,
-		"CreationDate": "2013-09-26T00:00:00",
-		"OperationDate": "2013-01-01T00:00:00",
-		"CompanyName": "PONTE 1 COMÉRCIO ELETRÔNICO",
-		"TradingName": "HoneyBe",
-		"City": "",
-		"Complement": "",
-		"Country": "",
-		"State": "",
-		"Address": "",
-		"District": "",
-		"Number": "",
-		"PostalCode": "",
-		"Licenses": [
-			8
-		],
-		"ParentAccountId": null,
-		"ParentAccountName": null,
-		"InactivationDate": null,
-		"Platform": "vtex",
-		"Privacy": null,
-		"HasPiiRestriction": false,
-		"Infra": null
-	}
-}
-```
 ## Customization
 
 In order to apply CSS customizations to this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
