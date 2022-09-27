@@ -232,7 +232,7 @@ There a two specific component types with props that must be configured to work 
 
 ## Email Template
 
-For the export function to work properly and send an email for the user that want the affiliates sheets, it is needed to create a new template on the message center, based on the example below:
+For the export function to work properly and be able to send the exported sheets to the user via email, it is needed to create a new template on the message center, based on the example below:
 
 <img width="1224" alt="image" src="https://user-images.githubusercontent.com/53904010/192376163-1a0d427a-af57-463e-a9fc-2476a0794fc8.png">
 
