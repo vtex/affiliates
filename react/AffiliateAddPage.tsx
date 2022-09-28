@@ -6,7 +6,7 @@ import {
   PageHeaderTitle,
   PageHeaderTop,
   PageContent,
-  createSystem,
+  ThemeProvider,
   ToastProvider,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
@@ -14,8 +14,6 @@ import { useIntl } from 'react-intl'
 
 import AffiliateForm from './components/admin/affiliates/form/AffiliateForm'
 import { messages } from './utils/messages'
-
-const [ThemeProvider] = createSystem()
 
 const AffiliateAddPage: FC = () => {
   const intl = useIntl()

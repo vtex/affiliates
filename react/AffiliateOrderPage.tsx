@@ -6,15 +6,13 @@ import {
   PageHeaderTitle,
   PageHeaderTop,
   PageContent,
-  createSystem,
+  ThemeProvider,
 } from '@vtex/admin-ui'
 import { useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
 
 import OrderContent from './components/admin/affiliateOrder/OrderContent'
 import { messages } from './utils/messages'
-
-const [ThemeProvider] = createSystem()
 
 const AffiliateOrderPage: FC = () => {
   const {

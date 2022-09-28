@@ -5,15 +5,13 @@ import {
   PageHeader,
   PageHeaderTitle,
   PageContent,
-  createSystem,
+  ThemeProvider,
   ToastProvider,
 } from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
 import CommissionsTabs from './components/admin/commissions/CommissionsTabs'
 import { messages } from './utils/messages'
-
-const [ThemeProvider] = createSystem()
 
 const CommissionsPage: FC = () => {
   const intl = useIntl()

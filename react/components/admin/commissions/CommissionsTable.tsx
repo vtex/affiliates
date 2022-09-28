@@ -129,14 +129,14 @@ const CommissionsTable: FC = () => {
       awaitRefetchQueries: true,
       onCompleted: () => {
         showToast({
-          tone: 'positive',
+          variant: 'positive',
           message: intl.formatMessage(messages.editCommissionSuccessMessage),
         })
         modal.setVisible(false)
       },
       onError: () => {
         showToast({
-          tone: 'critical',
+          variant: 'critical',
           message: intl.formatMessage(messages.editCommissionErrorMessage),
         })
         modal.setVisible(false)
@@ -160,13 +160,13 @@ const CommissionsTable: FC = () => {
       },
       onCompleted: () => {
         showToast({
-          tone: 'positive',
+          variant: 'positive',
           message: intl.formatMessage(messages.exportReportSuccessMessage),
         })
       },
       onError: () => {
         showToast({
-          tone: 'critical',
+          variant: 'critical',
           message: intl.formatMessage(messages.exportReportErrorMessage),
         })
       },

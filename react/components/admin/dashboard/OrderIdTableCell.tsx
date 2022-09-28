@@ -1,4 +1,4 @@
-import { Flex, Skeleton, Text, IconArrowSquareOut, tag } from '@vtex/admin-ui'
+import { Flex, Skeleton, Text, IconArrowSquareOut, Box } from '@vtex/admin-ui'
 import type { ResolverRenderProps } from '@vtex/admin-ui/dist/declarations/src/table/resolvers/resolver-core'
 import React, { useCallback } from 'react'
 
@@ -38,7 +38,7 @@ const OrderIdTableCell = ({
   }
 
   return (
-    <tag.div>
+    <Box as="div">
       <Flex align="center">
         <Text
           variant="action1"
@@ -53,7 +53,7 @@ const OrderIdTableCell = ({
           csx={{ ...Styles.icon, ...Styles.shared }}
         />
       </Flex>
-    </tag.div>
+    </Box>
   )
 }
 

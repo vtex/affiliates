@@ -1,12 +1,13 @@
 import {
   Card,
+  CardContent,
   Stack,
   Heading,
   FlexSpacer,
   Columns,
   Column,
   Text,
-  tag,
+  Box,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
@@ -34,73 +35,75 @@ const AffiliateAddressInfo: FC<AffiliateAddressInfoProps> = ({
   }
 
   return (
-    <tag.div csx={{ marginTop: '16px' }}>
+    <Box as="div" csx={{ marginTop: '16px' }}>
       <Heading>{intl.formatMessage(messages.addressLabel)}</Heading>
       <Card>
-        <Stack space="$xs" fluid>
-          <Columns spacing={1}>
-            <Column units={6}>
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.streetLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.street}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.numberLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.number}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.neighborhoodLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.neighborhood}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.cityLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.city}
-              </Text>
-            </Column>
-            <Column units={6}>
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.stateLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.state}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.countryLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.country}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.referenceLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.reference}
-              </Text>
-              <FlexSpacer />
-              <Text variant="title1">{`${intl.formatMessage(
-                messages.zipCodeLabel
-              )}: `}</Text>
-              <Text variant="action2" tone="info">
-                {address?.postalCode}
-              </Text>
-            </Column>
-          </Columns>
-        </Stack>
+        <CardContent>
+          <Stack space="$xs" fluid>
+            <Columns space="1">
+              <Column units={6}>
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.streetLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.street}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.numberLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.number}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.neighborhoodLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.neighborhood}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.cityLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.city}
+                </Text>
+              </Column>
+              <Column units={6}>
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.stateLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.state}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.countryLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.country}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.referenceLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.reference}
+                </Text>
+                <FlexSpacer />
+                <Text variant="title1">{`${intl.formatMessage(
+                  messages.zipCodeLabel
+                )}: `}</Text>
+                <Text variant="action2" tone="info">
+                  {address?.postalCode}
+                </Text>
+              </Column>
+            </Columns>
+          </Stack>
+        </CardContent>
       </Card>
-    </tag.div>
+    </Box>
   )
 }
 
