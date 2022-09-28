@@ -9,7 +9,7 @@ The app also adds some configurations and management pages for the store owner a
 _**Example of an affiliate page**_<br/>
 This is the main page that will be shared by the affiliate with their clients, it's a page that can be customized to show some products and guide the customer.
 
-![Affiliate profile page](https://user-images.githubusercontent.com/53904010/192868993-8967062b-b140-4d0e-95e1-b5c3c4e9f79a.png)<br/>
+![Affiliate profile page](https://user-images.githubusercontent.com/53904010/192872539-184d5dee-01cc-46b4-a2b8-4d138e3b0b6c.png)<br/>
 _**Example of the affiliate profile page**_<br/>
 This is the page where the affiliate can see the orders related to their account, with a totalizer and dashboard for a better experience.
 
