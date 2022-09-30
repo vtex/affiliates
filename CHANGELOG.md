@@ -13,11 +13,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.3.2] - 2022-09-27
 
-## [1.3.1] - 2022-09-26
+## [1.3.3] - 2022-09-30
+
+### Changed
+
+- Update admin-ui version from 0.132.x to 0.133.x
+
+## [1.3.2] - 2022-09-27
 
 ### Added
 
 - DOCs adjustments
+
+## [1.3.1] - 2022-09-26
 
 ### Added
 

@@ -46,14 +46,14 @@ const UpdateApprovedStatusModal: FC<UpdateApprovedStatusModalProps> = ({
       awaitRefetchQueries: true,
       onCompleted: () => {
         showToast({
-          tone: 'positive',
+          variant: 'positive',
           message: intl.formatMessage(messages.editAffiliateSuccessMessage),
         })
         modal.setVisible(false)
       },
       onError: () => {
         showToast({
-          tone: 'critical',
+          variant: 'critical',
           message: intl.formatMessage(messages.editAffiliateErrorMessage),
         })
         modal.setVisible(false)

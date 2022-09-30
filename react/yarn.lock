@@ -1089,6 +1089,18 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@floating-ui/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.0.1.tgz#00e64d74e911602c8533957af0cce5af6b2e93c8"
+  integrity sha512-bO37brCPfteXQfFY0DyNDGB3+IMe4j150KFQcgJ5aBP295p9nBGeHEs/p0czrRbtlHq4Px/yoPXO/+dOCcF4uA==
+
+"@floating-ui/dom@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.0.2.tgz#c5184c52c6f50abd11052d71204f4be2d9245237"
+  integrity sha512-5X9WSvZ8/fjy3gDu8yx9HAA4KG1lazUN2P4/VnaXLxTO9Dz53HI1oYoh1OlhqFNlHgGDiwFX5WhFCc2ljbW3yA==
+  dependencies:
+    "@floating-ui/core" "^1.0.1"
+
 "@formatjs/ecma402-abstract@1.11.4":
   version "1.11.4"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.11.4.tgz#b962dfc4ae84361f9f08fbce411b4e4340930eda"
@@ -1474,7 +1486,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@popperjs/core@^2.11.2", "@popperjs/core@^2.5.4":
+"@popperjs/core@^2.5.4":
   version "2.11.5"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
@@ -1929,13 +1941,13 @@
   resolved "https://registry.yarnpkg.com/@vtex/admin-formik/-/admin-formik-0.4.35.tgz#1ba38ba82cd32404e9025168015c95e57147627d"
   integrity sha512-dK7kV9xnvE7VJfawnH4IEHVwZhLVPPRgiQR00K6gGf8TjqvPHotsMGQ75iHEcxTCUh6AklakiWmBA18jFZbunw==
 
-"@vtex/admin-ui-core@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-core/-/admin-ui-core-0.11.0.tgz#ee5fe18c1d3b8a0e6eff1a6407670ea0e297c77e"
-  integrity sha512-JHO2Ys0Ps4xtUGeWArauWH1QjfiQilEHP6eUBkkLWGuTSsjDalwV8gnzElX4KdD20f0WV2wBCHnRowHPQL1NOw==
+"@vtex/admin-ui-core@^0.12.3":
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-core/-/admin-ui-core-0.12.3.tgz#3e653990cb91e1d4f01630adaf6a9c0514333817"
+  integrity sha512-OPN4V/sON1I3aqAUloMYukHXuK7QXHmQysf5WJJkKY87SrJszGKlSZr0jEZ8C1xjq2e14e1ewO+/RJZ51qCqqw==
   dependencies:
     "@stitches/react" "1.2.8"
-    "@vtex/admin-ui-util" "^0.4.0"
+    "@vtex/admin-ui-util" "^0.4.2"
     csstype "3.0.10"
 
 "@vtex/admin-ui-form@^0.4.0":
@@ -1946,38 +1958,38 @@
     "@hookform/resolvers" "2.8.8"
     react-hook-form "7.21.0"
 
-"@vtex/admin-ui-hooks@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-hooks/-/admin-ui-hooks-0.4.0.tgz#569124deed4bcccee7a3cb7d10f6b1df2fbb072c"
-  integrity sha512-KJ3Ky4A1F8uSBho4K6g8+tXxbOd61tfWEP6mXBPSFvQ1l5AQt/uMoMJiGhI7NQEA0sje/Y+3tvdQT6imkQLjEg==
+"@vtex/admin-ui-hooks@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-hooks/-/admin-ui-hooks-0.4.2.tgz#9ab4a5161aeacca6486a44d8ad739dad6f067e4a"
+  integrity sha512-b4z5jiXG0XOh+JGz93Js2JU/wUvgz5H17tLhCBXXmJghfRBvvDb2CkVwqrmESvsEQzILvFVVaGdiJpskglfr8Q==
   dependencies:
-    "@vtex/admin-ui-util" "^0.4.0"
+    "@vtex/admin-ui-util" "^0.4.2"
     tiny-invariant "^1.2.0"
     use-debounce "^7.0.0"
 
-"@vtex/admin-ui-react@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-react/-/admin-ui-react-0.8.0.tgz#3ed65314e36b7d3505f9a03755578a3ecb76b5e1"
-  integrity sha512-Lk02bXGDgp0PEHcyJJ3D9QaGPA9IFgEgpidQWpw6wI3j0haLs9R40svkBArkzYr2ysMuOEpMtM0orRAB+Xrr8g==
+"@vtex/admin-ui-react@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-react/-/admin-ui-react-0.9.4.tgz#2c1b8c9e6b7f4d2f4f93681022c9999e3a846e09"
+  integrity sha512-khfsyEOWCKnIUIiqh4BhEDUXkK9OIJDA4tOAoJ2OqkigS2ZFENk0sqiQV0dxwqmznMG/LtxNyQ8fp/xwW5EItw==
   dependencies:
-    "@vtex/admin-ui-util" "^0.4.0"
+    "@vtex/admin-ui-util" "^0.4.2"
     focus-visible "^5.2.0"
     react-helmet "^6.1.0"
     react-is "^17.0.2"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
-"@vtex/admin-ui-util@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-util/-/admin-ui-util-0.4.0.tgz#336ddf6c9f91de9425bac871e378da7aec9bfd0c"
-  integrity sha512-/KCr8TOrAB8so7heqCRULMS36zNrvEhg9s1oSRqrfkICEfSOR/7jf+2acgiMk+u0NEWunAUF3CvO+a6TUzl6Ug==
+"@vtex/admin-ui-util@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-util/-/admin-ui-util-0.4.2.tgz#8e70b48ff3a0fb9fac524163a89c9ea4cd473a83"
+  integrity sha512-Qe6PJWmp9ZEnK1PWt7vyPMJZA2JcKq+ezTpSsjQIRqpRj77L1IP0SMkmNEQllPqo06oZmvsokBwg3p3uFjn0wA==
   dependencies:
     deepmerge "4.2.2"
 
-"@vtex/admin-ui@^0.132.0":
-  version "0.132.7"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui/-/admin-ui-0.132.7.tgz#f3fbe6c4f93af29321ddbfeae5b3a58993118219"
-  integrity sha512-Aljec3JJPzv2yD5QrIXOzoVqLJtsAkYl0Re0PN+Jvy5hk/2Pm2u4vuLChY0qPVjndmLZLFOWKfKB5/C49EYRoA==
+"@vtex/admin-ui@^0.133.6":
+  version "0.133.6"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui/-/admin-ui-0.133.6.tgz#1ab7cea540f51af8e1e74539556430e48c9cdfd3"
+  integrity sha512-G9SoWPA0Z44DD3NkGTEYchjRmboP6DUFzH7LkwzgPcOfVUhdovhnQmhcmWoUVyB/PyK+wLYwxr850M6vqOQkyA==
   dependencies:
     "@babel/core" "^7.17.10"
     "@react-aria/i18n" "^3.3.5"
@@ -1986,12 +1998,12 @@
     "@react-aria/utils" "^3.3.5"
     "@react-stately/collections" "^3.3.5"
     "@react-stately/list" "^3.4.1"
-    "@vtex/admin-ui-core" "^0.11.0"
-    "@vtex/admin-ui-hooks" "^0.4.0"
-    "@vtex/admin-ui-react" "^0.8.0"
-    "@vtex/admin-ui-util" "^0.4.0"
+    "@vtex/admin-ui-core" "^0.12.3"
+    "@vtex/admin-ui-hooks" "^0.4.2"
+    "@vtex/admin-ui-react" "^0.9.4"
+    "@vtex/admin-ui-util" "^0.4.2"
     "@vtex/phosphor-icons" "0.2.8"
-    ariakit "2.0.0-next.22"
+    ariakit "2.0.0-next.39"
     csstype "3.0.10"
     date-fns "^2.28.0"
     downshift "^6.0.6"
@@ -2230,18 +2242,18 @@ aria-query@^5.0.0:
   resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-5.0.0.tgz#210c21aaf469613ee8c9a62c7f86525e058db52c"
   integrity sha512-V+SM7AbUwJ+EBnB8+DXs0hPZHO0W6pqBcc0dW90OwtVG02PswOu/teuARoLQjdDOH+t9pJgGnW5/Qmouf3gPJg==
 
-ariakit-utils@0.17.0-next.15:
-  version "0.17.0-next.15"
-  resolved "https://registry.yarnpkg.com/ariakit-utils/-/ariakit-utils-0.17.0-next.15.tgz#5fdfd875a793d1c1635d55c489472a1cc20707fb"
-  integrity sha512-lnsC3ce8LHoi0TC+FZ8hXtNB7AbnJAwMaz3NfRqnPAVWWNvlLcRRXaT7FOj8m2cDyuh6W5WqoyFoxyeuQZUVcw==
+ariakit-utils@0.17.0-next.25:
+  version "0.17.0-next.25"
+  resolved "https://registry.yarnpkg.com/ariakit-utils/-/ariakit-utils-0.17.0-next.25.tgz#711b2cb957e846edd755f5394ba3fb60295ba3a0"
+  integrity sha512-oeN1714mX0uF3hf0vYZm5a+dDEAosTXk7y5KNzx52ujKNDv2VJJVIu6ig3hLN1XWwMqqNIexyqpTjqg2ZnVDmw==
 
-ariakit@2.0.0-next.22:
-  version "2.0.0-next.22"
-  resolved "https://registry.yarnpkg.com/ariakit/-/ariakit-2.0.0-next.22.tgz#d96ee0a08dadf4627faa2a1a7c0fa575b5042847"
-  integrity sha512-STYFTMTQTyT5u6XsTykf8id6REYfZ5jx8BfW6sVcijaYeX2ciBQjQ1ZcQw/zZ87UMyi3nPkjIM/7X5wm6n+mjA==
+ariakit@2.0.0-next.39:
+  version "2.0.0-next.39"
+  resolved "https://registry.yarnpkg.com/ariakit/-/ariakit-2.0.0-next.39.tgz#c338038353f3647b3fc3c82a2e59eb30261078f0"
+  integrity sha512-yrhi28jv0FCfg89dJ90f458Jvs0zsaBYIKjjXXkftDZRhgSiRLO1nEB2Gme2b8kqPa7iwz5ZXfMFkjHuoJ9y0A==
   dependencies:
-    "@popperjs/core" "^2.11.2"
-    ariakit-utils "0.17.0-next.15"
+    "@floating-ui/dom" "^1.0.0"
+    ariakit-utils "0.17.0-next.25"
 
 arr-diff@^4.0.0:
   version "4.0.0"

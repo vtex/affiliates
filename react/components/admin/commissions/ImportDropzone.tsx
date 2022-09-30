@@ -26,13 +26,13 @@ const ImportDropzone: FC = () => {
       awaitRefetchQueries: true,
       onCompleted: () => {
         showToast({
-          tone: 'positive',
+          variant: 'positive',
           message: intl.formatMessage(messages.importFileSuccessMessage),
         })
       },
       onError: () => {
         showToast({
-          tone: 'critical',
+          variant: 'critical',
           message: intl.formatMessage(messages.importFileErrorMessage),
         })
       },

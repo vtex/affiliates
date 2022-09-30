@@ -16,7 +16,7 @@ import {
   Skeleton,
   Stack,
   Text,
-  tag,
+  Box,
   experimental_ComboboxMultipleField as ComboboxMultipleField,
   experimental_ComboboxMultiplePopover as ComboboxMultiplePopover,
   experimental_useComboboxMultipleState as useComboboxMultipleState,
@@ -312,9 +312,9 @@ const AffiliateOrdersTable: FC = () => {
           }
 
           return (
-            <tag.div>
+            <Box as="div">
               <Text>{dict.get(item.affiliateId)}</Text>
-            </tag.div>
+            </Box>
           )
         },
       },
@@ -500,13 +500,13 @@ const AffiliateOrdersTable: FC = () => {
     },
     onCompleted: () => {
       showToast({
-        tone: 'positive',
+        variant: 'positive',
         message: intl.formatMessage(messages.exportReportSuccessMessage),
       })
     },
     onError: () => {
       showToast({
-        tone: 'critical',
+        variant: 'critical',
         message: intl.formatMessage(messages.exportReportErrorMessage),
       })
     },

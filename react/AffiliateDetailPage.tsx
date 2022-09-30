@@ -6,7 +6,7 @@ import {
   PageHeaderTitle,
   PageHeaderTop,
   PageContent,
-  createSystem,
+  ThemeProvider,
   ToastProvider,
   PageHeaderActions,
   Button,
@@ -16,8 +16,6 @@ import { useIntl } from 'react-intl'
 
 import { messages } from './utils/messages'
 import AffiliateContent from './components/admin/affiliates/AffiliateContent'
-
-const [ThemeProvider] = createSystem()
 
 const AffiliateDetailPage: FC = () => {
   const {
