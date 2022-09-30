@@ -15,6 +15,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.3.3] - 2022-09-30
 
+### Added
+
+- Slug validation when adding a new affiliate
+- Form label name changes
+
+### Fixed
+
+- README Adjustments
+
+### Fixed
+
+- CSS Adjustments
+
 ### Changed
 
 - Update admin-ui version from 0.132.x to 0.133.x

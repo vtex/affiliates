@@ -10,7 +10,7 @@ function AffiliateProfileTotalizer() {
   const intl = useIntl()
 
   return (
-    <section className="flex justify-between mw9 ba b--light-gray br3 center mr-auto ml-auto my-3">
+    <section className="flex justify-between mw9 ba b--light-gray br3 center mr-auto ml-auto mv5">
       <ProfileTotalizerItem
         value={
           affiliate?.totalizersProfile
