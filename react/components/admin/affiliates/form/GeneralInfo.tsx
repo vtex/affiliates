@@ -30,7 +30,8 @@ const GeneralInfo: FC<GeneralInfoType> = ({ form }) => {
   async function handleStoreName(e: React.ChangeEvent<HTMLInputElement>) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const targetValue: any = e.currentTarget.value
-    const updatedSlug = targetValue.replaceAll(' ', '-')
+    const regex = /[\s.;,?%&]/g
+    const updatedSlug = targetValue.replaceAll(regex, '-').toLowerCase()
 
     await validateSlug({ variables: { slug: updatedSlug } })
     await form.setValue('slug', updatedSlug)
