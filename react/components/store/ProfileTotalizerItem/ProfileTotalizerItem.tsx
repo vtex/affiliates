@@ -37,14 +37,14 @@ function ProfileTotalizerItem(props: Props) {
       className="w-33 pa6 ba bt-0 br-1 bb-0 bl-0 b--light-gray"
     >
       <div id="totalizer-popup" className="flex flex-row items-center">
-        <h4 className="f5 mr-1 my-0">{TotalizerTitle[type]}</h4>
+        <h4 className="f5 mr3 mv3">{TotalizerTitle[type]}</h4>
         <span>
           <Tooltip content={tooltip} delay={200}>
             <IconHelp />
           </Tooltip>
         </span>
       </div>
-      <h2 className={`${color}`}>
+      <h2 className={`${color} mv3`}>
         {intl.formatNumber(value / 100, {
           style: 'currency',
           currency,
