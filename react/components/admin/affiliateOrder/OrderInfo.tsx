@@ -37,7 +37,7 @@ const OrderInfo: FC<OrderInfoProps> = ({ order }) => {
   } = order
 
   return (
-    <Columns spacing={1}>
+    <Columns space="1">
       <Column units={4}>
         <Text variant="title1">
           {`${intl.formatMessage(

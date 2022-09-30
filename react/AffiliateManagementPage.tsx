@@ -1,6 +1,6 @@
 import {
   Button,
-  createSystem,
+  ThemeProvider,
   Page,
   PageContent,
   PageHeader,
@@ -15,8 +15,6 @@ import { useRuntime } from 'vtex.render-runtime'
 
 import AffiliatesTable from './components/admin/affiliates/AffiliatesTable'
 import { messages } from './utils/messages'
-
-const [ThemeProvider] = createSystem()
 
 const AffiliateManagementPage: FC = () => {
   const intl = useIntl()

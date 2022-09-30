@@ -68,7 +68,7 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
       awaitRefetchQueries: true,
       onCompleted: () => {
         showToast({
-          tone: 'positive',
+          variant: 'positive',
           message: intl.formatMessage(messages.editAffiliateSuccessMessage),
         })
         navigate({
@@ -80,7 +80,7 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
       },
       onError: () => {
         showToast({
-          tone: 'critical',
+          variant: 'critical',
           message: intl.formatMessage(messages.editAffiliateErrorMessage),
         })
       },
@@ -100,7 +100,7 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
       },
       onError: () => {
         showToast({
-          tone: 'critical',
+          variant: 'critical',
           message: intl.formatMessage(messages.addAffiliateErrorMessage),
         })
       },

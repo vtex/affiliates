@@ -6,7 +6,7 @@ import {
   PageHeaderTitle,
   PageHeaderTop,
   PageContent,
-  createSystem,
+  ThemeProvider,
   ToastProvider,
   Spinner,
   Flex,
@@ -19,8 +19,6 @@ import { useQuery } from 'react-apollo'
 import { messages } from './utils/messages'
 import AffiliateForm from './components/admin/affiliates/form/AffiliateForm'
 import GET_AFFILIATE from './graphql/getAffiliate.graphql'
-
-const [ThemeProvider] = createSystem()
 
 type AffiliateQueryReturn = {
   getAffiliate: Affiliate
