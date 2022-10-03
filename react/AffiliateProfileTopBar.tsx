@@ -47,7 +47,7 @@ const AffiliateTopBar = (props: Props) => {
             alt={`${account} Logo`}
             style={{ maxHeight: '35px', paddingRight: '10px' }}
           />
-          <h6 className="mb0">{`${intl.formatMessage(
+          <h6 className="mb0 mv0 f5">{`${intl.formatMessage(
             storeMessages.affiliateProfileTitle
           )} ${account}`}</h6>
         </div>
@@ -57,7 +57,7 @@ const AffiliateTopBar = (props: Props) => {
             onClick={onClick}
             icon={<IconExternalLinkMini />}
           >
-            <p className="pl3 mb0">
+            <p className="pl3 mv0">
               {intl.formatMessage(
                 storeMessages.affiliateProfileAccessStoreButton
               )}

@@ -205,6 +205,12 @@ const AffiliateOrdersTable: FC = () => {
     }
   )
 
+  useEffect(() => {
+    affiliatesScrollData?.getAffiliatesScroll.forEach((item) => {
+      dict.set(item.id, item.name)
+    })
+  }, [affiliatesScrollData, dict])
+
   const allAffiliatesData = combobox.deferredValue
     ? affiliatesData?.getAffiliates?.data?.map((affiliate: Affiliate) => ({
         value: affiliate.id,
