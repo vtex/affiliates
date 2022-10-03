@@ -19,6 +19,13 @@ export const setSortOrder = (sortOrder: string | undefined) => {
   return sortOrder === 'DSC' ? 'DESC' : 'ASC'
 }
 
+// Ex: The function below should receive a value "Test & test" and return the value "test---test"
+export const setFormRegex = (value: string) => {
+  const regex = /[\s.;,?!%&]/g
+
+  return value.replace(regex, '-').toLowerCase()
+}
+
 export const statusTagControl = (
   intl: IntlShape,
   status?: string
