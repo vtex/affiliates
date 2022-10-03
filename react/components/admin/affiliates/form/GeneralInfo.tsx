@@ -22,9 +22,6 @@ const GeneralInfo: FC<GeneralInfoType> = ({ form }) => {
   const intl = useIntl()
   const [newSlug, setNewSlug] = useState('')
 
-  // eslint-disable-next-line no-console
-  console.log(`TEST PR 2`)
-
   const [validateSlug, { data }] =
     useLazyQuery<GetAffiliateStoreNameQueryResult>(
       GET_AFFILIATE_STORE_NAME_QUERY

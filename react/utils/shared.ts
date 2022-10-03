@@ -21,10 +21,10 @@ export const setSortOrder = (sortOrder: string | undefined) => {
 
 // Ex: The function below should receive a value "Test & test" and return the value "test---test"
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const setFormRegex = (value: any) => {
-  const regex = /[\s.;,?%&]/g
+export const setFormRegex = (value: string) => {
+  const regex = /[\s.;,?!%&]/g
 
-  return value.replaceAll(regex, '-').toLowerCase()
+  return value.replace(regex, '-').toLowerCase()
 }
 
 export const statusTagControl = (
