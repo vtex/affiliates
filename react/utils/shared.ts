@@ -20,7 +20,6 @@ export const setSortOrder = (sortOrder: string | undefined) => {
 }
 
 // Ex: The function below should receive a value "Test & test" and return the value "test---test"
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const setFormRegex = (value: string) => {
   const regex = /[\s.;,?!%&]/g
 
