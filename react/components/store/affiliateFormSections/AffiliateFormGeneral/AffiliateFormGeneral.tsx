@@ -6,6 +6,7 @@ import { Input } from 'vtex.styleguide'
 import GET_AFFILIATE_STORE_NAME_QUERY from '../../../../graphql/getAffiliateStoreName.graphql'
 import type { ValueType } from '../../../../AffiliateForm'
 import { storeMessages } from '../../../../utils/messages'
+import { setFormRegex } from '../../../../utils/shared'
 
 interface Props {
   values: ValueType
@@ -22,7 +23,6 @@ function AffiliateFormGeneral(props: Props) {
   const { values, handleChange, handleBlur, setValue } = props
   const intl = useIntl()
 
-  const randomNumber = Math.floor(Math.random() * 10000)
   const [newSlug, setNewSlug] = useState('')
 
   const [validateSlug, { data }] =
@@ -32,10 +32,7 @@ function AffiliateFormGeneral(props: Props) {
 
   async function handleStoreName(e: React.ChangeEvent<HTMLInputElement>) {
     await handleChange(e)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-console
-    const targetValue: any = e.target.value
-    const regex = /[\s.;,?%&]/g
-    const updatedSlug = targetValue.replaceAll(regex, '-').toLowerCase()
+    const updatedSlug = setFormRegex(e.target.value)
 
     await validateSlug({ variables: { slug: updatedSlug } })
 
@@ -43,9 +40,11 @@ function AffiliateFormGeneral(props: Props) {
   }
 
   useEffect(() => {
-    if (data === undefined) {
+    if (!data) {
       setValue('slug', newSlug)
     } else {
+      const randomNumber = Math.floor(Math.random() * 10000)
+
       setValue('slug', `${newSlug}${randomNumber}`)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

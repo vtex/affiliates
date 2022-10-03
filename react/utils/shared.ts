@@ -19,6 +19,14 @@ export const setSortOrder = (sortOrder: string | undefined) => {
   return sortOrder === 'DSC' ? 'DESC' : 'ASC'
 }
 
+// Ex: The function below should receive a value "Test & test" and return the value "test---test"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const setFormRegex = (value: any) => {
+  const regex = /[\s.;,?%&]/g
+
+  return value.replaceAll(regex, '-').toLowerCase()
+}
+
 export const statusTagControl = (
   intl: IntlShape,
   status?: string
