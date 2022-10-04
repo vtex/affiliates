@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.4] - 2022-10-03
+
+### Fixed
+
+- Loading of name column of orders table
+
+## [1.3.2] - 2022-09-27
+
+## [1.3.3] - 2022-09-30
+
 ### Added
 
 - Slug validation when adding a new affiliate
