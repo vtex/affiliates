@@ -89,10 +89,7 @@ function AffiliateForm() {
               ) : null}
               {errors ? (
                 <ErrorMessage
-                  errors={
-                    error?.graphQLErrors[0]?.extensions?.exception
-                      ?.graphQLErrors
-                  }
+                  errors={errors}
                   showToast={showToast}
                   context="store"
                 />
