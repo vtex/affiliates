@@ -4,15 +4,15 @@
   "subSectionItems": [
     {
       "labelId": "admin/navigation.affiliates.label",
-      "path": "admin/affiliates-management"
+      "path": "/admin/affiliates-management"
     },
     {
       "labelId": "admin/navigation.dashboard.label",
-      "path": "admin/affiliates-dashboard"
+      "path": "/admin/affiliates-dashboard"
     },
     {
       "labelId": "admin/navigation.commissions.label",
-      "path": "admin/affiliates-commissions"
+      "path": "/admin/affiliates-commissions"
     }
   ]
 }
