@@ -1,3 +1,5 @@
+import CustomGraphQLError from '@vtex/api/lib/errors/customGraphQLError'
+
 import { addAffiliate } from '../../../resolvers/addAffiliate'
 
 describe('addAffiliate mutation', () => {
@@ -11,6 +13,13 @@ describe('addAffiliate mutation', () => {
       },
     }
 
+    const expected = new CustomGraphQLError('Add Affiliate validation error', [
+      {
+        message: 'Slug is not valid, must be alphanumeric',
+        code: 'SlugNotAlphanumeric',
+      },
+    ])
+
     const mockCtx = {
       clients: {
         affiliates: {
@@ -21,7 +30,7 @@ describe('addAffiliate mutation', () => {
 
     return expect(
       addAffiliate(null, newAffiliateParams, mockCtx)
-    ).rejects.toThrow('Slug is not valid, must be alphanumeric')
+    ).rejects.toThrow(expected)
   })
 
   it('Should return error if slug is already in use', () => {
@@ -34,6 +43,13 @@ describe('addAffiliate mutation', () => {
       },
     }
 
+    const expected = new CustomGraphQLError('Add Affiliate validation error', [
+      {
+        message: 'Affiliate url is already in use',
+        code: 'URLInUse',
+      },
+    ])
+
     const mockCtx = {
       clients: {
         affiliates: {
@@ -44,7 +60,7 @@ describe('addAffiliate mutation', () => {
 
     return expect(
       addAffiliate(null, newAffiliateParams, mockCtx)
-    ).rejects.toThrow('Affiliate url is already in use')
+    ).rejects.toThrow(expected)
   })
 
   it('Should return error if email is already in use', () => {
@@ -56,6 +72,13 @@ describe('addAffiliate mutation', () => {
         isApproved: true,
       },
     }
+
+    const expected = new CustomGraphQLError('Add Affiliate validation error', [
+      {
+        message: 'Affiliate already exists (email is already in use)',
+        code: 'AffiliateAlreadyExists',
+      },
+    ])
 
     const mockCtx = {
       clients: {
@@ -70,7 +93,7 @@ describe('addAffiliate mutation', () => {
 
     return expect(
       addAffiliate(null, newAffiliateParams, mockCtx)
-    ).rejects.toThrow('Affiliate already exists (email is already in use)')
+    ).rejects.toThrow(expected)
   })
 
   it('Should add a new affiliate if no errors were found', async () => {

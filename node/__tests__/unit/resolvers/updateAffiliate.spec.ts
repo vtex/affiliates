@@ -1,3 +1,5 @@
+import CustomGraphQLError from '@vtex/api/lib/errors/customGraphQLError'
+
 import { updateAffiliate } from '../../../resolvers/updateAffiliate'
 
 describe('updateAffiliate resolver', () => {
@@ -12,6 +14,16 @@ describe('updateAffiliate resolver', () => {
       },
     }
 
+    const expected = new CustomGraphQLError(
+      'Update Affiliate validation error',
+      [
+        {
+          message: 'Slug is not valid, must be alphanumeric',
+          code: 'SlugNotAlphanumeric',
+        },
+      ]
+    )
+
     const mockCtx = {
       clients: {
         affiliates: {
@@ -23,7 +35,7 @@ describe('updateAffiliate resolver', () => {
     } as unknown as Context
 
     return expect(updateAffiliate(null, updateParams, mockCtx)).rejects.toThrow(
-      'Slug is not valid, must be alphanumeric'
+      expected
     )
   })
 
@@ -37,6 +49,17 @@ describe('updateAffiliate resolver', () => {
       },
     }
 
+    const expected = new CustomGraphQLError(
+      'Update Affiliate validation error',
+      [
+        {
+          message:
+            'Affiliate not found, is this the email used by the affiliate you are trying to update?',
+          code: 'AffiliateNotFound',
+        },
+      ]
+    )
+
     const mockCtx = {
       clients: {
         affiliates: {
@@ -48,7 +71,7 @@ describe('updateAffiliate resolver', () => {
     } as unknown as Context
 
     return expect(updateAffiliate(null, updateParams, mockCtx)).rejects.toThrow(
-      'Affiliate not found. Do you really want to update an affiliate?'
+      expected
     )
   })
 
@@ -61,6 +84,16 @@ describe('updateAffiliate resolver', () => {
         isApproved: true,
       },
     }
+
+    const expected = new CustomGraphQLError(
+      'Update Affiliate validation error',
+      [
+        {
+          message: 'Affiliate url is already in use',
+          code: 'URLInUse',
+        },
+      ]
+    )
 
     const mockCtx = {
       clients: {
@@ -75,7 +108,7 @@ describe('updateAffiliate resolver', () => {
     } as unknown as Context
 
     return expect(updateAffiliate(null, updateParams, mockCtx)).rejects.toThrow(
-      'Affiliate url is already in use'
+      expected
     )
   })
 
@@ -88,6 +121,16 @@ describe('updateAffiliate resolver', () => {
         isApproved: true,
       },
     }
+
+    const expected = new CustomGraphQLError(
+      'Update Affiliate validation error',
+      [
+        {
+          message: 'Affiliate already exists (email is already in use)',
+          code: 'EmailUsedByOtherAffiliate',
+        },
+      ]
+    )
 
     const mockCtx = {
       clients: {
@@ -103,7 +146,7 @@ describe('updateAffiliate resolver', () => {
     } as unknown as Context
 
     return expect(updateAffiliate(null, updateParams, mockCtx)).rejects.toThrow(
-      'Email is already in use by another affiliate'
+      expected
     )
   })
 

@@ -46,8 +46,8 @@ export const updateAffiliate = async (
   )
 
   if (
-    affiliatesInDbBySlug.length > 0 &&
-    affiliatesInDbBySlug[0].id !== affiliateId
+    affiliatesInDbBySlug?.length > 0 &&
+    affiliatesInDbBySlug[0]?.id !== affiliateId
   ) {
     pushErrors(
       {
@@ -65,8 +65,8 @@ export const updateAffiliate = async (
   )
 
   if (
-    affiliatesInDbByEmail.length > 0 &&
-    affiliatesInDbByEmail[0].id !== affiliateId
+    affiliatesInDbByEmail?.length > 0 &&
+    affiliatesInDbByEmail[0]?.id !== affiliateId
   ) {
     pushErrors(
       {

@@ -29,7 +29,7 @@ export const addAffiliate = async (
     slug
   )
 
-  if (affiliatesInDbBySlug.length > 0) {
+  if (affiliatesInDbBySlug?.length > 0) {
     pushErrors(
       {
         message: 'Affiliate url is already in use',
@@ -45,7 +45,7 @@ export const addAffiliate = async (
     email
   )
 
-  if (affiliatesInDbByEmail.length > 0) {
+  if (affiliatesInDbByEmail?.length > 0) {
     pushErrors(
       {
         message: 'Affiliate already exists (email is already in use)',
