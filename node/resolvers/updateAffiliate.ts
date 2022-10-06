@@ -1,6 +1,9 @@
 import type { Affiliates, MutationUpdateAffiliateArgs } from 'vtex.affiliates'
+import CustomGraphQLError from '@vtex/api/lib/errors/customGraphQLError'
 
 import { findDocumentsByField, isSlugValid } from '../utils/shared'
+import type { Error } from './pushErrors'
+import { pushErrors } from './pushErrors'
 
 export const updateAffiliate = async (
   _: unknown,
@@ -11,16 +14,28 @@ export const updateAffiliate = async (
   { clients: { affiliates } }: Context
 ) => {
   const { slug, email } = updateAffiliateData
+  const errors: Error[] = []
 
   if (slug && !isSlugValid(slug)) {
-    throw new Error('Slug is not valid, must be alphanumeric')
+    pushErrors(
+      {
+        message: 'Slug is not valid, must be alphanumeric',
+        code: 'SlugNotAlphanumeric',
+      },
+      errors
+    )
   }
 
   const affiliateInDbById = await affiliates.get(affiliateId, ['_all'])
 
   if (!affiliateInDbById) {
-    throw new Error(
-      'Affiliate not found. Do you really want to update an affiliate?'
+    pushErrors(
+      {
+        message:
+          'Affiliate not found, is this the email used by the affiliate you are trying to update?',
+        code: 'AffiliateNotFound',
+      },
+      errors
     )
   }
 
@@ -34,7 +49,13 @@ export const updateAffiliate = async (
     affiliatesInDbBySlug.length > 0 &&
     affiliatesInDbBySlug[0].id !== affiliateId
   ) {
-    throw new Error('Affiliate url is already in use')
+    pushErrors(
+      {
+        message: 'Affiliate url is already in use',
+        code: 'URLInUse',
+      },
+      errors
+    )
   }
 
   const affiliatesInDbByEmail = await findDocumentsByField<Affiliates>(
@@ -47,7 +68,17 @@ export const updateAffiliate = async (
     affiliatesInDbByEmail.length > 0 &&
     affiliatesInDbByEmail[0].id !== affiliateId
   ) {
-    throw new Error('Email is already in use by another affiliate')
+    pushErrors(
+      {
+        message: 'Affiliate already exists (email is already in use)',
+        code: 'EmailUsedByOtherAffiliate',
+      },
+      errors
+    )
+  }
+
+  if (errors.length >= 1) {
+    throw new CustomGraphQLError('Update Affiliate validation error', errors)
   }
 
   const mdDocument = {

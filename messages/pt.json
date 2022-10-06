@@ -112,6 +112,12 @@
   "admin/edit.affiliate.approve.title": "Modificar o status do afiliado",
   "admin/total.order.value.disclaimer.text": "O valor total considera apenas o valor dos itens do pedido. O valor do frete não é considerado.",
   "admin/import.no.last.file.label": "Nenhum arquivo enviado",
+  "admin/affiliate.register.errorSlugAlphanumeric": "Identificador de URL não é válido, deve ser alfanumérico",
+  "admin/affiliate.register.errorURLInUse": "Essa URL de Afiliado já está em uso",
+  "admin/affiliate.register.errorAffiliateExists": "O Afiliado já existe, esse email já está em uso",
+  "admin/affiliate.register.errorAffiliateNotFound": "Afiliado não encontrado, esse email não está sendo usado por nenhum afiliado",
+  "admin/affiliate.register.errorEmailAlreadyInUse": "Esse email já está em uso por outro afiliado",
+
   "store/affiliate.profile.button.label": "Perfil do afiliado",
   "store/affiliate.profile.access.store.label": "Acessar a loja",
   "store/affiliate.profile.title": "Programa de afiliados:",
@@ -167,5 +173,11 @@
   "store/affiliate.whatsappLabel": "Whatsapp",
   "store/affiliate.gtmLabel": "GTM ID",
   "store/affiliate.wentWrong": "Algo deu errado, verifique o formulário",
-  "store/affiliate.noSpecial": "Sem espaços ou caracteres especiais"
+  "store/affiliate.noSpecial": "Sem espaços ou caracteres especiais",
+  "store/affiliate.wentWell": "Afiliado Cadastrado com sucesso",
+  "store/affiliate.register.errorSlugAlphanumeric": "Identificador de URL não é válido, deve ser alfanumérico",
+  "store/affiliate.register.errorURLInUse": "Essa URL de Afiliado já está em uso",
+  "store/affiliate.register.errorAffiliateExists": "O Afiliado já existe, esse email já está em uso",
+  "store/affiliate.register.errorAffiliateNotFound": "Afiliado não encontrado, esse email não está sendo usado por nenhum afiliado",
+  "store/affiliate.register.errorEmailAlreadyInUse": "Esse email já está em uso por outro afiliado"
 }

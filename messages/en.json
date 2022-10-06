@@ -112,6 +112,12 @@
   "admin/edit.affiliate.approve.title": "Change affiliate approved status",
   "admin/total.order.value.disclaimer.text": "The total value is based only on the value of the items in the order. Shipping price is not considered.",
   "admin/import.no.last.file.label": "No file uploaded",
+  "admin/affiliate.register.errorSlugAlphanumeric": "Slug is not valid, must be alphanumeric",
+  "admin/affiliate.register.errorURLInUse": "Affiliate url is already in use",
+  "admin/affiliate.register.errorAffiliateExists": "Affiliate already exists, email is already in use",
+  "admin/affiliate.register.errorAffiliateNotFound": "Affiliate not found, there is no affiliate with this email",
+  "admin/affiliate.register.errorEmailAlreadyInUse": "The email is already being used by some other affiliate",
+
   "store/affiliate.profile.button.label": "Affiliate Profile",
   "store/affiliate.profile.access.store.label": "Access the store",
   "store/affiliate.profile.title": "Affiliate program:",
@@ -167,5 +173,11 @@
   "store/affiliate.whatsappLabel": "Whatsapp",
   "store/affiliate.gtmLabel": "GTM ID",
   "store/affiliate.wentWrong": "Something went wrong, verify the form again",
-  "store/affiliate.noSpecial": "No spaces or special characters"
+  "store/affiliate.noSpecial": "No spaces or special characters",
+  "store/affiliate.wentWell": "Affiliate registered successfully",
+  "store/affiliate.register.errorSlugAlphanumeric": "Slug is not valid, must be alphanumeric",
+  "store/affiliate.register.errorURLInUse": "Affiliate url is already in use",
+  "store/affiliate.register.errorAffiliateExists": "Affiliate already exists, email is already in use",
+  "store/affiliate.register.errorAffiliateNotFound": "Affiliate not found, there is no affiliate with this email",
+  "store/affiliate.register.errorEmailAlreadyInUse": "The email is already being used by some other affiliate"
 }

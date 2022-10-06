@@ -15,6 +15,7 @@ import UPDATE_AFFILIATE from '../../../../graphql/updateAffiliate.graphql'
 import ADD_AFFILIATE from '../../../../graphql/addAffiliate.graphql'
 import GET_AFFILIATE from '../../../../graphql/getAffiliate.graphql'
 import { messages } from '../../../../utils/messages'
+import ErrorMessage from '../../../store/ErrorMessage'
 
 type AffiliateFormProps = {
   affiliate?: Affiliate
@@ -54,40 +55,40 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     }
   }, [affiliate])
 
-  const [updateAffiliate, { loading: editMutationLoading }] = useMutation(
-    UPDATE_AFFILIATE,
-    {
-      refetchQueries: [
-        {
-          query: GET_AFFILIATE,
-          variables: {
-            affiliateId: affiliate?.id,
-          },
+  const [
+    updateAffiliate,
+    { loading: editMutationLoading, error: UpdateError },
+  ] = useMutation(UPDATE_AFFILIATE, {
+    refetchQueries: [
+      {
+        query: GET_AFFILIATE,
+        variables: {
+          affiliateId: affiliate?.id,
         },
-      ],
-      awaitRefetchQueries: true,
-      onCompleted: () => {
-        showToast({
-          variant: 'positive',
-          message: intl.formatMessage(messages.editAffiliateSuccessMessage),
-        })
-        navigate({
-          page: 'admin.app.affiliates.affiliate-detail',
-          params: {
-            affiliateId: affiliate?.id,
-          },
-        })
       },
-      onError: () => {
-        showToast({
-          variant: 'critical',
-          message: intl.formatMessage(messages.editAffiliateErrorMessage),
-        })
-      },
-    }
-  )
+    ],
+    awaitRefetchQueries: true,
+    onCompleted: () => {
+      showToast({
+        variant: 'positive',
+        message: intl.formatMessage(messages.editAffiliateSuccessMessage),
+      })
+      navigate({
+        page: 'admin.app.affiliates.affiliate-detail',
+        params: {
+          affiliateId: affiliate?.id,
+        },
+      })
+    },
+    onError: () => {
+      showToast({
+        variant: 'critical',
+        message: intl.formatMessage(messages.editAffiliateErrorMessage),
+      })
+    },
+  })
 
-  const [addAffiliate, { loading: addMutationLoading }] = useMutation(
+  const [addAffiliate, { loading: addMutationLoading, error }] = useMutation(
     ADD_AFFILIATE,
     {
       onCompleted: (result) => {
@@ -140,8 +141,18 @@ const AffiliateForm: FC<AffiliateFormProps> = ({ affiliate }) => {
     defaultValues: initialValues,
   })
 
+  const addErrors =
+    error?.graphQLErrors[0]?.extensions?.exception?.graphQLErrors
+
+  const updateErrors =
+    UpdateError?.graphQLErrors[0]?.extensions?.exception?.graphQLErrors
+
   return (
     <Box csx={{ marginY: 16 }}>
+      {addErrors ? <ErrorMessage errors={addErrors} context="admin" /> : null}
+      {updateErrors ? (
+        <ErrorMessage errors={updateErrors} context="admin" />
+      ) : null}
       <Form state={form} onSubmit={onSubmit}>
         <GeneralInfo form={form} />
         <AddressInfo form={form} />

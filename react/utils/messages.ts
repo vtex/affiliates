@@ -307,4 +307,7 @@ export const storeMessages = defineMessages({
   affiliateNoSpecial: {
     id: 'store/affiliate.noSpecial',
   },
+  affiliateWentWell: {
+    id: 'store/affiliate.wentWell',
+  },
 })
