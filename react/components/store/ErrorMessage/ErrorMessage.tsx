@@ -51,7 +51,11 @@ function ErrorMessage(props: Props) {
   }, [intl, showToast])
 
   return (
-    <div className="w-100 center mw8-m ph3 pa5 mv8 bg-washed-red flex items-center">
+    <div
+      className={`w-100 ph3 pa5 mv8 bg-washed-red flex items-center ${
+        context === 'store' ? 'center mw8-m' : ''
+      }`}
+    >
       <ul className="flex flex-column list">
         {errors.map((item) => {
           return (

@@ -74,6 +74,8 @@ function AffiliateForm() {
     },
   }
 
+  const errors = error?.graphQLErrors[0]?.extensions?.exception?.graphQLErrors
+
   return (
     <ToastProvider>
       <ToastConsumer>
@@ -85,7 +87,7 @@ function AffiliateForm() {
                   <p>{intl.formatMessage(storeMessages.affiliateWentWell)}</p>
                 </div>
               ) : null}
-              {error ? (
+              {errors ? (
                 <ErrorMessage
                   errors={
                     error?.graphQLErrors[0]?.extensions?.exception
