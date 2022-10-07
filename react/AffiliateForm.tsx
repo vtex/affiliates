@@ -45,7 +45,7 @@ interface ToastProps {
 
 function AffiliateForm() {
   const intl = useIntl()
-  const [addAffiliate, { loading, error }] = useMutation(ADD_AFFILIATE)
+  const [addAffiliate, { loading, error, data }] = useMutation(ADD_AFFILIATE)
 
   const initialValues = {
     name: '',
@@ -74,16 +74,24 @@ function AffiliateForm() {
     },
   }
 
+  const errors = error?.graphQLErrors[0]?.extensions?.exception?.graphQLErrors
+
   return (
     <ToastProvider>
       <ToastConsumer>
         {({ showToast }: { showToast: (props: ToastProps) => void }) => (
           <section>
             <div>
-              {error ? (
+              {data ? (
+                <div className="w-100 center mw8-m ph3 pa5 mv8 bg-washed-green flex items-center">
+                  <p>{intl.formatMessage(storeMessages.affiliateWentWell)}</p>
+                </div>
+              ) : null}
+              {errors ? (
                 <ErrorMessage
-                  error={error?.graphQLErrors[0]?.message}
+                  errors={errors}
                   showToast={showToast}
+                  context="store"
                 />
               ) : null}
             </div>

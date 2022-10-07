@@ -1,6 +1,9 @@
 import type { Affiliates, MutationAddAffiliateArgs } from 'vtex.affiliates'
+import CustomGraphQLError from '@vtex/api/lib/errors/customGraphQLError'
 
 import { findDocumentsByField, isSlugValid } from '../utils/shared'
+import type { Error } from './pushErrors'
+import { pushErrors } from './pushErrors'
 
 export const addAffiliate = async (
   _: unknown,
@@ -8,9 +11,16 @@ export const addAffiliate = async (
   { clients: { affiliates } }: Context
 ) => {
   const { slug, email } = newAffiliate
+  const errors: Error[] = []
 
   if (!isSlugValid(slug)) {
-    throw new Error('Slug is not valid, must be alphanumeric')
+    pushErrors(
+      {
+        message: 'Slug is not valid, must be alphanumeric',
+        code: 'SlugNotAlphanumeric',
+      },
+      errors
+    )
   }
 
   const affiliatesInDbBySlug = await findDocumentsByField<Affiliates>(
@@ -19,8 +29,14 @@ export const addAffiliate = async (
     slug
   )
 
-  if (affiliatesInDbBySlug.length > 0) {
-    throw new Error('Affiliate url is already in use')
+  if (affiliatesInDbBySlug?.length > 0) {
+    pushErrors(
+      {
+        message: 'Affiliate url is already in use',
+        code: 'URLInUse',
+      },
+      errors
+    )
   }
 
   const affiliatesInDbByEmail = await findDocumentsByField<Affiliates>(
@@ -29,8 +45,18 @@ export const addAffiliate = async (
     email
   )
 
-  if (affiliatesInDbByEmail.length > 0) {
-    throw new Error('Affiliate already exists (email is already in use)')
+  if (affiliatesInDbByEmail?.length > 0) {
+    pushErrors(
+      {
+        message: 'Affiliate already exists (email is already in use)',
+        code: 'AffiliateAlreadyExists',
+      },
+      errors
+    )
+  }
+
+  if (errors.length >= 1) {
+    throw new CustomGraphQLError('Add Affiliate validation error', errors)
   }
 
   const mdDocument = {

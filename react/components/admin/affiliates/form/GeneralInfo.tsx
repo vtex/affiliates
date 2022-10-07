@@ -20,7 +20,7 @@ type GetAffiliateStoreNameQueryResult = {
 
 const GeneralInfo: FC<GeneralInfoType> = ({ form }) => {
   const intl = useIntl()
-  const [newSlug, setNewSlug] = useState('')
+  const [newSlug, setNewSlug] = useState(form.getValues('slug'))
 
   const [validateSlug, { data }] =
     useLazyQuery<GetAffiliateStoreNameQueryResult>(
