@@ -8,6 +8,7 @@ import { useLazyQuery } from 'react-apollo'
 
 import GET_AFFILIATE_STORE_NAME_QUERY from '../../../../graphql/getAffiliateStoreName.graphql'
 import { messages } from '../../../../utils/messages'
+import { setFormRegex } from '../../../../utils/shared'
 
 interface GeneralInfoType {
   form: FormState
@@ -19,7 +20,6 @@ type GetAffiliateStoreNameQueryResult = {
 
 const GeneralInfo: FC<GeneralInfoType> = ({ form }) => {
   const intl = useIntl()
-  const randomNumber = Math.floor(Math.random() * 10000)
   const [newSlug, setNewSlug] = useState('')
 
   const [validateSlug, { data }] =
@@ -28,10 +28,7 @@ const GeneralInfo: FC<GeneralInfoType> = ({ form }) => {
     )
 
   async function handleStoreName(e: React.ChangeEvent<HTMLInputElement>) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const targetValue: any = e.currentTarget.value
-    const regex = /[\s.;,?%&]/g
-    const updatedSlug = targetValue.replaceAll(regex, '-').toLowerCase()
+    const updatedSlug = setFormRegex(e.currentTarget.value)
 
     await validateSlug({ variables: { slug: updatedSlug } })
     await form.setValue('slug', updatedSlug)
@@ -40,9 +37,11 @@ const GeneralInfo: FC<GeneralInfoType> = ({ form }) => {
   }
 
   useEffect(() => {
-    if (data === undefined) {
+    if (!data) {
       form.setValue('slug', newSlug)
     } else {
+      const randomNumber = Math.floor(Math.random() * 10000)
+
       form.setValue('slug', `${newSlug}${randomNumber}`)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
