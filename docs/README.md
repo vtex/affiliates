@@ -2,13 +2,13 @@
 
 # Affiliates
 
-The affiliates app adds some data layer and pages that will allow your store to work with a partner structure, this app will give the affiliates a page and url parameter for them to share with their clients, and when something is bought they will have a commission related to their clients purchase.
-The app also adds some configurations and management pages for the store owner and affiliate as well.
+Affiliates app allows your store to work with a partner structure. The app creates affiliates stores, that has an access page and url parameter for them to share with their clients. When something is bought, it generates a commission related to their clients purchase.
+The app also adds configuration and management pages for the store owner and affiliates as well.
 
 
 ![Affiliate page](https://user-images.githubusercontent.com/53904010/192868993-8967062b-b140-4d0e-95e1-b5c3c4e9f79a.png)<br/>
 _**Example of an affiliate page**_<br/>
-This is the main page that will be shared by the affiliate with their clients, it's a page that can be customized to show some products and guide the customer.
+This is the main page that will be shared by the affiliate with their clients. It's a page that can be customized to show some products and guide the customer.
 <br/>
 <br/>
 
