@@ -1,0 +1,17 @@
+{
+  "name": "Aplicativo de Afiliados",
+  "headline": "Um aplicativo que permite que as lojas usem uma estratégia de Afiliados, um método de vendas indiretas, que ajudará os lojistas a promover e vender seus produtos. Os afiliados compartilham produtos nas redes sociais em troca de comissão de vendas por cada transação realizada.",
+  "overview": "Este aplicativo permite que os lojistas adicionem afiliados e gerenciem seus pedidos e comissões, além de adicionar algumas funcionalidades de vitrine para o afiliado trabalhar",
+  "features": [
+    "Criar e editar novos afiliados",
+    "Gerenciar a loja e as vendas de afiliados",
+    "Gerenciar comissões por SKU",
+    "Permitir que os clientes se registrem como afiliados",
+    "Permitir que afiliados compartilhem qualquer URL",
+    "Crie uma página específica para afiliados"
+  ],
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}
