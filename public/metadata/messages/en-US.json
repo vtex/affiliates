@@ -1,0 +1,17 @@
+{
+  "name": "Affiliates App",
+  "headline": "An app that allow stores to use an Affiliates strategy, an indirect sales method, that will help the store owners to promote and sell their products. The affiliates share products on social media in exchange for sales commission for each transaction made.",
+  "overview": "This app allows store owners to add affiliates and manage their orders and commission, and adds some storefront functionalities for the affiliate to work with",
+  "features": [
+    "Create and edit new affiliates",
+    "Manage the store and affiliate sales",
+    "Manage comissions by SKU",
+    "Allow clients to register as an affiliate",
+    "Allow affiliates to share any URL",
+    "Create an specific page for affiliates"
+  ],
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}
