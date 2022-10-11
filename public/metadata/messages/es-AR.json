@@ -1,0 +1,17 @@
+{
+  "name": "Programa de Afiliación",
+  "headline": "Una aplicación que permite a las tiendas utilizar una estrategia de Afiliados, un método de venta indirecta, que ayudará a los propietarios de las tiendas a promocionar y vender sus productos. Los afiliados comparten productos en las redes sociales a cambio de una comisión de venta por cada transacción realizada.",
+  "overview": "Esta aplicación permite a los propietarios de tiendas agregar afiliados y administrar sus pedidos y comisiones, y agrega algunas funcionalidades de escaparate para que el afiliado trabaje con ellas.",
+  "features": [
+    "Crear y editar nuevos afiliados",
+    "Administrar la tienda y las ventas de afiliados",
+    "Administrar comisiones por SKU",
+    "Permitir a los clientes registrarse como afiliado",
+    "Permitir a los afiliados compartir cualquier URL",
+    "Crear una página específica para afiliados"
+  ],
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}
