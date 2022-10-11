@@ -1,6 +1,6 @@
 
 
-# Affiliates
+# Affiliates Program
 
 Affiliates app allows your store to work with a partner structure. The app creates affiliates stores, that has an access page and url parameter for them to share with their clients. When something is bought, it generates a commission related to their clients purchase.
 The app also adds configuration and management pages for the store owner and affiliates as well.
