@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- vtex.affiliates-order-form-spy@1.x as a dependency
+
 ### Fix
 
-- Lead flow adjust major of affiliates
+- Lead flow adjustment
 
 ## [1.4.3] - 2022-10-14
 

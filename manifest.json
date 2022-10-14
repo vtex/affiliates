@@ -7,7 +7,7 @@
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {
-    "vtex.affiliates-order-form-spy": "0.x",
+    "vtex.affiliates-order-form-spy": "1.x",
     "vtex.affiliates-commission-service": "2.x",
     "vtex.store": "2.x",
     "vtex.rich-text": "0.x",
