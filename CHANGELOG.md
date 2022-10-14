@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+
+- Icon size
+
 ## [1.4.3] - 2022-10-14
 
 ### Fix
