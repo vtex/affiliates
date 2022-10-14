@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+
 ### Changed
 
 - vtex.affiliates-order-form-spy@1.x as a dependency
@@ -14,6 +15,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fix
 
 - Lead flow adjustment
+
+## [1.4.4] - 2022-10-14
+
+### Fix
+
+- Icon size
+
 
 ## [1.4.3] - 2022-10-14
 
