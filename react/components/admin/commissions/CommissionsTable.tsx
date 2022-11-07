@@ -1,4 +1,5 @@
 import {
+  experimental_I18nProvider as I18nProvider,
   useModalState,
   Skeleton,
   useSearchState,
@@ -14,6 +15,7 @@ import {
   useToast,
   IconGear,
 } from '@vtex/admin-ui'
+import { useRuntime } from 'vtex.render-runtime'
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React, { useCallback, useState, useEffect } from 'react'
@@ -48,6 +50,7 @@ type TableColumns = {
 
 const CommissionsTable: FC = () => {
   const intl = useIntl()
+  const { culture: { locale } } = useRuntime()
   const view = useDataViewState()
   const modal = useModalState()
   const showToast = useToast()
@@ -224,7 +227,11 @@ const CommissionsTable: FC = () => {
             return <Skeleton csx={{ height: 24 }} />
           }
 
-          return <TableActions actions={tableActions(item)} />
+          return (
+            <I18nProvider locale={locale}>
+              <TableActions actions={tableActions(item)} />
+              </I18nProvider>
+          )
         },
       },
     },
@@ -257,40 +264,42 @@ const CommissionsTable: FC = () => {
   }, [setSortState, dataGridState.sortState, sortState])
 
   return (
-    <DataView state={view}>
-      <DataViewControls>
-        <Search
-          id="search"
-          value={value}
-          onChange={onChange}
-          onClear={onClear}
-          placeholder={intl.formatMessage(
-            messages.commissionsTableSearchPlaceholder
-          )}
+    <I18nProvider locale={locale}>
+      <DataView state={view}>
+        <DataViewControls>
+          <Search
+            id="search"
+            value={value}
+            onChange={onChange}
+            onClear={onClear}
+            placeholder={intl.formatMessage(
+              messages.commissionsTableSearchPlaceholder
+            )}
+          />
+          <ExportTableDataControl
+            maxResults={COMMISSIONS_TABLE_EXPORT_LIMIT}
+            totalResults={pagination.total}
+            exportAction={exportData}
+            loading={exportLoading}
+          />
+          <FlexSpacer />
+          <Pagination
+            state={pagination}
+            preposition={intl.formatMessage(messages.paginationPreposition)}
+            subject={intl.formatMessage(messages.paginationSubject)}
+            prevLabel={intl.formatMessage(messages.paginationPrevLabel)}
+            nextLabel={intl.formatMessage(messages.paginationNextLabel)}
+          />
+        </DataViewControls>
+        <Table state={dataGridState} />
+        <EditCommissionModal
+          selectedRowId={selectedRow?.id}
+          loading={mutationLoading}
+          updateFunction={updateCommissionMutation}
+          modalState={modal}
         />
-        <ExportTableDataControl
-          maxResults={COMMISSIONS_TABLE_EXPORT_LIMIT}
-          totalResults={pagination.total}
-          exportAction={exportData}
-          loading={exportLoading}
-        />
-        <FlexSpacer />
-        <Pagination
-          state={pagination}
-          preposition={intl.formatMessage(messages.paginationPreposition)}
-          subject={intl.formatMessage(messages.paginationSubject)}
-          prevLabel={intl.formatMessage(messages.paginationPrevLabel)}
-          nextLabel={intl.formatMessage(messages.paginationNextLabel)}
-        />
-      </DataViewControls>
-      <Table state={dataGridState} />
-      <EditCommissionModal
-        selectedRowId={selectedRow?.id}
-        loading={mutationLoading}
-        updateFunction={updateCommissionMutation}
-        modalState={modal}
-      />
-    </DataView>
+      </DataView>
+    </I18nProvider>
   )
 }
 

@@ -1,5 +1,6 @@
 import type { TableColumn, UseSortReturn } from '@vtex/admin-ui'
 import {
+  experimental_I18nProvider as I18nProvider,
   Flex,
   Tag,
   IconGear,
@@ -47,6 +48,7 @@ interface IsApprovedItemType {
 
 const AffiliatesTable: FC = () => {
   const intl = useIntl()
+  const { culture: { locale } } = useRuntime()
 
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
@@ -161,7 +163,11 @@ const AffiliatesTable: FC = () => {
             return <Skeleton csx={{ height: 24 }} />
           }
 
-          return <TableActions actions={tableActions(item)} />
+          return (
+            <I18nProvider locale={locale}>
+              <TableActions actions={tableActions(item)} />
+            </I18nProvider>  
+          )
         },
       },
     },
@@ -260,39 +266,41 @@ const AffiliatesTable: FC = () => {
   }, [setSortState, dataGridState.sortState, sortState])
 
   return (
-    <DataView state={view}>
-      <DataViewControls>
-        <Search
-          id="search"
-          value={value}
-          onChange={onChange}
-          onClear={onClear}
-          placeholder={intl.formatMessage(
-            messages.affiliatesTableSearchPlaceholder
-          )}
-        />
-        <Flex align="center">
-          {intl.formatMessage(messages.affiliatesTableIsApprovedColumnLabel)}
-          <Dropdown
-            items={isApprovedItems}
-            state={isApprovedState}
-            label="isApproved"
-            renderItem={(item: IsApprovedItemType | null) => item?.label}
-            variant="tertiary"
-            csx={{ width: 120 }}
+    <I18nProvider locale={locale}>
+      <DataView state={view}>
+        <DataViewControls>
+          <Search
+            id="search"
+            value={value}
+            onChange={onChange}
+            onClear={onClear}
+            placeholder={intl.formatMessage(
+              messages.affiliatesTableSearchPlaceholder
+            )}
           />
-        </Flex>
-        <FlexSpacer />
-        <Pagination
-          state={pagination}
-          preposition={intl.formatMessage(messages.paginationPreposition)}
-          subject={intl.formatMessage(messages.paginationSubject)}
-          prevLabel={intl.formatMessage(messages.paginationPrevLabel)}
-          nextLabel={intl.formatMessage(messages.paginationNextLabel)}
-        />
-      </DataViewControls>
-      <Table state={dataGridState} />
-    </DataView>
+          <Flex align="center">
+            {intl.formatMessage(messages.affiliatesTableIsApprovedColumnLabel)}
+            <Dropdown
+              items={isApprovedItems}
+              state={isApprovedState}
+              label="isApproved"
+              renderItem={(item: IsApprovedItemType | null) => item?.label}
+              variant="tertiary"
+              csx={{ width: 120 }}
+            />
+          </Flex>
+          <FlexSpacer />
+          <Pagination
+            state={pagination}
+            preposition={intl.formatMessage(messages.paginationPreposition)}
+            subject={intl.formatMessage(messages.paginationSubject)}
+            prevLabel={intl.formatMessage(messages.paginationPrevLabel)}
+            nextLabel={intl.formatMessage(messages.paginationNextLabel)}
+          />
+        </DataViewControls>
+        <Table state={dataGridState} />
+      </DataView>
+    </I18nProvider>  
   )
 }
 
