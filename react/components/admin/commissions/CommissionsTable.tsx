@@ -230,7 +230,7 @@ const CommissionsTable: FC = () => {
           return (
             <I18nProvider locale={locale}>
               <TableActions actions={tableActions(item)} />
-              </I18nProvider>
+            </I18nProvider>
           )
         },
       },
