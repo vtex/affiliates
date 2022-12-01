@@ -48,7 +48,9 @@ interface IsApprovedItemType {
 
 const AffiliatesTable: FC = () => {
   const intl = useIntl()
-  const { culture: { locale } } = useRuntime()
+  const {
+    culture: { locale },
+  } = useRuntime()
 
   // We need to do this because of a circular dependency
   const [sortState, setSortState] = useState<UseSortReturn>()
@@ -166,7 +168,7 @@ const AffiliatesTable: FC = () => {
           return (
             <I18nProvider locale={locale}>
               <TableActions actions={tableActions(item)} />
-            </I18nProvider>  
+            </I18nProvider>
           )
         },
       },
@@ -300,7 +302,7 @@ const AffiliatesTable: FC = () => {
         </DataViewControls>
         <Table state={dataGridState} />
       </DataView>
-    </I18nProvider>  
+    </I18nProvider>
   )
 }
 

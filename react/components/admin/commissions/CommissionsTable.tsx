@@ -50,8 +50,11 @@ type TableColumns = {
 
 const CommissionsTable: FC = () => {
   const intl = useIntl()
-  const { culture: { locale } } = useRuntime()
+  const {
+    culture: { locale },
+  } = useRuntime()
   const view = useDataViewState()
+  
   const modal = useModalState()
   const showToast = useToast()
   const [selectedRow, setSelectedRow] = useState<TableColumns>()
