@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- `refId` as a string and as a default value
+
 ## [1.5.2] - 2023-03-30
 
 ### Fixed
@@ -25,13 +29,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - English and Portuguese translations.
 
-
 ### Added
 
 - Arabic, Bulgarian, Catalan, Czech, Danish, Dutch, German, Greek, Finnish, French, Italian, Korean, Norwegian, Polish, Romanian, Russian, Slovak, Swedish and Thai translations.
 
 ## [1.4.5] - 2022-10-14
-
 
 ### Changed
 
@@ -46,7 +48,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fix
 
 - Icon size
-
 
 ## [1.4.3] - 2022-10-14
 
