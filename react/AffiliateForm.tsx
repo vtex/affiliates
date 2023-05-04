@@ -50,6 +50,7 @@ function AffiliateForm() {
   const initialValues = {
     name: '',
     email: '',
+    refId: '',
     phone: '',
     isApproved: false,
     storeName: '',

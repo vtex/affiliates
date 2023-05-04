@@ -66,8 +66,10 @@ const UpdateApprovedStatusModal: FC<UpdateApprovedStatusModalProps> = ({
   }
 
   const onConfirmHandler = () => {
+    const refId = !affiliate?.refId ? '' : affiliate.refId
     const updateAffiliateData = {
       ...affiliate,
+      refId,
       isApproved: !isAffiliateApproved,
     }
 
