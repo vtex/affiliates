@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.3] - 2023-05-04
+
 ### Fixed
 
 - `refId` as a string and as a default value
