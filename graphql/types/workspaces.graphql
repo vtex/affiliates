@@ -1,0 +1,4 @@
+type Workspaces {
+  name: String
+  production: Boolean
+}

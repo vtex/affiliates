@@ -13,6 +13,7 @@ type Query {
     filter: AffiliatesFilterInput
     sorting: AffliatesSortingInput
   ): [AffiliateScroll]!
+  getWorkspaces: [Workspaces]
 }
 
 type Mutation {

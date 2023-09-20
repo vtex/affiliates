@@ -34,6 +34,7 @@ import { updateAffiliate as updateAffiliateResolver } from './resolvers/updateAf
 import { getAffiliate } from './resolvers/getAffiliate'
 import { fieldResolvers } from './resolvers/fieldResolvers'
 import { getAffiliateByEmail } from './resolvers/getAffiliateByEmail'
+import { getWorkspaces } from './resolvers/getWorkspaces'
 
 const TIMEOUT_MS = 1000
 
@@ -112,6 +113,7 @@ export default new Service({
         getAffiliate,
         getAffiliateByEmail,
         getAffiliatesScroll,
+        getWorkspaces,
       },
       Mutation: {
         addAffiliate,
