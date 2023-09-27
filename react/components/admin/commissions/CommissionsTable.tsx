@@ -53,8 +53,8 @@ const CommissionsTable: FC = () => {
   const {
     culture: { locale },
   } = useRuntime()
+
   const view = useDataViewState()
-  
   const modal = useModalState()
   const showToast = useToast()
   const [selectedRow, setSelectedRow] = useState<TableColumns>()
