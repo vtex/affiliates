@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Delete schemas function
+
+### Added
+
 - Schema client created
 
 ## [1.5.3] - 2023-05-04
