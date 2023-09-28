@@ -1658,10 +1658,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.3.tgz#781d360c282436494b32fe7d9f7f8e64b3118aa3"
   integrity sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==
 
-"@vtex/api@6.45.21":
-  version "6.45.21"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.45.21.tgz#2f5ea4a14dfbf426f6fbad140caf23c89060b313"
-  integrity sha512-Yo4og5bSM1n5WSQ3u8nsqEHicvxdyOZX3uA0KtQHbS4frSeA4hcGRuupsFHQ13eZZGMy4OR4fJO7ZQfkj8qLhQ==
+"@vtex/api@6.45.22":
+  version "6.45.22"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.45.22.tgz#fa9bbfde1a4d4fbbaf6cce9f6dbc9bb9ee929ba3"
+  integrity sha512-g5cGUDhF4FADgSMpQmce/bnIZumwGlPG2cabwbQKIQ+cCFMZqOEM/n+YQb1+S8bCyHkzW3u/ZABoyCKi5/nxxg==
   dependencies:
     "@types/koa" "^2.11.0"
     "@types/koa-compose" "^3.2.3"

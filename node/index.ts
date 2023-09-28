@@ -35,6 +35,7 @@ import { getAffiliate } from './resolvers/getAffiliate'
 import { fieldResolvers } from './resolvers/fieldResolvers'
 import { getAffiliateByEmail } from './resolvers/getAffiliateByEmail'
 import { getWorkspaces } from './resolvers/getWorkspaces'
+import { getSchemas } from './middlewares/getSchemas'
 
 const TIMEOUT_MS = 1000
 
@@ -90,6 +91,9 @@ declare global {
 export default new Service({
   clients,
   routes: {
+    schemas: method({
+      GET: [getSchemas],
+    }),
     affiliate: method({
       POST: [authenticateRequest, validateCreate, createAffiliate],
       PATCH: [authenticateRequest, validateUpdate, updateAffiliate],
