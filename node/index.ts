@@ -36,6 +36,7 @@ import { fieldResolvers } from './resolvers/fieldResolvers'
 import { getAffiliateByEmail } from './resolvers/getAffiliateByEmail'
 import { getWorkspaces } from './resolvers/getWorkspaces'
 import { getSchemas } from './middlewares/getSchemas'
+import { deleteSchemas } from './middlewares/deleteSchemas'
 
 const TIMEOUT_MS = 1000
 
@@ -93,6 +94,7 @@ export default new Service({
   routes: {
     schemas: method({
       GET: [getSchemas],
+      DELETE: [deleteSchemas],
     }),
     affiliate: method({
       POST: [authenticateRequest, validateCreate, createAffiliate],

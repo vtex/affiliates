@@ -3,8 +3,8 @@ import { ExternalClient } from '@vtex/api'
 
 const routes = {
   schemas: (dataEntity: string) => `/dataentities/${dataEntity}/schemas`,
-  delete: (dataEntity: string, schemaName: string) =>
-    `dataentities/${dataEntity}/schemas/${schemaName}`,
+  delete: (dataEntity: string, schemaName: string, workspace: string) =>
+    `dataentities/${dataEntity}/schemas/${schemaName}?workspace=${workspace}`,
 }
 
 export default class SchemasClient extends ExternalClient {
@@ -26,8 +26,12 @@ export default class SchemasClient extends ExternalClient {
   public deleteSchemas(
     dataEntity: string,
     schemaName: string,
+    workspace: string,
     config?: RequestConfig
   ): Promise<any> {
-    return this.http.delete(routes.delete(dataEntity, schemaName), config)
+    return this.http.delete(
+      routes.delete(dataEntity, schemaName, workspace),
+      config
+    )
   }
 }
