@@ -78,10 +78,10 @@ declare global {
   // The shape of our State object found in `ctx.state`. This is used as state bag to communicate between middlewares.
   interface State extends RecorderState {
     affiliate?: AffiliateInput
+    schemas?: string[]
   }
 
-  interface UserLoginState extends RecorderState {
-    affiliate?: AffiliateInput
+  interface UserLoginState extends State {
     orderForm: OrderForm
     userProfileId?: string | null
     affiliateLead: AffiliateLead
@@ -94,7 +94,7 @@ export default new Service({
   routes: {
     schemas: method({
       GET: [getSchemas],
-      DELETE: [deleteSchemas],
+      DELETE: [getSchemas, deleteSchemas],
     }),
     affiliate: method({
       POST: [authenticateRequest, validateCreate, createAffiliate],

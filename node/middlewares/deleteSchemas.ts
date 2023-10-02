@@ -4,15 +4,16 @@ export async function deleteSchemas(
 ) {
   const {
     clients: { schemas },
+    state,
     vtex: { logger },
   } = ctx
 
   try {
-    await schemas.deleteSchemas(
-      'vtex_affiliates_Affiliates',
-      'gabriel-test',
-      'newaffiliates'
-    )
+    const schemasToDelete = state?.schemas ?? []
+
+    schemasToDelete.forEach(async (i) => {
+      await schemas.deleteSchemas('vtex_affiliates_Affiliates', i)
+    })
   } catch (err) {
     logger.error({
       metric: 'delete-affiliate-schema',
