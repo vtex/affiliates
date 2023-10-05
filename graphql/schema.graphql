@@ -6,8 +6,8 @@ type Query {
     pageSize: Int!
     filter: AffiliatesFilterInput
     sorting: AffliatesSortingInput
-  ): AffiliatesPage!
-  getAffiliate(affiliateId: ID!): Affiliate
+  ): AffiliatesPage! @checkAdminAccess
+  getAffiliate(affiliateId: ID!): Affiliate @checkAdminAccess
   getAffiliateByEmail(email: String!): Affiliate
   getAffiliatesScroll(
     filter: AffiliatesFilterInput
@@ -16,7 +16,7 @@ type Query {
 }
 
 type Mutation {
-  addAffiliate(newAffiliate: NewAffiliateInput!): Affiliate!
+  addAffiliate(newAffiliate: NewAffiliateInput!): Affiliate! @checkAdminAccess
   updateAffiliate(
     affiliateId: String!
     updateAffiliate: UpdateAffiliateInput!

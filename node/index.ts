@@ -34,6 +34,7 @@ import { updateAffiliate as updateAffiliateResolver } from './resolvers/updateAf
 import { getAffiliate } from './resolvers/getAffiliate'
 import { fieldResolvers } from './resolvers/fieldResolvers'
 import { getAffiliateByEmail } from './resolvers/getAffiliateByEmail'
+import { schemaDirectives } from './directives'
 
 const TIMEOUT_MS = 1000
 
@@ -120,6 +121,7 @@ export default new Service({
       },
       ...fieldResolvers,
     },
+    schemaDirectives,
   },
   events: {
     onAppInstalled: setupAppConfiguration,

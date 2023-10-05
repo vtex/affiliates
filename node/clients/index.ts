@@ -4,6 +4,8 @@ import type { Affiliates, UserAffiliation } from 'vtex.affiliates'
 
 import AuthenticationClient from './authenticationClient'
 import CheckoutExtended from './checkout'
+import IdentityClient from './IdentityClient'
+import VtexId from './vtexId'
 
 export class Clients extends IOClients {
   public get affiliates() {
@@ -23,5 +25,13 @@ export class Clients extends IOClients {
 
   public get authentication() {
     return this.getOrSet('authentication', AuthenticationClient)
+  }
+
+  public get identity() {
+    return this.getOrSet('identity', IdentityClient)
+  }
+
+  public get vtexId() {
+    return this.getOrSet('vtexId', VtexId)
   }
 }
