@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.4] - 2023-10-05
+
 ### Security
 - Fix security Breaches described here: https://vtex-dev.atlassian.net/browse/VSC-10946
 
