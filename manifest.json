@@ -33,9 +33,6 @@
     "messages": "1.x",
     "admin": "0.x"
   },
-  "scripts": {
-    "prereleasy": "bash lint.sh"
-  },
   "credentialType": "absolute",
   "policies": [
     {
@@ -100,9 +97,7 @@
   },
   "billingOptions": {
     "type": "free",
-    "availableCountries": [
-      "*"
-    ],
+    "availableCountries": ["*"],
     "support": {
       "url": "https://support.vtex.com/hc/requests"
     }
