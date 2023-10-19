@@ -1,5 +1,4 @@
-import type { Affiliates } from 'vtex.affiliates'
-
+import type { Affiliates } from '../typings/affiliates'
 import { findDocumentsByField } from '../utils/shared'
 
 type Props = {

@@ -1,4 +1,4 @@
-import type { Affiliates } from 'vtex.affiliates'
+import type { Affiliates } from '../typings/affiliates'
 
 export const fieldResolvers = {
   Affiliate: {

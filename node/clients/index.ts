@@ -1,7 +1,7 @@
 import { IOClients } from '@vtex/api'
 import { masterDataFor } from '@vtex/clients'
-import type { Affiliates, UserAffiliation } from 'vtex.affiliates'
 
+import type { Affiliates, UserAffiliation } from '../typings/affiliates'
 import AuthenticationClient from './authenticationClient'
 import CheckoutExtended from './checkout'
 import IdentityClient from './IdentityClient'
