@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.7.1] - 2023-10-30
-
 ### Changed
 - Master Data Builder usage
 - New function that extends MD Client to use a specific schema
