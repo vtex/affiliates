@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- GraphQL AddAffiliate query autenthication
+
 ### Changed
 - Master Data Builder usage
 - New function that extends MD Client to use a specific schema
