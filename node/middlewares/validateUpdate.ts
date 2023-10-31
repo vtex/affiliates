@@ -1,7 +1,6 @@
 import { json } from 'co-body'
-import type { Affiliates } from 'vtex.affiliates'
 
-import type { AffiliateInput } from '../typings/affiliates'
+import type { Affiliates, AffiliateInput } from '../typings/affiliates'
 import { findDocumentsByField, isSlugValid } from '../utils/shared'
 
 export async function validateUpdate(

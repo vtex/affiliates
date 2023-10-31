@@ -1,6 +1,7 @@
-import type { Affiliates, MutationAddAffiliateArgs } from 'vtex.affiliates'
+import type { MutationAddAffiliateArgs } from 'vtex.affiliates'
 import CustomGraphQLError from '@vtex/api/lib/errors/customGraphQLError'
 
+import type { Affiliates } from '../typings/affiliates'
 import { findDocumentsByField, isSlugValid } from '../utils/shared'
 import type { Error } from './pushErrors'
 import { pushErrors } from './pushErrors'

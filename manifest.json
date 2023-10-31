@@ -1,7 +1,7 @@
 {
   "name": "affiliates",
   "vendor": "vtex",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "title": "Affiliates",
   "description": "App that adds support for affiliates on IO stores",
   "mustUpdateAt": "2018-01-04",
@@ -27,7 +27,6 @@
     "node": "6.x",
     "docs": "0.x",
     "react": "3.x",
-    "masterdata": "1.x",
     "graphql": "1.x",
     "store": "0.x",
     "messages": "1.x",
