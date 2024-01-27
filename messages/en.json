@@ -178,5 +178,8 @@
   "store/affiliate.register.errorURLInUse": "Affiliate url is already in use",
   "store/affiliate.register.errorAffiliateExists": "Affiliate already exists, email is already in use",
   "store/affiliate.register.errorAffiliateNotFound": "Affiliate not found, there is no affiliate with this email",
-  "store/affiliate.register.errorEmailAlreadyInUse": "The email is already being used by some other affiliate"
+  "store/affiliate.register.errorEmailAlreadyInUse": "The email is already being used by some other affiliate",
+  "admin/affiliate.commissionWarning": "The last spreadsheet has SKUs not found in the store, this will not cancel the process, it will just not add the specific not found value",
+  "admin/affiliate.commissionSuccess": "All spreadsheet SKUs that have been verified so far have been found in the store",
+  "admin/affiliate.verifySKUs": "Verify SKUs"
 }

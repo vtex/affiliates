@@ -3,17 +3,37 @@ import React, { useCallback, useState, useMemo } from 'react'
 import { useIntl } from 'react-intl'
 import { Dropzone } from 'vtex.styleguide'
 import { Text, Box, Button, Flex, useToast } from '@vtex/admin-ui'
-import { useMutation } from 'react-apollo'
+import { useMutation, useLazyQuery } from 'react-apollo'
 import * as XLSX from 'xlsx'
 
+import CommissionsNotFound from './CommissionsNotFound'
 import { messages } from '../../../utils/messages'
 import IMPORT_COMMISSIONS from '../../../graphql/importCommissionsBySKU.graphql'
 import GET_LAST_IMPORTED_COMMISSION_FILE_INFO from '../../../graphql/getLastImportInfo.graphql'
+import GET_NOT_FOUND_SKUS from '../../../graphql/getNotFoundSKUs.graphql'
+import DELETE_NOT_FOUND_SKUS from '../../../graphql/deleteNotFoundSKUs.graphql'
+
+interface NotFoundInterface {
+  getNotFoundCommissions: boolean | undefined
+}
 
 const ImportDropzone: FC = () => {
   const intl = useIntl()
   const showToast = useToast()
   const [file, setFile] = useState<File>()
+  const [verifyDisabled, setVerifyDisabled] = useState(true)
+
+  const [getNotFoundSKUs, { data: dataSKUs }] = useLazyQuery<NotFoundInterface>(
+    GET_NOT_FOUND_SKUS,
+    {
+      notifyOnNetworkStatusChange: true,
+      fetchPolicy: 'network-only',
+    }
+  )
+
+  const [deleteNotFoundSKUs] = useMutation(DELETE_NOT_FOUND_SKUS, {
+    notifyOnNetworkStatusChange: true,
+  })
 
   const [importData, { loading: importLoading }] = useMutation(
     IMPORT_COMMISSIONS,
@@ -25,6 +45,8 @@ const ImportDropzone: FC = () => {
       ],
       awaitRefetchQueries: true,
       onCompleted: () => {
+        setVerifyDisabled(false)
+        deleteNotFoundSKUs()
         showToast({
           variant: 'positive',
           message: intl.formatMessage(messages.importFileSuccessMessage),
@@ -108,14 +130,28 @@ const ImportDropzone: FC = () => {
         </div>
       </Dropzone>
       <Flex justify="flex-end" csx={{ marginY: '8px' }}>
-        <Button
-          disabled={isButtonDisabled}
-          loading={importLoading}
-          onClick={handleSubmit}
-        >
-          {intl.formatMessage(messages.sendFileLabel)}
-        </Button>
+        <div className="flex flex-column ">
+          <Button
+            className="mt2"
+            disabled={isButtonDisabled}
+            loading={importLoading}
+            onClick={handleSubmit}
+          >
+            {intl.formatMessage(messages.sendFileLabel)}
+          </Button>
+          <Button
+            variant="secondary"
+            className="mt2"
+            disabled={verifyDisabled}
+            onClick={() => getNotFoundSKUs()}
+          >
+            {intl.formatMessage(messages.affiliateVerifySKUs)}
+          </Button>
+        </div>
       </Flex>
+      {dataSKUs?.getNotFoundCommissions !== undefined ? (
+        <CommissionsNotFound notFound={dataSKUs.getNotFoundCommissions} />
+      ) : null}
     </>
   )
 }
