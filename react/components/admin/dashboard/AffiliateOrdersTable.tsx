@@ -141,7 +141,7 @@ const AffiliateOrdersTable: FC = () => {
     ? new Date(query.endDate)
     : new Date()
 
-  minInitialDate.setMonth(minInitialDate.getMonth() - 3)
+  minInitialDate.setMonth(minInitialDate.getMonth() - 6)
   const [startDate, setStartDate] = useState(startDateInitialValue)
   const [endDate, setEndDate] = useState(endDateInitialValue)
   // We need to do this because of a circular dependency
