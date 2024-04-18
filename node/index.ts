@@ -36,7 +36,7 @@ import { fieldResolvers } from './resolvers/fieldResolvers'
 import { getAffiliateByEmail } from './resolvers/getAffiliateByEmail'
 import { schemaDirectives } from './directives'
 
-const TIMEOUT_MS = 30000
+const TIMEOUT_MS = 60000
 
 // This is the configuration for clients available in `ctx.clients`.
 const clients: ClientsConfig<Clients> = {

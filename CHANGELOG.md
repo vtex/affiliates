@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Change
+- Filters up to 6 months are now allowed
+
 ## [1.8.1] - 2024-03-13
 
 ## [1.8.0] - 2023-10-31
