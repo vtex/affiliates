@@ -178,5 +178,8 @@
   "store/affiliate.register.errorURLInUse": "Essa URL de Afiliado já está em uso",
   "store/affiliate.register.errorAffiliateExists": "O Afiliado já existe, esse email já está em uso",
   "store/affiliate.register.errorAffiliateNotFound": "Afiliado não encontrado, esse email não está sendo usado por nenhum afiliado",
-  "store/affiliate.register.errorEmailAlreadyInUse": "Esse email já está em uso por outro afiliado"
+  "store/affiliate.register.errorEmailAlreadyInUse": "Esse email já está em uso por outro afiliado",
+  "admin/affiliate.commissionWarning": "A última planilha possui SKUs não encontrados na loja, isso não cancelará o processo, apenas não adicionará o valor específico não encontrado",
+  "admin/affiliate.commissionSuccess": "Todos os SKUs da planilha que foram verificados até agora foram encontrados na loja",
+  "admin/affiliate.verifySKUs": "Verificar SKUs"
 }
