@@ -475,6 +475,9 @@ In order to apply CSS customizations to this and other blocks, follow the instru
 
 <!-- DOCS-IGNORE:start -->
 
+## Some app errors and their possible solution
+https://www.notion.so/vtexhandbook/Errors-that-the-affiliate-app-may-present-128f8223cee9800a93e7f9a32ea99fba?pvs=4
+
 ## Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
