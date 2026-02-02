@@ -4,84 +4,74 @@
 
 > ⚠️ This app is no longer maintained by VTEX. This means support and maintenance are no longer provided.
 
-Affiliates app allows your store to work with a partner structure. The app creates affiliates stores, that has an access page and url parameter for them to share with their clients. When something is bought, it generates a commission related to their clients purchase.
-The app also adds configuration and management pages for the store owner and affiliates as well.
+The Affiliates app enables your store to operate under a partner structure. The app creates affiliate stores that have an access page and a URL parameter for them to share with their clients. When something is purchased, a commission is generated for the client's purchase. The app also adds configuration and management pages for the store owner and affiliates.
 
 
-![Affiliate page](https://user-images.githubusercontent.com/53904010/192868993-8967062b-b140-4d0e-95e1-b5c3c4e9f79a.png)<br/>
-_**Example of an affiliate page**_<br/>
-This is the main page that will be shared by the affiliate with their clients. It's a page that can be customized to show some products and guide the customer.
-<br/>
-<br/>
+![Affiliate page](https://user-images.githubusercontent.com/53904010/192868993-8967062b-b140-4d0e-95e1-b5c3c4e9f79a.png)
 
-![Affiliate profile page](https://user-images.githubusercontent.com/53904010/192872539-184d5dee-01cc-46b4-a2b8-4d138e3b0b6c.png)<br/>
-_**Example of the affiliate profile page**_<br/>
-This is the page where the affiliate can see the orders related to their account, with a totalizer and dashboard for a better experience.
-<br/>
-<br/>
+**Example of an affiliate page**
 
-![Affiliate Form page](https://user-images.githubusercontent.com/53904010/192870484-72cfc8a0-f5bb-488e-8a7a-cda6c189affc.png)<br/>
-_**Example of the affilate form**_<br/>
-This page contains a form that can be filled by anyone that wants to became an affiliate
-<br/>
-<br/>
+This is the main page that the affiliate will share with their clients. It's a page that can be customized to show some products and guide the customer.
+
+![Affiliate profile page](https://user-images.githubusercontent.com/53904010/192872539-184d5dee-01cc-46b4-a2b8-4d138e3b0b6c.png)
+
+**Example of the affiliate profile page**
+
+This is the page where the affiliate can view the orders associated with their account, with a totalizer and dashboard for a better experience.
+
+![Affiliate Form page](https://user-images.githubusercontent.com/53904010/192870484-72cfc8a0-f5bb-488e-8a7a-cda6c189affc.png)
+
+**Example of the affiliate form**
+
+This page contains a form that can be filled out by anyone who wants to become an affiliate
 
 ## Configuration
 
 1. Search for the Affiliate app on our app store and install it on your account.
-
 2. Open your store's Store Theme app directory in your code editor.
-
 3. Add the Affiliates app to your theme's `manifest.json` file inside **peerDependencies** as shown below:
 
-```diff
- "peerDependencies": {
-+  "vtex.affiliates": "1.x"
- }
-```
+  ```diff
+   "peerDependencies": {
+  +  "vtex.affiliates": "1.x"
+   }
+  ```
 
-> ℹ️ _The Affiliates app can export several theme blocks when added as a dependency. There are some that are responsible for creating several different pages on the storefront, like `affiliate`, `affiliate-profile` and `affiliate-form`, and there are several functionality blocks that will be used within these pages context as well, we will show more about them on the advanced section._
+  > ℹ️ The Affiliates app can export several theme blocks when added as a dependency. There are some responsible for creating several pages on the storefront, like `affiliate`, `affiliate-profile`, and `affiliate-form`, and several functionality blocks that will be used within these pages' context as well. We will show more about them in the advanced section.
 
+3. After installing the app, the main pages will be available with a default layout. You can access them by `/affiliates/:slug` and `/affiliates/profile/:slug`.
+4. If you want your affiliates to have the possibility to send any URL of the site for the client, you will have to add the `affiliate-url-monitoring` block into the header of your theme, as shown below:
+  
+  ```diff
+    "header-layout.desktop": {
+      "children": [
+  +     "affiliate-url-monitoring",
+        "flex-layout.row#1-desktop",
+        "flex-layout.row#3-desktop",
+      ]
+    },
+  
+      "header-layout.mobile": {
+      "children": [
+  +     "affiliate-url-monitoring",
+        "flex-layout.row#1-desktop",
+      ]
+    },
+  ```
+  
+  > ℹ️ _The `affiliate_url_monitoring` app adds a logic that will seek a specific parameter on the URL. If the parameter is found with a valid affiliate slug as its value, it will add the affiliate information to the purchase.
 
-3. After installing the app, the main pages will be available with a default layout, you can access them by `/affiliates/:slug` and `/affiliates/profile/:slug`
+5. Now your affiliate can send any URL with the parameter **targeting** with their slug as value, which will add the affiliate information to be linked to the purchase
 
-
-4. If you want your affiliates to have the possibility to send any URL of the site for the client, you will have to add the `affiliate-url-monitoring` block into the header of your theme as shown below:
-
-```diff
-  "header-layout.desktop": {
-    "children": [
-+     "affiliate-url-monitoring",
-      "flex-layout.row#1-desktop",
-      "flex-layout.row#3-desktop",
-    ]
-  },
-
-    "header-layout.mobile": {
-    "children": [
-+     "affiliate-url-monitoring",
-      "flex-layout.row#1-desktop",
-    ]
-  },
-```
-
-> ℹ️ _The `affiliate_url_monitoring` app adds a logic that will seek for specific parameter on the URL, if the parameter is found with a valid affiliate slug as it's value, it will add the affiliate informations on the purchase.
-
-
-5. Now your affiliate can send any URL with the parameter **targeting** with their slug as value, it will adds this affiliate information to be linked to the purchase
-
-| Example URL                                                   | Behavior                                                       |
-|-------------------------------------------------------|----------------------------------------------------------------|
-| https://mystore.com/product/p                         | Just a simple product URL                                      |
-| https://mystore.com/product/p?targeting=affiliateName | URL with the parameter, will link this client to the affiliate |
-
+  | Example URL                                                   | Behavior                                                       |
+  |-------------------------------------------------------|----------------------------------------------------------------|
+  | https://mystore.com/product/p                         | Just a simple product URL                                      |
+  | https://mystore.com/product/p?targeting=affiliateName | URL with the parameter, will link this client to the affiliate |
+  
 
 6. If you want to change the parameter that will be used for the affiliate to share, you can edit the parameter property from the `Affiliate Monitoring` block inside the Site Editor.
-
-![Parameter Editing](https://user-images.githubusercontent.com/53904010/191607498-a58c11ba-57f9-4d1c-aa65-b3d4c82c0c90.png)
-
-
-> ℹ️ _After the affiliate send their URL for the client, their Affiliate ID will be linked to this client for some time and will be prioritized even if another Affiliate send an URL to the same client, the time the Affiliate ID usually persists is 60 days
+    ![Parameter Editing](https://user-images.githubusercontent.com/53904010/191607498-a58c11ba-57f9-4d1c-aa65-b3d4c82c0c90.png)
+    > ℹ️ After the affiliate sends their URL for the client, their Affiliate ID will be linked to this client for some time and will be prioritized even if another Affiliate sends a URL to the same client. The Affiliate ID usually persists for 60 days.
 
 ## Advanced configurations
 
@@ -210,12 +200,12 @@ According to the Affiliate app composition, the `/affiliates/:slug` page can be 
 ```
 
 
-By "default implementation" we mean that, by installing the Affiliate app in your store, you're actually using the `jsons` above behind the scenes to build the new pages.
+By "default implementation," we mean that when you install the Affiliate app in your store, you're actually using the `jsons` above behind the scenes to build the new pages.
 
-Therefore, in order to customize these pages configuration, you should:
+Therefore, in order to customize these pages, you should:
 
-1. Create a `affiliates.jsonc`, `affiliates-profile.jsonc` or `affiliates-form.jsonc` file under `store/blocks`.
-3. Copy the code above, paste it in the new file and change it as you wish.
+1. Create a `affiliates.jsonc`, `affiliates-profile.jsonc`, or `affiliates-form.jsonc` file under `store/blocks`.
+3. Copy the code above, paste it into the new file, and change it as you wish.
 4. Deploy your changes.
 
 ## Props
