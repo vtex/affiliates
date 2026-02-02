@@ -1,5 +1,7 @@
 # Affiliates Program
 
+[<i class="fa-brands fa-github"></i> Source code](https://github.com/vtex/affiliates)
+
 > ⚠️ This app is no longer maintained by VTEX. This means support and maintenance are no longer provided.
 
 Affiliates app allows your store to work with a partner structure. The app creates affiliates stores, that has an access page and url parameter for them to share with their clients. When something is bought, it generates a commission related to their clients purchase.
