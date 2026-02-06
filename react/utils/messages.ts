@@ -158,6 +158,15 @@ export const messages = defineMessages({
   },
   noLastFileLabel: { id: 'admin/import.no.last.file.label' },
   editAffiliateApproveStatusTitle: { id: 'admin/edit.affiliate.approve.title' },
+  affiliateCommissionWarning: {
+    id: 'admin/affiliate.commissionWarning',
+  },
+  affiliateCommissionSuccess: {
+    id: 'admin/affiliate.commissionSuccess',
+  },
+  affiliateVerifySKUs: {
+    id: 'admin/affiliate.verifySKUs',
+  },
 })
 
 export const storeMessages = defineMessages({
